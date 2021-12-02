@@ -1,0 +1,2321 @@
+<!doctype html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8" />
+    <title>kombatlairtest</title>
+    <script src="//cdn.jsdelivr.net/npm/phaser@3.11.0/dist/phaser.js"></script>
+    <style type="text/css">
+        body {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+<script type="text/javascript">
+
+var config = {
+    type: Phaser.AUTO,
+    width: 1360,
+    height: 768,
+    physics: {
+        default: 'arcade',
+        arcade: {
+            gravity: { y: 0 },
+            debug: false
+        }
+    },
+    scene: {
+        preload: preload,
+        create: create,
+        update: update
+    }
+};
+
+var player;
+var cursors;
+var text;
+var scrollright = false
+var game = new Phaser.Game(config);
+
+var leader1x = 450
+var leader1y = 375
+var leader2x = 450
+var leader2y = 450
+var fighter1x = 375
+var fighter1y = 360
+var fighter2x = 350
+var fighter2y = 425
+var fighter3x = 375
+var fighter3y = 475
+var fighter4x = 250
+var fighter4y = 425
+var fighter5x = 250
+var fighter5y = 500
+var fighter6x = 275
+var fighter6y = 375
+var support1x = 175
+var support1y = 400
+var support2x = 175
+var support2y = 500
+
+var support1backx = 35
+var support1backy = 0
+var support2backx = 105
+var support2backy = 0
+var rosacurrenttargetx
+var rosacurrenttargety
+var rosaspelltargetx = 0
+var rosaspelltargety = 0
+var rosatarget
+var isrosacastingnow = false
+var isrosacasting = false
+var isrosacastingcure = false
+var isrosacastingcurenow = false
+var isrosatargetpicked = false
+var isrosapickingtarget = false
+
+var kangactive = false
+var spinalactive = false
+var glaciusactive = false
+var kanoactive = false
+var sindelactive = false
+var kabalactive = false
+var jagoactive = false
+var cyraxactive = false
+var cecilactive = false
+var rosaactive = false
+var cyanactive = false
+var golbezactive = false
+var kainactive = false
+var terraactive = false
+var mogactive = false
+var kunglaoactive = false
+var sonjaactive = false
+var sektoractive = false
+var comboactive = false
+var orchidactive = false
+var activeleader1name = ''
+var activeleader2name = ''
+var fighter1name = ''
+var fighter2name = ''
+var fighter3name = ''
+var fighter4name = ''
+var fighter5name = ''
+var fighter6name = ''
+var support1name = ''
+var support2name = ''
+
+var kanghealth = 5000
+var spinalhealth = 5000
+var glaciushealth = 5000
+var kanohealth = 4000
+var sindelhealth = 4000
+var jagohealth = 4000
+var cyraxhealth = 4000
+var cecilhealth = 4000
+var rosahealth = 3000
+var golbezhealth = 3000
+var kainhealth = 3000
+var terrahealth = 4000
+var moghealth = 3000
+var kunglaohealth = 4000
+var sonjahealth = 4000
+var sektorhealth = 4000
+var combohealth = 5000
+var orchidhealth = 3000
+
+
+function preload ()
+{
+this.load.image('kombatbackground', 'assets/lair/kombat/kombatlairback.png');
+this.load.image('kombatbackground2', 'assets/lair/kombat/kombatlairback2.png');
+this.load.spritesheet('torch', 'assets/lair/kombat/purpletorch1.png', { frameWidth: 58, frameHeight: 113 });
+this.load.spritesheet('backdragon', 'assets/lair/kombat/backdragon1.png', { frameWidth: 368, frameHeight: 220 });
+this.load.image('uibox', 'assets/ui/uibox.png');
+this.load.image('supportbackbox', 'assets/ui/supportbackbox.png');
+this.load.image('kangname', 'assets/ui/kangnameplate.png');
+this.load.image('spinalname', 'assets/ui/spinalnameplate.png');
+this.load.image('glaciusname', 'assets/ui/glaciusnameplate.png');
+this.load.image('kanoname', 'assets/ui/kanonameplate.png');
+this.load.image('sindelname', 'assets/ui/sindelnameplate.png');
+this.load.image('kabalname', 'assets/ui/kabalnameplate.png');
+this.load.image('jagoname', 'assets/ui/jagonameplate.png');
+this.load.image('cyraxname', 'assets/ui/cyraxnameplate.png');
+this.load.image('cecilname', 'assets/ui/cecilnameplate.png');
+this.load.image('cyanname', 'assets/ui/cyannameplate.png');
+this.load.image('golbezname', 'assets/ui/golbeznameplate.png');
+this.load.image('kainname', 'assets/ui/kainnameplate.png');
+this.load.image('terraname', 'assets/ui/terranameplate.png');
+this.load.image('rosaname', 'assets/ui/rosanameplate.png');
+this.load.image('mogname', 'assets/ui/mognameplate.png');
+this.load.image('kunglaoname', 'assets/ui/kunglaonameplate.png');
+this.load.image('sonjaname', 'assets/ui/sonjanameplate.png');
+this.load.image('sektorname', 'assets/ui/sektornameplate.png');
+this.load.image('comboname', 'assets/ui/combonameplate.png');
+this.load.image('orchidname', 'assets/ui/orchidnameplate.png');
+this.load.image('supportbackbox', 'assets/ui/supportbackbox.png');
+this.load.image('rosahealbox', 'assets/ui/rosa/rosahealbox.png');
+this.load.image('rosacurebox', 'assets/ui/rosa/rosacurebox.png');
+this.load.image('rosafastbox', 'assets/ui/rosa/rosafastbox.png');
+this.load.image('rosashellbox', 'assets/ui/rosa/rosashellbox.png');
+this.load.image('rosabowbox', 'assets/ui/rosa/rosabowbox.png');
+this.load.image('moghugsbox', 'assets/ui/mog/moghugsbox.png');
+this.load.image('mogkissesbox', 'assets/ui/mog/mogkissesbox.png');
+this.load.image('mogdreambox', 'assets/ui/mog/mogdreambox.png');
+this.load.image('mogdancebox', 'assets/ui/mog/mogdancebox.png');
+this.load.image('mogluckbox', 'assets/ui/mog/mogluckbox.png');
+
+
+
+this.load.spritesheet('rosacurespell', 'assets/abil/spells/rosacure.png', { frameWidth: 200, frameHeight: 165 });
+   
+this.load.spritesheet('kang', 'assets/char/kangidle.png', { frameWidth: 45, frameHeight: 104 });
+this.load.spritesheet('kangwalk', 'assets/char/kangwalk.png', { frameWidth: 55, frameHeight: 102 });
+this.load.spritesheet('spinal', 'assets/char/spritesheets/spinalsprite.png', { frameWidth: 116.8, frameHeight: 173 });
+this.load.spritesheet('spinalwalk', 'assets/char/spinalwalk.png', { frameWidth: 112, frameHeight: 155 });
+this.load.spritesheet('glacius', 'assets/char/glaciusidle.png', { frameWidth: 90, frameHeight: 145 });
+this.load.spritesheet('glaciuswalk', 'assets/char/glaciuswalk.png', { frameWidth: 100, frameHeight: 140 });
+this.load.spritesheet('kano', 'assets/char/kanoidle.png', { frameWidth: 55, frameHeight: 103 });
+this.load.spritesheet('kanowalk', 'assets/char/kanowalk.png', { frameWidth: 55, frameHeight: 103 });
+this.load.spritesheet('sindel', 'assets/char/sindelidle.png', { frameWidth: 55, frameHeight: 103 });
+this.load.spritesheet('sindelwalk', 'assets/char/sindelwalk.png', { frameWidth: 55, frameHeight: 103 });
+this.load.spritesheet('kabal', 'assets/char/kabalidle.png', { frameWidth: 45, frameHeight: 110 });
+this.load.spritesheet('kabalwalk', 'assets/char/kabalwalk.png', { frameWidth: 45, frameHeight: 110 });
+this.load.spritesheet('jago', 'assets/char/jagoidle.png', { frameWidth: 60, frameHeight: 100 });
+this.load.spritesheet('jagowalk', 'assets/char/jagowalk.png', { frameWidth: 60, frameHeight: 100 });
+this.load.spritesheet('cyrax', 'assets/char/cyraxidle.png', { frameWidth: 51, frameHeight: 103 });
+this.load.spritesheet('cyraxwalk', 'assets/char/cyraxwalk.png', { frameWidth: 59, frameHeight: 103 });
+this.load.spritesheet('cecil', 'assets/char/spritesheets/cecilsprite.png', { frameWidth: 94, frameHeight: 84 });
+this.load.spritesheet('rosa', 'assets/char/spritesheets/rosasprite.png', { frameWidth: 94, frameHeight: 84 });
+this.load.spritesheet('cyan', 'assets/char/spritesheets/cyansprite.png', { frameWidth: 94, frameHeight: 84 });
+this.load.spritesheet('golbez', 'assets/char/spritesheets/golbezsprite.png', { frameWidth: 94, frameHeight: 84 });
+this.load.spritesheet('kain', 'assets/char/spritesheets/kainsprite.png', { frameWidth: 94, frameHeight: 84 });
+this.load.spritesheet('terra', 'assets/char/spritesheets/terrasprite.png', { frameWidth: 94, frameHeight: 84 });
+this.load.spritesheet('mog', 'assets/char/spritesheets/mogsprite.png', { frameWidth: 94, frameHeight: 84 });
+this.load.spritesheet('kunglao', 'assets/char/kunglaoidle.png', { frameWidth: 50, frameHeight: 110 });
+this.load.spritesheet('kunglaowalk', 'assets/char/kunglaowalk.png', { frameWidth: 50, frameHeight: 108 });
+this.load.spritesheet('sonja', 'assets/char/sonjaidle.png', { frameWidth: 50, frameHeight: 100 });
+this.load.spritesheet('sonjawalk', 'assets/char/sonjawalk.png', { frameWidth: 50, frameHeight: 100 });
+this.load.spritesheet('sektor', 'assets/char/sektoridle.png', { frameWidth: 55, frameHeight: 103 });
+this.load.spritesheet('sektorwalk', 'assets/char/sektorwalk.png', { frameWidth: 55, frameHeight: 103 });
+this.load.spritesheet('combo', 'assets/char/comboidle.png', { frameWidth: 70, frameHeight: 135 });
+this.load.spritesheet('combowalk', 'assets/char/combowalk.png', { frameWidth: 70, frameHeight: 135 });
+this.load.spritesheet('orchid', 'assets/char/orchididle.png', { frameWidth: 80, frameHeight: 135 });
+this.load.spritesheet('orchidwalk', 'assets/char/orchidwalk.png', { frameWidth: 90, frameHeight: 135 });
+
+
+}
+
+function create ()
+{
+
+
+
+this.input.setPollAlways();
+        this.input.on('gameobjectover', function (pointer, gameObject) {
+        gameObject.setTint(0xff00ff);
+        
+     
+    
+    });
+    
+        this.input.on('gameobjectout', function (pointer, gameObject) {
+        gameObject.clearTint();
+    });
+
+this.leader1name = 'Kang'
+this.leader2name = 'Spinal'
+this.fighter1name = 'Kano'
+this.fighter2name = 'Jago'
+this.fighter3name = 'Orchid'
+this.fighter4name = 'KungLao'
+this.fighter5name = 'Terra'
+this.fighter6name = 'Sonja'
+this.support1name = 'Rosa'
+this.support2name = 'Mog'
+
+
+this.background2 = this.add.tileSprite(0, 0, 2400, 600, 'kombatbackground2').setOrigin(0, 0);
+this.background = this.add.tileSprite(0, 0, 2400, 600, 'kombatbackground').setOrigin(0, 0);
+
+uibox1 = this.physics.add.sprite(0, 600, 'uibox').setOrigin(0, 0);
+uibox2 = this.physics.add.sprite(126, 600, 'uibox').setOrigin(0, 0);
+uibox3 = this.physics.add.sprite(252, 600, 'uibox').setOrigin(0, 0);
+uibox4 = this.physics.add.sprite(378, 600, 'uibox').setOrigin(0, 0);
+uibox5 = this.physics.add.sprite(504, 600, 'uibox').setOrigin(0, 0);
+uibox6 = this.physics.add.sprite(630, 600, 'uibox').setOrigin(0, 0);
+uibox7 = this.physics.add.sprite(756, 600, 'uibox').setOrigin(0, 0);
+uibox8 = this.physics.add.sprite(882, 600, 'uibox').setOrigin(0, 0);
+uibox9 = this.physics.add.sprite(1008, 600, 'uibox').setOrigin(0, 0);
+uibox10 = this.physics.add.sprite(1134, 600, 'uibox').setOrigin(0, 0);
+
+
+
+torch = this.physics.add.sprite(50, 300, 'torch');
+backdragon = this.physics.add.sprite(100, 350, 'backdragon');
+
+
+if (this.leader1name == 'Kang') {
+leader1nameplate = this.physics.add.sprite(254, 603, 'kangname').setOrigin(0, 0);
+kang = this.physics.add.sprite(leader1x, leader1y, 'kang').setInteractive();
+kang.on('pointerdown', function (pointer) {
+         if (isrosapickingtarget == true){
+        
+        rosaspelltargetx = kang.x
+        rosaspelltargety = kang.y
+        isrosacastingnow = true
+        isrosatargetpicked = true
+        rosaspells.anims.play('rosacurespell', true);
+   }
+});
+activeleader1name = 'Kang'
+kangactive = true
+kang.setScale(1.4, 1.4);
+
+}
+else if (this.leader1name == 'Glacius') {
+leader1nameplate = this.physics.add.sprite(254, 603, 'glaciusname').setOrigin(0, 0);
+glacius = this.physics.add.sprite(leader1x, leader1y, 'glacius').setInteractive();
+glacius.on('pointerdown', function (pointer) {
+this.setTint(0x000000);
+});
+activeleader1name = 'glacius'
+glaciusactive = true
+glacius.setScale(1.0, 1.0);
+}
+else if (this.leader1name == 'Combo') {
+leader1nameplate = this.physics.add.sprite(254, 603, 'comboname').setOrigin(0, 0);
+combo = this.physics.add.sprite(leader1x, leader1y, 'combo').setInteractive();
+combo.on('pointerdown', function (pointer) {
+this.setTint(0x000000);
+});
+activeleader1name = 'combo'
+comboactive = true
+combo.setScale(1.0, 1.0);
+}
+else if (this.leader1name == 'Spinal') {
+leader1nameplate = this.physics.add.sprite(254, 603, 'spinalname').setOrigin(0, 0);
+spinal = this.physics.add.sprite(leader1x, leader1y, 'spinal').setInteractive();
+spinal.on('pointerdown', function (pointer) {
+this.setTint(0x000000);
+});
+activeleader1name = 'spinal'
+spinalactive = true
+spinal.setScale(1.0, 1.0);
+}
+else if (this.leader1name == 'Cecil') {
+leader1nameplate = this.physics.add.sprite(254, 603, 'cecilname').setOrigin(0, 0);
+cecil = this.physics.add.sprite(leader1x, leader1y, 'cecil').setInteractive();
+cecil.on('pointerdown', function (pointer) {
+this.setTint(0x000000);
+});
+activeleader1name = 'cecil'
+cecilactive = true
+cecil.setScale(1.0, 1.0);
+}
+
+if (this.leader2name == 'Kang') {
+leader2nameplate = this.physics.add.sprite(381, 603, 'kangname').setOrigin(0, 0);
+kang = this.physics.add.sprite(leader2x, leader2y, 'kang').setInteractive();
+kang.on('pointerdown', function (pointer) {
+this.setTint(0x000000);
+});
+activeleader2name = 'kang'
+kangactive = true
+kang.setScale(1.5, 1.5);
+}
+else if (this.leader2name == 'Glacius') {
+leader2nameplate = this.physics.add.sprite(381, 603, 'glaciusname').setOrigin(0, 0);
+glacius = this.physics.add.sprite(leader2x, leader2y, 'glacius').setInteractive();
+glacius.on('pointerdown', function (pointer) {
+this.setTint(0x000000);
+});
+activeleader2name = 'glacius'
+glaciusactive = true
+glacius.setScale(1.0, 1.0);
+}
+else if (this.leader2name == 'Combo') {
+leader2nameplate = this.physics.add.sprite(381, 603, 'comboname').setOrigin(0, 0);
+combo = this.physics.add.sprite(leader2x, leader2y, 'combo').setInteractive();
+combo.on('pointerdown', function (pointer) {
+this.setTint(0x000000);
+});
+activeleader2name = 'combo'
+comboactive = true
+combo.setScale(1.0, 1.0);
+}
+else if (this.leader2name == 'Spinal') {
+leader2nameplate = this.physics.add.sprite(381, 603, 'spinalname').setOrigin(0, 0);
+spinal = this.physics.add.sprite(leader2x, leader2y, 'spinal').setInteractive();
+spinal.on('pointerdown', function (pointer) {
+this.setTint(0x000000);
+});
+activeleader2name = 'spinal'
+spinalactive = true
+spinal.setScale(1.0, 1.0);
+}
+else if (this.leader2name == 'Cecil') {
+leader2nameplate = this.physics.add.sprite(381, 603, 'cecilname').setOrigin(0, 0);
+cecil = this.physics.add.sprite(leader2x, leader2y, 'cecil').setInteractive();
+cecil.on('pointerdown', function (pointer) {
+this.setTint(0x000000);
+});
+activeleader2name = 'cecil'
+cecilactive = true
+cecil.setScale(1.0, 1.0);
+}
+
+if (this.fighter1name == 'Kano') {
+fighter1nameplate = this.physics.add.sprite(508, 603, 'kanoname').setOrigin(0, 0);
+kano = this.physics.add.sprite(fighter1x, fighter1y, 'kano').setInteractive();
+kano.on('pointerdown', function (pointer) {
+this.setTint(0x000000);
+});
+activefighter1name = 'kano'
+kanoactive = true
+kano.setScale(1.3, 1.3);
+}
+else if (this.fighter1name == 'Sindel') {
+fighter1nameplate = this.physics.add.sprite(508, 603, 'sindelname').setOrigin(0, 0);
+sindel = this.physics.add.sprite(fighter1x, fighter1y, 'sindel').setInteractive();
+sindel.on('pointerdown', function (pointer) {
+this.setTint(0x000000);
+});
+activefighter1name = 'sindel'
+sindelactive = true
+sindel.setScale(1.3, 1.3);
+}
+else if (this.fighter1name == 'Kabal') {
+fighter1nameplate = this.physics.add.sprite(508, 603, 'kabalname').setOrigin(0, 0);
+kabal = this.physics.add.sprite(fighter1x, fighter1y, 'kabal').setInteractive();
+kabal.on('pointerdown', function (pointer) {
+this.setTint(0x000000);
+});
+activefighter1name = 'kabal'
+kabalactive = true
+kabal.setScale(1.3, 1.3);
+}
+else if (this.fighter1name == 'Jago') {
+fighter1nameplate = this.physics.add.sprite(508, 603, 'jagoname').setOrigin(0, 0);
+jago = this.physics.add.sprite(fighter1x, fighter1y, 'jago').setInteractive();
+jago.on('pointerdown', function (pointer) {
+this.setTint(0x000000);
+});
+activefighter1name = 'jago'
+jagoactive = true
+jago.setScale(1.3, 1.3);
+}
+else if (this.fighter1name == 'Cyrax') {
+fighter1nameplate = this.physics.add.sprite(508, 603, 'cyraxname').setOrigin(0, 0);
+cyrax = this.physics.add.sprite(fighter1x, fighter1y, 'cyrax').setInteractive();
+cyrax.on('pointerdown', function (pointer) {
+this.setTint(0x000000);
+});
+activefighter1name = 'cyrax'
+cyraxactive = true
+cyrax.setScale(1.3, 1.3);
+}
+else if (this.fighter1name == 'Cyan') {
+fighter1nameplate = this.physics.add.sprite(508, 603, 'cyanname').setOrigin(0, 0);
+cyan = this.physics.add.sprite(fighter1x, fighter1y, 'cyan').setInteractive();
+cyan.on('pointerdown', function (pointer) {
+this.setTint(0x000000);
+});
+activefighter1name = 'cyan'
+cyanactive = true
+cyan.setScale(1.3, 1.3);
+}
+else if (this.fighter1name == 'Golbez') {
+fighter1nameplate = this.physics.add.sprite(508, 603, 'golbezname').setOrigin(0, 0);
+golbez = this.physics.add.sprite(fighter1x, fighter1y, 'golbez').setInteractive();
+golbez.on('pointerdown', function (pointer) {
+this.setTint(0x000000);
+});
+activefighter1name = 'golbez'
+golbezactive = true
+golbez.setScale(1.3, 1.3);
+}
+else if (this.fighter1name == 'Kain') {
+fighter1nameplate = this.physics.add.sprite(508, 603, 'kainname').setOrigin(0, 0);
+kain = this.physics.add.sprite(fighter1x, fighter1y, 'kain').setInteractive();
+kain.on('pointerdown', function (pointer) {
+this.setTint(0x000000);
+});
+activefighter1name = 'kain'
+kainactive = true
+kain.setScale(1.0, 1.0);
+}
+else if (this.fighter1name == 'Terra') {
+fighter1nameplate = this.physics.add.sprite(508, 603, 'terraname').setOrigin(0, 0);
+terra = this.physics.add.sprite(fighter1x, fighter1y, 'terra').setInteractive();
+terra.on('pointerdown', function (pointer) {
+this.setTint(0x000000);
+});
+activefighter1name = 'terra'
+terraactive = true
+terra.setScale(1.0, 1.0);
+}
+else if (this.fighter1name == 'KungLao') {
+fighter1nameplate = this.physics.add.sprite(508, 603, 'kunglaoname').setOrigin(0, 0);
+kunglao = this.physics.add.sprite(fighter1x, fighter1y, 'kunglao').setInteractive();
+kunglao.on('pointerdown', function (pointer) {
+this.setTint(0x000000);
+});
+activefighter1name = 'kunglao'
+kunglaoactive = true
+kunglao.setScale(1.3, 1.3);
+}
+else if (this.fighter1name == 'Sonja') {
+fighter1nameplate = this.physics.add.sprite(508, 603, 'sonjaname').setOrigin(0, 0);
+sonja = this.physics.add.sprite(fighter1x, fighter1y, 'sonja').setInteractive();
+sonja.on('pointerdown', function (pointer) {
+this.setTint(0x000000);
+});
+activefighter1name = 'sonja'
+sonjaactive = true
+sonja.setScale(1.3, 1.3);
+}
+else if (this.fighter1name == 'Sektor') {
+fighter1nameplate = this.physics.add.sprite(508, 603, 'sektorname').setOrigin(0, 0);
+sektor = this.physics.add.sprite(fighter1x, fighter1y, 'sektor').setInteractive();
+sektor.on('pointerdown', function (pointer) {
+this.setTint(0x000000);
+});
+activefighter1name = 'sektor'
+sektoractive = true
+sektor.setScale(1.3, 1.3);
+}
+else if (this.fighter1name == 'Orchid') {
+fighter1nameplate = this.physics.add.sprite(508, 603, 'orchidname').setOrigin(0, 0);
+orchid = this.physics.add.sprite(fighter1x, fighter1y, 'orchid').setInteractive();
+orchid.on('pointerdown', function (pointer) {
+this.setTint(0x000000);
+});
+activefighter1name = 'orchid'
+orchidactive = true
+orchid.setScale(1.0, 1.0);
+}
+
+if (this.fighter2name == 'Kano') {
+fighter2nameplate = this.physics.add.sprite(635, 603, 'kanoname').setOrigin(0, 0);
+kano = this.physics.add.sprite(fighter2x, fighter2y, 'kano').setInteractive();
+kano.on('pointerdown', function (pointer) {
+this.setTint(0x000000);
+});
+activefighter2name = 'kano'
+kanoactive = true
+kano.setScale(1.3, 1.3);
+}
+else if (this.fighter2name == 'Sindel') {
+fighter2nameplate = this.physics.add.sprite(635, 603, 'sindelname').setOrigin(0, 0);
+sindel = this.physics.add.sprite(fighter2x, fighter2y, 'sindel').setInteractive();
+sindel.on('pointerdown', function (pointer) {
+this.setTint(0x000000);
+});
+activefighter2name = 'sindel'
+sindelactive = true
+sindel.setScale(1.3, 1.3);
+}
+else if (this.fighter2name == 'Kabal') {
+fighter2nameplate = this.physics.add.sprite(635, 603, 'kabalname').setOrigin(0, 0);
+kabal = this.physics.add.sprite(fighter2x, fighter2y, 'kabal').setInteractive();
+kabal.on('pointerdown', function (pointer) {
+this.setTint(0x000000);
+});
+activefighter2name = 'kabal'
+kabalactive = true
+kabal.setScale(1.3, 1.3);
+}
+else if (this.fighter2name == 'Jago') {
+fighter2nameplate = this.physics.add.sprite(635, 603, 'jagoname').setOrigin(0, 0);
+jago = this.physics.add.sprite(fighter2x, fighter2y, 'jago').setInteractive();
+jago.on('pointerdown', function (pointer) {
+this.setTint(0x000000);
+});
+activefighter2name = 'jago'
+jagoactive = true
+jago.setScale(1.3, 1.3);
+}
+else if (this.fighter2name == 'Cyrax') {
+fighter2nameplate = this.physics.add.sprite(635, 603, 'cyraxname').setOrigin(0, 0);
+cyrax = this.physics.add.sprite(fighter2x, fighter2y, 'cyrax').setInteractive();
+cyrax.on('pointerdown', function (pointer) {
+this.setTint(0x000000);
+});
+activefighter2name = 'cyrax'
+cyraxactive = true
+cyrax.setScale(1.3, 1.3);
+}
+else if (this.fighter2name == 'Cyan') {
+fighter2nameplate = this.physics.add.sprite(635, 603, 'cyanname').setOrigin(0, 0);
+cyan = this.physics.add.sprite(fighter2x, fighter2y, 'cyan').setInteractive();
+cyan.on('pointerdown', function (pointer) {
+this.setTint(0x000000);
+});
+activefighter2name = 'cyan'
+cyanactive = true
+cyan.setScale(1.3, 1.3);
+}
+else if (this.fighter2name == 'Golbez') {
+fighter2nameplate = this.physics.add.sprite(635, 603, 'golbezname').setOrigin(0, 0);
+golbez = this.physics.add.sprite(fighter2x, fighter2y, 'golbez').setInteractive();
+golbez.on('pointerdown', function (pointer) {
+this.setTint(0x000000);
+});
+activefighter2name = 'golbez'
+golbezactive = true
+golbez.setScale(1.3, 1.3);
+}
+else if (this.fighter2name == 'Kain') {
+fighter2nameplate = this.physics.add.sprite(635, 603, 'kainname').setOrigin(0, 0);
+kain = this.physics.add.sprite(fighter2x, fighter2y, 'kain').setInteractive();
+kain.on('pointerdown', function (pointer) {
+this.setTint(0x000000);
+});
+activefighter2name = 'kain'
+kainactive = true
+kain.setScale(1.0, 1.0);
+}
+else if (this.fighter2name == 'Terra') {
+fighter2nameplate = this.physics.add.sprite(635, 603, 'terraname').setOrigin(0, 0);
+terra = this.physics.add.sprite(fighter2x, fighter2y, 'terra').setInteractive();
+terra.on('pointerdown', function (pointer) {
+this.setTint(0x000000);
+});
+activefighter2name = 'terra'
+terraactive = true
+terra.setScale(1.0, 1.0);
+}
+else if (this.fighter2name == 'KungLao') {
+fighter2nameplate = this.physics.add.sprite(635, 603, 'kunglaoname').setOrigin(0, 0);
+kunglao = this.physics.add.sprite(fighter2x, fighter2y, 'kunglao').setInteractive();
+kunglao.on('pointerdown', function (pointer) {
+this.setTint(0x000000);
+});
+activefighter2name = 'kunglao'
+kunglaoactive = true
+kunglao.setScale(1.3, 1.3);
+}
+else if (this.fighter2name == 'Sonja') {
+fighter2nameplate = this.physics.add.sprite(635, 603, 'sonjaname').setOrigin(0, 0);
+sonja = this.physics.add.sprite(fighter2x, fighter2y, 'sonja').setInteractive();
+sonja.on('pointerdown', function (pointer) {
+this.setTint(0x000000);
+});
+activefighter2name = 'sonja'
+sonjaactive = true
+sonja.setScale(1.3, 1.3);
+}
+else if (this.fighter2name == 'Sektor') {
+fighter2nameplate = this.physics.add.sprite(635, 603, 'sektorname').setOrigin(0, 0);
+sektor = this.physics.add.sprite(fighter2x, fighter2y, 'sektor').setInteractive();
+sektor.on('pointerdown', function (pointer) {
+this.setTint(0x000000);
+});
+activefighter2name = 'sektor'
+sektoractive = true
+sektor.setScale(1.3, 1.3);
+}
+else if (this.fighter2name == 'Orchid') {
+fighter2nameplate = this.physics.add.sprite(635, 603, 'orchidname').setOrigin(0, 0);
+orchid = this.physics.add.sprite(fighter2x, fighter2y, 'orchid').setInteractive();
+orchid.on('pointerdown', function (pointer) {
+this.setTint(0x000000);
+});
+activefighter2name = 'orchid'
+orchidactive = true
+orchid.setScale(1.0, 1.0);
+}
+
+if (this.fighter3name == 'Kano') {
+fighter3nameplate = this.physics.add.sprite(762, 603, 'kanoname').setOrigin(0, 0);
+kano = this.physics.add.sprite(fighter3x, fighter3y, 'kano').setInteractive();
+kano.on('pointerdown', function (pointer) {
+this.setTint(0x000000);
+});
+activefighter3name = 'kano'
+kanoactive = true
+kano.setScale(1.3, 1.3);
+}
+else if (this.fighter3name == 'Sindel') {
+fighter3nameplate = this.physics.add.sprite(762, 603, 'sindelname').setOrigin(0, 0);
+sindel = this.physics.add.sprite(fighter3x, fighter3y, 'sindel').setInteractive();
+sindel.on('pointerdown', function (pointer) {
+this.setTint(0x000000);
+});
+activefighter3name = 'sindel'
+sindelactive = true
+sindel.setScale(1.3, 1.3);
+}
+else if (this.fighter3name == 'Kabal') {
+fighter3nameplate = this.physics.add.sprite(762, 603, 'kabalname').setOrigin(0, 0);
+kabal = this.physics.add.sprite(fighter3x, fighter3y, 'kabal').setInteractive();
+kabal.on('pointerdown', function (pointer) {
+this.setTint(0x000000);
+});
+activefighter3name = 'kabal'
+kabalactive = true
+kabal.setScale(1.3, 1.3);
+}
+else if (this.fighter3name == 'Jago') {
+fighter3nameplate = this.physics.add.sprite(762, 603, 'jagoname').setOrigin(0, 0);
+jago = this.physics.add.sprite(fighter3x, fighter3y, 'jago').setInteractive();
+jago.on('pointerdown', function (pointer) {
+this.setTint(0x000000);
+});
+activefighter3name = 'jago'
+jagoactive = true
+jago.setScale(1.3, 1.3);
+}
+else if (this.fighter3name == 'Cyrax') {
+fighter3nameplate = this.physics.add.sprite(762, 603, 'cyraxname').setOrigin(0, 0);
+cyrax = this.physics.add.sprite(fighter3x, fighter3y, 'cyrax').setInteractive();
+cyrax.on('pointerdown', function (pointer) {
+this.setTint(0x000000);
+});
+activefighter3name = 'cyrax'
+cyraxactive = true
+cyrax.setScale(1.3, 1.3);
+}
+else if (this.fighter3name == 'Cyan') {
+fighter3nameplate = this.physics.add.sprite(762, 603, 'cyanname').setOrigin(0, 0);
+cyan = this.physics.add.sprite(fighter3x, fighter3y, 'cyan').setInteractive();
+cyan.on('pointerdown', function (pointer) {
+this.setTint(0x000000);
+});
+activefighter3name = 'cyan'
+cyanactive = true
+cyan.setScale(1.3, 1.3);
+}
+else if (this.fighter3name == 'Golbez') {
+fighter3nameplate = this.physics.add.sprite(762, 603, 'golbezname').setOrigin(0, 0);
+golbez = this.physics.add.sprite(fighter3x, fighter3y, 'golbez').setInteractive();
+golbez.on('pointerdown', function (pointer) {
+this.setTint(0x000000);
+});
+activefighter3name = 'golbez'
+golbezactive = true
+golbez.setScale(1.3, 1.3);
+}
+else if (this.fighter3name == 'Kain') {
+fighter3nameplate = this.physics.add.sprite(762, 603, 'kainname').setOrigin(0, 0);
+kain = this.physics.add.sprite(fighter3x, fighter3y, 'kain').setInteractive();
+kain.on('pointerdown', function (pointer) {
+this.setTint(0x000000);
+});
+activefighter3name = 'kain'
+kainactive = true
+kain.setScale(1.0, 1.0);
+}
+else if (this.fighter3name == 'Terra') {
+fighter3nameplate = this.physics.add.sprite(762, 603, 'terraname').setOrigin(0, 0);
+terra = this.physics.add.sprite(fighter3x, fighter3y, 'terra').setInteractive();
+terra.on('pointerdown', function (pointer) {
+this.setTint(0x000000);
+});
+activefighter3name = 'terra'
+terraactive = true
+terra.setScale(1.0, 1.0);
+}
+else if (this.fighter3name == 'KungLao') {
+fighter3nameplate = this.physics.add.sprite(762, 603, 'kunglaoname').setOrigin(0, 0);
+kunglao = this.physics.add.sprite(fighter3x, fighter3y, 'kunglao').setInteractive();
+kunglao.on('pointerdown', function (pointer) {
+this.setTint(0x000000);
+});
+activefighter3name = 'kunglao'
+kunglaoactive = true
+kunglao.setScale(1.3, 1.3);
+}
+else if (this.fighter3name == 'Sonja') {
+fighter3nameplate = this.physics.add.sprite(762, 603, 'sonjaname').setOrigin(0, 0);
+sonja = this.physics.add.sprite(fighter3x, fighter3y, 'sonja').setInteractive();
+sonja.on('pointerdown', function (pointer) {
+this.setTint(0x000000);
+});
+activefighter3name = 'sonja'
+sonjaactive = true
+sonja.setScale(1.3, 1.3);
+}
+else if (this.fighter3name == 'Sektor') {
+fighter3nameplate = this.physics.add.sprite(762, 603, 'sektorname').setOrigin(0, 0);
+sektor = this.physics.add.sprite(fighter3x, fighter3y, 'sektor').setInteractive();
+sektor.on('pointerdown', function (pointer) {
+this.setTint(0x000000);
+});
+activefighter3name = 'sektor'
+sektoractive = true
+sektor.setScale(1.3, 1.3);
+}
+else if (this.fighter3name == 'Orchid') {
+fighter3nameplate = this.physics.add.sprite(762, 603, 'orchidname').setOrigin(0, 0);
+orchid = this.physics.add.sprite(fighter3x, fighter3y, 'orchid').setInteractive();
+orchid.on('pointerdown', function (pointer) {
+this.setTint(0x000000);
+});
+activefighter3name = 'orchid'
+orchidactive = true
+orchid.setScale(1.0, 1.0);
+}
+
+if (this.fighter4name == 'Kano') {
+fighter4nameplate = this.physics.add.sprite(889, 603, 'kanoname').setOrigin(0, 0);
+kano = this.physics.add.sprite(fighter4x, fighter4y, 'kano').setInteractive();
+kano.on('pointerdown', function (pointer) {
+this.setTint(0x000000);
+});
+activefighter4name = 'kano'
+kanoactive = true
+kano.setScale(1.3, 1.3);
+}
+else if (this.fighter4name == 'Sindel') {
+fighter4nameplate = this.physics.add.sprite(889, 603, 'sindelname').setOrigin(0, 0);
+sindel = this.physics.add.sprite(fighter4x, fighter4y, 'sindel').setInteractive();
+sindel.on('pointerdown', function (pointer) {
+this.setTint(0x000000);
+});
+activefighter4name = 'sindel'
+sindelactive = true
+sindel.setScale(1.3, 1.3);
+}
+else if (this.fighter4name == 'Kabal') {
+fighter4nameplate = this.physics.add.sprite(889, 603, 'kabalname').setOrigin(0, 0);
+kabal = this.physics.add.sprite(fighter4x, fighter4y, 'kabal').setInteractive();
+kabal.on('pointerdown', function (pointer) {
+this.setTint(0x000000);
+});
+activefighter4name = 'kabal'
+kabalactive = true
+kabal.setScale(1.3, 1.3);
+}
+else if (this.fighter4name == 'Jago') {
+fighter4nameplate = this.physics.add.sprite(889, 603, 'jagoname').setOrigin(0, 0);
+jago = this.physics.add.sprite(fighter4x, fighter4y, 'jago').setInteractive();
+jago.on('pointerdown', function (pointer) {
+this.setTint(0x000000);
+});
+activefighter4name = 'jago'
+jagoactive = true
+jago.setScale(1.3, 1.3);
+}
+else if (this.fighter4name == 'Cyrax') {
+fighter4nameplate = this.physics.add.sprite(889, 603, 'cyraxname').setOrigin(0, 0);
+cyrax = this.physics.add.sprite(fighter4x, fighter4y, 'cyrax').setInteractive();
+cyrax.on('pointerdown', function (pointer) {
+this.setTint(0x000000);
+});
+activefighter4name = 'cyrax'
+cyraxactive = true
+cyrax.setScale(1.3, 1.3);
+}
+else if (this.fighter4name == 'Cyan') {
+fighter4nameplate = this.physics.add.sprite(889, 603, 'cyanname').setOrigin(0, 0);
+cyan = this.physics.add.sprite(fighter4x, fighter4y, 'cyan').setInteractive();
+cyan.on('pointerdown', function (pointer) {
+this.setTint(0x000000);
+});
+activefighter4name = 'cyan'
+cyanactive = true
+cyan.setScale(1.3, 1.3);
+}
+else if (this.fighter4name == 'Golbez') {
+fighter4nameplate = this.physics.add.sprite(889, 603, 'golbezname').setOrigin(0, 0);
+golbez = this.physics.add.sprite(fighter4x, fighter4y, 'golbez').setInteractive();
+golbez.on('pointerdown', function (pointer) {
+this.setTint(0x000000);
+});
+activefighter4name = 'golbez'
+golbezactive = true
+golbez.setScale(1.3, 1.3);
+}
+else if (this.fighter4name == 'Kain') {
+fighter4nameplate = this.physics.add.sprite(889, 603, 'kainname').setOrigin(0, 0);
+kain = this.physics.add.sprite(fighter4x, fighter4y, 'kain').setInteractive();
+kain.on('pointerdown', function (pointer) {
+this.setTint(0x000000);
+});
+activefighter4name = 'kain'
+kainactive = true
+kain.setScale(1.0, 1.0);
+}
+else if (this.fighter4name == 'Terra') {
+fighter4nameplate = this.physics.add.sprite(889, 603, 'terraname').setOrigin(0, 0);
+terra = this.physics.add.sprite(fighter4x, fighter4y, 'terra').setInteractive();
+terra.on('pointerdown', function (pointer) {
+this.setTint(0x000000);
+});
+activefighter4name = 'terra'
+terraactive = true
+terra.setScale(1.0, 1.0);
+}
+else if (this.fighter4name == 'KungLao') {
+fighter4nameplate = this.physics.add.sprite(889, 603, 'kunglaoname').setOrigin(0, 0);
+kunglao = this.physics.add.sprite(fighter4x, fighter4y, 'kunglao').setInteractive();
+kunglao.on('pointerdown', function (pointer) {
+this.setTint(0x000000);
+});
+activefighter4name = 'kunglao'
+kunglaoactive = true
+kunglao.setScale(1.3, 1.3);
+}
+else if (this.fighter4name == 'Sonja') {
+fighter4nameplate = this.physics.add.sprite(889, 603, 'sonjaname').setOrigin(0, 0);
+sonja = this.physics.add.sprite(fighter4x, fighter4y, 'sonja').setInteractive();
+sonja.on('pointerdown', function (pointer) {
+this.setTint(0x000000);
+});
+activefighter4name = 'sonja'
+sonjaactive = true
+sonja.setScale(1.3, 1.3);
+}
+else if (this.fighter4name == 'Sektor') {
+fighter4nameplate = this.physics.add.sprite(889, 603, 'sektorname').setOrigin(0, 0);
+sektor = this.physics.add.sprite(fighter4x, fighter4y, 'sektor').setInteractive();
+sektor.on('pointerdown', function (pointer) {
+this.setTint(0x000000);
+});
+activefighter4name = 'sektor'
+sektoractive = true
+sektor.setScale(1.3, 1.3);
+}
+else if (this.fighter4name == 'Orchid') {
+fighter4nameplate = this.physics.add.sprite(889, 603, 'orchidname').setOrigin(0, 0);
+orchid = this.physics.add.sprite(fighter4x, fighter4y, 'orchid').setInteractive();
+orchid.on('pointerdown', function (pointer) {
+this.setTint(0x000000);
+});
+activefighter4name = 'orchid'
+orchidactive = true
+orchid.setScale(1.0, 1.0);
+}
+if (this.fighter5name == 'Kano') {
+fighter5nameplate = this.physics.add.sprite(1016, 603, 'kanoname').setOrigin(0, 0);
+kano = this.physics.add.sprite(fighter5x, fighter5y, 'kano').setInteractive();
+kano.on('pointerdown', function (pointer) {
+this.setTint(0x000000);
+});
+activefighter5name = 'kano'
+kanoactive = true
+kano.setScale(1.3, 1.3);
+}
+else if (this.fighter5name == 'Sindel') {
+fighter5nameplate = this.physics.add.sprite(1016, 603, 'sindelname').setOrigin(0, 0);
+sindel = this.physics.add.sprite(fighter5x, fighter5y, 'sindel').setInteractive();
+sindel.on('pointerdown', function (pointer) {
+this.setTint(0x000000);
+});
+activefighter5name = 'sindel'
+sindelactive = true
+sindel.setScale(1.3, 1.3);
+}
+else if (this.fighter5name == 'Kabal') {
+fighter5nameplate = this.physics.add.sprite(1016, 603, 'kabalname').setOrigin(0, 0);
+kabal = this.physics.add.sprite(fighter5x, fighter5y, 'kabal').setInteractive();
+kabal.on('pointerdown', function (pointer) {
+this.setTint(0x000000);
+});
+activefighter5name = 'kabal'
+kabalactive = true
+kabal.setScale(1.3, 1.3);
+}
+else if (this.fighter5name == 'Jago') {
+fighter5nameplate = this.physics.add.sprite(1016, 603, 'jagoname').setOrigin(0, 0);
+jago = this.physics.add.sprite(fighter5x, fighter5y, 'jago').setInteractive();
+jago.on('pointerdown', function (pointer) {
+this.setTint(0x000000);
+});
+activefighter5name = 'jago'
+jagoactive = true
+jago.setScale(1.3, 1.3);
+}
+else if (this.fighter5name == 'Cyrax') {
+fighter5nameplate = this.physics.add.sprite(1016, 603, 'cyraxname').setOrigin(0, 0);
+cyrax = this.physics.add.sprite(fighter5x, fighter5y, 'cyrax').setInteractive();
+cyrax.on('pointerdown', function (pointer) {
+this.setTint(0x000000);
+});
+activefighter5name = 'cyrax'
+cyraxactive = true
+cyrax.setScale(1.3, 1.3);
+}
+else if (this.fighter5name == 'Cyan') {
+fighter5nameplate = this.physics.add.sprite(1016, 603, 'cyanname').setOrigin(0, 0);
+cyan = this.physics.add.sprite(fighter5x, fighter5y, 'cyan').setInteractive();
+cyan.on('pointerdown', function (pointer) {
+this.setTint(0x000000);
+});
+activefighter5name = 'cyan'
+cyanactive = true
+cyan.setScale(1.3, 1.3);
+}
+else if (this.fighter5name == 'Golbez') {
+fighter5nameplate = this.physics.add.sprite(1016, 603, 'golbezname').setOrigin(0, 0);
+golbez = this.physics.add.sprite(fighter5x, fighter5y, 'golbez').setInteractive();
+golbez.on('pointerdown', function (pointer) {
+this.setTint(0x000000);
+});
+activefighter5name = 'golbez'
+golbezactive = true
+golbez.setScale(1.3, 1.3);
+}
+else if (this.fighter5name == 'Kain') {
+fighter5nameplate = this.physics.add.sprite(1016, 603, 'kainname').setOrigin(0, 0);
+kain = this.physics.add.sprite(fighter5x, fighter5y, 'kain').setInteractive();
+kain.on('pointerdown', function (pointer) {
+this.setTint(0x000000);
+});
+activefighter5name = 'kain'
+kainactive = true
+kain.setScale(1.0, 1.0);
+}
+else if (this.fighter5name == 'Terra') {
+fighter5nameplate = this.physics.add.sprite(1016, 603, 'terraname').setOrigin(0, 0);
+terra = this.physics.add.sprite(fighter5x, fighter5y, 'terra').setInteractive();
+terra.on('pointerdown', function (pointer) {
+this.setTint(0x000000);
+});
+activefighter5name = 'terra'
+terraactive = true
+terra.setScale(1.0, 1.0);
+}
+else if (this.fighter5name == 'KungLao') {
+fighter5nameplate = this.physics.add.sprite(1016, 603, 'kunglaoname').setOrigin(0, 0);
+kunglao = this.physics.add.sprite(fighter5x, fighter5y, 'kunglao').setInteractive();
+kunglao.on('pointerdown', function (pointer) {
+this.setTint(0x000000);
+});
+activefighter5name = 'kunglao'
+kunglaoactive = true
+kunglao.setScale(1.3, 1.3);
+}
+else if (this.fighter5name == 'Sonja') {
+fighter5nameplate = this.physics.add.sprite(1016, 603, 'sonjaname').setOrigin(0, 0);
+sonja = this.physics.add.sprite(fighter5x, fighter5y, 'sonja').setInteractive();
+sonja.on('pointerdown', function (pointer) {
+this.setTint(0x000000);
+});
+activefighter5name = 'sonja'
+sonjaactive = true
+sonja.setScale(1.3, 1.3);
+}
+else if (this.fighter5name == 'Sektor') {
+fighter5nameplate = this.physics.add.sprite(1016, 603, 'sektorname').setOrigin(0, 0);
+sektor = this.physics.add.sprite(fighter5x, fighter5y, 'sektor').setInteractive();
+sektor.on('pointerdown', function (pointer) {
+this.setTint(0x000000);
+});
+activefighter5name = 'sektor'
+sektoractive = true
+sektor.setScale(1.3, 1.3);
+}
+else if (this.fighter5name == 'Orchid') {
+fighter5nameplate = this.physics.add.sprite(1016, 603, 'orchidname').setOrigin(0, 0);
+orchid = this.physics.add.sprite(fighter5x, fighter5y, 'orchid').setInteractive();
+orchid.on('pointerdown', function (pointer) {
+this.setTint(0x000000);
+});
+activefighter5name = 'orchid'
+orchidactive = true
+orchid.setScale(1.0, 1.0);
+}
+if (this.fighter6name == 'Kano') {
+fighter6nameplate = this.physics.add.sprite(1143, 603, 'kanoname').setOrigin(0, 0);
+kano = this.physics.add.sprite(fighter6x, fighter6y, 'kano').setInteractive();
+kano.on('pointerdown', function (pointer) {
+this.setTint(0x000000);
+});
+activefighter6name = 'kano'
+kanoactive = true
+kano.setScale(1.3, 1.3);
+}
+else if (this.fighter6name == 'Sindel') {
+fighter6nameplate = this.physics.add.sprite(1143, 603, 'sindelname').setOrigin(0, 0);
+sindel = this.physics.add.sprite(fighter6x, fighter6y, 'sindel').setInteractive();
+sindel.on('pointerdown', function (pointer) {
+this.setTint(0x000000);
+});
+activefighter6name = 'sindel'
+sindelactive = true
+sindel.setScale(1.3, 1.3);
+}
+else if (this.fighter6name == 'Kabal') {
+fighter6nameplate = this.physics.add.sprite(1143, 603, 'kabalname').setOrigin(0, 0);
+kabal = this.physics.add.sprite(fighter6x, fighter6y, 'kabal').setInteractive();
+kabal.on('pointerdown', function (pointer) {
+this.setTint(0x000000);
+});
+activefighter6name = 'kabal'
+kabalactive = true
+kabal.setScale(1.3, 1.3);
+}
+else if (this.fighter6name == 'Jago') {
+fighter6nameplate = this.physics.add.sprite(1143, 603, 'jagoname').setOrigin(0, 0);
+jago = this.physics.add.sprite(fighter6x, fighter6y, 'jago').setInteractive();
+jago.on('pointerdown', function (pointer) {
+this.setTint(0x000000);
+});
+activefighter6name = 'jago'
+jagoactive = true
+jago.setScale(1.3, 1.3);
+}
+else if (this.fighter6name == 'Cyrax') {
+fighter6nameplate = this.physics.add.sprite(1143, 603, 'cyraxname').setOrigin(0, 0);
+cyrax = this.physics.add.sprite(fighter6x, fighter6y, 'cyrax').setInteractive();
+cyrax.on('pointerdown', function (pointer) {
+this.setTint(0x000000);
+});
+activefighter6name = 'cyrax'
+cyraxactive = true
+cyrax.setScale(1.3, 1.3);
+}
+else if (this.fighter6name == 'Cyan') {
+fighter6nameplate = this.physics.add.sprite(1143, 603, 'cyanname').setOrigin(0, 0);
+cyan = this.physics.add.sprite(fighter6x, fighter6y, 'cyan').setInteractive();
+cyan.on('pointerdown', function (pointer) {
+this.setTint(0x000000);
+});
+activefighter6name = 'cyan'
+cyanactive = true
+cyan.setScale(1.3, 1.3);
+}
+else if (this.fighter6name == 'Golbez') {
+fighter6nameplate = this.physics.add.sprite(1143, 603, 'golbezname').setOrigin(0, 0);
+golbez = this.physics.add.sprite(fighter6x, fighter6y, 'golbez').setInteractive();
+golbez.on('pointerdown', function (pointer) {
+this.setTint(0x000000);
+});
+activefighter6name = 'golbez'
+golbezactive = true
+golbez.setScale(1.3, 1.3);
+}
+else if (this.fighter6name == 'Kain') {
+fighter6nameplate = this.physics.add.sprite(1143, 603, 'kainname').setOrigin(0, 0);
+kain = this.physics.add.sprite(fighter6x, fighter6y, 'kain').setInteractive();
+kain.on('pointerdown', function (pointer) {
+this.setTint(0x000000);
+});
+activefighter6name = 'kain'
+kainactive = true
+kain.setScale(1.0, 1.0);
+}
+else if (this.fighter6name == 'Terra') {
+fighter6nameplate = this.physics.add.sprite(1143, 603, 'terraname').setOrigin(0, 0);
+terra = this.physics.add.sprite(fighter6x, fighter6y, 'terra').setInteractive();
+terra.on('pointerdown', function (pointer) {
+this.setTint(0x000000);
+});
+activefighter6name = 'terra'
+terraactive = true
+terra.setScale(1.0, 1.0);
+}
+else if (this.fighter6name == 'KungLao') {
+fighter6nameplate = this.physics.add.sprite(1143, 603, 'kunglaoname').setOrigin(0, 0);
+kunglao = this.physics.add.sprite(fighter6x, fighter6y, 'kunglao').setInteractive();
+kunglao.on('pointerdown', function (pointer) {
+this.setTint(0x000000);
+});
+activefighter6name = 'kunglao'
+kunglaoactive = true
+kunglao.setScale(1.3, 1.3);
+}
+else if (this.fighter6name == 'Sonja') {
+fighter6nameplate = this.physics.add.sprite(1143, 603, 'sonjaname').setOrigin(0, 0);
+sonja = this.physics.add.sprite(fighter6x, fighter6y, 'sonja').setInteractive();
+sonja.on('pointerdown', function (pointer) {
+this.setTint(0x000000);
+});
+activefighter6name = 'sonja'
+sonjaactive = true
+sonja.setScale(1.3, 1.3);
+}
+else if (this.fighter6name == 'Sektor') {
+fighter6nameplate = this.physics.add.sprite(1143, 603, 'sektorname').setOrigin(0, 0);
+sektor = this.physics.add.sprite(fighter6x, fighter6y, 'sektor').setInteractive();
+sektor.on('pointerdown', function (pointer) {
+this.setTint(0x000000);
+});
+activefighter6name = 'sektor'
+sektoractive = true
+sektor.setScale(1.3, 1.3);
+}
+else if (this.fighter6name == 'Orchid') {
+fighter6nameplate = this.physics.add.sprite(1143, 603, 'orchidname').setOrigin(0, 0);
+orchid = this.physics.add.sprite(fighter6x, fighter6y, 'orchid').setInteractive();
+orchid.on('pointerdown', function (pointer) {
+this.setTint(0x000000);
+});
+activefighter6name = 'orchid'
+orchidactive = true
+orchid.setScale(1.0, 1.0);
+}
+
+
+if (this.support1name == 'Rosa') {
+
+support1nameplate = this.physics.add.sprite(0, 603, 'rosaname').setOrigin(0, 0);
+rosa = this.physics.add.sprite(support1x, support1y, 'rosa').setInteractive();
+rosa.on('pointerdown', function (pointer) {
+this.setTint(0x000000);
+isrosaselected = true
+
+});
+activesupport1name = 'rosa'
+rosaactive = true
+rosa.setScale(1.0, 1.0);
+
+}
+else if (this.support1name == 'Mog') {
+support1nameplate = this.physics.add.sprite(0, 603, 'mogname').setOrigin(0, 0);
+mog = this.physics.add.sprite(support1x, support1y, 'mog').setInteractive();
+mog.on('pointerdown', function (pointer) {
+this.setTint(0x000000);
+});
+activesupport1name = 'mog'
+mogactive = true
+mog.setScale(1.0, 1.0);
+}
+if (this.support2name == 'Rosa') {
+support2nameplate = this.physics.add.sprite(127, 603, 'rosaname').setOrigin(0, 0);
+rosa = this.physics.add.sprite(support2x, support2y, 'rosa').setInteractive();
+rosa.on('pointerdown', function (pointer) {
+this.setTint(0x000000);
+isrosaselected = true
+});
+activesupport2name = 'rosa'
+rosaactive = true
+rosa.setScale(1.0, 1.0);
+}
+else if (this.support2name == 'Mog') {
+support2nameplate = this.physics.add.sprite(127, 603, 'mogname').setOrigin(0, 0);
+mog = this.physics.add.sprite(support2x, support2y, 'mog').setInteractive();
+mog.on('pointerdown', function (pointer) {
+this.setTint(0x000000);
+});
+activesupport2name = 'mog'
+mogactive = true
+mog.setScale(1.0, 1.0);
+}
+
+
+
+
+
+
+
+status1 = this.add.text(38, 625, 'status', { font: '16px Arial bold', fill: '#ffffff' }).setScrollFactor(0);
+status2 = this.add.text(163, 625, 'status', { font: '16px Arial bold', fill: '#ffffff' }).setScrollFactor(0);
+status3 = this.add.text(288, 625, 'status', { font: '16px Arial bold', fill: '#ffffff' }).setScrollFactor(0);
+status4 = this.add.text(413, 625, 'status', { font: '16px Arial bold', fill: '#ffffff' }).setScrollFactor(0);
+status5 = this.add.text(538, 625, 'status', { font: '16px Arial bold', fill: '#ffffff' }).setScrollFactor(0);
+status6 = this.add.text(663, 625, 'status', { font: '16px Arial bold', fill: '#ffffff' }).setScrollFactor(0);
+status7 = this.add.text(788, 625, 'status', { font: '16px Arial bold', fill: '#ffffff' }).setScrollFactor(0);
+status8 = this.add.text(913, 625, 'status', { font: '16px Arial bold', fill: '#ffffff' }).setScrollFactor(0);
+status9 = this.add.text(1038, 625, 'status', { font: '16px Arial bold', fill: '#ffffff' }).setScrollFactor(0);
+status10 = this.add.text(1163, 625, 'status', { font: '16px Arial bold', fill: '#ffffff' }).setScrollFactor(0);
+
+
+if (this.leader1name == 'Kang') {
+leaderhealth1 = this.add.text(288, 580, kanghealth, { font: '16px Arial bold', fill: '#00ff00' }).setScrollFactor(0);
+}
+if (this.leader1name == 'Spinal') {
+leaderhealth1 = this.add.text(288, 580, spinalhealth, { font: '16px Arial bold', fill: '#00ff00' }).setScrollFactor(0);
+}
+if (this.leader1name == 'Glacius') {
+leaderhealth1 = this.add.text(288, 580, glaciushealth, { font: '16px Arial bold', fill: '#00ff00' }).setScrollFactor(0);
+}
+if (this.leader1name == 'Cecil') {
+leaderhealth1 = this.add.text(288, 580, cecilhealth, { font: '16px Arial bold', fill: '#00ff00' }).setScrollFactor(0);
+}
+if (this.leader1name == 'Combo') {
+leaderhealth1 = this.add.text(288, 580, combohealth, { font: '16px Arial bold', fill: '#00ff00' }).setScrollFactor(0);
+}
+
+if (this.leader2name == 'Kang') {
+leader2health = this.add.text(413, 580, kanghealth, { font: '16px Arial bold', fill: '#00ff00' }).setScrollFactor(0);
+}
+if (this.leader2name == 'Spinal') {
+leader2health = this.add.text(413, 580, spinalhealth, { font: '16px Arial bold', fill: '#00ff00' }).setScrollFactor(0);
+}
+if (this.leader2name == 'Glacius') {
+leaderhealth2 = this.add.text(413, 580, glaciushealth, { font: '16px Arial bold', fill: '#00ff00' }).setScrollFactor(0);
+}
+if (this.leader2name == 'Cecil') {
+leaderhealth2 = this.add.text(413, 580, cecilhealth, { font: '16px Arial bold', fill: '#00ff00' }).setScrollFactor(0);
+}
+if (this.leader2name == 'Combo') {
+leaderhealth2 = this.add.text(413, 580, combohealth, { font: '16px Arial bold', fill: '#00ff00' }).setScrollFactor(0);
+}
+
+if (this.fighter1name == 'Kano') {
+fighterhealth1 = this.add.text(538, 580, kanohealth, { font: '16px Arial bold', fill: '#00ff00' }).setScrollFactor(0);
+}
+if (this.fighter1name == 'Sindel') {
+fighterhealth1 = this.add.text(538, 580, sindelhealth, { font: '16px Arial bold', fill: '#00ff00' }).setScrollFactor(0);
+}
+if (this.fighter1name == 'Kabal') {
+fighterhealth1 = this.add.text(538, 580, kabalhealth, { font: '16px Arial bold', fill: '#00ff00' }).setScrollFactor(0);
+}
+if (this.fighter1name == 'Jago') {
+fighterhealth1 = this.add.text(538, 580, jagohealth, { font: '16px Arial bold', fill: '#00ff00' }).setScrollFactor(0);
+}
+if (this.fighter1name == 'Cyrax') {
+fighterhealth1 = this.add.text(538, 580, cyraxhealth, { font: '16px Arial bold', fill: '#00ff00' }).setScrollFactor(0);
+}
+if (this.fighter1name == 'Cyan') {
+fighterhealth1 = this.add.text(538, 580, cyanhealth, { font: '16px Arial bold', fill: '#00ff00' }).setScrollFactor(0);
+}
+if (this.fighter1name == 'Golbez') {
+fighterhealth1 = this.add.text(538, 580, golbezhealth, { font: '16px Arial bold', fill: '#00ff00' }).setScrollFactor(0);
+}
+if (this.fighter1name == 'Kain') {
+fighterhealth1 = this.add.text(538, 580, kainhealth, { font: '16px Arial bold', fill: '#00ff00' }).setScrollFactor(0);
+}
+if (this.fighter1name == 'Terra') {
+fighterhealth1 = this.add.text(538, 580, terrahealth, { font: '16px Arial bold', fill: '#00ff00' }).setScrollFactor(0);
+}
+if (this.fighter1name == 'KungLao') {
+fighterhealth1 = this.add.text(538, 580, kunglaohealth, { font: '16px Arial bold', fill: '#00ff00' }).setScrollFactor(0);
+}
+if (this.fighter1name == 'Sonja') {
+fighterhealth1 = this.add.text(538, 580, sonjahealth, { font: '16px Arial bold', fill: '#00ff00' }).setScrollFactor(0);
+}
+if (this.fighter1name == 'Sektor') {
+fighterhealth1 = this.add.text(538, 580, sektorhealth, { font: '16px Arial bold', fill: '#00ff00' }).setScrollFactor(0);
+}
+if (this.fighter1name == 'Orchid') {
+fighterhealth1 = this.add.text(538, 580, orchidhealth, { font: '16px Arial bold', fill: '#00ff00' }).setScrollFactor(0);
+}
+
+if (this.fighter2name == 'Kano') {
+fighterhealth2 = this.add.text(663, 580, kanohealth, { font: '16px Arial bold', fill: '#00ff00' }).setScrollFactor(0);
+}
+if (this.fighter2name == 'Sindel') {
+fighterhealth2 = this.add.text(663, 580, sindelhealth, { font: '16px Arial bold', fill: '#00ff00' }).setScrollFactor(0);
+}
+if (this.fighter2name == 'Kabal') {
+fighterhealth2 = this.add.text(663, 580, kabalhealth, { font: '16px Arial bold', fill: '#00ff00' }).setScrollFactor(0);
+}
+if (this.fighter2name == 'Jago') {
+fighterhealth2 = this.add.text(663, 580, jagohealth, { font: '16px Arial bold', fill: '#00ff00' }).setScrollFactor(0);
+}
+if (this.fighter2name == 'Cyrax') {
+fighterhealth2 = this.add.text(663, 580, cyraxhealth, { font: '16px Arial bold', fill: '#00ff00' }).setScrollFactor(0);
+}
+if (this.fighter2name == 'Cyan') {
+fighterhealth2 = this.add.text(663, 580, cyanhealth, { font: '16px Arial bold', fill: '#00ff00' }).setScrollFactor(0);
+}
+if (this.fighter2name == 'Golbez') {
+fighterhealth2 = this.add.text(663, 580, golbezhealth, { font: '16px Arial bold', fill: '#00ff00' }).setScrollFactor(0);
+}
+if (this.fighter2name == 'Kain') {
+fighterhealth2 = this.add.text(663, 580, kainhealth, { font: '16px Arial bold', fill: '#00ff00' }).setScrollFactor(0);
+}
+if (this.fighter2name == 'Terra') {
+fighterhealth2 = this.add.text(663, 580, terrahealth, { font: '16px Arial bold', fill: '#00ff00' }).setScrollFactor(0);
+}
+if (this.fighter2name == 'KungLao') {
+fighterhealth2 = this.add.text(663, 580, kunglaohealth, { font: '16px Arial bold', fill: '#00ff00' }).setScrollFactor(0);
+}
+if (this.fighter2name == 'Sonja') {
+fighterhealth2 = this.add.text(663, 580, sonjahealth, { font: '16px Arial bold', fill: '#00ff00' }).setScrollFactor(0);
+}
+if (this.fighter2name == 'Sektor') {
+fighterhealth2 = this.add.text(663, 580, sektorhealth, { font: '16px Arial bold', fill: '#00ff00' }).setScrollFactor(0);
+}
+if (this.fighter2name == 'Orchid') {
+fighterhealth2 = this.add.text(663, 580, orchidhealth, { font: '16px Arial bold', fill: '#00ff00' }).setScrollFactor(0);
+}
+if (this.fighter3name == 'Kano') {
+fighterhealth3 = this.add.text(788, 580, kanohealth, { font: '16px Arial bold', fill: '#00ff00' }).setScrollFactor(0);
+}
+if (this.fighter3name == 'Sindel') {
+fighterhealth3 = this.add.text(788, 580, sindelhealth, { font: '16px Arial bold', fill: '#00ff00' }).setScrollFactor(0);
+}
+if (this.fighter3name == 'Kabal') {
+fighterhealth3 = this.add.text(788, 580, kabalhealth, { font: '16px Arial bold', fill: '#00ff00' }).setScrollFactor(0);
+}
+if (this.fighter3name == 'Jago') {
+fighterhealth3 = this.add.text(788, 580, jagohealth, { font: '16px Arial bold', fill: '#00ff00' }).setScrollFactor(0);
+}
+if (this.fighter3name == 'Cyrax') {
+fighterhealth3 = this.add.text(788, 580, cyraxhealth, { font: '16px Arial bold', fill: '#00ff00' }).setScrollFactor(0);
+}
+if (this.fighter3name == 'Cyan') {
+fighterhealth3 = this.add.text(788, 580, cyanhealth, { font: '16px Arial bold', fill: '#00ff00' }).setScrollFactor(0);
+}
+if (this.fighter3name == 'Golbez') {
+fighterhealth3 = this.add.text(788, 580, golbezhealth, { font: '16px Arial bold', fill: '#00ff00' }).setScrollFactor(0);
+}
+if (this.fighter3name == 'Kain') {
+fighterhealth3 = this.add.text(788, 580, kainhealth, { font: '16px Arial bold', fill: '#00ff00' }).setScrollFactor(0);
+}
+if (this.fighter3name == 'Terra') {
+fighterhealth3 = this.add.text(788, 580, terrahealth, { font: '16px Arial bold', fill: '#00ff00' }).setScrollFactor(0);
+}
+if (this.fighter3name == 'KungLao') {
+fighterhealth3 = this.add.text(788, 580, kunglaohealth, { font: '16px Arial bold', fill: '#00ff00' }).setScrollFactor(0);
+}
+if (this.fighter3name == 'Sonja') {
+fighterhealth3 = this.add.text(788, 580, sonjahealth, { font: '16px Arial bold', fill: '#00ff00' }).setScrollFactor(0);
+}
+if (this.fighter3name == 'Sektor') {
+fighterhealth3 = this.add.text(788, 580, sektorhealth, { font: '16px Arial bold', fill: '#00ff00' }).setScrollFactor(0);
+}
+if (this.fighter3name == 'Orchid') {
+fighterhealth3 = this.add.text(788, 580, orchidhealth, { font: '16px Arial bold', fill: '#00ff00' }).setScrollFactor(0);
+}
+
+if (this.fighter4name == 'Kano') {
+fighterhealth4 = this.add.text(913, 580, kanohealth, { font: '16px Arial bold', fill: '#00ff00' }).setScrollFactor(0);
+}
+if (this.fighter4name == 'Sindel') {
+fighterhealth4 = this.add.text(913, 580, sindelhealth, { font: '16px Arial bold', fill: '#00ff00' }).setScrollFactor(0);
+}
+if (this.fighter4name == 'Kabal') {
+fighterhealth4 = this.add.text(913, 580, kabalhealth, { font: '16px Arial bold', fill: '#00ff00' }).setScrollFactor(0);
+}
+if (this.fighter4name == 'Jago') {
+fighterhealth4 = this.add.text(913, 580, jagohealth, { font: '16px Arial bold', fill: '#00ff00' }).setScrollFactor(0);
+}
+if (this.fighter4name == 'Cyrax') {
+fighterhealth4 = this.add.text(913, 580, cyraxhealth, { font: '16px Arial bold', fill: '#00ff00' }).setScrollFactor(0);
+}
+if (this.fighter4name == 'Cyan') {
+fighterhealth4 = this.add.text(913, 580, cyanhealth, { font: '16px Arial bold', fill: '#00ff00' }).setScrollFactor(0);
+}
+if (this.fighter4name == 'Golbez') {
+fighterhealth4 = this.add.text(913, 580, golbezhealth, { font: '16px Arial bold', fill: '#00ff00' }).setScrollFactor(0);
+}
+if (this.fighter4name == 'Kain') {
+fighterhealth4 = this.add.text(913, 580, kainhealth, { font: '16px Arial bold', fill: '#00ff00' }).setScrollFactor(0);
+}
+if (this.fighter4name == 'Terra') {
+fighterhealth4 = this.add.text(913, 580, terrahealth, { font: '16px Arial bold', fill: '#00ff00' }).setScrollFactor(0);
+}
+if (this.fighter4name == 'KungLao') {
+fighterhealth4 = this.add.text(913, 580, kunglaohealth, { font: '16px Arial bold', fill: '#00ff00' }).setScrollFactor(0);
+}
+if (this.fighter4name == 'Sonja') {
+fighterhealth4 = this.add.text(913, 580, sonjahealth, { font: '16px Arial bold', fill: '#00ff00' }).setScrollFactor(0);
+}
+if (this.fighter4name == 'Sektor') {
+fighterhealth4 = this.add.text(913, 580, sektorhealth, { font: '16px Arial bold', fill: '#00ff00' }).setScrollFactor(0);
+}
+if (this.fighter4name == 'Orchid') {
+fighterhealth4 = this.add.text(913, 580, orchidhealth, { font: '16px Arial bold', fill: '#00ff00' }).setScrollFactor(0);
+}
+
+if (this.fighter5name == 'Kano') {
+fighterhealth5 = this.add.text(1038, 580, kanohealth, { font: '16px Arial bold', fill: '#00ff00' }).setScrollFactor(0);
+}
+if (this.fighter5name == 'Sindel') {
+fighterhealth5 = this.add.text(1038, 580, sindelhealth, { font: '16px Arial bold', fill: '#00ff00' }).setScrollFactor(0);
+}
+if (this.fighter5name == 'Kabal') {
+fighterhealth5 = this.add.text(1038, 580, kabalhealth, { font: '16px Arial bold', fill: '#00ff00' }).setScrollFactor(0);
+}
+if (this.fighter5name == 'Jago') {
+fighterhealth5 = this.add.text(1038, 580, jagohealth, { font: '16px Arial bold', fill: '#00ff00' }).setScrollFactor(0);
+}
+if (this.fighter5name == 'Cyrax') {
+fighterhealth5 = this.add.text(1038, 580, cyraxhealth, { font: '16px Arial bold', fill: '#00ff00' }).setScrollFactor(0);
+}
+if (this.fighter5name == 'Cyan') {
+fighterhealth5 = this.add.text(1038, 580, cyanhealth, { font: '16px Arial bold', fill: '#00ff00' }).setScrollFactor(0);
+}
+if (this.fighter5name == 'Golbez') {
+fighterhealth5 = this.add.text(1038, 580, golbezhealth, { font: '16px Arial bold', fill: '#00ff00' }).setScrollFactor(0);
+}
+if (this.fighter5name == 'Kain') {
+fighterhealth5 = this.add.text(1038, 580, kainhealth, { font: '16px Arial bold', fill: '#00ff00' }).setScrollFactor(0);
+}
+if (this.fighter5name == 'Terra') {
+fighterhealth5 = this.add.text(1038, 580, terrahealth, { font: '16px Arial bold', fill: '#00ff00' }).setScrollFactor(0);
+}
+if (this.fighter5name == 'KungLao') {
+fighterhealth5 = this.add.text(1038, 580, kunglaohealth, { font: '16px Arial bold', fill: '#00ff00' }).setScrollFactor(0);
+}
+if (this.fighter5name == 'Sonja') {
+fighterhealth5 = this.add.text(1038, 580, sonjahealth, { font: '16px Arial bold', fill: '#00ff00' }).setScrollFactor(0);
+}
+if (this.fighter5name == 'Sektor') {
+fighterhealth5 = this.add.text(1038, 580, sektorhealth, { font: '16px Arial bold', fill: '#00ff00' }).setScrollFactor(0);
+}
+if (this.fighter5name == 'Orchid') {
+fighterhealth5 = this.add.text(1038, 580, orchidhealth, { font: '16px Arial bold', fill: '#00ff00' }).setScrollFactor(0);
+}
+
+if (this.fighter6name == 'Kano') {
+fighterhealth6 = this.add.text(1163, 580, kanohealth, { font: '16px Arial bold', fill: '#00ff00' }).setScrollFactor(0);
+}
+if (this.fighter6name == 'Sindel') {
+fighterhealth6 = this.add.text(1163, 580, sindelhealth, { font: '16px Arial bold', fill: '#00ff00' }).setScrollFactor(0);
+}
+if (this.fighter6name == 'Kabal') {
+fighterhealth6 = this.add.text(1163, 580, kabalhealth, { font: '16px Arial bold', fill: '#00ff00' }).setScrollFactor(0);
+}
+if (this.fighter6name == 'Jago') {
+fighterhealth6 = this.add.text(1163, 580, jagohealth, { font: '16px Arial bold', fill: '#00ff00' }).setScrollFactor(0);
+}
+if (this.fighter6name == 'Cyrax') {
+fighterhealth6 = this.add.text(1163, 580, cyraxhealth, { font: '16px Arial bold', fill: '#00ff00' }).setScrollFactor(0);
+}
+if (this.fighter6name == 'Cyan') {
+fighterhealth6 = this.add.text(1163, 580, cyanhealth, { font: '16px Arial bold', fill: '#00ff00' }).setScrollFactor(0);
+}
+if (this.fighter6name == 'Golbez') {
+fighterhealth6 = this.add.text(1163, 580, golbezhealth, { font: '16px Arial bold', fill: '#00ff00' }).setScrollFactor(0);
+}
+if (this.fighter6name == 'Kain') {
+fighterhealth6 = this.add.text(1163, 580, kainhealth, { font: '16px Arial bold', fill: '#00ff00' }).setScrollFactor(0);
+}
+if (this.fighter6name == 'Terra') {
+fighterhealth6 = this.add.text(1163, 580, terrahealth, { font: '16px Arial bold', fill: '#00ff00' }).setScrollFactor(0);
+}
+if (this.fighter6name == 'KungLao') {
+fighterhealth6 = this.add.text(1163, 580, kunglaohealth, { font: '16px Arial bold', fill: '#00ff00' }).setScrollFactor(0);
+}
+if (this.fighter6name == 'Sonja') {
+fighterhealth6 = this.add.text(1163, 580, sonjahealth, { font: '16px Arial bold', fill: '#00ff00' }).setScrollFactor(0);
+}
+if (this.fighter6name == 'Sektor') {
+fighterhealth6 = this.add.text(1163, 580, sektorhealth, { font: '16px Arial bold', fill: '#00ff00' }).setScrollFactor(0);
+}
+if (this.fighter6name == 'Orchid') {
+fighterhealth6 = this.add.text(1163, 580, orchidhealth, { font: '16px Arial bold', fill: '#00ff00' }).setScrollFactor(0);
+}
+
+if (this.support1name == 'Rosa') {
+supporthealth1 = this.add.text(38, 580, rosahealth, { font: '16px Arial bold', fill: '#00ff00' }).setScrollFactor(0);
+}
+if (this.support1name == 'Mog') {
+supporthealth1 = this.add.text(38, 580, moghealth, { font: '16px Arial bold', fill: '#00ff00' }).setScrollFactor(0);
+}
+if (this.support2name == 'Rosa') {
+supporthealth2 = this.add.text(163, 580, rosahealth, { font: '16px Arial bold', fill: '#00ff00' }).setScrollFactor(0);
+}
+if (this.support2name == 'Mog') {
+supporthealth2 = this.add.text(163, 580, moghealth, { font: '16px Arial bold', fill: '#00ff00' }).setScrollFactor(0);
+}
+
+
+
+
+   this.anims.create({
+        key: 'torch',
+        frames: this.anims.generateFrameNumbers('torch', { start: 0, end: 4 }),
+        frameRate: 25,
+        repeat: -1
+    });
+    
+       this.anims.create({
+        key: 'backdragon',
+        frames: this.anims.generateFrameNumbers('backdragon', { start: 0, end: 20 }),
+        frameRate: 10,
+        repeat: -1
+    });
+  
+      this.anims.create({
+        key: 'rosacurespell',
+        frames: this.anims.generateFrameNumbers('rosacurespell', { start: 0, end: 13 }),
+        frameRate: 5,
+        repeat: -1
+    });
+
+    
+    if (kangactive == true) {
+       this.anims.create({
+        key: 'kangidle',
+        frames: this.anims.generateFrameNumbers('kang', { start: 0, end: 13 }),
+        frameRate: 10,
+        repeat: 1
+    });
+  
+       this.anims.create({
+        key: 'kangwalk',
+        frames: this.anims.generateFrameNumbers('kangwalk', { start: 0, end: 11 }),
+        frameRate: 10,
+        repeat: -1
+    });
+}
+  if (kanoactive == true) {
+       this.anims.create({
+        key: 'kanoidle',
+        frames: this.anims.generateFrameNumbers('kano', { start: 0, end: 13 }),
+        frameRate: 10,
+        yoyo: true,
+        repeat: -1
+    });
+  
+       this.anims.create({
+        key: 'kanowalk',
+        frames: this.anims.generateFrameNumbers('kanowalk', { start: 0, end: 11 }),
+        frameRate: 10,
+        repeat: -1
+    });
+
+}
+    if (spinalactive == true) {
+       this.anims.create({
+        key: 'spinalidle',
+        frames: this.anims.generateFrameNumbers('spinal', { start: 0, end: 10 }),
+        frameRate: 10,
+        yoyo: true,
+        repeat: -1
+    });
+  
+       this.anims.create({
+        key: 'spinalwalk',
+        frames: this.anims.generateFrameNumbers('spinalwalk', { start: 0, end: 11 }),
+        frameRate: 10,
+        repeat: -1
+    });
+}
+        if (glaciusactive == true) {
+       this.anims.create({
+        key: 'glaciusidle',
+        frames: this.anims.generateFrameNumbers('glacius', { start: 0, end: 13 }),
+        frameRate: 10,
+        yoyo: true,
+        repeat: -1
+    });
+  
+       this.anims.create({
+        key: 'glaciuswalk',
+        frames: this.anims.generateFrameNumbers('glaciuswalk', { start: 0, end: 11 }),
+        frameRate: 10,
+        repeat: -1
+    });
+}
+          if (comboactive == true) {
+       this.anims.create({
+        key: 'comboidle',
+        frames: this.anims.generateFrameNumbers('combo', { start: 0, end: 13 }),
+        frameRate: 10,
+        yoyo: true,
+        repeat: -1
+    });
+  
+       this.anims.create({
+        key: 'combowalk',
+        frames: this.anims.generateFrameNumbers('combowalk', { start: 0, end: 11 }),
+        frameRate: 10,
+        repeat: -1
+    });
+}
+
+  if (sindelactive == true) {
+       this.anims.create({
+        key: 'sindelidle',
+        frames: this.anims.generateFrameNumbers('sindel', { start: 0, end: 13 }),
+        frameRate: 10,
+        yoyo: true,
+        repeat: -1
+    });
+  
+       this.anims.create({
+        key: 'sindelwalk',
+        frames: this.anims.generateFrameNumbers('sindelwalk', { start: 0, end: 11 }),
+        frameRate: 10,
+        repeat: -1
+    });
+
+}
+   if (kabalactive == true) {
+       this.anims.create({
+        key: 'kabalidle',
+        frames: this.anims.generateFrameNumbers('kabal', { start: 0, end: 7 }),
+        frameRate: 10,
+        yoyo: true,
+        repeat: -1
+    });
+  
+       this.anims.create({
+        key: 'kabalwalk',
+        frames: this.anims.generateFrameNumbers('kabalwalk', { start: 0, end: 11 }),
+        frameRate: 10,
+        repeat: -1
+    });
+
+}
+
+   if (jagoactive == true) {
+       this.anims.create({
+        key: 'jagoidle',
+        frames: this.anims.generateFrameNumbers('jago', { start: 0, end: 7 }),
+        frameRate: 10,
+        yoyo: true,
+        repeat: -1
+    });
+  
+       this.anims.create({
+        key: 'jagowalk',
+        frames: this.anims.generateFrameNumbers('jagowalk', { start: 0, end: 11 }),
+        frameRate: 10,
+        repeat: -1
+    });
+
+}
+
+   if (cyraxactive == true) {
+       this.anims.create({
+        key: 'cyraxidle',
+        frames: this.anims.generateFrameNumbers('cyrax', { start: 0, end: 7 }),
+        frameRate: 10,
+        yoyo: true,
+        repeat: -1
+    });
+  
+       this.anims.create({
+        key: 'cyraxwalk',
+        frames: this.anims.generateFrameNumbers('cyraxwalk', { start: 0, end: 11 }),
+        frameRate: 10,
+        repeat: -1
+    });
+
+}
+
+   if (kunglaoactive == true) {
+       this.anims.create({
+        key: 'kunglaoidle',
+        frames: this.anims.generateFrameNumbers('kunglao', { start: 0, end: 7 }),
+        frameRate: 10,
+        yoyo: true,
+        repeat: -1
+    });
+  
+       this.anims.create({
+        key: 'kunglaowalk',
+        frames: this.anims.generateFrameNumbers('kunglaowalk', { start: 0, end: 11 }),
+        frameRate: 10,
+        repeat: -1
+    });
+
+}
+   if (sonjaactive == true) {
+       this.anims.create({
+        key: 'sonjaidle',
+        frames: this.anims.generateFrameNumbers('sonja', { start: 0, end: 7 }),
+        frameRate: 10,
+        yoyo: true,
+        repeat: -1
+    });
+  
+       this.anims.create({
+        key: 'sonjawalk',
+        frames: this.anims.generateFrameNumbers('sonjawalk', { start: 0, end: 11 }),
+        frameRate: 10,
+        repeat: -1
+    });
+
+}
+   if (sektoractive == true) {
+       this.anims.create({
+        key: 'sektoridle',
+        frames: this.anims.generateFrameNumbers('sektor', { start: 0, end: 7 }),
+        frameRate: 10,
+        yoyo: true,
+        repeat: -1
+    });
+  
+       this.anims.create({
+        key: 'sektorwalk',
+        frames: this.anims.generateFrameNumbers('sektorwalk', { start: 0, end: 11 }),
+        frameRate: 10,
+        repeat: -1
+    });
+
+}
+
+   if (orchidactive == true) {
+       this.anims.create({
+        key: 'orchididle',
+        frames: this.anims.generateFrameNumbers('orchid', { start: 0, end: 7 }),
+        frameRate: 10,
+        yoyo: true,
+        repeat: -1
+    });
+  
+       this.anims.create({
+        key: 'orchidwalk',
+        frames: this.anims.generateFrameNumbers('orchidwalk', { start: 0, end: 11 }),
+        frameRate: 10,
+        repeat: -1
+    });
+
+}
+
+ if (cecilactive == true) {
+    this.anims.create({
+        key: 'cecilwalk',
+        frames: this.anims.generateFrameNumbers('cecil', { start: 0, end: 1 }),
+        frameRate: 10,
+        repeat: -1
+    });
+     this.anims.create({
+        key: 'cecilidle',
+        frames: this.anims.generateFrameNumbers('cecil', { start: 0, end: 0 }),
+        frameRate: 1,
+        repeat: -1
+    });
+}
+ if (rosaactive == true) {
+    this.anims.create({
+        key: 'rosawalk',
+        frames: this.anims.generateFrameNumbers('rosa', { start: 0, end: 1 }),
+        frameRate: 10,
+        repeat: -1
+    });
+     this.anims.create({
+        key: 'rosaidle',
+        frames: this.anims.generateFrameNumbers('rosa', { start: 0, end: 0 }),
+        frameRate: 1,
+        repeat: -1
+    });
+    
+}
+
+ if (cyanactive == true) {
+    this.anims.create({
+        key: 'cyanwalk',
+        frames: this.anims.generateFrameNumbers('cyan', { start: 0, end: 1 }),
+        frameRate: 10,
+        repeat: -1
+    });
+     this.anims.create({
+        key: 'cyanidle',
+        frames: this.anims.generateFrameNumbers('cyan', { start: 0, end: 0 }),
+        frameRate: 1,
+        repeat: -1
+    });
+    
+}
+
+ if (golbezactive == true) {
+    this.anims.create({
+        key: 'golbezwalk',
+        frames: this.anims.generateFrameNumbers('golbez', { start: 0, end: 1 }),
+        frameRate: 10,
+        repeat: -1
+    });
+     this.anims.create({
+        key: 'golbezidle',
+        frames: this.anims.generateFrameNumbers('golbez', { start: 0, end: 0 }),
+        frameRate: 1,
+        repeat: -1
+    });
+    }
+     if (kainactive == true) {
+    this.anims.create({
+        key: 'kainwalk',
+        frames: this.anims.generateFrameNumbers('kain', { start: 0, end: 1 }),
+        frameRate: 10,
+        repeat: -1
+    });
+     this.anims.create({
+        key: 'kainidle',
+        frames: this.anims.generateFrameNumbers('kain', { start: 0, end: 0 }),
+        frameRate: 1,
+        repeat: -1
+    });
+    }
+         if (terraactive == true) {
+    this.anims.create({
+        key: 'terrawalk',
+        frames: this.anims.generateFrameNumbers('terra', { start: 0, end: 1 }),
+        frameRate: 10,
+        repeat: -1
+    });
+     this.anims.create({
+        key: 'terraidle',
+        frames: this.anims.generateFrameNumbers('terra', { start: 0, end: 0 }),
+        frameRate: 1,
+        repeat: -1
+    });
+    }
+             if (mogactive == true) {
+    this.anims.create({
+        key: 'mogwalk',
+        frames: this.anims.generateFrameNumbers('mog', { start: 0, end: 1 }),
+        frameRate: 10,
+        repeat: -1
+    });
+     this.anims.create({
+        key: 'mogidle',
+        frames: this.anims.generateFrameNumbers('mog', { start: 0, end: 0 }),
+        frameRate: 1,
+        repeat: -1
+    });
+    }
+    
+  
+    //  Input Events
+    cursors = this.input.keyboard.createCursorKeys();
+// rosacureboxsloation
+
+rosacurebox = this.physics.add.sprite(support1backx , support1backy + 25 , 'rosacurebox').setInteractive();
+rosacurebox.on('pointerdown', function (pointer) {
+isrosapickingtarget = true
+isrosatargetpicked = false
+if (isrosatargetpicked == false) {
+if (kangactive == true) {
+kang.setTint(0x00ff00);
+}
+if (spinalactive == true) {
+spinal.setTint(0x00ff00);
+}
+if (glaciusactive == true) {
+glacius.setTint(0x00ff00);
+}
+if (kanoactive == true) {
+kano.setTint(0x00ff00);
+}
+if (sindelactive == true) {
+sindel.setTint(0x00ff00);
+}
+if (kabalactive == true) {
+kabal.setTint(0x00ff00);
+}
+if (jagoactive == true) {
+jago.setTint(0x00ff00);
+}
+if (cyraxactive == true) {
+cyrax.setTint(0x00ff00);
+}
+if (cecilactive == true) {
+cecil.setTint(0x00ff00);
+}
+if (rosaactive == true) {
+rosa.setTint(0x00ff00);
+}
+if (cyanactive == true) {
+cyan.setTint(0x00ff00);
+}
+if (golbezactive == true) {
+golbez.setTint(0x00ff00);
+}
+if (kainactive == true) {
+kain.setTint(0x00ff00);
+}
+if (terraactive == true) {
+terra.setTint(0x00ff00);
+}
+if (mogactive == true) {
+mog.setTint(0x00ff00);
+}
+if (kunglaoactive == true) {
+kunglao.setTint(0x00ff00);
+}
+if (sonjaactive == true) {
+sonja.setTint(0x00ff00);
+}
+if (sektoractive == true) {
+sektor.setTint(0x00ff00);
+}
+if (comboactive == true) {
+combo.setTint(0x00ff00);
+}
+if (orchidactive == true) {
+orchid.setTint(0x00ff00);
+}
+if (isrosacastingcure == true) {
+rosacurebox.setTint(0x00ff00);
+}
+}
+
+
+});
+rosahealbox = this.physics.add.sprite(support1backx, support1backy +75 , 'rosahealbox').setInteractive();
+rosahealbox.on('pointerdown', function (pointer) {
+this.setTint(0x000000);
+});
+
+rosafastbox = this.physics.add.sprite(support1backx, support1backy +125 , 'rosafastbox').setInteractive();
+rosafastbox.on('pointerdown', function (pointer) {
+this.setTint(0x000000);
+});
+rosashellbox = this.physics.add.sprite(support1backx , support1backy +175 , 'rosashellbox').setInteractive();
+rosashellbox.on('pointerdown', function (pointer) {
+this.setTint(0x000000);
+});
+rosabowbox = this.physics.add.sprite(support1backx , support1backy +225 , 'rosabowbox').setInteractive();
+rosabowbox.on('pointerdown', function (pointer) {
+this.setTint(0x000000);
+});
+
+moghugsbox = this.physics.add.sprite(support2backx , support2backy + 25 , 'moghugsbox').setInteractive();
+moghugsbox.on('pointerdown', function (pointer) {
+this.setTint(0x000000);
+});
+mogkissesbox = this.physics.add.sprite(support2backx, support2backy +75 , 'mogkissesbox').setInteractive();
+mogkissesbox.on('pointerdown', function (pointer) {
+this.setTint(0x000000);
+});
+
+mogdreambox = this.physics.add.sprite(support2backx, support2backy +125 , 'mogdreambox').setInteractive();
+mogdreambox.on('pointerdown', function (pointer) {
+this.setTint(0x000000);
+});
+mogdancebox = this.physics.add.sprite(support2backx , support2backy +175 , 'mogdancebox').setInteractive();
+mogdancebox.on('pointerdown', function (pointer) {
+this.setTint(0x000000);
+});
+mogluckbox = this.physics.add.sprite(support2backx , support2backy +225 , 'mogluckbox').setInteractive();
+mogluckbox.on('pointerdown', function (pointer) {
+this.setTint(0x000000);
+});
+
+
+rosaspells = this.physics.add.sprite(rosaspelltargetx, rosaspelltargety, 'rosacurespell').setOrigin(0, 0);
+
+text = this.add.text(600, 300, 'Cursors to move', { font: '16px Courier', fill: '#00ff00' }).setScrollFactor(0);
+}
+
+
+
+
+function update ()
+{
+rosaspells.x = rosaspelltargetx -100
+rosaspells.y = rosaspelltargety -150
+torch.anims.play('torch', true);
+backdragon.anims.play('backdragon', true);
+
+
+
+    if (this.background.tilePositionX < 0)
+    {
+  
+    this.background.tilePositionX += 1;
+    this.background2.tilePositionX += 0.2;
+    torch.x -= 1;
+    backdragon.x -= 1;
+   
+    }
+
+    if (cursors.left.isDown)
+    {
+  
+    this.background.tilePositionX -= 1;
+    this.background2.tilePositionX -= 0.2;
+    torch.x += 1;
+    backdragon.x += 1;
+    
+      if (kangactive == true) {
+       kang.setFlipX(true);
+       kang.anims.play('kangwalk', true);
+       }
+       if (spinalactive == true) {
+       spinal.setFlipX(true);
+       spinal.anims.play('spinalwalk', true);
+       }
+       if (glaciusactive == true) {
+       glacius.setFlipX(true);
+       glacius.anims.play('glaciuswalk', true);
+       }
+       if (comboactive == true) {
+       combo.setFlipX(true);
+       combo.anims.play('combowalk', true);
+       }
+        if (kanoactive == true) {
+       kano.setFlipX(true);
+       kano.anims.play('kanowalk', true);
+       }
+        if (sindelactive == true) {
+       sindel.setFlipX(true);
+       sindel.anims.play('sindelwalk', true);
+       }
+         if (kabalactive == true) {
+       kabal.setFlipX(true);
+       kabal.anims.play('kabalwalk', true);
+       }
+        if (jagoactive == true) {
+       jago.setFlipX(true);
+       jago.anims.play('jagowalk', true);
+       }
+       if (cyraxactive == true) {
+       cyrax.setFlipX(true);
+       cyrax.anims.play('cyraxwalk', true);
+       }
+        if (kunglaoactive == true) {
+       kunglao.setFlipX(true);
+       kunglao.anims.play('kunglaowalk', true);
+       }
+        if (sonjaactive == true) {
+       sonja.setFlipX(true);
+       sonja.anims.play('sonjawalk', true);
+       }
+         if (sektoractive == true) {
+       sektor.setFlipX(true);
+       sektor.anims.play('sektorwalk', true);
+       }
+         if (orchidactive == true) {
+       orchid.setFlipX(true);
+       orchid.anims.play('orchidwalk', true);
+       }
+        if (cecilactive == true) {
+       cecil.setFlipX(false);
+       cecil.anims.play('cecilwalk', true);
+       }
+       if (rosaactive == true) {
+       rosa.setFlipX(false);
+       rosa.anims.play('rosawalk', true);
+       }
+         if (cyanactive == true) {
+       cyan.setFlipX(false);
+       cyan.anims.play('cyanwalk', true);
+       }
+         if (golbezactive == true) {
+       golbez.setFlipX(false);
+       golbez.anims.play('golbezwalk', true);
+       }
+         if (kainactive == true) {
+       kain.setFlipX(false);
+       kain.anims.play('kainwalk', true);
+       }
+        if (terraactive == true) {
+       terra.setFlipX(false);
+       terra.anims.play('terrawalk', true);
+       }
+          if (mogactive == true) {
+       mog.setFlipX(false);
+       mog.anims.play('mogwalk', true);
+       }
+    }
+    
+    else if (cursors.right.isDown)
+    {
+  
+    this.background.tilePositionX += 1;
+    this.background2.tilePositionX += 0.2;
+    torch.x -= 1;
+    backdragon.x -= 1;
+      if (kangactive == true) {
+       kang.anims.play('kangwalk', true);
+       }
+       if (spinalactive == true) {
+       spinal.anims.play('spinalwalk', true);
+       }
+       if (glaciusactive == true) {
+       glacius.anims.play('glaciuswalk', true);
+       }
+       if (comboactive == true) {
+       combo.anims.play('combowalk', true);
+       }
+       if (kanoactive == true) {
+       kano.anims.play('kanowalk', true);
+       }
+         if (sindelactive == true) {
+       sindel.anims.play('sindelwalk', true);
+       }
+          if (kabalactive == true) {
+       kabal.anims.play('kabalwalk', true);
+       }
+       if (jagoactive == true) {
+       jago.anims.play('jagowalk', true);
+       }
+        if (cyraxactive == true) {
+       cyrax.anims.play('cyraxwalk', true);
+       }
+       if (kunglaoactive == true) {
+       kunglao.anims.play('kunglaowalk', true);
+       }
+       if (sonjaactive == true) {
+       sonja.anims.play('sonjawalk', true);
+       }
+        if (sektoractive == true) {
+       sektor.anims.play('sektorwalk', true);
+       }
+       if (orchidactive == true) {
+       orchid.anims.play('orchidwalk', true);
+       }
+       if (cecilactive == true) {
+       cecil.anims.play('cecilwalk', true);
+       }
+       if (rosaactive == true) {
+       rosa.anims.play('rosawalk', true);
+       }
+         if (cyanactive == true) {
+       cyan.anims.play('cyanwalk', true);
+       }
+       if (golbezactive == true) {
+       golbez.anims.play('golbezwalk', true);
+       }
+         if (kainactive == true) {
+       kain.anims.play('kainwalk', true);
+       }
+          if (terraactive == true) {
+       terra.anims.play('terrawalk', true);
+       }
+         if (mogactive == true) {
+       mog.anims.play('mogwalk', true);
+       }
+    }
+    
+    else
+    {
+       if (kangactive == true) {
+       kang.setFlipX(false);
+       kang.anims.play('kangidle', true);
+              }
+       if (spinalactive == true) {
+       spinal.setFlipX(false);
+       spinal.anims.play('spinalidle', true);
+       }
+       if (glaciusactive == true) {
+       glacius.setFlipX(false);
+       glacius.anims.play('glaciusidle', true);
+       }
+       if (comboactive == true) {
+       combo.setFlipX(false);
+       combo.anims.play('comboidle', true);
+       }
+       if (kanoactive == true) {
+       kano.setFlipX(false);
+       kano.anims.play('kanoidle', true);
+       }
+       if (sindelactive == true) {
+       sindel.setFlipX(false);
+       sindel.anims.play('sindelidle', true);
+       }
+        if (kabalactive == true) {
+       kabal.setFlipX(false);
+       kabal.anims.play('kabalidle', true);
+       }
+       if (jagoactive == true) {
+       jago.setFlipX(false);
+       jago.anims.play('jagoidle', true);
+       } 
+       if (cyraxactive == true) {
+       cyrax.setFlipX(false);
+       cyrax.anims.play('cyraxidle', true);
+       }  
+       if (kunglaoactive == true) {
+       kunglao.setFlipX(false);
+       kunglao.anims.play('kunglaoidle', true);
+       }  
+       if (sonjaactive == true) {
+       sonja.setFlipX(false);
+       sonja.anims.play('sonjaidle', true);
+       }
+        if (sektoractive == true) {
+       sektor.setFlipX(false);
+       sektor.anims.play('sektoridle', true);
+       }
+        if (orchidactive == true) {
+       orchid.setFlipX(false);
+       orchid.anims.play('orchididle', true);
+       }
+          if (cecilactive == true) {
+       cecil.setFlipX(true);
+       cecil.anims.play('cecilidle', true);
+       }
+        if (rosaactive == true) {
+       rosa.setFlipX(true);
+       rosa.anims.play('rosaidle', true);
+       }
+         if (cyanactive == true) {
+       cyan.setFlipX(true);
+       cyan.anims.play('cyanidle', true);
+       }
+         if (golbezactive == true) {
+       golbez.setFlipX(true);
+       golbez.anims.play('golbezidle', true);
+       }
+        if (kainactive == true) {
+       kain.setFlipX(true);
+       kain.anims.play('kainidle', true);
+       }
+          if (terraactive == true) {
+       terra.setFlipX(true);
+       terra.anims.play('terraidle', true);
+       }
+         if (mogactive == true) {
+       mog.setFlipX(true);
+       mog.anims.play('mogidle', true);
+       }
+    }
+     
+      if (isrosacastingnow == false) {
+     rosaspells.visible = false
+           }
+       else if (isrosacastingnow == true) {
+       rosaspells.visible = true
+       }
+       
+      text.setText([
+        'screen x: ' +   rosaspelltargetx,
+        'screen y: ' +   rosaspelltargety,
+        'world x: ' + rosaspells.x,
+        'world y: ' + rosaspells.y
+    ]);
+if (isrosatargetpicked == true) {
+if (kangactive == true) {
+kang.clearTint();
+}
+if (spinalactive == true) {
+spinal.clearTint();
+}
+if (glaciusactive == true) {
+glacius.clearTint();
+}
+if (kanoactive == true) {
+kano.clearTint();
+}
+if (sindelactive == true) {
+sindel.clearTint();
+}
+if (kabalactive == true) {
+kabal.clearTint();
+}
+if (jagoactive == true) {
+jago.clearTint();
+}
+if (cyraxactive == true) {
+cyrax.clearTint();
+}
+if (cecilactive == true) {
+cecil.clearTint();
+}
+if (rosaactive == true) {
+rosa.clearTint();
+}
+if (cyanactive == true) {
+cyan.clearTint();
+}
+if (golbezactive == true) {
+golbez.clearTint();
+}
+if (kainactive == true) {
+kain.clearTint();
+}
+if (terraactive == true) {
+terra.clearTint();
+}
+if (mogactive == true) {
+mog.clearTint();
+}
+if (kunglaoactive == true) {
+kunglao.clearTint();
+}
+if (sonjaactive == true) {
+sonja.clearTint();
+}
+if (sektoractive == true) {
+sektor.clearTint();
+}
+if (comboactive == true) {
+combo.clearTint();
+}
+if (orchidactive == true) {
+orchid.clearTint();
+}
+if (isrosacastingcure == true) {
+rosacurebox.clearTint();
+}
+}
+
+}
+</script>
+</body>
+</html>
