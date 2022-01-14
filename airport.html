@@ -1,0 +1,162 @@
+<!doctype html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8" />
+    <title>Airport 0.0</title>
+    <script src="phaser.js"></script>
+    <style type="text/css">
+        body {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+<script type="text/javascript">
+
+var config = {
+    type: Phaser.AUTO,
+    width: 1360,
+    height: 768,
+    physics: {
+        default: 'arcade',
+        arcade: {
+            gravity: { y: 0 },
+            debug: false
+        }
+    },
+    scene: {
+        preload: preload,
+        create: create,
+        update: update
+    }
+ 
+};
+
+var player;
+var cursors;
+var text;
+var game = new Phaser.Game(config);
+var uix = 0
+var uiy = 601
+var porkchopmoving = true
+
+
+
+
+function preload ()
+{
+    this.load.image('adventureui', 'assets/ui/adventureui.png');
+    this.load.image('airportbackgroundsky', 'assets/lair/airport/airportbackgroundsky.png');
+    this.load.image('airportbackground', 'assets/lair/airport/airportbackground.png');
+    this.load.image('porkchopmodel', 'assets/stellar/porkchopmodel.png');
+    this.load.spritesheet('planelight', 'assets/lair/airport/planelight1.png', { frameWidth: 269, frameHeight: 83 });
+    this.load.spritesheet('porkchopmodelwheels', 'assets/stellar/porkchopmodelwheels.png', { frameWidth: 23, frameHeight: 26 });
+
+    }
+
+function create ()
+{
+  
+     this.adventureui = this.add.sprite(uix, uiy, 'adventureui').setOrigin(0, 0);
+     this.airportbackgroundsky = this.add.sprite(0, 0, 'airportbackgroundsky').setOrigin(0, 0);
+     this.airportbackground = this.add.sprite(0, 0, 'airportbackground').setOrigin(0, 0);
+     airportplanelight = this.physics.add.sprite(341, 369, 'planelight').setOrigin(0, 0);
+     porkchopmodel = this.physics.add.sprite(-350, 360, 'porkchopmodel').setOrigin(0, 0);
+     porkchopmodelwheel1 = this.physics.add.sprite(porkchopmodel.x + 17, porkchopmodel.y + 140, 'porkchopmodelwheels').setOrigin(0, 0);
+     porkchopmodelwheel2 = this.physics.add.sprite(porkchopmodel.x + 67, porkchopmodel.y + 140, 'porkchopmodelwheels').setOrigin(0, 0);
+     porkchopmodelwheel3 = this.physics.add.sprite(porkchopmodel.x + 292, porkchopmodel.y + 139, 'porkchopmodelwheels').setOrigin(0, 0);
+
+    this.input.setPollAlways();
+    this.input.on('gameobjectover', function (pointer, gameObject) {
+    gameObject.setTint(0x00ff00);
+    });
+    this.input.on('gameobjectout', function (pointer, gameObject) {
+    gameObject.clearTint();
+    });
+
+
+
+this.anims.create({
+        key: 'planelight',
+        frames: this.anims.generateFrameNumbers('planelight', { start: 0, end: 3 }),
+        frameRate: 5,
+        repeat: -1
+    });
+     
+  this.anims.create({
+        key: 'porkchopmodelwheels',
+        frames: this.anims.generateFrameNumbers('porkchopmodelwheels', { start: 0, end: 7 }),
+        frameRate: 8,
+        repeat: -1
+    });
+
+  
+
+    //  Input Events
+cursors = this.input.keyboard.createCursorKeys();
+
+ 
+
+
+text = this.add.text(10, 10, '', { font: '16px Courier', fill: '#00ff00' }).setScrollFactor(0);
+
+}
+
+
+
+//update
+function update ()
+{
+
+
+
+
+if (porkchopmoving == true){
+porkchopmodel.x += 1;
+porkchopmodelwheel1.x = porkchopmodel.x + 17
+porkchopmodelwheel2.x = porkchopmodel.x + 67
+porkchopmodelwheel3.x = porkchopmodel.x + 292
+if (porkchopmodel.x > 30){
+    porkchopmoving = false
+} 
+
+porkchopmodelwheel1.anims.play('porkchopmodelwheels', true);
+porkchopmodelwheel2.anims.play('porkchopmodelwheels', true);
+porkchopmodelwheel3.anims.play('porkchopmodelwheels', true);
+}
+
+if (porkchopmoving == false){
+porkchopmodelwheel1.anims.stop('porkchopmodelwheels', true);
+porkchopmodelwheel2.anims.stop('porkchopmodelwheels', true);
+porkchopmodelwheel3.anims.stop('porkchopmodelwheels', true);
+}
+
+
+
+
+airportplanelight.anims.play('planelight', true);
+
+
+
+    if (cursors.left.isDown){
+   
+
+    }
+   
+   
+
+    else if (cursors.right.isDown){
+
+    }
+
+ 
+
+text.setText([
+        'world x: ' + this.input.mousePointer.worldX,
+        'world y: ' + this.input.mousePointer.worldY,
+        porkchopmodel.x
+      
+    ]);
+}
+</script>
+</html>
