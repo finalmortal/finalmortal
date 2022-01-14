@@ -1,0 +1,591 @@
+<!doctype html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8" />
+    <title>Office Room 0.0</title>
+    <script src="phaser.js"></script>
+    <style type="text/css">
+        body {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+<script type="text/javascript">
+
+var config = {
+    type: Phaser.AUTO,
+    width: 1360,
+    height: 768,
+    physics: {
+        default: 'arcade',
+        arcade: {
+            gravity: { y: 0 },
+            debug: false
+        }
+    },
+    scene: {
+        preload: preload,
+        create: create,
+        update: update
+    }
+ 
+};
+
+var player;
+var cursors;
+var text;
+var scrollright = false
+var scrollleft = false
+
+var questmasterscreenopenview = false
+var questmasterscreenopened = false
+var questmasterscreenloggedin = false
+var questmasteronquest = false
+
+var questmasterjackburtonquestshow = true
+var questmasterjackburtonquestselected = false
+var beginjackburtonquest = false
+var jackburtonquestcomplete = false
+
+var questmasterdiapermafiaquestshow = true
+var questmasterdiapermafiaquestselected = false
+var begindiapermafiaquest = false
+var diapermafiaquestcomplete = false
+
+var game = new Phaser.Game(config);
+var uix = 0
+var uiy = 601
+
+var questmasterquestspot1x = 0
+var questmasterquestspot1y = 0
+var questmasterquestspot2x = 0
+var questmasterquestspot2y = 0
+var questmasterquestspot3x = 0
+var questmasterquestspot3y = 0
+var questmasterquestspot4x = 0
+var questmasterquestspot4y = 0
+
+
+function preload ()
+{
+    this.load.image('adventureui', 'assets/ui/adventureui.png');
+    this.load.image('officeroombackground', 'assets/office/officeroombackground.png');
+    this.load.image('rightpointer', 'assets/ui/rightpointer.png');
+    this.load.image('leftpointer', 'assets/ui/leftpointer.png');
+    this.load.image('downpointer', 'assets/ui/downpointer.png');
+    this.load.image('questmasteropenscreen', 'assets/office/questmasteropenscreen.png');
+    this.load.image('questmasterloginscreen', 'assets/office/questmasterloginscreen.png');
+    this.load.image('questmasterloginbutton', 'assets/office/questmasterloginbutton.png');
+    this.load.image('questmasteravailscreen', 'assets/office/questmasteravailscreen.png');
+    this.load.image('questmasterbeginquestbutton', 'assets/office/questmasterbeginquestbutton.png');
+    this.load.image('questmasterjackburtonquestquote', 'assets/office/questmasterjackburtonquestquote.png');
+    this.load.image('questmasterjackburtonbutton', 'assets/office/helpjackburtonquestbutton.png');
+    this.load.image('questmasterdiapermafiaquestquote', 'assets/office/questmasterdiapermafiaquestquote.png');
+    this.load.image('questmasterjackburtonbutton', 'assets/office/helpjackburtonquestbutton.png');
+    this.load.image('questmasterdiapermafiabutton', 'assets/office/defeatdiapermafiabutton.png');
+    this.load.spritesheet('cecil', 'assets/char/spritesheets/cecilsprite.png', { frameWidth: 95, frameHeight: 95 });
+    this.load.spritesheet('globescreen', 'assets/office/globescreen.png', { frameWidth: 123, frameHeight: 91 });
+    this.load.spritesheet('screen1', 'assets/office/screen1.png', { frameWidth: 129, frameHeight: 72 });
+    this.load.spritesheet('screen2', 'assets/office/screen2.png', { frameWidth: 129, frameHeight: 73 });
+    this.load.spritesheet('screen3', 'assets/office/screen3.png', { frameWidth: 129, frameHeight: 72 });
+    this.load.spritesheet('screen4', 'assets/office/screen4.png', { frameWidth: 129, frameHeight: 73 });
+    this.load.spritesheet('maxscreen', 'assets/office/maxscreen.png', { frameWidth: 95, frameHeight: 72 });
+    this.load.spritesheet('lamp1', 'assets/office/lamp1.png', { frameWidth: 73, frameHeight: 100 });
+    this.load.spritesheet('ceilinglamp', 'assets/office/ceilinglamp.png', { frameWidth: 61, frameHeight: 87 });
+    this.load.spritesheet('arcademachine1', 'assets/office/arcademachine1.png', { frameWidth: 150, frameHeight: 178 });
+    this.load.spritesheet('featherlighter', 'assets/office/featherlighter.png', { frameWidth: 50, frameHeight: 50 });
+    }
+
+function create ()
+{
+  
+     this.adventureui = this.add.sprite(uix, uiy, 'adventureui').setOrigin(0, 0);
+     this.officeroombackground = this.add.tileSprite(0, 0, 2000, 600, 'officeroombackground').setOrigin(0, 0);
+     globescreen = this.physics.add.sprite(694, 92, 'globescreen').setOrigin(0, 0);
+
+    questmasteropenscreen = this.add.sprite(globescreen.x - 20, globescreen.y -20, 'questmasteropenscreen').setInteractive();
+    questmasteropenscreen.setOrigin(0, 0);
+            questmasteropenscreen.on('pointerdown', function (pointer) {
+            this.setTint(0xffffff);
+            if (questmasteronquest == false){
+            questmasterscreenopened = true
+            }
+
+          });
+    
+     questmasteropenscreen.visible = false
+     
+     
+
+
+     screen1 = this.physics.add.sprite(989, 67, 'screen1').setOrigin(0, 0);
+     screen2 = this.physics.add.sprite(1130, 64, 'screen2').setOrigin(0, 0);
+     screen3 = this.physics.add.sprite(990, 150, 'screen3').setOrigin(0, 0);
+     screen4 = this.physics.add.sprite(851, 64, 'screen4').setOrigin(0, 0);
+     maxscreen = this.physics.add.sprite(868, 150, 'maxscreen').setOrigin(0, 0);
+     lamp1 = this.physics.add.sprite(425, 235, 'lamp1').setOrigin(0, 0);
+     ceilinglamp1 = this.physics.add.sprite(150, -10, 'ceilinglamp').setOrigin(0, 0);
+     ceilinglamp2 = this.physics.add.sprite(260, -10, 'ceilinglamp').setOrigin(0, 0);
+     arcademachine1 = this.physics.add.sprite(1500, 75, 'arcademachine1').setOrigin(0, 0);
+     featherlighter = this.physics.add.sprite(785, 170, 'featherlighter').setOrigin(0, 0);
+     downpointer = this.physics.add.sprite(globescreen.x, globescreen.y, 'downpointer').setOrigin(0, 0);
+     downpointer.visible = false
+     
+
+    this.input.setPollAlways();
+    this.input.on('gameobjectover', function (pointer, gameObject) {
+    if (gameObject == leftpointer){
+    scrollleft = true
+    }
+    if (gameObject == rightpointer){
+    scrollright = true
+    }
+    gameObject.setTint(0x00ff00);
+    });
+    this.input.on('gameobjectout', function (pointer, gameObject) {
+    if (gameObject == leftpointer){
+    scrollleft = false
+    }
+    if (gameObject == rightpointer){
+    scrollright = false
+    }
+    gameObject.clearTint();
+    });
+
+
+var rightpointer = this.add.sprite(760, 700, 'rightpointer').setInteractive();
+    rightpointer.on('pointerdown', function (pointer) {
+    this.setTint(0xff0000);
+    });
+        
+    rightpointer.on('pointerup', function (pointer) {
+    this.clearTint();
+    });
+    
+var leftpointer = this.add.sprite(600, 700, 'leftpointer').setInteractive();
+    leftpointer.on('pointerdown', function (pointer) {
+    this.setTint(0xff0000);
+    });
+                   
+    leftpointer.on('pointerup', function (pointer) {
+    this.clearTint();
+    });
+    
+   
+    player = this.physics.add.sprite(650, 482, 'cecil');
+     
+   
+        
+    this.anims.create({
+        key: 'walk',
+        frames: this.anims.generateFrameNumbers('cecil', { start: 0, end: 1 }),
+        frameRate: 10,
+        repeat: -1
+    });
+
+ this.anims.create({
+        key: 'globescreen',
+        frames: this.anims.generateFrameNumbers('globescreen', { start: 0, end: 29 }),
+        frameRate: 10,
+        repeat: -1
+    });
+ this.anims.create({
+        key: 'screen1',
+        frames: this.anims.generateFrameNumbers('screen1', { start: 0, end: 5 }),
+        frameRate: 2,
+        repeat: -1
+    });
+   this.anims.create({
+        key: 'screen2',
+        frames: this.anims.generateFrameNumbers('screen2', { start: 0, end: 31 }),
+        frameRate: 5,
+        repeat: -1
+    });
+   this.anims.create({
+        key: 'screen3',
+        frames: this.anims.generateFrameNumbers('screen3', { start: 0, end: 15 }),
+        frameRate: 5,
+        repeat: -1
+    });
+   this.anims.create({
+        key: 'screen4',
+        frames: this.anims.generateFrameNumbers('screen4', { start: 0, end: 15 }),
+        frameRate: 10,
+        repeat: -1
+    });
+   this.anims.create({
+        key: 'maxscreen',
+        frames: this.anims.generateFrameNumbers('maxscreen', { start: 0, end: 21 }),
+        frameRate: 10,
+        repeat: -1
+    });
+   this.anims.create({
+        key: 'lamp1',
+        frames: this.anims.generateFrameNumbers('lamp1', { start: 0, end: 5 }),
+        frameRate: 5,
+        repeat: -1
+    });
+   this.anims.create({
+        key: 'ceilinglamp',
+        frames: this.anims.generateFrameNumbers('ceilinglamp', { start: 0, end: 13 }),
+        frameRate: 10,
+        repeat: -1
+    });
+    this.anims.create({
+        key: 'arcademachine1',
+        frames: this.anims.generateFrameNumbers('arcademachine1', { start: 0, end: 8 }),
+        frameRate: 8,
+        repeat: -1
+    });
+     this.anims.create({
+        key: 'featherlighter',
+        frames: this.anims.generateFrameNumbers('featherlighter', { start: 0, end: 8 }),
+        frameRate: 15,
+        repeat: -1
+    });
+
+ 
+
+    //  Input Events
+    cursors = this.input.keyboard.createCursorKeys();
+
+ 
+ questscreentxt = this.add.text(globescreen.x, globescreen.y - 15, 'Questmaster 2000', { font: '15px Courier', fill: '#00ff00' }).setScrollFactor(0);
+ questscreentxt.visible = false
+ name = this.add.text(uix + 605, uiy +6, 'The Office', { font: '30px Arial', fill: '#00ff00' }).setScrollFactor(0);
+ charname = this.add.text(uix + 195, uiy +6, 'Cecil', { font: '30px Arial', fill: '#00ff00' }).setScrollFactor(0);
+
+//questmaster
+ questmasterloginscreen = this.physics.add.sprite(0, 0, 'questmasterloginscreen').setOrigin(0, 0);
+ questmasterloginscreen.visible = false
+
+ questmasteravailscreen = this.physics.add.sprite(0, 0, 'questmasteravailscreen').setOrigin(0, 0);
+ questmasteravailscreen.visible = false
+
+
+//beginquestbutton
+ questmasterbeginquestbutton = this.add.sprite(841, 267, 'questmasterbeginquestbutton').setInteractive();
+ questmasterbeginquestbutton.setOrigin(0, 0);
+   questmasterbeginquestbutton.on('pointerdown', function (pointer) {
+    this.setTint(0x00ff00);
+    if (questmasterjackburtonquestselected == true){
+        beginjackburtonquest = true
+        questmasteronquest = true
+        hidequestmaster()
+    }
+    if (questmasterdiapermafiaquestselected == true){
+        begindiapermafiaquest = true
+        questmasteronquest = true
+        hidequestmaster()
+    }
+
+
+    });
+   questmasterbeginquestbutton.visible = false
+
+ questmasterloginbutton = this.add.sprite(841, 267, 'questmasterloginbutton').setInteractive();
+ questmasterloginbutton.setOrigin(0, 0);
+   questmasterloginbutton.on('pointerdown', function (pointer) {
+    this.setTint(0x00ff00);
+    questmasterscreenloggedin = true
+    });
+   questmasterloginbutton.visible = false
+
+
+ questmasterjackburtonbutton = this.add.sprite(393, 330, 'questmasterjackburtonbutton').setInteractive();
+ questmasterjackburtonbutton.setOrigin(0, 0);
+ questmasterjackburtonbutton.on('pointerdown', function (pointer) {
+    this.setTint(0x00ff00);
+    questmasterjackburtonquestselected = true
+    });
+ questmasterjackburtonbutton.visible = false
+ questmasterjackburtonquestquote = this.physics.add.sprite(0, 0, 'questmasterjackburtonquestquote').setOrigin(0, 0);
+ questmasterjackburtonquestquote.visible = false
+
+ questmasterdiapermafiabutton = this.add.sprite(393, 430, 'questmasterdiapermafiabutton').setInteractive();
+ questmasterdiapermafiabutton.setOrigin(0, 0);
+ questmasterdiapermafiabutton.on('pointerdown', function (pointer) {
+    this.setTint(0x00ff00);
+    questmasterdiapermafiaquestselected = true
+    });
+    questmasterdiapermafiabutton.visible = false
+    questmasterdiapermafiaquestquote = this.physics.add.sprite(0, 0, 'questmasterdiapermafiaquestquote').setOrigin(0, 0);
+    questmasterdiapermafiaquestquote.visible = false
+    
+    text = this.add.text(10, 10, '', { font: '16px Courier', fill: '#00ff00' }).setScrollFactor(0);
+
+}
+
+    function hidequestmaster() {
+    questmasterscreenloggedin = false
+    questmasterscreenopened = false
+    questmasterjackburtonbutton.visible = false
+    questmasterdiapermafiabutton.visible = false
+    questmasterloginscreen.visible = false
+    questmasterbeginquestbutton.visible = false
+    questmasterjackburtonquestquote.visible = false
+    questmasterdiapermafiaquestquote.visible = false
+    questmasteravailscreen.visible = false
+    questmasterbeginquestbutton.visible = false
+
+}
+
+//update
+function update ()
+{
+
+    globescreen.anims.play('globescreen', true);
+    screen1.anims.play('screen1', true);
+    screen2.anims.play('screen2', true);
+    screen3.anims.play('screen3', true);
+    screen4.anims.play('screen4', true);
+    maxscreen.anims.play('maxscreen', true);
+    lamp1.anims.play('lamp1', true);
+    ceilinglamp1.anims.play('ceilinglamp', true);
+    ceilinglamp2.anims.play('ceilinglamp', true);
+    arcademachine1.anims.play('arcademachine1', true);
+    featherlighter.anims.play('featherlighter', true);
+    questscreentxt.x = globescreen.x
+    
+    if (questmasterscreenopened == true){
+        questmasterloginscreen.visible = true
+        questmasterloginbutton.x = questmasterloginscreen.x + 841
+        questmasterloginbutton.y = questmasterloginscreen.y + 267
+        questmasterloginbutton.visible = true
+    }
+    else questmasterloginscreen.visible = false
+    
+
+
+
+     if (questmasterscreenloggedin == true){
+     questmasterloginscreen.visible = false
+     questmasterloginbutton.visible = false
+     questmasteravailscreen.visible = true
+     
+     
+     if (questmasterjackburtonquestshow == true){
+     if (jackburtonquestcomplete == false){
+    questmasterjackburtonbutton.x = questmasterloginscreen.x + 385
+    questmasterjackburtonbutton.y = questmasterloginscreen.y + 310
+    questmasterjackburtonbutton.visible = true
+
+    if (questmasterjackburtonquestselected == true){
+        questmasterjackburtonquestquote.x = questmasterloginscreen.x + 195
+        questmasterjackburtonquestquote.y = questmasterloginscreen.y + 390
+        questmasterjackburtonquestquote.visible = true
+        questmasterbeginquestbutton.x = questmasterloginscreen.x + 390
+        questmasterbeginquestbutton.y = questmasterloginscreen.y + 590
+        questmasterdiapermafiaquestshow = false
+        questmasterdiapermafiabutton.visible = false
+        questmasterbeginquestbutton.visible = true
+    }
+    }
+    }
+
+     if (questmasterdiapermafiaquestshow == true){
+     if (diapermafiaquestcomplete == false){
+      questmasterdiapermafiabutton.x = questmasterloginscreen.x + 325
+      questmasterdiapermafiabutton.y = questmasterloginscreen.y + 410
+      questmasterdiapermafiabutton.visible = true
+
+     if (questmasterdiapermafiaquestselected == true){
+     questmasterdiapermafiabutton.y -= 110;
+     questmasterdiapermafiaquestquote.x = questmasterloginscreen.x + 195
+     questmasterdiapermafiaquestquote.y = questmasterloginscreen.y + 390
+     questmasterdiapermafiaquestquote.visible = true
+     questmasterbeginquestbutton.x = questmasterloginscreen.x + 390
+     questmasterbeginquestbutton.y = questmasterloginscreen.y + 590
+     questmasterjackburtonquestshow = false
+     questmasterjackburtonbutton.visible = false
+     questmasterbeginquestbutton.visible = true
+
+
+     }
+     }
+     }
+
+
+}
+
+
+    if (questmasterscreenopenview == true){
+        downpointer.x = globescreen.x + 45
+        downpointer.y = globescreen.y - 75
+        downpointer.visible = true
+        questmasteropenscreen.x = globescreen.x -20
+        questmasteropenscreen.y = globescreen.y -20
+    }
+
+
+
+  if (this.officeroombackground.tilePositionX < 0)
+    {
+    this.officeroombackground.tilePositionX += 1;
+    globescreen.x -= 1;
+    screen1.x -= 1;
+    screen2.x -= 1;
+    screen3.x -= 1;
+    screen4.x -= 1;
+    maxscreen.x -= 1;
+    lamp1.x -= 1;
+    ceilinglamp1.x -= 1;
+    ceilinglamp2.x -= 1;
+    arcademachine1.x -= 1;
+    featherlighter.x -= 1;
+    player.x -= 1;
+    }
+ if (this.officeroombackground.tilePositionX > 639)
+    {
+    this.officeroombackground.tilePositionX -= 1;
+    globescreen.x += 1;
+    screen1.x += 1;
+    screen2.x += 1;
+    screen3.x += 1;
+    screen4.x += 1;
+     maxscreen.x += 1;
+    lamp1.x += 1;
+    ceilinglamp1.x += 1;
+    ceilinglamp2.x += 1;
+    arcademachine1.x += 1;
+    featherlighter.x += 1;
+    player.x += 1;
+    }
+
+
+     if (player.y < 248)
+    {
+    player.y += 1;
+    }
+
+       if (player.y > 543)
+    {
+    player.y -= 1;
+    }
+
+if (player.y < globescreen.y + 175){
+if (player.x > globescreen.x -40)
+if (player.x < globescreen.x +100)
+{
+{
+questmasterscreenopenview = true
+questscreentxt.visible = true
+questmasteropenscreen.visible = true
+}
+}
+}
+
+else {
+questmasterscreenopenview = false
+questscreentxt.visible = false
+downpointer.visible = false
+questmasteropenscreen.visible = false
+questmasterscreenopened = false
+questmasterloginscreen.visible = false
+}
+
+
+
+if (scrollleft == true)
+    {
+  
+     
+    }
+
+else if (scrollright == true)
+    {
+             
+    }
+   
+
+ 
+
+
+   
+
+
+
+    if (cursors.left.isDown)
+    {
+   
+    player.anims.play('walk', true);
+    this.officeroombackground.tilePositionX -= 1;
+    globescreen.x += 1;
+    screen1.x += 1;
+    screen2.x += 1;
+    screen3.x += 1;
+    screen4.x += 1;
+    maxscreen.x += 1;
+    lamp1.x += 1;
+    ceilinglamp1.x += 1;
+    ceilinglamp2.x += 1;
+    arcademachine1.x += 1;
+    featherlighter.x += 1;
+
+    player.setFlipX(false);
+
+    if (this.officeroombackground.tilePositionX > 1){
+        player.x -= 1;
+    }
+  
+   
+    }
+
+    else if (cursors.right.isDown)
+    {
+
+    player.anims.play('walk', true);
+    player.setFlipX(true);
+    player.x += 1;
+   
+    if (player.x > 648){
+    this.officeroombackground.tilePositionX += 1;
+    globescreen.x -= 1;
+    screen1.x -= 1;
+    screen2.x -= 1;
+    screen3.x -= 1;
+    screen4.x -= 1;
+    maxscreen.x -= 1;
+    ceilinglamp1.x -= 1;
+    ceilinglamp2.x -= 1;
+    lamp1.x -= 1;
+    arcademachine1.x -= 1;
+    featherlighter.x -= 1;
+    player.x -= 1;
+    }
+    }
+
+
+    else if (cursors.up.isDown)
+    {
+    player.y -= 1;
+    player.anims.play('walk', true);
+    }
+
+    
+    else if (cursors.down.isDown)
+    {
+    player.y += 1;
+    player.anims.play('walk', true);
+    }
+
+    else
+    {
+      player.setVelocityX(0);
+      player.anims.stop('walk', true);
+      
+}
+
+
+
+text.setText([
+        'world x: ' + this.input.mousePointer.worldX,
+        'world y: ' + this.input.mousePointer.worldY,
+        this.officeroombackground.tilePositionX,
+        player.y,
+        player.x
+    ]);
+}
+</script>
+</html>
