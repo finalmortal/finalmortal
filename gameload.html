@@ -2,7 +2,7 @@
 <html lang="en"> 
 <head> 
     <meta charset="UTF-8" />
-    <title>Intro 0.0</title>
+    <title>Final Mortal Fantasy Kombat Alpha 0.1</title>
     <script src="//cdn.jsdelivr.net/npm/phaser@3.11.0/dist/phaser.js"></script>
     <style type="text/css">
         body {
@@ -1189,6 +1189,11 @@ if (cellphoneringtime > 150){
     {
     player.x -= 1;
     }
+      
+      if (player.x < 1)
+    {
+    player.x += 1;
+    }
 
      if (player.y < 248)
     {
@@ -1198,6 +1203,12 @@ if (cellphoneringtime > 150){
        if (player.y > 543)
     {
     player.y -= 1;
+    }
+      
+    if (player.y < 253){
+    if (player.x > 1285){
+    cecilofficedoorexit = true
+    }
     }
 
 if (player.y < globescreen.y + 175){
@@ -1229,7 +1240,7 @@ questmasterloginscreen.visible = false
 questmasteropenscreenreq.visible = false
 }
 
-
+    
 
 if (scrollleft == true)
     {
@@ -1242,14 +1253,6 @@ else if (scrollright == true)
              
     }
    
-
- 
-
-
-   
-
-
-
     if (cursors.left.isDown)
     {
    
@@ -1307,8 +1310,14 @@ else if (scrollright == true)
     {
     player.y -= 1;
     player.anims.play('walk', true);
+      if (cecilofficedoorexit == true){
+     game.scene.stop('officescene')
+     game.scene.start('stellarscene')
+     cecilofficedoorexit = false
     }
-
+    }
+    
+ 
     
     else if (cursors.down.isDown)
     {
@@ -1333,12 +1342,44 @@ text.setText([
         this.officeroombackground.tilePositionX,
         cellphoneringtime,
         takeitemwindowopen,
+        cecilofficedoorexit,
         player.y,
         player.x
     ]);
     }
 
 });
+
+var uiscene = new Phaser.Class({
+
+    Extends: Phaser.Scene,
+
+    initialize:
+
+    function uiscene ()
+    {
+        Phaser.Scene.call(this, { key: 'uiscene' });
+    },
+
+    preload: function ()
+    {
+      
+    },
+
+    create: function ()
+    {
+  
+  
+        
+},
+
+    update: function (time, delta)
+    {
+  
+    }
+
+});
+
 
 var config = {
     type: Phaser.AUTO,
@@ -1353,7 +1394,7 @@ var config = {
             debug: false
         }
     },
-    scene: [startmenuscene, basemenuscene, stellarscene, officescene]
+    scene: [startmenuscene, basemenuscene, stellarscene, officescene, uiscene]
 };
 
  
@@ -1366,6 +1407,7 @@ var scrollright = false
 var scrollleft = false
 var giftshopopenview = false
 var cecilofficedooropen = false
+var cecilofficedoorexit = false
 var uix = 0
 var uiy = 601
 var inventorywindowopen = false
