@@ -27,7 +27,7 @@ var startmenuscene = new Phaser.Class({
 //preload
     preload: function ()
     {
-        
+this.load.image('cecilswordbox', 'assets/ui/cecil/cecilswordbox.png');
 this.load.image('startbackground', 'assets/menu/start/startmenuback.png');
 this.load.image('startbutton', 'assets/menu/start/startbutton.png');
 this.load.image('basemenubackfull', 'assets/menu/base/basemenufull.png');
@@ -78,6 +78,7 @@ this.load.spritesheet('arcade1', 'assets/stellar/arcade1.png', { frameWidth: 275
 this.load.spritesheet('arcade2', 'assets/stellar/arcade2.png', { frameWidth: 251, frameHeight: 141 });
 this.load.spritesheet('arcadecoindrop', 'assets/stellar/arcadecoindrop.png', { frameWidth: 190, frameHeight: 114 });
 this.load.spritesheet('stellarspiral', 'assets/stellar/stellarspiral.png', { frameWidth: 50, frameHeight: 50 });
+this.load.image('sword1', 'assets/weapons/sword1.png');
 this.load.image('cecilsofficedooropen', 'assets/stellar/cecilofficedooropen.png');
 this.load.image('adventureui', 'assets/ui/adventureui.png');
 this.load.image('inventorybutton', 'assets/ui/inventorybutton.png');
@@ -157,19 +158,19 @@ var basemenuscene = new Phaser.Class({
     {
       
     },
-//base
+
 create: function ()
 {
   
-this.input.setPollAlways();
-this.input.on('gameobjectover', function (pointer, gameObject) {
-gameObject.setTint(0xff0000);
-});
+             this.input.setPollAlways();
+        this.input.on('gameobjectover', function (pointer, gameObject) {
+        gameObject.setTint(0xff0000);
+    });
     
-this.input.on('gameobjectout', function (pointer, gameObject) {
-gameObject.clearTint();
-});
-this.basemenubackfull = this.add.sprite(0, 0, 'basemenubackfull').setOrigin(0, 0);
+        this.input.on('gameobjectout', function (pointer, gameObject) {
+        gameObject.clearTint();
+    });
+        this.basemenubackfull = this.add.sprite(0, 0, 'basemenubackfull').setOrigin(0, 0);
        
              var profilebutton = this.add.sprite(200, 200, 'profilebutton').setInteractive();
             profilebutton.on('pointerdown', function (pointer) {
@@ -181,23 +182,15 @@ this.basemenubackfull = this.add.sprite(0, 0, 'basemenubackfull').setOrigin(0, 0
             this.setTint(0xff0000);
           });
           
-         var upgradebutton = this.add.sprite(200, 300, 'upgradebutton').setInteractive();
-            upgradebutton.on('pointerdown', function (pointer) {
-            this.setTint(0xff0000);
-          });
-          
-           var lairbutton = this.add.sprite(1150, 500, 'lairbutton').setInteractive();
-            lairbutton.on('pointerdown', function (pointer) {
-            this.setTint(0xff0000);
-            
-        });
+      
         
-             var stellarbutton = this.add.sprite(1150, 125, 'stellarbutton').setInteractive();
+             var stellarbutton = this.add.sprite(650, 500, 'stellarbutton').setInteractive();
             stellarbutton.on('pointerdown', function (pointer) {
             this.setTint(0xff0000);
             game.scene.stop('basemenuscene')
             game.scene.start('uiscene');
             game.scene.start('stellarscene');
+            areaname = 'Stellar City'
             
         });
         
@@ -228,7 +221,7 @@ var stellarscene = new Phaser.Class({
     {
       
     },
-//stellar
+//stellarcreate
 create: function ()
 {
      
@@ -266,7 +259,53 @@ gameObject.clearTint();
 });
 
 player = this.physics.add.sprite(600, 482, 'cecil');
-     
+sword = this.physics.add.sprite(player.x , player.y - 13, 'sword1');
+sword.visible = false
+sword.rotation += 0.5;
+  
+attacktime = this.time.addEvent({ delay: 5, callback: attacktime, callbackScope: this, loop: true,startAt: 1 });
+
+function attacktime(){
+    if (cecilattacksword == true){
+      if (playerfacedirection == 'right'){
+        player.anims.play('sword', true);
+        sword.visible = true
+        sword.rotation += 0.2;
+        sword.y += 4;
+        sword.x += 1.6;
+    }
+        if (playerfacedirection == 'left'){
+        player.anims.play('sword', true);
+        sword.visible = true
+        sword.rotation -= 0.2;
+        sword.y += 4;
+        sword.x -= 1.6;
+    }
+      
+    }
+  
+  
+    if (sword.rotation > 2) {
+        cecilattacksword = false
+       player.anims.play('walk', true);
+        sword.visible = false
+        sword.rotation = 0
+        sword.y = player.y - 20
+        sword.x = player.x 
+    } 
+  
+      if (sword.rotation < -2) {
+        cecilattacksword = false
+       player.anims.play('walk', true);
+        sword.visible = false
+        sword.rotation = 0
+        sword.y = player.y - 20
+        sword.x = player.x 
+    } 
+
+}
+
+
 //stellaranim
     
     this.anims.create({
@@ -373,6 +412,13 @@ player = this.physics.add.sprite(600, 482, 'cecil');
         frameRate: 10,
         repeat: -1
     });
+  
+    this.anims.create({
+        key: 'sword',
+        frames: this.anims.generateFrameNumbers('cecil', { start: 11, end: 13 }),
+        frameRate: 5,
+        repeat: 0
+    });
 
    
 
@@ -381,9 +427,10 @@ cursors = this.input.keyboard.createCursorKeys();
 text = this.add.text(10, 10, 'Cursors to move', { font: '16px Courier', fill: '#00ff00' }).setScrollFactor(0);
 
 },
-//stellar
+//stellarupdate
 update: function (time, delta)
 {
+
 burger.anims.play('burgerwindowsplay', true);
 fingerdoor.anims.play('fingerdoor', true);
 stellardoor.anims.play('stellardoor', true);
@@ -485,6 +532,7 @@ gameObject.setTintFill(0xffff00, 0xffff00, 0xff0000, 0xff0000);
     if (cecilofficedooropen == true){
      game.scene.stop('stellarscene')
      game.scene.start('officescene')
+    areaname = 'The Office'
     }
     }
     
@@ -497,6 +545,7 @@ gameObject.setTintFill(0xffff00, 0xffff00, 0xff0000, 0xff0000);
 
     if (cursors.left.isDown)
     {
+    playerfacedirection = 'left'
     giftshopwindow.x += 1;
     cecilofficedooropen.x += 1;
     stellardoor.x += 1;
@@ -518,11 +567,12 @@ gameObject.setTintFill(0xffff00, 0xffff00, 0xff0000, 0xff0000);
     this.city.tilePositionX -= 1;
     this.airplane1.x += 0.5;
     player.setFlipX(false);
+
     }
     
     else if (cursors.right.isDown)
     {
-    
+    playerfacedirection = 'right'
     player.x += 1;
     player.anims.play('walk', true);
     player.setFlipX(true);
@@ -596,8 +646,9 @@ create: function ()
      this.officeroombackground = this.add.tileSprite(0, 0, 2000, 600, 'officeroombackground').setOrigin(0, 0);
      globescreen = this.physics.add.sprite(694, 92, 'globescreen').setOrigin(0, 0);
 
-    questmasteropenscreen = this.add.sprite(globescreen.x - 20, globescreen.y -20, 'questmasteropenscreen').setInteractive();
-    questmasteropenscreen.setOrigin(0, 0);
+   this.load.image('startbackground', 'assets/menu/start/startmenuback.png');
+   questmasteropenscreen = this.add.sprite(globescreen.x - 20, globescreen.y -20, 'questmasteropenscreen').setInteractive();
+   questmasteropenscreen.setOrigin(0, 0);
             questmasteropenscreen.on('pointerdown', function (pointer) {
             this.setTint(0xffffff);
             if (questmasteronquest == false){
@@ -605,7 +656,6 @@ create: function ()
             }
 
           });
-    
      questmasteropenscreen.visible = false
      questmasteropenscreenreq = this.physics.add.sprite(globescreen.x - 20, globescreen.y - 20, 'questmasteropenscreenreq').setOrigin(0, 0);
      questmasteropenscreenreq.visible = false
@@ -1097,6 +1147,7 @@ else if (scrollright == true)
       if (cecilofficedoorexit == true){
      game.scene.stop('officescene')
      game.scene.start('stellarscene')
+     areaname = 'Stellar City'
      cecilofficedoorexit = false
     }
     }
@@ -1166,6 +1217,8 @@ create: function ()
  diapermafiamessagescreen.visible = false
  diapermafiacallingscreen = this.add.sprite(160, 15, 'diapermafiacallingscreen').setOrigin(0, 0);
  diapermafiacallingscreen.visible = false
+
+
       
        this.input.setPollAlways();
         this.input.on('gameobjectover', function (pointer, gameObject) {
@@ -1188,7 +1241,17 @@ create: function ()
         gameObject.clearTint();
 
     });
-      
+
+  
+    
+    cecilswordbutton = this.add.sprite(34, 653, 'cecilswordbox').setInteractive();
+    cecilswordbutton.setOrigin(0, 0);
+    cecilswordbutton.on('pointerdown', function (pointer) {
+    this.setTint(0xff0000);
+    cecilattacksword = true
+    });
+    
+  
     yesbutton = this.add.sprite(600, 575, 'yesbutton').setInteractive();
     yesbutton.setOrigin(0, 0);
     yesbutton.on('pointerdown', function (pointer) {
@@ -1316,8 +1379,8 @@ create: function ()
     });
     cellphonebutton.visible = false
       
- name = this.add.text(uix + 605, uiy +6, 'Stellar City', { font: '30px Arial', fill: '#00ff00' }).setScrollFactor(0);
- charname = this.add.text(uix + 195, uiy +6, 'Cecil', { font: '30px Arial', fill: '#00ff00' }).setScrollFactor(0);
+ areanametxt = this.add.text(uix + 605, uiy +6, '', { font: '30px Arial', fill: '#00ff00' }).setScrollFactor(0);
+ charnametxt = this.add.text(uix + 195, uiy +6, 'Cecil', { font: '30px Arial', fill: '#00ff00' }).setScrollFactor(0);
  itemnametxt = this.add.text(615, 555, 'Cell Phone', { font: '23px Courier', fill: '#ffffff' }).setScrollFactor(0);
  itemnametxt.visible = false
       
@@ -1354,6 +1417,10 @@ update: function (time, delta)
        takeitemname
     ]);
       
+      areanametxt.setText([
+       areaname
+    ]);
+      
 }
 
 });
@@ -1379,15 +1446,18 @@ var config = {
 //var
 
 var player;
+var playerfacedirection = 'left'
 var cursors;
 var text;
 var scrollright = false
 var scrollleft = false
 var giftshopopenview = false
 var cecilofficedooropen = false
+var intheoffice = false
 var cecilofficedoorexit = false
 var uix = 0
 var uiy = 601
+var areaname = ''
 var inventorywindowopen = false
 var takeitemwindowopen = false
 var cellphonetaken = false
@@ -1417,6 +1487,7 @@ var questmasterquestspot3x = 0
 var questmasterquestspot3y = 0
 var questmasterquestspot4x = 0
 var questmasterquestspot4y = 0
+var cecilattacksword = false
 var game = new Phaser.Game(config);
 
 </script>
