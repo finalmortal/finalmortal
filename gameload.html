@@ -469,14 +469,20 @@ if (beginnayzramwandquest == true){
         if (player.x < trashcan.x + 5 ){
         if (cecilattacksword == true) {
             trashcan.rotation += 1.5;
-            trashcan.x += 45;
-            nayzramswand.x = player.x
+            trashcan.x += 80;
+            nayzramswand.x += 30;
+            takeitemname = 'Nayzrams Wand'
+            takeitembox.visible = true
+            takeitemwindowopen = true
+            
         }
     }
     }
 }
 
-
+if (beginnayzramwandquest == false){
+  nayzramswand.visible = false
+}
 
 
   if (this.city.tilePositionX < 0)
@@ -572,7 +578,8 @@ gameObject.setTintFill(0xffff00, 0xffff00, 0xff0000, 0xff0000);
     giftshopwindow.setAlpha(0);
     }
     }
-
+    
+  if (keyboardlock == false){
     if (cursors.left.isDown)
     {
     playerfacedirection = 'left'
@@ -644,14 +651,13 @@ gameObject.setTintFill(0xffff00, 0xffff00, 0xff0000, 0xff0000);
       player.anims.stop('walk', true);
       
 }
-
+}
 
 
 text.setText([
         'giftshop: ' + giftshopopenview,
         'world x: ' + this.input.mousePointer.worldX,
         'world y: ' + this.input.mousePointer.worldY,
-        trashcan.x,
         beginnayzramwandquest
     ]);
 }
@@ -710,8 +716,6 @@ create: function ()
      downpointer = this.physics.add.sprite(globescreen.x, globescreen.y, 'downpointer').setOrigin(0, 0);
      downpointer.visible = false
      player = this.physics.add.sprite(650, 482, 'cecil');
-     takeitembox = this.add.sprite(425, 528, 'takeitembox').setOrigin(0, 0);
-     takeitembox.visible = false
      phonemessagescreen = this.add.sprite(5, 10, 'phonemessagescreen').setOrigin(0, 0);
      phonemessagescreen.visible = false
      jackburtonmessagescreen = this.add.sprite(375, 15, 'jackburtonmessagescreen').setOrigin(0, 0);
@@ -1335,6 +1339,14 @@ create: function ()
         cellphoneinventory = true
         cellphonebutton.visible = true
     }
+   if (takeitemname = 'Nayzrams Wand'){
+        nayzramswandfound = true
+        takeitemwindowopen = false
+        beginnayzramwandquest = false
+        nayzramswand.visible = false
+        
+    }
+      
     });
         
     yesbutton.on('pointerup', function (pointer) {
@@ -1489,6 +1501,7 @@ update: function (time, delta)
       cellphonebutton.visible = true
     }
         if (takeitemwindowopen == true){
+        keyboardlock = true
         itemnametxt.visible = true
         takeitembox.visible = true
         yesbutton.visible = true
@@ -1496,6 +1509,7 @@ update: function (time, delta)
     }
 
     if (takeitemwindowopen == false){
+        keyboardlock = false
         itemnametxt.visible = false
         takeitembox.visible = false
         yesbutton.visible = false
@@ -1540,6 +1554,7 @@ var cursors;
 var text;
 var scrollright = false
 var scrollleft = false
+var keyboardlock = false
 var giftshopopenview = false
 var cecilofficedooropen = false
 var intheoffice = false
@@ -1551,6 +1566,7 @@ var inventorywindowopen = false
 var takeitemwindowopen = false
 var cellphonetaken = false
 var cellphoneinventory = false
+var nayzramwandfound = false
 var cellphonerings = false
 var cellphoneequip = false
 var phoneisanswered = false
