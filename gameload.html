@@ -80,12 +80,15 @@ this.load.spritesheet('arcadecoindrop', 'assets/stellar/arcadecoindrop.png', { f
 this.load.spritesheet('stellarspiral', 'assets/stellar/stellarspiral.png', { frameWidth: 50, frameHeight: 50 });
 this.load.image('trashcan', 'assets/stellar/trashcan.png');
 this.load.image('nayzramswand', 'assets/stellar/nayzramswand.png');
+this.load.image('nayzram', 'assets/stellar/nayzram.png');
 this.load.image('sword1', 'assets/weapons/sword1.png');
 this.load.image('cecilsofficedooropen', 'assets/stellar/cecilofficedooropen.png');
 this.load.image('adventureui', 'assets/ui/adventureui.png');
 this.load.image('inventorybutton', 'assets/ui/inventorybutton.png');
 this.load.image('inventoryscreenbackground', 'assets/ui/inventory/inventoryscreenbackground.png');
 this.load.image('takeitembox', 'assets/ui/takeitembox.png');
+this.load.image('cellphonename', 'assets/ui/cellphonename.png');
+this.load.image('nayzramwandname', 'assets/ui/nayzramwandname.png');
 this.load.image('yesbutton', 'assets/ui/yesbutton.png');
 this.load.image('nobutton', 'assets/ui/nobutton.png');
 this.load.image('cellphoneobject', 'assets/office/cellphoneobject.png');
@@ -94,6 +97,7 @@ this.load.image('cellphoneuibutton', 'assets/ui/cellphoneuibutton.png');
 this.load.image('phonemessagescreen', 'assets/ui/phonemessagescreen.png');
 this.load.image('nayzramcallingscreen', 'assets/ui/nayzramcallingscreen.png');
 this.load.image('nayzramwandmessagescreen', 'assets/ui/nayzramwandmessagescreen.png');
+this.load.image('nayzramwandfoundmessagescreen', 'assets/ui/nayzramwandfoundmessagescreen.png');
 this.load.image('jackburtoncallingscreen', 'assets/ui/jackburtoncallingscreen.png');
 this.load.image('jackburtonmessagescreen', 'assets/ui/jackburtonmessagescreen.png');
 this.load.image('diapermafiacallingscreen', 'assets/ui/themayorcallingscreen.png');
@@ -258,6 +262,9 @@ nayzramswand = this.physics.add.sprite(700, 485, 'nayzramswand');
 nayzramswand.visible = false
 trashcan = this.physics.add.sprite(700, 485, 'trashcan');
 trashcan.visible = false
+nayzram = this.physics.add.sprite(450, 485, 'nayzram');
+nayzram.setFlipX(true);
+nayzram.visible = false
 
 
 
@@ -474,6 +481,7 @@ if (beginnayzramwandquest == true){
             takeitemname = 'Nayzrams Wand'
             takeitembox.visible = true
             takeitemwindowopen = true
+            nayzramwandname.visible = true
             
         }
     }
@@ -504,7 +512,8 @@ if (beginnayzramwandquest == false){
     fingerarrow.x -= 1;
     stellarspiral.x -= 1;
     trashcan.x -= 1;
-    nayzramswand -= 1;
+    nayzramswand.x -= 1;
+    nayzram.x -= 1;
     player.x -= 1;
     }
 
@@ -599,6 +608,7 @@ gameObject.setTintFill(0xffff00, 0xffff00, 0xff0000, 0xff0000);
     stellarspiral.x += 1;
     trashcan.x += 1;
     nayzramswand.x += 1;
+    nayzram.x += 1;
     this.fiatpanda.x += 1;
     player.setVelocityX(-0);
     player.anims.play('walk', true);
@@ -635,6 +645,7 @@ gameObject.setTintFill(0xffff00, 0xffff00, 0xff0000, 0xff0000);
     stellarspiral.x -= 1;
     trashcan.x -= 1;
     nayzramswand.x -= 1;
+    nayzram.x -= 1;
     this.fiatpanda.x -= 1;
     this.airplane1.x -= 1;
     this.sky.tilePositionX += 0.9;
@@ -658,7 +669,9 @@ text.setText([
         'giftshop: ' + giftshopopenview,
         'world x: ' + this.input.mousePointer.worldX,
         'world y: ' + this.input.mousePointer.worldY,
-        beginnayzramwandquest
+        beginnayzramwandquest,
+        nayzramwandfound,
+        phoneisanswered
     ]);
 }
 });
@@ -809,7 +822,7 @@ create: function ()
 //Input Events
     cursors = this.input.keyboard.createCursorKeys();
 
- phoneringtime = this.time.addEvent({ delay: 1, callback: phonering, callbackScope: this, loop: true,startAt: 1 });
+ 
  questscreentxt = this.add.text(globescreen.x, globescreen.y - 15, 'Questmaster 2000', { font: '15px Courier', fill: '#00ff00' }).setScrollFactor(0);
  questscreentxt.visible = false
 
@@ -935,6 +948,7 @@ update: function (time, delta)
             if (player.x > cellphoneobject.x - 25 ){
          if (player.y > cellphoneobject.y - 75 ){
             takeitemname = 'Cell Phone'
+            cellphonename.visible = true
             takeitemwindowopen = true
             
 
@@ -1246,8 +1260,7 @@ text.setText([
         'world x: ' + this.input.mousePointer.worldX,
         'world y: ' + this.input.mousePointer.worldY,
         this.officeroombackground.tilePositionX,
-        player.x,
-        takeitemwindowopen,
+        takeitemname,
         cecilofficedoorexit,
         player.y,
         player.x
@@ -1276,17 +1289,23 @@ var uiscene = new Phaser.Class({
 create: function ()
 {
  this.adventureui = this.add.sprite(uix, uiy, 'adventureui').setOrigin(0, 0);
- takeitembox = this.add.sprite(425, 528, 'takeitembox').setOrigin(0, 0);
+ takeitembox = this.add.sprite(400, 500, 'takeitembox').setOrigin(0, 0);
  takeitembox.visible = false
+ cellphonename = this.add.sprite(675, 532, 'cellphonename').setOrigin(0, 0);
+ cellphonename.visible = false
+ nayzramwandname = this.add.sprite(665, 532, 'nayzramwandname').setOrigin(0, 0);
+ nayzramwandname.visible = false
  inventoryscreenbackground = this.add.sprite(5, 10, 'inventoryscreenbackground').setOrigin(0, 0);
  inventoryscreenbackground.visible = false
  phonemessagescreen = this.add.sprite(5, 10, 'phonemessagescreen').setOrigin(0, 0);
  phonemessagescreen.visible = false
  nayzramwandmessagescreen = this.add.sprite(375, 15, 'nayzramwandmessagescreen').setOrigin(0, 0);
  nayzramwandmessagescreen.visible = false
+ nayzramwandfoundmessagescreen = this.add.sprite(375, 15, 'nayzramwandfoundmessagescreen').setOrigin(0, 0);
+ nayzramwandfoundmessagescreen.visible = false
  nayzramcallingscreen = this.add.sprite(160, 15, 'nayzramcallingscreen').setOrigin(0, 0);
  nayzramcallingscreen.visible = false
- jackburtonmessagescreen = this.add.sprite(375, 15, 'jackburtonmessagescreen').setOrigin(0, 0);
+jackburtonmessagescreen = this.add.sprite(375, 15, 'jackburtonmessagescreen').setOrigin(0, 0);
  jackburtonmessagescreen.visible = false
  jackburtoncallingscreen = this.add.sprite(160, 15, 'jackburtoncallingscreen').setOrigin(0, 0);
  jackburtoncallingscreen.visible = false
@@ -1295,7 +1314,7 @@ create: function ()
  diapermafiacallingscreen = this.add.sprite(160, 15, 'diapermafiacallingscreen').setOrigin(0, 0);
  diapermafiacallingscreen.visible = false
 
-
+phoneringtime = this.time.addEvent({ delay: 1, callback: phonering, callbackScope: this, loop: true,startAt: 1 });
       
        this.input.setPollAlways();
         this.input.on('gameobjectover', function (pointer, gameObject) {
@@ -1329,21 +1348,26 @@ create: function ()
     });
     
   
-    yesbutton = this.add.sprite(600, 575, 'yesbutton').setInteractive();
+    yesbutton = this.add.sprite(650, 575, 'yesbutton').setInteractive();
     yesbutton.setOrigin(0, 0);
     yesbutton.on('pointerdown', function (pointer) {
     this.setTint(0xff0000);
-    if (takeitemname = 'Cell Phone'){
+    if (takeitemname == 'Cell Phone'){
         cellphonetaken = true
         takeitemwindowopen = false
         cellphoneinventory = true
         cellphonebutton.visible = true
+        cellphonename.visible = false
+        takeitemname = ''
     }
-   if (takeitemname = 'Nayzrams Wand'){
-        nayzramswandfound = true
+   if (takeitemname == 'Nayzrams Wand'){
+        nayzramwandfound = true
         takeitemwindowopen = false
         beginnayzramwandquest = false
         nayzramswand.visible = false
+        nayzramwandname.visible = false
+        cellphonerings = true
+        phoneisanswered = false
         
     }
       
@@ -1354,7 +1378,7 @@ create: function ()
     });
     yesbutton.visible = false
 
-    nobutton = this.add.sprite(700, 575, 'nobutton').setInteractive();
+    nobutton = this.add.sprite(750, 575, 'nobutton').setInteractive();
     nobutton.setOrigin(0, 0);
     nobutton.on('pointerdown', function (pointer) {
     this.setTint(0xff0000);
@@ -1387,6 +1411,14 @@ create: function ()
         nayzramcallingscreen.visible = false
         nayzramwandmessagescreen.visible = false
         onmywaybutton.visible = false
+    }
+     if (nayzramwandfound == true){
+        phonemessagescreen.visible = false
+        nayzramcallingscreen.visible = false
+        nayzramwandfoundmessagescreen.visible = false
+        onmywaybutton.visible = false
+        takeitemname = ''
+        nayzram.visible = true
     }
     });
         
@@ -1472,8 +1504,21 @@ create: function ()
             onmywaybutton.visible = true
     }
     }
+    if (nayzramwandfound == true){
+    if (phoneisanswered == false){
+            phonemessagescreen.visible = true
+            nayzramcallingscreen.visible = true
+            nayzramwandfoundmessagescreen.visible = true
+            cellphonerings = false
+            phoneisanswered = true
+            onmywaybutton.visible = true
+            
+    }
+    }
     }
     });
+
+
         
     cellphonebutton.on('pointerup', function (pointer) {
     this.clearTint();
@@ -1482,7 +1527,7 @@ create: function ()
       
  areanametxt = this.add.text(uix + 605, uiy +6, '', { font: '30px Arial', fill: '#00ff00' }).setScrollFactor(0);
  charnametxt = this.add.text(uix + 195, uiy +6, 'Cecil', { font: '30px Arial', fill: '#00ff00' }).setScrollFactor(0);
- itemnametxt = this.add.text(615, 555, 'Cell Phone', { font: '23px Courier', fill: '#ffffff' }).setScrollFactor(0);
+ itemnametxt = this.add.text(615, 555, '', { font: '23px Courier', fill: '#ffffff' }).setScrollFactor(0);
  itemnametxt.visible = false
       
 },
@@ -1516,9 +1561,7 @@ update: function (time, delta)
         nobutton.visible = false
     }
       
-      itemnametxt.setText([
-       takeitemname
-    ]);
+     
       
       areanametxt.setText([
        areaname
@@ -1528,6 +1571,26 @@ update: function (time, delta)
 
 });
 
+function phonering(){
+if (cellphonerings == true){
+if (cellphoneinventory == true){
+
+    cellphoneringtime += 10;
+if (cellphoneringtime > 50){
+    cellphonebutton.setTint(0x00ff00);
+   
+}
+if (cellphoneringtime > 100){
+    cellphonebutton.setTint(0xff0000);
+    
+}
+if (cellphoneringtime > 150){
+    cellphonebutton.clearTint();
+    cellphoneringtime = 0;
+}
+}
+}
+}
 
 var config = {
     type: Phaser.AUTO,
@@ -1566,7 +1629,6 @@ var inventorywindowopen = false
 var takeitemwindowopen = false
 var cellphonetaken = false
 var cellphoneinventory = false
-var nayzramwandfound = false
 var cellphonerings = false
 var cellphoneequip = false
 var phoneisanswered = false
@@ -1580,6 +1642,7 @@ var questmasternayzramwandquestshow = true
 var questmasternayzramwandquestselected = false
 var beginnayzramwandquest = false
 var nayzramwandquestcomplete = false
+var nayzramwandfound = false
 var questmasterjackburtonquestshow = false
 var questmasterjackburtonquestselected = false
 var beginjackburtonquest = false
