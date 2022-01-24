@@ -78,12 +78,16 @@ this.load.spritesheet('arcade1', 'assets/stellar/arcade1.png', { frameWidth: 275
 this.load.spritesheet('arcade2', 'assets/stellar/arcade2.png', { frameWidth: 251, frameHeight: 141 });
 this.load.spritesheet('arcadecoindrop', 'assets/stellar/arcadecoindrop.png', { frameWidth: 190, frameHeight: 114 });
 this.load.spritesheet('stellarspiral', 'assets/stellar/stellarspiral.png', { frameWidth: 50, frameHeight: 50 });
+this.load.spritesheet('stellarbridge1', 'assets/stellar/stellarbridge1.png', { frameWidth: 346, frameHeight: 375 });
 this.load.image('trashcan', 'assets/stellar/trashcan.png');
 this.load.image('nayzramswand', 'assets/stellar/nayzramswand.png');
 this.load.image('nayzram', 'assets/stellar/nayzram.png');
 this.load.image('sword1', 'assets/weapons/sword1.png');
 this.load.image('cecilsofficedooropen', 'assets/stellar/cecilofficedooropen.png');
 this.load.image('adventureui', 'assets/ui/adventureui.png');
+this.load.image('speechbubble', 'assets/ui/speech/speechbubble.png');
+this.load.image('speechnayzramwandreward1', 'assets/ui/speech/speechnayzramwandreward1.png');
+this.load.image('speechnayzramwandreward2', 'assets/ui/speech/speechnayzramwandreward2.png');
 this.load.image('inventorybutton', 'assets/ui/inventorybutton.png');
 this.load.image('inventoryscreenbackground', 'assets/ui/inventory/inventoryscreenbackground.png');
 this.load.image('takeitembox', 'assets/ui/takeitembox.png');
@@ -236,6 +240,7 @@ create: function ()
      
 this.back = this.add.sprite(0, 0, 'back').setOrigin(0, 0);
 this.sky = this.add.tileSprite(0, 0, 4000, 600, 'sky').setOrigin(0, 0);
+stellarbridge1 = this.physics.add.sprite(-145, 250, 'stellarbridge1').setOrigin(0, 0);
 this.back2= this.add.tileSprite(0, 0, 1400, 875, 'back2').setOrigin(0, 0);
 this.airplane1 = this.add.sprite(3000, 100, 'airplane1')
 copter1 = this.physics.add.sprite(1600, 150, 'copter1');
@@ -262,7 +267,7 @@ nayzramswand = this.physics.add.sprite(700, 485, 'nayzramswand');
 nayzramswand.visible = false
 trashcan = this.physics.add.sprite(700, 485, 'trashcan');
 trashcan.visible = false
-nayzram = this.physics.add.sprite(450, 485, 'nayzram');
+nayzram = this.physics.add.sprite(350, 485, 'nayzram');
 nayzram.setFlipX(true);
 nayzram.visible = false
 
@@ -326,6 +331,13 @@ function attacktime(){
 
 //stellaranim
     
+    this.anims.create({
+        key: 'stellarbridgeplay',
+        frames: this.anims.generateFrameNumbers('stellarbridge1', { start: 0, end: 9 }),
+        frameRate: 10,
+        repeat: -1
+    });
+
     this.anims.create({
         key: 'trianglerotateplay',
         frames: this.anims.generateFrameNumbers('trianglerotate', { start: 0, end: 14 }),
@@ -448,7 +460,7 @@ text = this.add.text(10, 10, 'Cursors to move', { font: '16px Courier', fill: '#
 //stellarupdate
 update: function (time, delta)
 {
-
+stellarbridge1.anims.play('stellarbridgeplay', true);
 burger.anims.play('burgerwindowsplay', true);
 fingerdoor.anims.play('fingerdoor', true);
 stellardoor.anims.play('stellardoor', true);
@@ -497,6 +509,7 @@ if (beginnayzramwandquest == false){
     {
     this.city.tilePositionX += 1;
     this.back2.tilePositionX += 0.5;
+    stellarbridge1.x -= 1;
     giftshopwindow.x -= 1;
     cecilofficedooropen.x -= 1;
     stellardoor.x -= 1;
@@ -515,6 +528,13 @@ if (beginnayzramwandquest == false){
     nayzramswand.x -= 1;
     nayzram.x -= 1;
     player.x -= 1;
+    }
+
+    if (nayzram.visible == true){
+        if (player.x < nayzram.x +25){
+            speechbubbleshow = true
+            nayzramwandquestend = true
+        }
     }
 
 if (player.x > cecilofficedooropen.x -20)
@@ -592,6 +612,7 @@ gameObject.setTintFill(0xffff00, 0xffff00, 0xff0000, 0xff0000);
     if (cursors.left.isDown)
     {
     playerfacedirection = 'left'
+    stellarbridge1.x += 1;
     giftshopwindow.x += 1;
     cecilofficedooropen.x += 1;
     stellardoor.x += 1;
@@ -629,6 +650,7 @@ gameObject.setTintFill(0xffff00, 0xffff00, 0xff0000, 0xff0000);
 
     if (player.x > 648){
     player.x -= 1;
+    stellarbridge1.x -= 1;
     giftshopwindow.x -= 1;
     cecilofficedooropen.x -= 1;
     stellardoor.x -= 1;
@@ -1305,7 +1327,7 @@ create: function ()
  nayzramwandfoundmessagescreen.visible = false
  nayzramcallingscreen = this.add.sprite(160, 15, 'nayzramcallingscreen').setOrigin(0, 0);
  nayzramcallingscreen.visible = false
-jackburtonmessagescreen = this.add.sprite(375, 15, 'jackburtonmessagescreen').setOrigin(0, 0);
+ jackburtonmessagescreen = this.add.sprite(375, 15, 'jackburtonmessagescreen').setOrigin(0, 0);
  jackburtonmessagescreen.visible = false
  jackburtoncallingscreen = this.add.sprite(160, 15, 'jackburtoncallingscreen').setOrigin(0, 0);
  jackburtoncallingscreen.visible = false
@@ -1313,7 +1335,14 @@ jackburtonmessagescreen = this.add.sprite(375, 15, 'jackburtonmessagescreen').se
  diapermafiamessagescreen.visible = false
  diapermafiacallingscreen = this.add.sprite(160, 15, 'diapermafiacallingscreen').setOrigin(0, 0);
  diapermafiacallingscreen.visible = false
+ speechnayzramwandfound1 = this.add.sprite(300, 15, 'speechnayzramwandreward1').setOrigin(0, 0);
+ speechnayzramwandfound1.visible = false
+ speechnayzramwandfound2 = this.add.sprite(300, 15, 'speechnayzramwandreward2').setOrigin(0, 0);
+ speechnayzramwandfound2.visible = false
+ speechbubble = this.add.sprite(300, 15, 'speechbubble').setOrigin(0, 0);
+ speechbubble.visible = false
 
+speechtime = this.time.addEvent({ delay: 2000, callback: speechtime, callbackScope: this, loop: true,startAt: 1 });
 phoneringtime = this.time.addEvent({ delay: 1, callback: phonering, callbackScope: this, loop: true,startAt: 1 });
       
        this.input.setPollAlways();
@@ -1512,6 +1541,7 @@ phoneringtime = this.time.addEvent({ delay: 1, callback: phonering, callbackScop
             cellphonerings = false
             phoneisanswered = true
             onmywaybutton.visible = true
+            speechtext = 'nayzramreward1'
             
     }
     }
@@ -1529,6 +1559,33 @@ phoneringtime = this.time.addEvent({ delay: 1, callback: phonering, callbackScop
  charnametxt = this.add.text(uix + 195, uiy +6, 'Cecil', { font: '30px Arial', fill: '#00ff00' }).setScrollFactor(0);
  itemnametxt = this.add.text(615, 555, '', { font: '23px Courier', fill: '#ffffff' }).setScrollFactor(0);
  itemnametxt.visible = false
+
+ if (nayzramwandquestend == true){
+    speechtexttime = 35
+ }
+
+     function speechtime(){
+        if (nayzramwandquestend == true){
+        speechtexttime -= 1;
+        if (speechtext == 'nayzramreward1'){
+            if (speechtexttime < 10) {
+                speechnayzramwandfound1.visible = false
+                speechnayzramwandfound2.visible = true
+            }
+        if (speechtexttime < 1) {
+                nayzram.x = -1000
+                speechnayzramwandfound1.visible = false
+                speechnayzramwandfound2.visible = false
+                nayzram.visible = false
+                nayzramwandquestend = false
+
+
+            }
+
+
+        }
+        }
+     }
       
 },
 //ui
@@ -1561,7 +1618,17 @@ update: function (time, delta)
         nobutton.visible = false
     }
       
-     
+     if (speechbubbleshow == true){
+        speechbubble.visible = true
+        if (speechtext == 'nayzramreward1'){
+            speechnayzramwandfound1.visible = true
+            speechbubble.x = nayzram.x + 5
+            speechnayzramwandfound1.x = nayzram.x + 5
+            speechnayzramwandfound2.x = nayzram.x + 5
+     }
+     }
+
+
       
       areanametxt.setText([
        areaname
@@ -1615,6 +1682,9 @@ var player;
 var playerfacedirection = 'left'
 var cursors;
 var text;
+var speechbubbleshow = false
+var speechtext = ''
+var speechtexttime = 5
 var scrollright = false
 var scrollleft = false
 var keyboardlock = false
@@ -1643,6 +1713,7 @@ var questmasternayzramwandquestselected = false
 var beginnayzramwandquest = false
 var nayzramwandquestcomplete = false
 var nayzramwandfound = false
+var nayzramwandquestend = false
 var questmasterjackburtonquestshow = false
 var questmasterjackburtonquestselected = false
 var beginjackburtonquest = false
