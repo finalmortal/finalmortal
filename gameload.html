@@ -263,9 +263,9 @@ cecilofficedooropen.visible = false
 this.fiatpanda = this.add.sprite(2490, 470, 'fiatpanda')
 this.redcar1 = this.add.sprite(5000, 487, 'redcar1')
 this.bluecar1 = this.add.sprite(-1000, 483, 'bluecar1')
-nayzramswand = this.physics.add.sprite(700, 485, 'nayzramswand');
+nayzramswand = this.physics.add.sprite(3500, 485, 'nayzramswand');
 nayzramswand.visible = false
-trashcan = this.physics.add.sprite(700, 485, 'trashcan');
+trashcan = this.physics.add.sprite(3500, 485, 'trashcan');
 trashcan.visible = false
 nayzram = this.physics.add.sprite(350, 485, 'nayzram');
 nayzram.setFlipX(true);
@@ -935,6 +935,7 @@ function hidequestmaster() {
     questmasternayzramwandquestquote.visible = false
     questmasterjackburtonquestquote.visible = false
     questmasterdiapermafiaquestquote.visible = false
+    questmasternayzramwandquestselected = false
     questmasteravailscreen.visible = false
     questmasterbeginquestbutton.visible = false
 
@@ -1040,7 +1041,6 @@ update: function (time, delta)
     questmasterjackburtonbutton.x = questmasterloginscreen.x + 385
     questmasterjackburtonbutton.y = questmasterloginscreen.y + 220
     questmasterjackburtonbutton.visible = true
-
     if (questmasterjackburtonquestselected == true){
         questmasterjackburtonquestquote.x = questmasterloginscreen.x + 195
         questmasterjackburtonquestquote.y = questmasterloginscreen.y + 290
@@ -1057,7 +1057,7 @@ update: function (time, delta)
      if (questmasterdiapermafiaquestshow == true){
      if (diapermafiaquestcomplete == false){
       questmasterdiapermafiabutton.x = questmasterloginscreen.x + 380
-      questmasterdiapermafiabutton.y = questmasterloginscreen.y + 290
+      questmasterdiapermafiabutton.y = questmasterloginscreen.y + 220
       questmasterdiapermafiabutton.visible = true
 
      if (questmasterdiapermafiaquestselected == true){
@@ -1576,6 +1576,10 @@ phoneringtime = this.time.addEvent({ delay: 1, callback: phonering, callbackScop
                 nayzram.x = -1000
                 speechnayzramwandfound1.visible = false
                 speechnayzramwandfound2.visible = false
+                questmasternayzrimwandquestshow = false
+                phoneisanswered = false
+                questmasterdiapermafiaquestshow = true
+                questmasteronquest = false
                 nayzram.visible = false
                 nayzramwandquestend = false
 
