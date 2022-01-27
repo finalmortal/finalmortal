@@ -3,7 +3,7 @@
 <head> 
     <meta charset="UTF-8" />
     <title>Final Mortal Fantasy Kombat Alpha 0.1</title>
-    <script src="//cdn.jsdelivr.net/npm/phaser@3.11.0/dist/phaser.js"></script>
+    <script src="phaser.js"></script>
     <style type="text/css">
         body {
             margin: 0;
@@ -84,6 +84,8 @@ this.load.image('nayzramswand', 'assets/stellar/nayzramswand.png');
 this.load.image('nayzram', 'assets/stellar/nayzram.png');
 this.load.image('sword1', 'assets/weapons/sword1.png');
 this.load.image('cecilsofficedooropen', 'assets/stellar/cecilofficedooropen.png');
+this.load.image('cityoutskirtsbackground', 'assets/stellar/cityoutskirtsbackground.png');
+this.load.image('graveyardgatesbackground', 'assets/graveyard/graveyardgatesbackground.png');
 this.load.image('adventureui', 'assets/ui/adventureui.png');
 this.load.image('speechbubble', 'assets/ui/speech/speechbubble.png');
 this.load.image('speechnayzramwandreward1', 'assets/ui/speech/speechnayzramwandreward1.png');
@@ -91,8 +93,7 @@ this.load.image('speechnayzramwandreward2', 'assets/ui/speech/speechnayzramwandr
 this.load.image('inventorybutton', 'assets/ui/inventorybutton.png');
 this.load.image('inventoryscreenbackground', 'assets/ui/inventory/inventoryscreenbackground.png');
 this.load.image('takeitembox', 'assets/ui/takeitembox.png');
-this.load.image('cellphonename', 'assets/ui/cellphonename.png');
-this.load.image('nayzramwandname', 'assets/ui/nayzramwandname.png');
+this.load.spritesheet('itemnames', 'assets/ui/inventory/itemnames.png', { frameWidth: 350, frameHeight: 27 });
 this.load.image('yesbutton', 'assets/ui/yesbutton.png');
 this.load.image('nobutton', 'assets/ui/nobutton.png');
 this.load.image('cellphoneobject', 'assets/office/cellphoneobject.png');
@@ -200,10 +201,12 @@ create: function ()
              var stellarbutton = this.add.sprite(700, 500, 'stellarbutton').setInteractive();
             stellarbutton.on('pointerdown', function (pointer) {
             this.setTint(0xff0000);
+            playerx = 5
+            playery = 325
             game.scene.stop('basemenuscene')
             game.scene.start('uiscene');
             game.scene.start('stellarscene');
-            areaname = 'Stellar City'
+            areaname = '     Stellar City'
             
         });
         
@@ -260,14 +263,18 @@ stellardoor = this.physics.add.sprite(2205, 448, 'stellardoor').setAlpha(0);
 giftshopwindow = this.physics.add.sprite(2200, 217, 'giftshopwindow').setAlpha(0);
 cecilofficedooropen = this.physics.add.sprite(163, 398, 'cecilsofficedooropen').setOrigin(0, 0);
 cecilofficedooropen.visible = false
-this.fiatpanda = this.add.sprite(2490, 470, 'fiatpanda')
-this.redcar1 = this.add.sprite(5000, 487, 'redcar1')
-this.bluecar1 = this.add.sprite(-1000, 483, 'bluecar1')
-nayzramswand = this.physics.add.sprite(3500, 485, 'nayzramswand');
+nayzramswand = this.physics.add.sprite(3400, 485, 'nayzramswand');
 nayzramswand.visible = false
-trashcan = this.physics.add.sprite(3500, 485, 'trashcan');
+trashcan = this.physics.add.sprite(3400, 485, 'trashcan');
 trashcan.visible = false
-nayzram = this.physics.add.sprite(350, 485, 'nayzram');
+player = this.physics.add.sprite(600, 482, 'cecil');
+sword = this.physics.add.sprite(player.x , player.y - 13, 'sword1');
+sword.visible = false
+sword.rotation += 0.5;
+this.fiatpanda = this.add.sprite(2490, 470, 'fiatpanda')
+this.redcar1 = this.add.sprite(5000, 510, 'redcar1')
+this.bluecar1 = this.add.sprite(-1000, 550, 'bluecar1')
+nayzram = this.physics.add.sprite(350, 489, 'nayzram');
 nayzram.setFlipX(true);
 nayzram.visible = false
 
@@ -281,10 +288,7 @@ this.input.on('gameobjectout', function (pointer, gameObject) {
 gameObject.clearTint();
 });
 
-player = this.physics.add.sprite(600, 482, 'cecil');
-sword = this.physics.add.sprite(player.x , player.y - 13, 'sword1');
-sword.visible = false
-sword.rotation += 0.5;
+
   
 attacktime = this.time.addEvent({ delay: 5, callback: attacktime, callbackScope: this, loop: true,startAt: 1 });
 
@@ -483,8 +487,9 @@ this.redcar1.x -= 4;
 if (beginnayzramwandquest == true){
     trashcan.visible = true
     nayzramswand.visible = true
-
+     
     if (player.x > trashcan.x - 25){
+        keyboardlock = true
         if (player.x < trashcan.x + 5 ){
         if (cecilattacksword == true) {
             trashcan.rotation += 1.5;
@@ -492,12 +497,23 @@ if (beginnayzramwandquest == true){
             nayzramswand.x += 30;
             takeitemname = 'Nayzrams Wand'
             takeitembox.visible = true
+            itemnames.visible = true
+            itemnames.anims.play('itemnamenayzramwand', true);
             takeitemwindowopen = true
-            nayzramwandname.visible = true
+            
+            
             
         }
     }
     }
+}
+
+if (player.x > 1360){
+        playerx = 25
+        playery = 500
+         game.scene.stop('stellarscene')
+         game.scene.start('cityoutskirtsscene');
+         areaname = 'City Outskirts'
 }
 
 if (beginnayzramwandquest == false){
@@ -528,6 +544,31 @@ if (beginnayzramwandquest == false){
     nayzramswand.x -= 1;
     nayzram.x -= 1;
     player.x -= 1;
+    }
+
+     if (this.city.tilePositionX > 6635)
+    {
+    this.city.tilePositionX -= 1;
+    this.back2.tilePositionX -= 0.5;
+    stellarbridge1.x += 1;
+    giftshopwindow.x += 1;
+    cecilofficedooropen.x += 1;
+    stellardoor.x += 1;
+    fingerdoor.x += 1;
+    ramen.x += 1;
+    arcade1.x += 1;
+    arcade2.x += 1;
+    arcadecoindrop.x +=1;
+    burger.x += 1;
+    smokeface.x += 1;
+    fingertop.x += 1;
+    thefinger.x += 1;
+    fingerarrow.x += 1;
+    stellarspiral.x += 1;
+    trashcan.x += 1;
+    nayzramswand.x += 1;
+    nayzram.x += 1;
+    player.x += 1;
     }
 
     if (nayzram.visible == true){
@@ -597,7 +638,7 @@ gameObject.setTintFill(0xffff00, 0xffff00, 0xff0000, 0xff0000);
     if (cecilofficedooropen == true){
      game.scene.stop('stellarscene')
      game.scene.start('officescene')
-    areaname = 'The Office'
+    areaname = '     The Office'
     }
     }
     
@@ -612,6 +653,12 @@ gameObject.setTintFill(0xffff00, 0xffff00, 0xff0000, 0xff0000);
     if (cursors.left.isDown)
     {
     playerfacedirection = 'left'
+    player.x -= 1;
+    player.anims.play('walk', true);
+    player.setFlipX(false);
+
+    if (player.x < 650){
+    player.x += 1;
     stellarbridge1.x += 1;
     giftshopwindow.x += 1;
     cecilofficedooropen.x += 1;
@@ -632,12 +679,10 @@ gameObject.setTintFill(0xffff00, 0xffff00, 0xff0000, 0xff0000);
     nayzram.x += 1;
     this.fiatpanda.x += 1;
     player.setVelocityX(-0);
-    player.anims.play('walk', true);
     this.back2.tilePositionX -= 0.5;
     this.city.tilePositionX -= 1;
     this.airplane1.x += 0.5;
-    player.setFlipX(false);
-
+    }
     }
     
     else if (cursors.right.isDown)
@@ -691,9 +736,347 @@ text.setText([
         'giftshop: ' + giftshopopenview,
         'world x: ' + this.input.mousePointer.worldX,
         'world y: ' + this.input.mousePointer.worldY,
-        beginnayzramwandquest,
-        nayzramwandfound,
+        this.city.tilePositionX,
+        player.x,
         phoneisanswered
+    ]);
+}
+});
+
+//cityoutskirts
+var cityoutskirtsscene = new Phaser.Class({
+
+    Extends: Phaser.Scene,
+
+    initialize:
+
+    function cityoutskirtsscene ()
+    {
+        Phaser.Scene.call(this, { key: 'cityoutskirtsscene' });
+    },
+
+    preload: function ()
+    {
+      
+    },
+
+create: function ()
+{
+        
+       
+        this.cityoutskirtsbackground = this.add.sprite(0, 0, 'cityoutskirtsbackground').setOrigin(0, 0);
+        player = this.physics.add.sprite(playerx, playery, 'cecil');
+        sword = this.physics.add.sprite(player.x , player.y - 13, 'sword1');
+        sword.visible = false
+        sword.rotation += 0.5;
+
+attacktime = this.time.addEvent({ delay: 5, callback: attacktime, callbackScope: this, loop: true,startAt: 1 });
+
+function attacktime(){
+    if (cecilattacksword == true){
+      if (playerfacedirection == 'right'){
+        player.anims.play('sword', true);
+        sword.visible = true
+        sword.rotation += 0.2;
+        sword.y += 4;
+        sword.x += 1.6;
+    }
+        if (playerfacedirection == 'left'){
+        player.anims.play('sword', true);
+        sword.visible = true
+        sword.rotation -= 0.2;
+        sword.y += 4;
+        sword.x -= 1.6;
+    }
+      
+    }
+  
+  
+    if (sword.rotation > 2) {
+        cecilattacksword = false
+       player.anims.play('walk', true);
+        sword.visible = false
+        sword.rotation = 0
+        sword.y = player.y - 20
+        sword.x = player.x 
+    } 
+  
+      if (sword.rotation < -2) {
+        cecilattacksword = false
+       player.anims.play('walk', true);
+        sword.visible = false
+        sword.rotation = 0
+        sword.y = player.y - 20
+        sword.x = player.x 
+    } 
+
+}
+
+ this.input.setPollAlways();
+        this.input.on('gameobjectover', function (pointer, gameObject) {
+        gameObject.setTint(0xff0000);
+    });
+    
+        this.input.on('gameobjectout', function (pointer, gameObject) {
+        gameObject.clearTint();
+    });        
+
+        this.anims.create({
+        key: 'walk',
+        frames: this.anims.generateFrameNumbers('cecil', { start: 0, end: 1 }),
+        frameRate: 10,
+        repeat: -1
+    });
+  
+    this.anims.create({
+        key: 'sword',
+        frames: this.anims.generateFrameNumbers('cecil', { start: 11, end: 13 }),
+        frameRate: 5,
+        repeat: 0
+    });
+
+    cursors = this.input.keyboard.createCursorKeys();
+    text = this.add.text(10, 10, 'Cursors to move', { font: '16px Courier', fill: '#00ff00' }).setScrollFactor(0);
+        
+},
+
+update: function (time, delta)
+{
+
+  if (playerx > 1365){
+        playerx = 25
+        playery = 500
+         game.scene.stop('cityoutskirtsscene')
+         game.scene.start('graveyardgatesscene');
+         areaname = 'Graveyard Gates'
+     }
+
+  if (keyboardlock == false){
+    if (cursors.left.isDown)
+    {
+    playerfacedirection = 'left'
+    player.x -= 1;
+    player.setVelocityX(-0);
+    player.anims.play('walk', true);
+    player.setFlipX(false);
+    playerx -= 1;
+
+    }
+    
+    else if (cursors.right.isDown)
+    {
+    playerfacedirection = 'right'
+    player.x += 1;
+    player.anims.play('walk', true);
+    player.setFlipX(true);
+    playerx += 1;
+     
+    }
+
+    else if (cursors.up.isDown)
+    {
+        if (player.y > 315) {
+
+    player.y -= 1;
+    player.anims.play('walk', true);
+    }
+    } 
+ 
+    
+    else if (cursors.down.isDown)
+    {
+        if (player.y < 565){
+    player.y += 1;
+    player.anims.play('walk', true);
+    }
+    }
+    
+    else
+    {
+      player.setVelocityX(0);
+      player.anims.stop('walk', true);
+      
+}
+}
+     
+
+text.setText([
+        'giftshop: ' + giftshopopenview,
+        'world x: ' + this.input.mousePointer.worldX,
+        'world y: ' + this.input.mousePointer.worldY,
+        player.x,
+        playerx,
+        player.y
+        
+    ]);
+}
+});
+
+//graveyardgates
+var graveyardgatesscene = new Phaser.Class({
+
+    Extends: Phaser.Scene,
+
+    initialize:
+
+    function graveyardgatesscene ()
+    {
+        Phaser.Scene.call(this, { key: 'graveyardgatesscene' });
+    },
+
+    preload: function ()
+    {
+      
+    },
+
+create: function ()
+{
+       
+       
+        this.graveyardgatesbackground = this.add.sprite(0, 0, 'graveyardgatesbackground').setOrigin(0, 0);
+        player = this.physics.add.sprite(playerx, playery, 'cecil');
+        sword = this.physics.add.sprite(player.x , player.y - 13, 'sword1');
+        sword.visible = false
+        sword.rotation += 0.5;
+
+attacktime = this.time.addEvent({ delay: 5, callback: attacktime, callbackScope: this, loop: true,startAt: 1 });
+
+function attacktime(){
+    if (cecilattacksword == true){
+      if (playerfacedirection == 'right'){
+        player.anims.play('sword', true);
+        sword.visible = true
+        sword.rotation += 0.2;
+        sword.y += 4;
+        sword.x += 1.6;
+    }
+        if (playerfacedirection == 'left'){
+        player.anims.play('sword', true);
+        sword.visible = true
+        sword.rotation -= 0.2;
+        sword.y += 4;
+        sword.x -= 1.6;
+    }
+      
+    }
+  
+  
+    if (sword.rotation > 2) {
+        cecilattacksword = false
+       player.anims.play('walk', true);
+        sword.visible = false
+        sword.rotation = 0
+        sword.y = player.y - 20
+        sword.x = player.x 
+    } 
+  
+      if (sword.rotation < -2) {
+        cecilattacksword = false
+       player.anims.play('walk', true);
+        sword.visible = false
+        sword.rotation = 0
+        sword.y = player.y - 20
+        sword.x = player.x 
+    } 
+
+}
+
+ this.input.setPollAlways();
+        this.input.on('gameobjectover', function (pointer, gameObject) {
+        gameObject.setTint(0xff0000);
+    });
+    
+        this.input.on('gameobjectout', function (pointer, gameObject) {
+        gameObject.clearTint();
+    });        
+
+        this.anims.create({
+        key: 'walk',
+        frames: this.anims.generateFrameNumbers('cecil', { start: 0, end: 1 }),
+        frameRate: 10,
+        repeat: -1
+    });
+  
+    this.anims.create({
+        key: 'sword',
+        frames: this.anims.generateFrameNumbers('cecil', { start: 11, end: 13 }),
+        frameRate: 5,
+        repeat: 0
+    });
+
+    cursors = this.input.keyboard.createCursorKeys();
+    text = this.add.text(10, 10, 'Cursors to move', { font: '16px Courier', fill: '#00ff00' }).setScrollFactor(0);
+        
+},
+
+update: function (time, delta)
+{
+
+   if (playerx < 0){
+            playerx = 1200
+            playery = 325
+            game.scene.stop('graveyardgatesscene')
+            game.scene.start('cityoutskirtsscene');
+            areaname = '      Outskirts'
+   }
+
+  if (keyboardlock == false){
+    if (cursors.left.isDown)
+    {
+    playerfacedirection = 'left'
+    player.x -= 1;
+    playerx -= 1;
+    player.setVelocityX(-0);
+    player.anims.play('walk', true);
+    player.setFlipX(false);
+
+    }
+    
+    else if (cursors.right.isDown)
+    {
+    playerfacedirection = 'right'
+    player.x += 1;
+    playerx += 1;
+    player.anims.play('walk', true);
+    player.setFlipX(true);
+    
+     
+    }
+
+    else if (cursors.up.isDown)
+    {
+        if (player.y > 315) {
+
+    player.y -= 1;
+    player.anims.play('walk', true);
+    }
+    } 
+ 
+    
+    else if (cursors.down.isDown)
+    {
+        if (player.y < 565){
+    player.y += 1;
+    player.anims.play('walk', true);
+    }
+    }
+    
+    else
+    {
+      player.setVelocityX(0);
+      player.anims.stop('walk', true);
+      
+}
+}
+     
+text.setText([
+        'giftshop: ' + giftshopopenview,
+        'world x: ' + this.input.mousePointer.worldX,
+        'world y: ' + this.input.mousePointer.worldY,
+        player.x,
+        playerx,
+        player.y
+        
     ]);
 }
 });
@@ -935,7 +1318,6 @@ function hidequestmaster() {
     questmasternayzramwandquestquote.visible = false
     questmasterjackburtonquestquote.visible = false
     questmasterdiapermafiaquestquote.visible = false
-    questmasternayzramwandquestselected = false
     questmasteravailscreen.visible = false
     questmasterbeginquestbutton.visible = false
 
@@ -970,8 +1352,10 @@ update: function (time, delta)
          if (player.y < cellphoneobject.y + 75 ){
             if (player.x > cellphoneobject.x - 25 ){
          if (player.y > cellphoneobject.y - 75 ){
+            keyboardlock = true
             takeitemname = 'Cell Phone'
-            cellphonename.visible = true
+            itemnames.visible = true
+            itemnames.anims.play('itemnamecellphone', true);
             takeitemwindowopen = true
             
 
@@ -1041,6 +1425,7 @@ update: function (time, delta)
     questmasterjackburtonbutton.x = questmasterloginscreen.x + 385
     questmasterjackburtonbutton.y = questmasterloginscreen.y + 220
     questmasterjackburtonbutton.visible = true
+
     if (questmasterjackburtonquestselected == true){
         questmasterjackburtonquestquote.x = questmasterloginscreen.x + 195
         questmasterjackburtonquestquote.y = questmasterloginscreen.y + 290
@@ -1057,7 +1442,7 @@ update: function (time, delta)
      if (questmasterdiapermafiaquestshow == true){
      if (diapermafiaquestcomplete == false){
       questmasterdiapermafiabutton.x = questmasterloginscreen.x + 380
-      questmasterdiapermafiabutton.y = questmasterloginscreen.y + 220
+      questmasterdiapermafiabutton.y = questmasterloginscreen.y + 290
       questmasterdiapermafiabutton.visible = true
 
      if (questmasterdiapermafiaquestselected == true){
@@ -1185,6 +1570,7 @@ questmasteropenscreenreq.visible = false
 
     
 //office
+if (keyboardlock == false){
 if (scrollleft == true)
     {
   
@@ -1260,7 +1646,7 @@ else if (scrollright == true)
      cecilofficedoorexit = false
     }
     }
-    
+
  
     
     else if (cursors.down.isDown)
@@ -1268,6 +1654,7 @@ else if (scrollright == true)
     player.y += 1;
     player.anims.play('walk', true);
     }
+}
 
     else
     {
@@ -1311,12 +1698,10 @@ var uiscene = new Phaser.Class({
 create: function ()
 {
  this.adventureui = this.add.sprite(uix, uiy, 'adventureui').setOrigin(0, 0);
- takeitembox = this.add.sprite(400, 500, 'takeitembox').setOrigin(0, 0);
+ takeitembox = this.add.sprite(350, 480, 'takeitembox').setOrigin(0, 0);
  takeitembox.visible = false
- cellphonename = this.add.sprite(675, 532, 'cellphonename').setOrigin(0, 0);
- cellphonename.visible = false
- nayzramwandname = this.add.sprite(665, 532, 'nayzramwandname').setOrigin(0, 0);
- nayzramwandname.visible = false
+ itemnames = this.add.sprite(525, 515, 'itemnames').setOrigin(0, 0);
+ itemnames.visible = false
  inventoryscreenbackground = this.add.sprite(5, 10, 'inventoryscreenbackground').setOrigin(0, 0);
  inventoryscreenbackground.visible = false
  phonemessagescreen = this.add.sprite(5, 10, 'phonemessagescreen').setOrigin(0, 0);
@@ -1377,7 +1762,7 @@ phoneringtime = this.time.addEvent({ delay: 1, callback: phonering, callbackScop
     });
     
   
-    yesbutton = this.add.sprite(650, 575, 'yesbutton').setInteractive();
+    yesbutton = this.add.sprite(625, 555, 'yesbutton').setInteractive();
     yesbutton.setOrigin(0, 0);
     yesbutton.on('pointerdown', function (pointer) {
     this.setTint(0xff0000);
@@ -1386,18 +1771,19 @@ phoneringtime = this.time.addEvent({ delay: 1, callback: phonering, callbackScop
         takeitemwindowopen = false
         cellphoneinventory = true
         cellphonebutton.visible = true
-        cellphonename.visible = false
+        itemnames.visible = false
         takeitemname = ''
+        keyboardlock = false
     }
    if (takeitemname == 'Nayzrams Wand'){
         nayzramwandfound = true
         takeitemwindowopen = false
         beginnayzramwandquest = false
         nayzramswand.visible = false
-        nayzramwandname.visible = false
+        itemnames.visible = false
         cellphonerings = true
         phoneisanswered = false
-        
+        keyboardlock = false
     }
       
     });
@@ -1407,7 +1793,7 @@ phoneringtime = this.time.addEvent({ delay: 1, callback: phonering, callbackScop
     });
     yesbutton.visible = false
 
-    nobutton = this.add.sprite(750, 575, 'nobutton').setInteractive();
+    nobutton = this.add.sprite(725, 555, 'nobutton').setInteractive();
     nobutton.setOrigin(0, 0);
     nobutton.on('pointerdown', function (pointer) {
     this.setTint(0xff0000);
@@ -1554,36 +1940,49 @@ phoneringtime = this.time.addEvent({ delay: 1, callback: phonering, callbackScop
     this.clearTint();
     });
     cellphonebutton.visible = false
+
+     this.anims.create({
+        key: 'itemnamecellphone',
+        frames: this.anims.generateFrameNumbers('itemnames', { start: 0, end: 0 }),
+        frameRate: 1,
+        repeat: 0
+    });
+ this.anims.create({
+        key: 'itemnamenayzramwand',
+        frames: this.anims.generateFrameNumbers('itemnames', { start: 1, end: 1 }),
+        frameRate: 1,
+        repeat: 0
+    });
       
- areanametxt = this.add.text(uix + 605, uiy +6, '', { font: '30px Arial', fill: '#00ff00' }).setScrollFactor(0);
+ areanametxt = this.add.text(uix + 565, uiy +6, '', { font: '30px Arial', fill: '#00ff00' }).setScrollFactor(0);
  charnametxt = this.add.text(uix + 195, uiy +6, 'Cecil', { font: '30px Arial', fill: '#00ff00' }).setScrollFactor(0);
  itemnametxt = this.add.text(615, 555, '', { font: '23px Courier', fill: '#ffffff' }).setScrollFactor(0);
  itemnametxt.visible = false
 
  if (nayzramwandquestend == true){
-    speechtexttime = 35
+    speechtexttime = 10
  }
 
      function speechtime(){
         if (nayzramwandquestend == true){
-        speechtexttime -= 1;
+        keyboardlock = true
+        speechtexttime -= 0.5;
         if (speechtext == 'nayzramreward1'){
-            if (speechtexttime < 10) {
+            if (speechtexttime < 5) {
                 speechnayzramwandfound1.visible = false
                 speechnayzramwandfound2.visible = true
             }
         if (speechtexttime < 1) {
                 nayzram.x = -1000
+                questmasternayzramwandquestshow = false
+                questmasteronquest = false
+                questmasterdiapermafiaquestshow = true
+                phoneisanswered = false
                 speechnayzramwandfound1.visible = false
                 speechnayzramwandfound2.visible = false
-                questmasternayzrimwandquestshow = false
-                phoneisanswered = false
-                questmasterdiapermafiaquestshow = true
-                questmasteronquest = false
                 nayzram.visible = false
                 nayzramwandquestend = false
-
-
+                keyboardlock = false
             }
 
 
@@ -1642,6 +2041,9 @@ update: function (time, delta)
 
 });
 
+
+
+
 function phonering(){
 if (cellphonerings == true){
 if (cellphoneinventory == true){
@@ -1676,19 +2078,22 @@ var config = {
             debug: false
         }
     },
-    scene: [startmenuscene, basemenuscene, stellarscene, officescene, uiscene]
+    scene: [startmenuscene, basemenuscene, stellarscene, cityoutskirtsscene, graveyardgatesscene, officescene, uiscene]
 };
 
  
 //var
 
 var player;
+var playerx 
+var playery 
+
 var playerfacedirection = 'left'
 var cursors;
 var text;
 var speechbubbleshow = false
 var speechtext = ''
-var speechtexttime = 5
+var speechtexttime = 10
 var scrollright = false
 var scrollleft = false
 var keyboardlock = false
