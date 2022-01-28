@@ -71,6 +71,7 @@ this.load.spritesheet('smokeface', 'assets/stellar/smokeface.png', { frameWidth:
 this.load.spritesheet('fingertop', 'assets/stellar/fingertop.png', { frameWidth: 200, frameHeight: 150 });
 this.load.spritesheet('thefinger', 'assets/stellar/thefinger.png', { frameWidth: 50, frameHeight: 95 });
 this.load.spritesheet('fingerarrow', 'assets/stellar/fingerarrow.png', { frameWidth: 65, frameHeight: 58 });
+this.load.spritesheet('fingerwarp', 'assets/stellar/fingerwarp.png', { frameWidth: 75, frameHeight: 56 });
 this.load.spritesheet('cecil', 'assets/char/spritesheets/cecilsprite.png', { frameWidth: 95, frameHeight: 95 });
 this.load.spritesheet('burgerwindows', 'assets/stellar/burgerwindows.png', { frameWidth: 192, frameHeight: 29 });
 this.load.spritesheet('ramenstore', 'assets/stellar/ramenstore.png', { frameWidth: 173, frameHeight: 99 });
@@ -79,6 +80,15 @@ this.load.spritesheet('arcade2', 'assets/stellar/arcade2.png', { frameWidth: 251
 this.load.spritesheet('arcadecoindrop', 'assets/stellar/arcadecoindrop.png', { frameWidth: 190, frameHeight: 114 });
 this.load.spritesheet('stellarspiral', 'assets/stellar/stellarspiral.png', { frameWidth: 50, frameHeight: 50 });
 this.load.spritesheet('stellarbridge1', 'assets/stellar/stellarbridge1.png', { frameWidth: 346, frameHeight: 375 });
+this.load.spritesheet('oakloungedrop', 'assets/stellar/oakloungedrop.png', { frameWidth: 72, frameHeight: 72 });
+this.load.spritesheet('oakloungerotate', 'assets/stellar/oakloungerotate.png', { frameWidth: 116, frameHeight: 59 });
+this.load.spritesheet('trianglerotate', 'assets/stellar/trianglerotate.png', { frameWidth: 60, frameHeight: 62 });
+this.load.spritesheet('oakskull', 'assets/stellar/oakskull.png', { frameWidth: 125, frameHeight: 125 });
+this.load.spritesheet('stellarshoptv', 'assets/stellar/stellartv.png', { frameWidth: 48, frameHeight: 35 });
+this.load.spritesheet('amazinggrap1', 'assets/stellar/amazinggrap1.png', { frameWidth: 154, frameHeight: 152 });
+this.load.spritesheet('amazinggrap3', 'assets/stellar/amazinggrap3.png', { frameWidth: 40, frameHeight: 40 });
+this.load.image('amazingupgradesfront', 'assets/stellar/amazingupgradesfront.png');
+this.load.image('amazingupgradesback', 'assets/stellar/amazingupgradesback.png');
 this.load.image('trashcan', 'assets/stellar/trashcan.png');
 this.load.image('nayzramswand', 'assets/stellar/nayzramswand.png');
 this.load.image('nayzram', 'assets/stellar/nayzram.png');
@@ -205,6 +215,7 @@ create: function ()
             this.setTint(0xff0000);
             playerx = 678
             playery = 475
+            stellarcitybackgroundx = 4100
             game.scene.stop('basemenuscene')
             game.scene.start('uiscene');
             game.scene.start('stellarscene');
@@ -248,9 +259,11 @@ this.sky = this.add.tileSprite(0, 0, 4000, 600, 'sky').setOrigin(0, 0);
 stellarbridge1 = this.physics.add.sprite(-145 - stellarcitybackgroundx, 250, 'stellarbridge1').setOrigin(0, 0);
 this.back2= this.add.tileSprite(0, 0, 1400, 875, 'back2').setOrigin(0, 0);
 this.airplane1 = this.add.sprite(3000, 100, 'airplane1')
-copter1 = this.physics.add.sprite(1600, 150, 'copter1');
+copter1 = this.physics.add.sprite(1600 - stellarcitybackgroundx, 150, 'copter1');
 burger = this.physics.add.sprite(890 - stellarcitybackgroundx, 462, 'burgerwindows');
 ramen = this.physics.add.sprite(1346 - stellarcitybackgroundx, 385, 'ramenstore').setOrigin(0, 0);
+oakloungerotate = this.physics.add.sprite(6228 - stellarcitybackgroundx, 406, 'oakloungerotate').setOrigin(0, 0);
+stellarshoptv = this.physics.add.sprite(2102 - stellarcitybackgroundx, 391, 'stellarshoptv').setOrigin(0, 0);
 this.city = this.add.tileSprite(0, 0, 4000, 600, 'city').setOrigin(0, 0);
 this.city.tilePositionX = stellarcitybackgroundx
 arcade1 = this.physics.add.sprite(2863 - stellarcitybackgroundx, 356, 'arcade1').setOrigin(0, 0);
@@ -260,10 +273,20 @@ smokeface = this.physics.add.sprite(2668 - stellarcitybackgroundx, 445, 'smokefa
 fingertop = this.physics.add.sprite(2647 - stellarcitybackgroundx, 350, 'fingertop');
 thefinger = this.physics.add.sprite(2810 - stellarcitybackgroundx, 330, 'thefinger');
 fingerarrow = this.physics.add.sprite(2683 - stellarcitybackgroundx, 410, 'fingerarrow');
+fingerwarp = this.physics.add.sprite(2747 - stellarcitybackgroundx, 386, 'fingerarrow').setOrigin(0, 0);
 stellarspiral = this.physics.add.sprite(2205 - stellarcitybackgroundx, 441, 'stellarspiral');
+oakskull = this.physics.add.sprite(6165 - stellarcitybackgroundx, 420, 'oakskull');
+oakloungedrop = this.physics.add.sprite(6075 - stellarcitybackgroundx, 395, 'oakloungedrop');
+trianglerotate = this.physics.add.sprite(2205 - stellarcitybackgroundx, 385, 'trianglerotate');
 fingerdoor = this.physics.add.sprite(2720 - stellarcitybackgroundx, 465, 'fingerdoor');
 stellardoor = this.physics.add.sprite(2205 - stellarcitybackgroundx, 448, 'stellardoor').setAlpha(0);
 giftshopwindow = this.physics.add.sprite(2200 - stellarcitybackgroundx, 217, 'giftshopwindow').setAlpha(0);
+amazingupgradesback = this.physics.add.sprite(5000 - stellarcitybackgroundx, 340, 'amazingupgradesback').setOrigin(0, 0);
+amazinggrap1 = this.physics.add.sprite(5000 - stellarcitybackgroundx, 345, 'amazinggrap1').setOrigin(0, 0);
+amazinggrap2 = this.physics.add.sprite(5200 - stellarcitybackgroundx, 345, 'amazinggrap1').setOrigin(0, 0);
+amazinggrap3 = this.physics.add.sprite(5160 - stellarcitybackgroundx, 400, 'amazinggrap3').setOrigin(0, 0);
+amazinggrap2.setFlipX(true);
+amazingupgradesfront = this.physics.add.sprite(5000 - stellarcitybackgroundx, 310, 'amazingupgradesfront').setOrigin(0, 0);
 cecilofficedooropen = this.physics.add.sprite(163 - stellarcitybackgroundx, 398, 'cecilsofficedooropen').setOrigin(0, 0);
 cecilofficedooropen.visible = false
 nayzramswand = this.physics.add.sprite(3400, 485, 'nayzramswand');
@@ -274,9 +297,9 @@ player = this.physics.add.sprite(playerx, playery, 'cecil');
 sword = this.physics.add.sprite(player.x , player.y - 13, 'sword1');
 sword.visible = false
 sword.rotation += 0.5;
-this.fiatpanda = this.add.sprite(2490, 470, 'fiatpanda')
-this.redcar1 = this.add.sprite(5000, 510, 'redcar1')
-this.bluecar1 = this.add.sprite(-1000, 550, 'bluecar1')
+this.fiatpanda = this.add.sprite(2490 - stellarcitybackgroundx, 470, 'fiatpanda')
+this.redcar1 = this.add.sprite(5000 - stellarcitybackgroundx, 510, 'redcar1')
+this.bluecar1 = this.add.sprite(-1000 - stellarcitybackgroundx, 550, 'bluecar1')
 nayzram = this.physics.add.sprite(350, 489, 'nayzram');
 nayzram.setFlipX(true);
 nayzram.visible = false
@@ -351,7 +374,49 @@ function attacktime(){
         frameRate: 15,
         repeat: -1
     });
+
+     this.anims.create({
+        key: 'stellarshoptvplay',
+        frames: this.anims.generateFrameNumbers('stellarshoptv', { start: 0, end: 1 }),
+        frameRate: 1,
+        repeat: -1
+    });
+
+        this.anims.create({
+        key: 'amazinggrap1play',
+        frames: this.anims.generateFrameNumbers('amazinggrap1', { start: 0, end: 30 }),
+        frameRate: 25,
+        repeat: -1
+    });
+
+      this.anims.create({
+        key: 'amazinggrap3play',
+        frames: this.anims.generateFrameNumbers('amazinggrap3', { start: 0, end: 38 }),
+        frameRate: 25,
+        repeat: -1
+    });
     
+     this.anims.create({
+        key: 'oakloungerotateplay',
+        frames: this.anims.generateFrameNumbers('oakloungerotate', { start: 0, end: 90 }),
+        frameRate: 25,
+        repeat: -1
+    });
+
+    this.anims.create({
+        key: 'oakloungedropplay',
+        frames: this.anims.generateFrameNumbers('oakloungedrop', { start: 0, end: 4 }),
+        frameRate: 5,
+        repeat: -1
+    });
+
+      this.anims.create({
+        key: 'oakskullplay',
+        frames: this.anims.generateFrameNumbers('oakskull', { start: 0, end: 9 }),
+        frameRate: 10,
+        repeat: -1
+    });
+
     this.anims.create({
         key: 'copter1play',
         frames: this.anims.generateFrameNumbers('copter1', { start: 0, end: 5 }),
@@ -376,6 +441,13 @@ function attacktime(){
     this.anims.create({
         key: 'fingerdoor',
         frames: this.anims.generateFrameNumbers('fingerdoor', { start: 0, end: 3 }),
+        frameRate: 5,
+        repeat: -1
+    });
+
+    this.anims.create({
+        key: 'fingerwarpplay',
+        frames: this.anims.generateFrameNumbers('fingerwarp', { start: 0, end: 199 }),
         frameRate: 5,
         repeat: -1
     });
@@ -470,8 +542,17 @@ update: function (time, delta)
 stellarbridge1.anims.play('stellarbridgeplay', true);
 burger.anims.play('burgerwindowsplay', true);
 fingerdoor.anims.play('fingerdoor', true);
+fingerwarp.anims.play('fingerwarpplay', true);
 stellardoor.anims.play('stellardoor', true);
+stellarshoptv.anims.play('stellarshoptvplay', true);
+trianglerotate.anims.play('trianglerotateplay', true);
 ramen.anims.play('ramenwindowsplay', true);
+oakloungerotate.anims.play('oakloungerotateplay', true);
+oakloungedrop.anims.play('oakloungedropplay', true);
+amazinggrap1.anims.play('amazinggrap1play', true);
+amazinggrap2.anims.play('amazinggrap1play', true);
+amazinggrap3.anims.play('amazinggrap3play', true);
+oakskull.anims.play('oakskullplay', true);
 arcade1.anims.play('arcade1play', true);
 arcade2.anims.play('arcade2play', true);
 arcadecoindrop.anims.play('arcadecoindrop', true);
@@ -481,7 +562,11 @@ thefinger.anims.play('thefingerplay', true);
 fingerarrow.anims.play('fingerarrowplay', true);
 stellarspiral.anims.play('stellarspiralplay', true);
 copter1.anims.play('copter1play', true);
-copter1.setVelocityX(-90);
+copter1.x -= 5;
+
+
+
+
 this.sky.tilePositionX += 0.5;
 this.airplane1.x -= 1;
 this.bluecar1.x += 3;
@@ -531,9 +616,19 @@ if (beginnayzramwandquest == false){
     stellarbridge1.x -= 1;
     giftshopwindow.x -= 1;
     cecilofficedooropen.x -= 1;
+    amazingupgradesfront.x -= 1;
+    amazingupgradesback.x -= 1;
+    amazinggrap1.x -= 1;
+    amazinggrap2.x -= 1;
+    amazinggrap3.x -= 1;
     stellardoor.x -= 1;
+    stellarshoptv -= 1;
     fingerdoor.x -= 1;
+    fingerwarp.x -= 1;
     ramen.x -= 1;
+    oakloungerotate.x -= 1;
+    oakloungedrop.x -= 1;
+    oakskull.x -= 1;
     arcade1.x -= 1;
     arcade2.x -= 1;
     arcadecoindrop.x -=1;
@@ -543,6 +638,7 @@ if (beginnayzramwandquest == false){
     thefinger.x -= 1;
     fingerarrow.x -= 1;
     stellarspiral.x -= 1;
+    trianglerotate.x -= 1;
     trashcan.x -= 1;
     nayzramswand.x -= 1;
     nayzram.x -= 1;
@@ -556,9 +652,19 @@ if (beginnayzramwandquest == false){
     stellarbridge1.x += 1;
     giftshopwindow.x += 1;
     cecilofficedooropen.x += 1;
+    amazingupgradesfront.x += 1;
+    amazingupgradesback.x += 1;
+    amazinggrap1.x += 1;
+    amazinggrap2.x += 1;
+    amazinggrap3.x += 1;
     stellardoor.x += 1;
+    stellarshoptv.x += 1;
     fingerdoor.x += 1;
+    fingerwarp.x += 1;
     ramen.x += 1;
+    oakloungerotate.x += 1;
+    oakloungedrop.x += 1;
+    oakskull.x += 1;
     arcade1.x += 1;
     arcade2.x += 1;
     arcadecoindrop.x +=1;
@@ -568,6 +674,7 @@ if (beginnayzramwandquest == false){
     thefinger.x += 1;
     fingerarrow.x += 1;
     stellarspiral.x += 1;
+    trianglerotate.x += 1;
     trashcan.x += 1;
     nayzramswand.x += 1;
     nayzram.x += 1;
@@ -666,11 +773,21 @@ gameObject.setTintFill(0xffff00, 0xffff00, 0xff0000, 0xff0000);
     if (player.x < 650){
     player.x += 1;
     stellarbridge1.x += 1;
+    stellarshoptv.x += 1;
     giftshopwindow.x += 1;
     cecilofficedooropen.x += 1;
+    amazingupgradesfront.x += 1;
+    amazingupgradesback.x += 1;
+    amazinggrap1.x += 1;
+    amazinggrap2.x += 1;
+    amazinggrap3.x += 1;
     stellardoor.x += 1;
     fingerdoor.x += 1;
+    fingerwarp.x += 1;
     ramen.x += 1;
+    oakloungerotate.x += 1;
+    oakloungedrop.x += 1;
+    oakskull.x += 1;
     arcade1.x += 1;
     arcade2.x += 1;
     arcadecoindrop.x +=1;
@@ -680,6 +797,7 @@ gameObject.setTintFill(0xffff00, 0xffff00, 0xff0000, 0xff0000);
     thefinger.x += 1;
     fingerarrow.x += 1;
     stellarspiral.x += 1;
+    trianglerotate.x += 1;
     trashcan.x += 1;
     nayzramswand.x += 1;
     nayzram.x += 1;
@@ -704,9 +822,19 @@ gameObject.setTintFill(0xffff00, 0xffff00, 0xff0000, 0xff0000);
     stellarbridge1.x -= 1;
     giftshopwindow.x -= 1;
     cecilofficedooropen.x -= 1;
+    amazingupgradesfront.x -= 1;
+    amazingupgradesback.x -= 1;
+    amazinggrap1.x -= 1;
+    amazinggrap2.x -= 1;
+    amazinggrap3.x -= 1;
     stellardoor.x -= 1;
+    stellarshoptv.x -= 1;
     fingerdoor.x -= 1;
+    fingerwarp.x -= 1;
     ramen.x -= 1;
+    oakloungerotate.x -= 1;
+    oakloungedrop.x -= 1;
+    oakskull.x -= 1;
     arcade1.x -= 1;
     arcade2.x -= 1;
     arcadecoindrop.x -=1;
@@ -716,6 +844,7 @@ gameObject.setTintFill(0xffff00, 0xffff00, 0xff0000, 0xff0000);
     thefinger.x -= 1;
     fingerarrow.x -= 1;
     stellarspiral.x -= 1;
+    trianglerotate.x -= 1;
     trashcan.x -= 1;
     nayzramswand.x -= 1;
     nayzram.x -= 1;
@@ -2524,10 +2653,10 @@ var config = {
 
  
 //var
-var greendragoncoins = 0
-var bluedragoncoins = 0
-var reddragoncoins = 0
-var blackdragoncoins = 0
+var greencoins = 0
+var bluecoins = 0
+var redcoins = 0
+var blackcoins = 0
 var greenkombatcoins = 0
 var bluekombatcoins = 0
 var redkombatcoins = 0
