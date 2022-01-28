@@ -146,10 +146,16 @@ this.load.spritesheet('lamp1', 'assets/office/lamp1.png', { frameWidth: 73, fram
 this.load.spritesheet('ceilinglamp', 'assets/office/ceilinglamp.png', { frameWidth: 61, frameHeight: 87 });
 this.load.spritesheet('arcademachine1', 'assets/office/arcademachine1.png', { frameWidth: 150, frameHeight: 178 });
 this.load.spritesheet('featherlighter', 'assets/office/featherlighter.png', { frameWidth: 50, frameHeight: 50 });  
+
+this.load.audio('phoneringer', [
+        'assets/sound/phonering.mp3'
+    ]);
+
 },
 
 create: function ()
 {
+    
 this.input.setPollAlways();
 this.input.on('gameobjectover', function (pointer, gameObject) {
 gameObject.setTint(0xff0000);
@@ -215,7 +221,7 @@ create: function ()
             this.setTint(0xff0000);
             playerx = 678
             playery = 475
-            stellarcitybackgroundx = 4100
+            stellarcitybackgroundx = 6000
             game.scene.stop('basemenuscene')
             game.scene.start('uiscene');
             game.scene.start('stellarscene');
@@ -601,6 +607,7 @@ if (player.x > 1360){
         playery = 500
          game.scene.stop('stellarscene')
          game.scene.start('cityoutskirtsscene');
+         cursors.left.isDown = false
          areaname = 'City Outskirts'
 }
 
@@ -622,7 +629,7 @@ if (beginnayzramwandquest == false){
     amazinggrap2.x -= 1;
     amazinggrap3.x -= 1;
     stellardoor.x -= 1;
-    stellarshoptv -= 1;
+    stellarshoptv.x -= 1;
     fingerdoor.x -= 1;
     fingerwarp.x -= 1;
     ramen.x -= 1;
@@ -683,8 +690,9 @@ if (beginnayzramwandquest == false){
 
     if (nayzram.visible == true){
         if (player.x < nayzram.x +25){
-            speechbubbleshow = true
             nayzramwandquestend = true
+            speechbubbleshow = true
+            
         }
     }
 
@@ -724,16 +732,6 @@ giftshopopenview = false
 stellardoor.setAlpha(0);
 }
 
-
-if (scrollleft == true)
-    {
-  
-    }
-    else if (scrollright == true)
-    {
-  
-         
-    }
    
 
 this.input.on('gameobjectdown', function (pointer, gameObject) {
@@ -763,13 +761,11 @@ gameObject.setTintFill(0xffff00, 0xffff00, 0xff0000, 0xff0000);
     }
     
   if (keyboardlock == false){
+    if (walkingdirection == 'left'){
     if (cursors.left.isDown)
     {
-    playerfacedirection = 'left'
-    player.x -= 1;
-    player.anims.play('walk', true);
-    player.setFlipX(false);
 
+    
     if (player.x < 650){
     player.x += 1;
     stellarbridge1.x += 1;
@@ -808,15 +804,13 @@ gameObject.setTintFill(0xffff00, 0xffff00, 0xff0000, 0xff0000);
     this.airplane1.x += 0.5;
     }
     }
+    }
+
+
     
     else if (cursors.right.isDown)
     {
-    playerfacedirection = 'right'
-    player.x += 1;
-    player.anims.play('walk', true);
-    player.setFlipX(true);
-
-
+    if (walkingdirection == 'right'){
     if (player.x > 648){
     player.x -= 1;
     stellarbridge1.x -= 1;
@@ -855,14 +849,14 @@ gameObject.setTintFill(0xffff00, 0xffff00, 0xff0000, 0xff0000);
     this.city.tilePositionX += 1;
     copter1.setVelocityX(-150);
     }
-     
+    }
     }
     
     else
     {
-      player.setVelocityX(0);
-      player.anims.stop('walk', true);
-      
+       
+        player.anims.stop('walk', true);
+          
 }
 }
 
@@ -983,6 +977,8 @@ update: function (time, delta)
         playery = 500
          game.scene.stop('cityoutskirtsscene')
          game.scene.start('graveyardgatesscene');
+         cursors.left.isDown = false
+         cursors.right.isDown = false
          areaname = 'Graveyard Gates'
      }
 
@@ -992,28 +988,23 @@ update: function (time, delta)
         stellarcitybackgroundx = 6635
         game.scene.stop('cityoutskirtsscene')
         game.scene.start('stellarscene');
+        cursors.right.isDown = false
+        cursors.left.isDown = false
         areaname = '    Stellar City'
      }
 
   if (keyboardlock == false){
-    if (cursors.left.isDown)
-    {
-    playerfacedirection = 'left'
-    player.x -= 1;
-    player.setVelocityX(-0);
-    player.anims.play('walk', true);
-    player.setFlipX(false);
+    if (walkingdirection == 'left'){
+    if (cursors.left.isDown){
+ 
     
-
+    }
     }
     
     else if (cursors.right.isDown)
     {
-    playerfacedirection = 'right'
-    player.x += 1;
-    player.anims.play('walk', true);
-    player.setFlipX(true);
-    
+    if (walkingdirection == 'right'){
+    }
      
     }
 
@@ -1163,6 +1154,8 @@ this.sky.tilePositionX += 0.5;
             playery = 325
             game.scene.stop('graveyardgatesscene')
             game.scene.start('cityoutskirtsscene');
+            cursors.right.isDown = false
+            cursors.left.isDown = false
             areaname = '      Outskirts'
    }
 
@@ -1172,11 +1165,7 @@ this.sky.tilePositionX += 0.5;
   if (keyboardlock == false){
     if (cursors.left.isDown)
     {
-    playerfacedirection = 'left'
-    player.x -= 1;
-    player.setVelocityX(-0);
-    player.anims.play('walk', true);
-    player.setFlipX(false);
+  
    if (player.x > 900){
    if (player.x < 942){
    if (player.y < 495){
@@ -1188,12 +1177,7 @@ this.sky.tilePositionX += 0.5;
     
     else if (cursors.right.isDown)
     {
-    playerfacedirection = 'right'
-    player.x += 1;
-    player.anims.play('walk', true);
-    player.setFlipX(true);
-    
-   
+       
    if (player.x > 1230){
    if (player.y < 495){
     player.x -= 1;
@@ -1223,6 +1207,7 @@ this.sky.tilePositionX += 0.5;
             graveyardsceneabackgroundx = 0
             game.scene.stop('graveyardgatesscene')
             game.scene.start('graveyardscenea');
+            cursors.down.isDown = false
             areaname = '  The Graveyard'
         }
     }
@@ -1373,6 +1358,7 @@ this.sky.tilePositionX += 0.5;
             playery = 333
             game.scene.stop('graveyardscenea')
             game.scene.start('graveyardgatesscene');
+            cursors.up.isDown = false
             areaname = 'Graveyard Gates'
    }
 
@@ -1381,6 +1367,7 @@ if (player.x > 1345){
     playery = 530
     game.scene.stop('graveyardscenea')
     game.scene.start('graveyardsceneb');
+    cursors.left.isDown = false
     areaname = '  The Graveyard'
 }
 
@@ -1398,10 +1385,6 @@ if (this.graveyardsceneabackground.tilePositionX < 0)
 
   if (keyboardlock == false){
     if (cursors.left.isDown){
-    playerfacedirection = 'left'
-    player.x -= 1;
-    player.anims.play('walk', true);
-    player.setFlipX(false);
     if (player.x < 650){
     player.x += 1;
     this.graveyardsceneabackground.tilePositionX -= 1;
@@ -1410,10 +1393,6 @@ if (this.graveyardsceneabackground.tilePositionX < 0)
     }
     
     else if (cursors.right.isDown){
-    playerfacedirection = 'right'
-    player.x += 1;
-    player.anims.play('walk', true);
-    player.setFlipX(true);
     if (player.x > 648){
     player.x -= 1;
     this.graveyardsceneabackground.tilePositionX += 1;
@@ -1570,6 +1549,7 @@ if (player.x < 0){
     graveyardsceneabackgroundx = 559
     game.scene.stop('graveyardsceneb')
     game.scene.start('graveyardscenea');
+    cursors.right.isDown = false
     areaname = '  The Graveyard'
 }
 
@@ -1587,10 +1567,6 @@ if (this.graveyardscenebbackground.tilePositionX < 0)
 
   if (keyboardlock == false){
     if (cursors.left.isDown){
-    playerfacedirection = 'left'
-    player.x -= 1;
-    player.anims.play('walk', true);
-    player.setFlipX(false);
     if (player.x < 650){
     player.x += 1;
     this.graveyardscenebbackground.tilePositionX -= 1;
@@ -1599,10 +1575,6 @@ if (this.graveyardscenebbackground.tilePositionX < 0)
     }
     
     else if (cursors.right.isDown){
-    playerfacedirection = 'right'
-    player.x += 1;
-    player.anims.play('walk', true);
-    player.setFlipX(true);
     if (player.x > 648){
     player.x -= 1;
     this.graveyardscenebbackground.tilePositionX += 1;
@@ -2153,7 +2125,7 @@ else if (scrollright == true)
     if (cursors.left.isDown)
     {
    
-    player.anims.play('walk', true);
+    ;
     this.officeroombackground.tilePositionX -= 1;
     globescreen.x += 1;
     screen1.x += 1;
@@ -2167,8 +2139,7 @@ else if (scrollright == true)
     arcademachine1.x += 1;
     featherlighter.x += 1;
     cellphoneobject.x += 1;
-
-    player.setFlipX(false);
+   
 
     if (this.officeroombackground.tilePositionX > 1){
         player.x -= 1;
@@ -2180,9 +2151,6 @@ else if (scrollright == true)
     else if (cursors.right.isDown)
     {
 
-    player.anims.play('walk', true);
-    player.setFlipX(true);
-    player.x += 1;
    
     if (player.x > 648){
     this.officeroombackground.tilePositionX += 1;
@@ -2238,9 +2206,6 @@ else if (scrollright == true)
 text.setText([
         'world x: ' + this.input.mousePointer.worldX,
         'world y: ' + this.input.mousePointer.worldY,
-        this.officeroombackground.tilePositionX,
-        takeitemname,
-        cecilofficedoorexit,
         player.y,
         player.x
     ]);
@@ -2267,6 +2232,7 @@ var uiscene = new Phaser.Class({
 //ui
 create: function ()
 {
+ var phoneringer = this.sound.add('phonering',{ loop: false });
  this.adventureui = this.add.sprite(uix, uiy, 'adventureui').setOrigin(0, 0);
  takeitembox = this.add.sprite(350, 480, 'takeitembox').setOrigin(0, 0);
  takeitembox.visible = false
@@ -2299,6 +2265,7 @@ create: function ()
 
 speechtime = this.time.addEvent({ delay: 2000, callback: speechtime, callbackScope: this, loop: true,startAt: 1 });
 phoneringtime = this.time.addEvent({ delay: 1, callback: phonering, callbackScope: this, loop: true,startAt: 1 });
+
       
        this.input.setPollAlways();
         this.input.on('gameobjectover', function (pointer, gameObject) {
@@ -2459,6 +2426,10 @@ phoneringtime = this.time.addEvent({ delay: 1, callback: phonering, callbackScop
     this.setTint(0xff0000);
     
     if (cellphonerings == true){
+    if (phoneisringingnow == true){
+    phoneringer.stop
+    phoneisringingnow = false
+    }
     if (beginjackburtonquest == true){
     if (phoneisanswered == false){
             phonemessagescreen.visible = true
@@ -2523,7 +2494,7 @@ phoneringtime = this.time.addEvent({ delay: 1, callback: phonering, callbackScop
         frameRate: 1,
         repeat: 0
     });
-      
+ statustxt = this.add.text(5, 125, '', { font: '17px Arial', fill: '#00ff00' }).setScrollFactor(0);
  areanametxt = this.add.text(uix + 565, uiy +6, '', { font: '30px Arial', fill: '#00ff00' }).setScrollFactor(0);
  charnametxt = this.add.text(uix + 195, uiy +6, 'Cecil', { font: '30px Arial', fill: '#00ff00' }).setScrollFactor(0);
  itemnametxt = this.add.text(615, 555, '', { font: '23px Courier', fill: '#ffffff' }).setScrollFactor(0);
@@ -2533,23 +2504,29 @@ phoneringtime = this.time.addEvent({ delay: 1, callback: phonering, callbackScop
     speechtexttime = 10
  }
 
+
+
      function speechtime(){
         if (nayzramwandquestend == true){
-        keyboardlock = true
-        speechtexttime -= 0.5;
+            speechtexttime -= 1;
         if (speechtext == 'nayzramreward1'){
+            keyboardlock = true
             if (speechtexttime < 5) {
                 speechnayzramwandfound1.visible = false
                 speechnayzramwandfound2.visible = true
             }
         if (speechtexttime < 1) {
                 nayzram.x = -1000
+                speechtext = ''
                 questmasternayzramwandquestshow = false
                 questmasteronquest = false
                 questmasterdiapermafiaquestshow = true
+                questmasternayzramwandquestselected = false
                 phoneisanswered = false
                 speechnayzramwandfound1.visible = false
                 speechnayzramwandfound2.visible = false
+                speechbubbleshow = false
+                speechbubble.visible = false
                 nayzram.visible = false
                 nayzramwandquestend = false
                 keyboardlock = false
@@ -2584,7 +2561,6 @@ update: function (time, delta)
     }
 
     if (takeitemwindowopen == false){
-        keyboardlock = false
         itemnametxt.visible = false
         takeitembox.visible = false
         yesbutton.visible = false
@@ -2601,8 +2577,60 @@ update: function (time, delta)
      }
      }
 
+if (keyboardlock == false){
+  
+    if (cursors.left.isDown)
+    {
+    playerfacedirection = 'left'
+    player.x -= 1;
+    player.anims.play('walk', true);
+    player.setFlipX(false);
+    walkingdirection = 'left'
+    }
 
-      
+    else if (cursors.right.isDown)
+    {
+    walkingdirection = 'right'
+    playerfacedirection = 'right'
+    player.x += 1;
+    player.anims.play('walk', true);
+    player.setFlipX(true);
+    
+    }
+
+
+    else if (cursors.up.isDown)
+    {
+   walkingdirection = 'up'
+    }
+
+ 
+    
+    else if (cursors.down.isDown)
+    {
+    walkingdirection = 'down'
+    }
+
+    else
+    {
+      walkingdirection = 'none'
+    }
+}
+
+       statustxt.setText([
+           
+       'nayzramwandquestselected   '+ nayzramwandquestend,
+       'nayzramwandquestcomplete   ' + nayzramwandquestcomplete,
+       'questmasternayzramwandquestselected   '+ questmasternayzramwandquestselected,
+       'questmasternayzranwandquestshow   ' + questmasternayzramwandquestshow,
+       'nayzramwandquestend   ' + nayzramwandquestend,
+       'keyboardlock   ' + keyboardlock,
+       'walkingdirection   ' + walkingdirection,
+       cursors.left.isDown,
+       cursors.right.isDown
+
+    ]);
+
       areanametxt.setText([
        areaname
     ]);
@@ -2616,6 +2644,10 @@ update: function (time, delta)
 
 function phonering(){
 if (cellphonerings == true){
+ if (phoneisringingnow == false){
+game.sound.add( "phoneringer" ).play()
+phoneisringingnow = true
+ }
 if (cellphoneinventory == true){
 
     cellphoneringtime += 10;
@@ -2661,6 +2693,7 @@ var greenkombatcoins = 0
 var bluekombatcoins = 0
 var redkombatcoins = 0
 var blackkombatcoins = 0
+var debitcardlost = true
 
 var uix = 0
 var uiy = 601
@@ -2669,6 +2702,7 @@ var player;
 var playerx 
 var playery 
 var playerfacedirection = 'left'
+var walkingdirection = ''
 var cursors;
 var text;
 var speechbubbleshow = false
@@ -2688,6 +2722,7 @@ var cellphoneinventory = false
 var cellphonerings = false
 var cellphoneequip = false
 var phoneisanswered = false
+var phoneisringingnow = false
 var cellphoneringtime = 1
 var takeitemname = ''
 var questmasterscreenopenview = false
