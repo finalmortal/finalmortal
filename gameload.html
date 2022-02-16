@@ -27,48 +27,35 @@ var startmenuscene = new Phaser.Class({
 //preload
     preload: function ()
     {
-this.load.image('enternamebox', 'assets/ui/input/enternamebox.png');
-this.load.image('usethisnamebutton', 'assets/ui/input/usethisnamebutton.png');
-this.load.image('Akey', 'assets/ui/input/Akey.png');
-this.load.image('Bkey', 'assets/ui/input/Bkey.png');
-this.load.image('Ckey', 'assets/ui/input/Ckey.png');
-this.load.image('Dkey', 'assets/ui/input/Dkey.png');
-this.load.image('Ekey', 'assets/ui/input/Ekey.png');
-this.load.image('Fkey', 'assets/ui/input/Fkey.png');
-this.load.image('Gkey', 'assets/ui/input/Gkey.png');
-this.load.image('Hkey', 'assets/ui/input/Hkey.png');
-this.load.image('Ikey', 'assets/ui/input/Ikey.png');
-this.load.image('Jkey', 'assets/ui/input/Jkey.png');
-this.load.image('Kkey', 'assets/ui/input/Kkey.png');
-this.load.image('Lkey', 'assets/ui/input/Lkey.png');
-this.load.image('Mkey', 'assets/ui/input/Mkey.png');
-this.load.image('Nkey', 'assets/ui/input/Nkey.png');
-this.load.image('Okey', 'assets/ui/input/Okey.png');
-this.load.image('Pkey', 'assets/ui/input/Pkey.png');
-this.load.image('Qkey', 'assets/ui/input/Qkey.png');
-this.load.image('Rkey', 'assets/ui/input/Rkey.png');
-this.load.image('Skey', 'assets/ui/input/Skey.png');
-this.load.image('Tkey', 'assets/ui/input/Tkey.png');
-this.load.image('Ukey', 'assets/ui/input/Ukey.png');
-this.load.image('Vkey', 'assets/ui/input/Vkey.png');
-this.load.image('Wkey', 'assets/ui/input/Wkey.png');
-this.load.image('Xkey', 'assets/ui/input/Xkey.png');
-this.load.image('Ykey', 'assets/ui/input/Ykey.png');
-this.load.image('Zkey', 'assets/ui/input/Zkey.png');
-this.load.image('delkey', 'assets/ui/input/delkey.png');
-this.load.image('0key', 'assets/ui/input/0key.png');
-this.load.image('1key', 'assets/ui/input/1key.png');
-this.load.image('2key', 'assets/ui/input/2key.png');
-this.load.image('3key', 'assets/ui/input/3key.png');
-this.load.image('4key', 'assets/ui/input/4key.png');
-this.load.image('5key', 'assets/ui/input/5key.png');
-this.load.image('6key', 'assets/ui/input/6key.png');
-this.load.image('7key', 'assets/ui/input/7key.png');
-this.load.image('8key', 'assets/ui/input/8key.png');
-this.load.image('9key', 'assets/ui/input/9key.png');
+
+//char
+//loadcecil
+this.load.spritesheet('cecil', 'assets/char/spritesheets/cecilsprite.png', { frameWidth: 96, frameHeight: 95 });
+this.load.spritesheet('cecilcasting', 'assets/char/cecil/cecilcastoutline.png', { frameWidth: 95, frameHeight: 95 });
+
+//loadkang
+this.load.spritesheet('kangspear', 'assets/char/kang/kangspear.png', { frameWidth: 48, frameHeight: 110 });
+this.load.spritesheet('kangdead', 'assets/char/kang/kangdead.png', { frameWidth: 82, frameHeight: 25 });
+this.load.spritesheet('kang', 'assets/char/kang/kangidle.png', { frameWidth: 45, frameHeight: 104 });
+this.load.spritesheet('kangwalk', 'assets/char/kang/kangwalk.png', { frameWidth: 55, frameHeight: 102 });
+this.load.spritesheet('kangrun', 'assets/char/kang/kangrun.png', { frameWidth: 40, frameHeight: 110 });
+this.load.spritesheet('kangflykick', 'assets/char/kang/kangflykick.png', { frameWidth: 68, frameHeight: 110 });
+this.load.spritesheet('kangdragon', 'assets/char/kang/kangdragon.png', { frameWidth: 108, frameHeight: 140 });
+this.load.spritesheet('kangprayer', 'assets/char/kang/kangprayer.png', { frameWidth: 62, frameHeight: 129 });
+this.load.spritesheet('kangprayerbolt', 'assets/char/kang/kangprayerbolt.png', { frameWidth: 200, frameHeight: 500 });
+this.load.spritesheet('kangbicycle', 'assets/char/kang/kangbicycle.png', { frameWidth: 65, frameHeight: 110 });
+this.load.spritesheet('kangfireball', 'assets/char/kang/kangfireball.png', { frameWidth: 45, frameHeight: 110 });
+this.load.spritesheet('kangfireballgr', 'assets/char/kang/kangfireballgr.png', { frameWidth: 75, frameHeight: 30 });
+this.load.spritesheet('kangfireballexplode', 'assets/char/kang/kangfireballexplode.png', { frameWidth: 100, frameHeight: 146 });
 
 
-this.load.image('cecilswordbox', 'assets/ui/cecil/cecilswordbox.png');
+//loadweapons
+this.load.image('sword1', 'assets/weapons/sword1.png');
+this.load.spritesheet('woodenshield', 'assets/shields/woodenshieldrender.png', { frameWidth: 23, frameHeight: 35 });
+this.load.spritesheet('goldshield', 'assets/shields/goldshieldrender.png', { frameWidth: 21, frameHeight: 32 });
+this.load.spritesheet('blackdragonredshield', 'assets/shields/blackdragonredshieldrender.png', { frameWidth: 19, frameHeight: 37 });
+this.load.spritesheet('aztshield', 'assets/shields/aztshieldrender.png', { frameWidth: 22, frameHeight: 30 });
+//loadstart
 this.load.image('startbackground', 'assets/menu/start/startmenuback.png');
 this.load.image('startbutton', 'assets/menu/start/startbutton.png');
 this.load.image('basemenubackground', 'assets/menu/base/basemenubackground.png');
@@ -94,17 +81,7 @@ this.load.image('houndlairbuttonhover', 'assets/menu/lairselect/houndlairbuttonh
 this.load.image('machinelairbutton', 'assets/menu/lairselect/machinelairbutton.png');
 this.load.image('machinelairbuttonhover', 'assets/menu/lairselect/machinelairbuttonhover.png');
 this.load.image('loadoutbackground', 'assets/menu/loadout/loadoutbackground.png');
-this.load.image('adventureuibackground', 'assets/ui/adventureuibackground.png');
-this.load.image('adventureui', 'assets/ui/adventureui.png');
-this.load.image('amazingupgradesui', 'assets/ui/amazingupgradesui.png');
-this.load.image('stellaritemsui', 'assets/ui/stellaritemsui.png');
-this.load.image('itemshopwindow', 'assets/stellar/giftshoppopupwindow.png');
-this.load.image('oakloungeclubinside', 'assets/stellar/oakloungeclubinside.png');
-this.load.image('oakloungedoor', 'assets/stellar/loungedoor.png');
-this.load.spritesheet('stellardoor', 'assets/stellar/stellardoor1.png', { frameWidth: 61, frameHeight: 102 });
-this.load.spritesheet('fingerdoor', 'assets/stellar/fingerdoor1.png', { frameWidth: 44, frameHeight: 66 });
-this.load.image('rightpointer', 'assets/ui/rightpointer.png');
-this.load.image('leftpointer', 'assets/ui/leftpointer.png');
+//loadstellar
 this.load.image('back', 'assets/stellar/back.png');
 this.load.image('back2', 'assets/stellar/back2.png');
 this.load.image('sky', 'assets/stellar/stellarcity-cloudpiece.png');
@@ -119,7 +96,6 @@ this.load.spritesheet('fingertop', 'assets/stellar/fingertop.png', { frameWidth:
 this.load.spritesheet('thefinger', 'assets/stellar/thefinger.png', { frameWidth: 50, frameHeight: 95 });
 this.load.spritesheet('fingerarrow', 'assets/stellar/fingerarrow.png', { frameWidth: 65, frameHeight: 58 });
 this.load.spritesheet('fingerwarp', 'assets/stellar/fingerwarp.png', { frameWidth: 75, frameHeight: 56 });
-this.load.spritesheet('cecil', 'assets/char/spritesheets/cecilsprite.png', { frameWidth: 95, frameHeight: 95 });
 this.load.spritesheet('burgerwindows', 'assets/stellar/burgerwindows.png', { frameWidth: 192, frameHeight: 29 });
 this.load.spritesheet('ramenstore', 'assets/stellar/ramenstore.png', { frameWidth: 173, frameHeight: 99 });
 this.load.spritesheet('arcade1', 'assets/stellar/arcade1.png', { frameWidth: 275, frameHeight: 141 });
@@ -139,9 +115,37 @@ this.load.spritesheet('itemshopblankitemspot', 'assets/itemshop/itemblankitem.pn
 this.load.image('amazingshopwindow', 'assets/stellar/amazingshopwindow.png');
 this.load.image('amazingupgradesfront', 'assets/stellar/amazingupgradesfront.png');
 this.load.image('amazingupgradesback', 'assets/stellar/amazingupgradesback.png');
+this.load.image('cecilsofficedooropen', 'assets/stellar/cecilofficedooropen.png');
+this.load.image('cityoutskirtsbackground', 'assets/stellar/cityoutskirtsbackground.png');
+this.load.image('itemshopwindow', 'assets/stellar/giftshoppopupwindow.png');
+this.load.image('oakloungeclubinside', 'assets/stellar/oakloungeclubinside.png');
+this.load.image('karatedojobackpiece', 'assets/stellar/karatedojobackpiece.png');
+this.load.image('oakloungedoor', 'assets/stellar/loungedoor.png');
+this.load.image('karatedojodoor', 'assets/stellar/karatedojodoor.png');
+this.load.spritesheet('stellardoor', 'assets/stellar/stellardoor1.png', { frameWidth: 61, frameHeight: 102 });
+this.load.spritesheet('fingerdoor', 'assets/stellar/fingerdoor1.png', { frameWidth: 44, frameHeight: 66 });
+this.load.spritesheet('tablelamp1', 'assets/stellar/tablelamp.png', { frameWidth: 55, frameHeight: 74 });
+this.load.spritesheet('doorlights', 'assets/stellar/doorlights.png', { frameWidth: 88, frameHeight: 88 });
+this.load.spritesheet('trianglean', 'assets/stellar/trianglean.png', { frameWidth: 130, frameHeight: 74 });
+this.load.spritesheet('colorsmear', 'assets/stellar/colorsmear.png', { frameWidth: 210, frameHeight: 118 });
+this.load.spritesheet('colortrip', 'assets/stellar/colortrip.png', { frameWidth: 294, frameHeight: 165 });
+this.load.image('trashcan', 'assets/stellar/trashcan.png');
+this.load.image('nayzramswand', 'assets/stellar/nayzramswand.png');
+this.load.image('nayzram', 'assets/stellar/nayzram.png');
+//loaddojo
+this.load.image('dojoreadybutton', 'assets/dojo/dojoreadybutton.png');
+this.load.image('dojo1', 'assets/dojo/dojo1.png');
+this.load.image('dojo2', 'assets/dojo/dojo2.png');
+this.load.image('birdtotem1', 'assets/dojo/birdtotem1.png');
+this.load.image('birdtotem2', 'assets/dojo/birdtotem2.png');
+this.load.image('birdtotem3', 'assets/dojo/birdtotem3.png');
+
+//loadoutsidecity
+this.load.spritesheet('outsidebackground', 'assets/stellar/outsidebackground.png', { frameWidth: 500, frameHeight: 188 });
 this.load.image('outsidecity1frontpiece', 'assets/outsidecity/outsidecity1frontpiece.png');
 this.load.image('outsidecitybackground', 'assets/outsidecity/outsidecitybackground.png');
 this.load.image('outsidecitycloudpiece', 'assets/outsidecity/outsidecity-cloudpiece.png');
+//loadshops
 this.load.image('amazingshopbutton1', 'assets/amazingupgrades/1.png');
 this.load.image('amazingshopbutton2', 'assets/amazingupgrades/2.png');
 this.load.image('amazingshopbutton3', 'assets/amazingupgrades/3.png');
@@ -185,24 +189,8 @@ this.load.image('itemshopmagicup', 'assets/itemshop/magicup.png');
 this.load.image('itemshopspeedup', 'assets/itemshop/speedup.png');
 this.load.image('itemshopsupportup', 'assets/itemshop/supportup.png');
 this.load.image('itemshophealthup', 'assets/itemshop/healthup.png');
-this.load.image('attackupinv', 'assets/ui/inventory/attackupinv.png');
-this.load.image('defenseupinv', 'assets/ui/inventory/defenseupinv.png');
-this.load.image('magicupinv', 'assets/ui/inventory/magicupinv.png');
-this.load.image('speedupinv', 'assets/ui/inventory/speedupinv.png');
-this.load.image('supportupinv', 'assets/ui/inventory/supportupinv.png');
-this.load.image('healthupinv', 'assets/ui/inventory/healthupinv.png');
-
-
-this.load.image('buyitembox', 'assets/ui/buyitembox.png');
 this.load.spritesheet('buythisitem', 'assets/itemshop/buythisitem.png', { frameWidth: 197, frameHeight: 210 });
-
-
-this.load.image('trashcan', 'assets/stellar/trashcan.png');
-this.load.image('nayzramswand', 'assets/stellar/nayzramswand.png');
-this.load.image('nayzram', 'assets/stellar/nayzram.png');
-this.load.image('sword1', 'assets/weapons/sword1.png');
-this.load.image('cecilsofficedooropen', 'assets/stellar/cecilofficedooropen.png');
-this.load.image('cityoutskirtsbackground', 'assets/stellar/cityoutskirtsbackground.png');
+//loadgraveyard
 this.load.image('graveyardgatesbackground', 'assets/graveyard/graveyardgatesbackground.png');
 this.load.image('graveyardsceneabackground', 'assets/graveyard/gravesceneabackground.png');
 this.load.spritesheet('graveyardbuildingaanimate', 'assets/graveyard/graveyard-a-anim.png', { frameWidth: 34, frameHeight: 33 });
@@ -210,17 +198,36 @@ this.load.spritesheet('graveyardbuildingbanimate', 'assets/graveyard/graveyard-b
 this.load.spritesheet('graveyardbuildingcanimate', 'assets/graveyard/graveyard-c-anim.png', { frameWidth: 60, frameHeight: 23 });
 this.load.spritesheet('graveyardbuildingdanimate', 'assets/graveyard/graveyard-d-anim.png', { frameWidth: 22, frameHeight: 14 });
 this.load.spritesheet('graveyardbuildingeanimate', 'assets/graveyard/graveyard-e-anim.png', { frameWidth: 26, frameHeight: 15 });
-this.load.spritesheet('tablelamp1', 'assets/stellar/tablelamp.png', { frameWidth: 55, frameHeight: 74 });
-this.load.spritesheet('doorlights', 'assets/stellar/doorlights.png', { frameWidth: 88, frameHeight: 88 });
-this.load.spritesheet('trianglean', 'assets/stellar/trianglean.png', { frameWidth: 130, frameHeight: 74 });
-this.load.spritesheet('colorsmear', 'assets/stellar/colorsmear.png', { frameWidth: 210, frameHeight: 118 });
-this.load.spritesheet('colortrip', 'assets/stellar/colortrip.png', { frameWidth: 294, frameHeight: 165 });
-this.load.spritesheet('outsidebackground', 'assets/stellar/outsidebackground.png', { frameWidth: 500, frameHeight: 188 });
 this.load.image('graveyardscenebbackground', 'assets/graveyard/gravescenebbackground.png');
+//loadui
 this.load.image('adventureui', 'assets/ui/adventureui.png');
+this.load.image('adventureuibackground', 'assets/ui/adventureuibackground.png');
+this.load.spritesheet('smallhealthbars', 'assets/ui/smallhealthbars.png', { frameWidth: 500, frameHeight: 50 });
+this.load.spritesheet('smallenemyactionbars', 'assets/ui/smallenemyaction.png', { frameWidth: 500, frameHeight: 50 });
 this.load.image('speechbubble', 'assets/ui/speech/speechbubble.png');
-this.load.image('speechnayzramwandreward1', 'assets/ui/speech/speechnayzramwandreward1.png');
-this.load.image('speechnayzramwandreward2', 'assets/ui/speech/speechnayzramwandreward2.png');
+this.load.image('statuswindow', 'assets/ui/status/cecilstatus.png');
+this.load.image('ceciltalentscreenbackground', 'assets/ui/status/ceciltalentscreenbackground.png');
+this.load.image('mapscreenbackgrounda', 'assets/ui/map/backgroundmapa.png');
+this.load.spritesheet('mapcurrentpositionlarge', 'assets/ui/map/mapcurrentpositionlarge.png', { frameWidth: 114, frameHeight: 77 });
+this.load.spritesheet('mapcurrentpositionsmall', 'assets/ui/map/mapcurrentpositionsmall.png', { frameWidth: 72, frameHeight: 38 });
+
+
+//uispeech
+
+this.load.spritesheet('cecilthoughtsoffice1', 'assets/ui/speech/cecilthoughtsoffice1.png', { frameWidth: 413, frameHeight: 400 });
+this.load.spritesheet('cecilthoughtsoffice2', 'assets/ui/speech/cecilthoughtsoffice2.png', { frameWidth: 413, frameHeight: 400 });
+
+this.load.spritesheet('speechnayzramwandreward1', 'assets/ui/speech/nayzramwandreward1.png', { frameWidth: 413, frameHeight: 400 });
+this.load.spritesheet('speechnayzramwandreward2', 'assets/ui/speech/nayzramwandreward2.png', { frameWidth: 413, frameHeight: 400 });
+this.load.spritesheet('dojowelcome1', 'assets/ui/speech/dojowelcome1.png', { frameWidth: 413, frameHeight: 400 });
+this.load.spritesheet('dojowelcome2', 'assets/ui/speech/dojowelcome2.png', { frameWidth: 413, frameHeight: 400 });
+this.load.spritesheet('dojowelcome3', 'assets/ui/speech/dojowelcome3.png', { frameWidth: 413, frameHeight: 400 });
+this.load.spritesheet('dojobasicwingtotem1', 'assets/ui/speech/basicwingtotem1.png', { frameWidth: 413, frameHeight: 400 });
+this.load.spritesheet('dojobasicwingtotem2', 'assets/ui/speech/basicwingtotem2.png', { frameWidth: 413, frameHeight: 400 });
+this.load.spritesheet('dojobasicwingtotem3', 'assets/ui/speech/basicwingtotem3.png', { frameWidth: 413, frameHeight: 400 });
+this.load.spritesheet('dojobasicwingtotem4', 'assets/ui/speech/basicwingtotem4.png', { frameWidth: 413, frameHeight: 400 });
+this.load.spritesheet('dojobasicwingtotem5', 'assets/ui/speech/basicwingtotem5.png', { frameWidth: 413, frameHeight: 400 });
+
 this.load.image('inventorybutton', 'assets/ui/inventorybutton.png');
 this.load.image('statusbutton', 'assets/ui/statusbutton.png');
 this.load.image('mapbutton', 'assets/ui/mapbutton.png');
@@ -244,10 +251,68 @@ this.load.image('jackburtonmessagescreen', 'assets/ui/jackburtonmessagescreen.pn
 this.load.image('diapermafiacallingscreen', 'assets/ui/themayorcallingscreen.png');
 this.load.image('diapermafiamessagescreen', 'assets/ui/diapermafiamessagescreen.png');
 this.load.image('onmywaybutton', 'assets/ui/onmywaybutton.png');
-this.load.image('officeroombackground', 'assets/office/officeroombackground.png');
+this.load.image('amazingupgradesui', 'assets/ui/amazingupgradesui.png');
+this.load.image('stellaritemsui', 'assets/ui/stellaritemsui.png');
 this.load.image('rightpointer', 'assets/ui/rightpointer.png');
 this.load.image('leftpointer', 'assets/ui/leftpointer.png');
 this.load.image('downpointer', 'assets/ui/downpointer.png');
+this.load.image('attackupinv', 'assets/ui/inventory/attackupinv.png');
+this.load.image('defenseupinv', 'assets/ui/inventory/defenseupinv.png');
+this.load.image('magicupinv', 'assets/ui/inventory/magicupinv.png');
+this.load.image('speedupinv', 'assets/ui/inventory/speedupinv.png');
+this.load.image('supportupinv', 'assets/ui/inventory/supportupinv.png');
+this.load.image('healthupinv', 'assets/ui/inventory/healthupinv.png');
+this.load.image('buyitembox', 'assets/ui/buyitembox.png');
+this.load.image('rightpointer', 'assets/ui/rightpointer.png');
+this.load.image('leftpointer', 'assets/ui/leftpointer.png');
+this.load.image('runbox', 'assets/ui/runicon.png');
+this.load.image('cecilswordbox', 'assets/ui/cecil/cecilswordbox.png');
+this.load.image('cecilshieldbox', 'assets/ui/cecil/cecilshieldbox.png');
+this.load.image('cecilholybox', 'assets/ui/cecil/cecilholybox.png');
+this.load.image('cecilholyswordbox', 'assets/ui/cecil/cecilholyswordbox.png');
+this.load.image('ceciltargetbox', 'assets/ui/cecil/ceciltargetbox.png');
+//loadkeyboard
+this.load.image('enternamebox', 'assets/ui/input/enternamebox.png');
+this.load.image('usethisnamebutton', 'assets/ui/input/usethisnamebutton.png');
+this.load.image('Akey', 'assets/ui/input/Akey.png');
+this.load.image('Bkey', 'assets/ui/input/Bkey.png');
+this.load.image('Ckey', 'assets/ui/input/Ckey.png');
+this.load.image('Dkey', 'assets/ui/input/Dkey.png');
+this.load.image('Ekey', 'assets/ui/input/Ekey.png');
+this.load.image('Fkey', 'assets/ui/input/Fkey.png');
+this.load.image('Gkey', 'assets/ui/input/Gkey.png');
+this.load.image('Hkey', 'assets/ui/input/Hkey.png');
+this.load.image('Ikey', 'assets/ui/input/Ikey.png');
+this.load.image('Jkey', 'assets/ui/input/Jkey.png');
+this.load.image('Kkey', 'assets/ui/input/Kkey.png');
+this.load.image('Lkey', 'assets/ui/input/Lkey.png');
+this.load.image('Mkey', 'assets/ui/input/Mkey.png');
+this.load.image('Nkey', 'assets/ui/input/Nkey.png');
+this.load.image('Okey', 'assets/ui/input/Okey.png');
+this.load.image('Pkey', 'assets/ui/input/Pkey.png');
+this.load.image('Qkey', 'assets/ui/input/Qkey.png');
+this.load.image('Rkey', 'assets/ui/input/Rkey.png');
+this.load.image('Skey', 'assets/ui/input/Skey.png');
+this.load.image('Tkey', 'assets/ui/input/Tkey.png');
+this.load.image('Ukey', 'assets/ui/input/Ukey.png');
+this.load.image('Vkey', 'assets/ui/input/Vkey.png');
+this.load.image('Wkey', 'assets/ui/input/Wkey.png');
+this.load.image('Xkey', 'assets/ui/input/Xkey.png');
+this.load.image('Ykey', 'assets/ui/input/Ykey.png');
+this.load.image('Zkey', 'assets/ui/input/Zkey.png');
+this.load.image('delkey', 'assets/ui/input/delkey.png');
+this.load.image('0key', 'assets/ui/input/0key.png');
+this.load.image('1key', 'assets/ui/input/1key.png');
+this.load.image('2key', 'assets/ui/input/2key.png');
+this.load.image('3key', 'assets/ui/input/3key.png');
+this.load.image('4key', 'assets/ui/input/4key.png');
+this.load.image('5key', 'assets/ui/input/5key.png');
+this.load.image('6key', 'assets/ui/input/6key.png');
+this.load.image('7key', 'assets/ui/input/7key.png');
+this.load.image('8key', 'assets/ui/input/8key.png');
+this.load.image('9key', 'assets/ui/input/9key.png');
+//loadoffice
+this.load.image('officeroombackground', 'assets/office/officeroombackground.png');
 this.load.image('questmasteropenscreen', 'assets/office/questmasteropenscreen.png');
 this.load.image('questmasteropenscreenreq', 'assets/office/questmasteropenscreencell.png');
 this.load.image('questmasterloginscreen', 'assets/office/questmasterloginscreen.png');
@@ -270,12 +335,8 @@ this.load.spritesheet('lamp1', 'assets/office/lamp1.png', { frameWidth: 73, fram
 this.load.spritesheet('ceilinglamp', 'assets/office/ceilinglamp.png', { frameWidth: 61, frameHeight: 87 });
 this.load.spritesheet('arcademachine1', 'assets/office/arcademachine1.png', { frameWidth: 150, frameHeight: 178 });
 this.load.spritesheet('featherlighter', 'assets/office/featherlighter.png', { frameWidth: 50, frameHeight: 50 }); 
-this.load.image('statuswindow', 'assets/ui/status/cecilstatus.png');
-this.load.image('ceciltalentscreenbackground', 'assets/ui/status/ceciltalentscreenbackground.png');
-this.load.image('mapscreenbackgrounda', 'assets/ui/map/backgroundmapa.png');
-this.load.spritesheet('mapcurrentpositionlarge', 'assets/ui/map/mapcurrentpositionlarge.png', { frameWidth: 114, frameHeight: 77 });
-this.load.spritesheet('mapcurrentpositionsmall', 'assets/ui/map/mapcurrentpositionsmall.png', { frameWidth: 72, frameHeight: 38 });
 
+//loadaudio
 this.load.audio('phoneringer', [
         'assets/sound/phonering.mp3'
     ]);
@@ -725,17 +786,18 @@ create: function ()
 
         });
         
-             stellarbutton = this.add.sprite(1100, 300, 'stellarbutton').setInteractive();
+            stellarbutton = this.add.sprite(1100, 300, 'stellarbutton').setInteractive();
             stellarbutton.on('pointerdown', function (pointer) {
             this.setTint(0xff0000);
-            playerx = 50
-            playery = 509
+            playerx = 640
+            playery = 478
             stellarcitybackgroundx = 0
+            keyups = false
             game.scene.stop('basemenuscene')
-            scenename = 'outsidecity'
+            scenename = 'stellarscene'
             game.scene.start('uiscene');
-            game.scene.start('outsidecityscene'); 
-            areaname = '     Outside City'
+            game.scene.start('stellarscene'); 
+            areaname = '     Stellar City'
             
             
         });
@@ -784,6 +846,7 @@ burger = this.physics.add.sprite(890 - stellarcitybackgroundx, 462, 'burgerwindo
 ramen = this.physics.add.sprite(1346 - stellarcitybackgroundx, 385, 'ramenstore').setOrigin(0, 0);
 oakloungerotate = this.physics.add.sprite(6228 - stellarcitybackgroundx, 406, 'oakloungerotate').setOrigin(0, 0);
 stellarshoptv = this.physics.add.sprite(2102 - stellarcitybackgroundx, 391, 'stellarshoptv').setOrigin(0, 0);
+karatedojobackpiece = this.physics.add.sprite(1744 - stellarcitybackgroundx, 435, 'karatedojobackpiece').setOrigin(0, 0);
 this.city = this.add.tileSprite(0, 0, 4000, 600, 'city').setOrigin(0, 0);
 this.city.tilePositionX = stellarcitybackgroundx
 arcade1 = this.physics.add.sprite(2863 - stellarcitybackgroundx, 356, 'arcade1').setOrigin(0, 0);
@@ -803,6 +866,8 @@ stellardoor = this.physics.add.sprite(2175 - stellarcitybackgroundx, 398, 'stell
 stellardoor.visible = false
 oakloungedoor = this.physics.add.sprite(6031 - stellarcitybackgroundx, 433, 'oakloungedoor').setOrigin(0, 0);
 oakloungedoor.visible = false
+karatedojodoor = this.physics.add.sprite(1783 - stellarcitybackgroundx, 433, 'karatedojodoor').setOrigin(0, 0);
+karatedojodoor.visible = false
 amazingupgradesback = this.physics.add.sprite(5000 - stellarcitybackgroundx, 340, 'amazingupgradesback').setOrigin(0, 0);
 amazinggrap1 = this.physics.add.sprite(5000 - stellarcitybackgroundx, 345, 'amazinggrap1').setOrigin(0, 0);
 amazinggrap2 = this.physics.add.sprite(5200 - stellarcitybackgroundx, 345, 'amazinggrap1').setOrigin(0, 0);
@@ -816,9 +881,7 @@ nayzramswand.visible = false
 trashcan = this.physics.add.sprite(3400, 485, 'trashcan');
 trashcan.visible = false
 player = this.physics.add.sprite(playerx, playery, 'cecil');
-sword = this.physics.add.sprite(player.x , player.y - 13, 'sword1');
-sword.visible = false
-sword.rotation += 0.5;
+
 this.fiatpanda = this.add.sprite(2490 - stellarcitybackgroundx, 485, 'fiatpanda')
 this.redcar1 = this.add.sprite(5000 - stellarcitybackgroundx, 515, 'redcar1')
 this.bluecar1 = this.add.sprite(-1000 - stellarcitybackgroundx, 550, 'bluecar1')
@@ -1368,47 +1431,9 @@ itemshopsupportupbutton.visible = false
 
 
   
-attacktime = this.time.addEvent({ delay: 5, callback: attacktime, callbackScope: this, loop: true,startAt: 1 });
 
-function attacktime(){
-    if (cecilattacksword == true){
-      if (playerfacedirection == 'right'){
-        player.anims.play('sword', true);
-        sword.visible = true
-        sword.rotation += 0.2;
-        sword.y += 4;
-        sword.x += 1.6;
-    }
-        if (playerfacedirection == 'left'){
-        player.anims.play('sword', true);
-        sword.visible = true
-        sword.rotation -= 0.2;
-        sword.y += 4;
-        sword.x -= 1.6;
-    }
-      
-    }
-  
-  
-    if (sword.rotation > 2) {
-        cecilattacksword = false
-       player.anims.play('walk', true);
-        sword.visible = false
-        sword.rotation = 0
-        sword.y = player.y - 20
-        sword.x = player.x 
-    } 
-  
-      if (sword.rotation < -2) {
-        cecilattacksword = false
-       player.anims.play('walk', true);
-        sword.visible = false
-        sword.rotation = 0
-        sword.y = player.y - 20
-        sword.x = player.x 
-    } 
 
-}
+
 
 
 //stellaranim
@@ -1536,6 +1561,7 @@ function attacktime(){
         key: 'ramenwindowsplay',
         frames: this.anims.generateFrameNumbers('ramenstore', { start: 0, end: 3 }),
         frameRate: 2,
+        yoyo: true,
         repeat: -1
     });
 
@@ -1574,12 +1600,7 @@ function attacktime(){
         repeat: -1
     });
   
-    this.anims.create({
-        key: 'sword',
-        frames: this.anims.generateFrameNumbers('cecil', { start: 11, end: 13 }),
-        frameRate: 5,
-        repeat: 0
-    });
+    
 
    
 
@@ -1593,6 +1614,8 @@ text = this.add.text(10, 10, '', { font: '16px Courier', fill: '#00ff00' }).setS
 //stellarupdate
 update: function (time, delta)
 {
+playercurrentx = player.x
+playercurrenty = player.y
 stellarbridge1.anims.play('stellarbridgeplay', true);
 burger.anims.play('burgerwindowsplay', true);
 fingerdoor.anims.play('fingerdoor', true);
@@ -1618,13 +1641,23 @@ stellarspiral.anims.play('stellarspiralplay', true);
 copter1.anims.play('copter1play', true);
 copter1.x -= 5;
 
-
+playercurrentx = player.x
+playercurrenty = player.y
 
 
 this.sky.tilePositionX += 0.5;
 this.airplane1.x -= 1;
 this.bluecar1.x += 3;
 this.redcar1.x -= 4;
+
+if (player.y > 478 ){
+    player.y = 478
+}
+
+if (player.y < 478){
+    player.y = 478
+}
+
 
 if (beginnayzramwandquest == true){
     trashcan.visible = true
@@ -1650,9 +1683,24 @@ if (beginnayzramwandquest == true){
     }
 }
 
+   if (player.x > karatedojodoor.x){
+    if (player.x < karatedojodoor.x + 32){
+        karatedojodoor.visible = true
+   }
+   }
+   
+   if (player.x > karatedojodoor.x +33){
+     karatedojodoor.visible = false
+   }
+    if (player.x < karatedojodoor.x  ){
+     karatedojodoor.visible = false
+   }
+
+
 if (player.x > 1360){
         playerx = 25
         playery = 375
+        keyups = true
          game.scene.stop('stellarscene')
          game.scene.start('cityoutskirtsscene');
          cursors.left.isDown = false
@@ -1664,9 +1712,8 @@ if (beginnayzramwandquest == false){
 }
 
 if (amazingshopview == true){
-    mapbutton.visible = false
-    statusbutton.visible = false
-    inventorybutton.visible = false
+   keyboardlock = true
+   hideadventureui()
    amazingshopbutton1.x = amazingshopwindow.x + 43
    amazingshopbutton1.y = amazingshopwindow.y + 25
    amazingshopbutton2.x = amazingshopwindow.x + 119
@@ -1784,9 +1831,7 @@ if (amazingshopview == true){
 
 if (itemshopopenview == true){
     keyboardlock = true
-     mapbutton.visible = false
-    statusbutton.visible = false
-    inventorybutton.visible = false
+    hideadventureui()
     itemshophealthupbutton.x = itemshopwindow.x + 55
     itemshophealthupbutton.y = itemshopwindow.y + 88
     itemshopattackupbutton.x = itemshopwindow.x + 255
@@ -1811,74 +1856,78 @@ if (itemshopopenview == true){
 
   if (this.city.tilePositionX < 0)
     {
-    this.city.tilePositionX += 1;
-    this.back2.tilePositionX += 0.5;
-    stellarbridge1.x -= 1;
-    cecilofficedooropen.x -= 1;
-    amazingupgradesfront.x -= 1;
-    amazingupgradesback.x -= 1;
-    amazinggrap1.x -= 1;
-    amazinggrap2.x -= 1;
-    amazinggrap3.x -= 1;
-    stellardoor.x -= 1;
-    stellarshoptv.x -= 1;
-    fingerdoor.x -= 1;
-    fingerwarp.x -= 1;
-    ramen.x -= 1;
-    oakloungerotate.x -= 1;
-    oakloungedrop.x -= 1;
-    oakloungedoor.x -= 1;
-    oakskull.x -= 1;
-    arcade1.x -= 1;
-    arcade2.x -= 1;
-    arcadecoindrop.x -=1;
-    burger.x -= 1;
-    smokeface.x -= 1;
-    fingertop.x -= 1;
-    thefinger.x -= 1;
-    fingerarrow.x -= 1;
-    stellarspiral.x -= 1;
-    trianglerotate.x -= 1;
-    trashcan.x -= 1;
-    nayzramswand.x -= 1;
-    nayzram.x -= 1;
-    player.x -= 1;
+    this.city.tilePositionX += playerrunspeed;
+    this.back2.tilePositionX += playerrunspeed - 1;
+    stellarbridge1.x -= playerrunspeed;
+    karatedojobackpiece.x -= playerrunspeed;
+    cecilofficedooropen.x -= playerrunspeed;
+    amazingupgradesfront.x -= playerrunspeed;
+    amazingupgradesback.x -= playerrunspeed;
+    amazinggrap1.x -= playerrunspeed;
+    amazinggrap2.x -= playerrunspeed;
+    amazinggrap3.x -= playerrunspeed;
+    karatedojodoor.x -= playerrunspeed;
+    stellardoor.x -= playerrunspeed;
+    stellarshoptv.x -= playerrunspeed;
+    fingerdoor.x -= playerrunspeed;
+    fingerwarp.x -= playerrunspeed;
+    ramen.x -= playerrunspeed;
+    oakloungerotate.x -= playerrunspeed;
+    oakloungedrop.x -= playerrunspeed;
+    oakloungedoor.x -= playerrunspeed;
+    oakskull.x -= playerrunspeed;
+    arcade1.x -= playerrunspeed;
+    arcade2.x -= playerrunspeed;
+    arcadecoindrop.x -= playerrunspeed;
+    burger.x -= playerrunspeed;
+    smokeface.x -= playerrunspeed;
+    fingertop.x -= playerrunspeed;
+    thefinger.x -= playerrunspeed;
+    fingerarrow.x -= playerrunspeed;
+    stellarspiral.x -= playerrunspeed;
+    trianglerotate.x -= playerrunspeed;
+    trashcan.x -= playerrunspeed;
+    nayzramswand.x -= playerrunspeed;
+    nayzram.x -= playerrunspeed;
+    player.x -= playerrunspeed;
     }
 
      if (this.city.tilePositionX > 6635)
     {
-    this.city.tilePositionX -= 1;
-    this.back2.tilePositionX -= 0.5;
-    stellarbridge1.x += 1;
-    cecilofficedooropen.x += 1;
-    amazingupgradesfront.x += 1;
-    amazingupgradesback.x += 1;
-    amazinggrap1.x += 1;
-    amazinggrap2.x += 1;
-    amazinggrap3.x += 1;
-    stellardoor.x += 1;
-    stellarshoptv.x += 1;
-    fingerdoor.x += 1;
-    fingerwarp.x += 1;
-    ramen.x += 1;
-    oakloungerotate.x += 1;
-    oakloungedrop.x += 1;
-    oakloungedoor.x += 1;
-    oakskull.x += 1;
-    arcade1.x += 1;
-    arcade2.x += 1;
-    arcadecoindrop.x +=1;
-    burger.x += 1;
-    smokeface.x += 1;
-    fingertop.x += 1;
-    thefinger.x += 1;
-    fingerarrow.x += 1;
-    stellarspiral.x += 1;
-    trianglerotate.x += 1;
-    trashcan.x += 1;
-    nayzramswand.x += 1;
-    nayzram.x += 1;
-    player.x += 1;
+    this.city.tilePositionX -= playerrunspeed;
+    this.back2.tilePositionX -= playerrunspeed - 1;
+    stellarbridge1.x += playerrunspeed;
+    karatedojobackpiece.x += playerrunspeed;
+    karatedojodoor.x += playerrunspeed;
+    cecilofficedooropen.x += playerrunspeed;
+    amazingupgradesfront.x += playerrunspeed;
+    amazingupgradesback.x += playerrunspeed;
+    amazinggrap1.x += playerrunspeed;
+    amazinggrap2.x += playerrunspeed;
+    amazinggrap3.x += playerrunspeed;
+    stellardoor.x += playerrunspeed;
+    stellarshoptv.x += playerrunspeed;
+    fingerdoor.x += playerrunspeed;
+    fingerwarp.x += playerrunspeed;
+    ramen.x += playerrunspeed;
+    oakloungerotate.x += playerrunspeed;
+    oakloungedrop.x += playerrunspeed;
+    oakloungedoor.x += playerrunspeed;
+    oakskull.x += playerrunspeed;
+    arcade1.x += playerrunspeed;
+    arcade2.x += playerrunspeed;
+    arcadecoindrop.x += playerrunspeed;
+    burger.x += playerrunspeed;
+    smokeface.x += playerrunspeed;
+    fingertop.x += playerrunspeed;
+    thefinger.x += playerrunspeed;
+    fingerarrow.x += playerrunspeed;
+    stellarspiral.x += playerrunspeed;
+    trianglerotate.x += playerrunspeed;
+    trashcan.x += playerrunspeed;
+    nayzramswand.x += playerrunspeed;
+    nayzram.x += playerrunspeed;
+    player.x += playerrunspeed;
     }
 
     if (nayzram.visible == true){
@@ -1889,19 +1938,17 @@ if (itemshopopenview == true){
         }
     }
 
-if (player.x > cecilofficedooropen.x -20)
-if (player.x < cecilofficedooropen.x +100)
-{
-{
+
+if (player.x < 350){
 cecilofficedooropen.visible = true
 cecilofficedooropen = true
 }
-}
 
 
-if (player.x > cecilofficedooropen.x +100){
+
+if (player.x > 350){
 cecilofficedooropen.visible = false
- 
+cecilofficedooropen = false
 }
 
 
@@ -1967,11 +2014,30 @@ gameObject.setTint(0x0000ff);
    
     }
     }
+//dojodoor
+
+
+
+    if (player.x > karatedojodoor.x){
+    if (player.x < karatedojodoor.x + 32){
+    karatedojodoor.visible = true
+    if( firsttimeindojo == true){
+    dojointrospeech = true
+    }
+    playerentersdojo = true
+    keyups = true
+    game.scene.stop('stellarscene')
+    game.scene.start('dojoscene')
+    areaname = '     The Dojo'
+    }
+    }
+
 
     if (cecilofficedooropen == true){
         playerx = 1200
         playery = 308
-        officebackgroundx = 639
+     officebackgroundx = 639
+     
      game.scene.stop('stellarscene')
      game.scene.start('officescene')
     areaname = '     The Office'
@@ -1989,6 +2055,7 @@ cursors.up.isDown = false
 cursors.down.isDown = false
 cursors.left.isDown = false
 cursors.right.isDown = false
+keyups = true
 game.scene.stop('stellarscene')
 game.scene.start('oakloungescene')
 areaname = '  The Oak Lounge'
@@ -2002,9 +2069,7 @@ areaname = '  The Oak Lounge'
 
     if (amazingshopview == true){
     amazingshopview = false
-    mapbutton.visible = true
-    statusbutton.visible = true
-    inventorybutton.visible = true
+    showadventureui()
     amazingshopwindow.visible = false
     amazingshopbutton1.visible = false
     amazingshopbutton2.visible = false
@@ -2049,9 +2114,7 @@ areaname = '  The Oak Lounge'
 
     if (itemshopopenview == true){
     keyboardlock = false
-     mapbutton.visible = true
-    statusbutton.visible = true
-    inventorybutton.visible = true
+    showadventureui()
     itemshophealthupbutton.visible = false
     itemshopattackupbutton.visible = false
     itemshopdefenseupbutton.visible = false
@@ -2072,105 +2135,114 @@ areaname = '  The Oak Lounge'
 
     }
     }
-    
+    //stellarkeys
   if (keyboardlock == false){
+    if (playerrun == false){
     if (walkingdirection == 'left'){
-    if (cursors.left.isDown)
-    {
-
-    
+    if (cursors.left.isDown){
     if (player.x < 650){
-    player.x += 1;
-    stellarbridge1.x += 1;
-    stellarshoptv.x += 1;
-    cecilofficedooropen.x += 1;
-    amazingupgradesfront.x += 1;
-    amazingupgradesback.x += 1;
-    amazinggrap1.x += 1;
-    amazinggrap2.x += 1;
-    amazinggrap3.x += 1;
-    stellardoor.x += 1;
-    oakloungedoor.x += 1;
-    fingerdoor.x += 1;
-    fingerwarp.x += 1;
-    ramen.x += 1;
-    oakloungerotate.x += 1;
-    oakloungedrop.x += 1;
-    oakskull.x += 1;
-    arcade1.x += 1;
-    arcade2.x += 1;
-    arcadecoindrop.x +=1;
-    burger.x += 1;
-    smokeface.x += 1;
-    fingertop.x += 1;
-    thefinger.x += 1;
-    fingerarrow.x += 1;
-    stellarspiral.x += 1;
-    trianglerotate.x += 1;
-    trashcan.x += 1;
-    nayzramswand.x += 1;
-    nayzram.x += 1;
-    this.fiatpanda.x += 1;
-    player.setVelocityX(-0);
-    this.back2.tilePositionX -= 0.5;
-    this.city.tilePositionX -= 1;
-    this.airplane1.x += 0.5;
+    player.x += playerrunspeed;
+    stellarbridge1.x += playerrunspeed;
+    karatedojobackpiece.x += playerrunspeed;
+    stellarshoptv.x += playerrunspeed;
+    cecilofficedooropen.x += playerrunspeed;
+    karatedojodoor.x += playerrunspeed;
+    amazingupgradesfront.x += playerrunspeed;
+    amazingupgradesback.x += playerrunspeed;
+    amazinggrap1.x += playerrunspeed;
+    amazinggrap2.x += playerrunspeed;
+    amazinggrap3.x += playerrunspeed;
+    stellardoor.x += playerrunspeed;
+    oakloungedoor.x += playerrunspeed;
+    fingerdoor.x += playerrunspeed;
+    fingerwarp.x += playerrunspeed;
+    ramen.x += playerrunspeed;
+    oakloungerotate.x += playerrunspeed;
+    oakloungedrop.x += playerrunspeed;
+    oakskull.x += playerrunspeed;
+    arcade1.x += playerrunspeed;
+    arcade2.x += playerrunspeed;
+    arcadecoindrop.x += playerrunspeed;
+    burger.x += playerrunspeed;
+    smokeface.x += playerrunspeed;
+    fingertop.x += playerrunspeed;
+    thefinger.x += playerrunspeed;
+    fingerarrow.x += playerrunspeed;
+    stellarspiral.x += playerrunspeed;
+    trianglerotate.x += playerrunspeed;
+    trashcan.x += playerrunspeed;
+    nayzramswand.x += playerrunspeed;
+    nayzram.x += playerrunspeed;
+    this.fiatpanda.x += playerrunspeed;
+
+    if (playerrun == false){
+    this.back2.tilePositionX -= playerrunspeed - 1;
+    }
+
+    if (playerrun == true){
+    this.back2.tilePositionX -= playerrunspeed - 2;
+    }
+
+    this.city.tilePositionX -= playerrunspeed;
     }
     }
     }
 
 
     
-    else if (cursors.right.isDown)
-    {
+    else if (cursors.right.isDown){
     if (walkingdirection == 'right'){
     if (player.x > 648){
-    player.x -= 1;
-    stellarbridge1.x -= 1;
-    cecilofficedooropen.x -= 1;
-    amazingupgradesfront.x -= 1;
-    amazingupgradesback.x -= 1;
-    amazinggrap1.x -= 1;
-    amazinggrap2.x -= 1;
-    amazinggrap3.x -= 1;
-    stellardoor.x -= 1;
-    oakloungedoor.x -= 1;
-    stellarshoptv.x -= 1;
-    fingerdoor.x -= 1;
-    fingerwarp.x -= 1;
-    ramen.x -= 1;
-    oakloungerotate.x -= 1;
-    oakloungedrop.x -= 1;
-    oakskull.x -= 1;
-    arcade1.x -= 1;
-    arcade2.x -= 1;
-    arcadecoindrop.x -=1;
-    burger.x -= 1;
-    smokeface.x -= 1;
-    fingertop.x -= 1;
-    thefinger.x -= 1;
-    fingerarrow.x -= 1;
-    stellarspiral.x -= 1;
-    trianglerotate.x -= 1;
-    trashcan.x -= 1;
-    nayzramswand.x -= 1;
-    nayzram.x -= 1;
-    this.fiatpanda.x -= 1;
-    this.airplane1.x -= 1;
-    this.sky.tilePositionX += 0.9;
-    this.back2.tilePositionX += 0.5;
-    this.city.tilePositionX += 1;
-    copter1.setVelocityX(-150);
+    player.x -= playerrunspeed;
+    stellarbridge1.x -= playerrunspeed;
+    karatedojobackpiece.x -= playerrunspeed;
+    stellarshoptv.x -= playerrunspeed;
+    cecilofficedooropen.x -= playerrunspeed;
+    amazingupgradesfront.x -= playerrunspeed;
+    amazingupgradesback.x -= playerrunspeed;
+    karatedojodoor.x -= playerrunspeed;
+    amazinggrap1.x -= playerrunspeed;
+    amazinggrap2.x -= playerrunspeed;
+    amazinggrap3.x -= playerrunspeed;
+    stellardoor.x -= playerrunspeed;
+    oakloungedoor.x -= playerrunspeed;
+    fingerdoor.x -= playerrunspeed;
+    fingerwarp.x -= playerrunspeed;
+    ramen.x -= playerrunspeed;
+    oakloungerotate.x -= playerrunspeed;
+    oakloungedrop.x -= playerrunspeed;
+    oakskull.x -= playerrunspeed;
+    arcade1.x -= playerrunspeed;
+    arcade2.x -= playerrunspeed;
+    arcadecoindrop.x -= playerrunspeed;
+    burger.x -= playerrunspeed;
+    smokeface.x -= playerrunspeed;
+    fingertop.x -= playerrunspeed;
+    thefinger.x -= playerrunspeed;
+    fingerarrow.x -= playerrunspeed;
+    stellarspiral.x -= playerrunspeed;
+    trianglerotate.x -= playerrunspeed;
+    trashcan.x -= playerrunspeed;
+    nayzramswand.x -= playerrunspeed;
+    nayzram.x -= playerrunspeed;
+    this.fiatpanda.x -= playerrunspeed;
+
+    if (playerrun == false){
+    this.back2.tilePositionX += playerrunspeed - 1;
     }
-    }
+    if (playerrun == true){
+    this.back2.tilePositionX += playerrunspeed - 2;
     }
     
-    else
-    {
-       
-        player.anims.stop('walk', true);
-          
-}
+    this.city.tilePositionX += playerrunspeed;
+   
+    }
+    }
+    }
+    }
+ 
+
+ 
 }
 
 if (debugview == true){
@@ -2216,52 +2288,12 @@ create: function ()
         doorlights = this.physics.add.sprite(355, 10, 'doorlights').setOrigin(0, 0);
         tablelamp = this.physics.add.sprite(1285, 143, 'tablelamp1');
         player = this.physics.add.sprite(playerx, playery, 'cecil');
-        sword = this.physics.add.sprite(player.x , player.y - 13, 'sword1');
-        sword.visible = false
-        sword.rotation += 0.5;
+        
         scenename = 'oakloungescene'
 
-attacktime = this.time.addEvent({ delay: 5, callback: attacktime, callbackScope: this, loop: true,startAt: 1 });
 
-function attacktime(){
-    if (cecilattacksword == true){
-      if (playerfacedirection == 'right'){
-        player.anims.play('sword', true);
-        sword.visible = true
-        sword.rotation += 0.2;
-        sword.y += 4;
-        sword.x += 1.6;
-    }
-        if (playerfacedirection == 'left'){
-        player.anims.play('sword', true);
-        sword.visible = true
-        sword.rotation -= 0.2;
-        sword.y += 4;
-        sword.x -= 1.6;
-    }
-      
-    }
-  
-  
-    if (sword.rotation > 2) {
-        cecilattacksword = false
-       player.anims.play('walk', true);
-        sword.visible = false
-        sword.rotation = 0
-        sword.y = player.y - 20
-        sword.x = player.x 
-    } 
-  
-      if (sword.rotation < -2) {
-        cecilattacksword = false
-       player.anims.play('walk', true);
-        sword.visible = false
-        sword.rotation = 0
-        sword.y = player.y - 20
-        sword.x = player.x 
-    } 
 
-}
+
 
  this.input.setPollAlways();
         this.input.on('gameobjectover', function (pointer, gameObject) {
@@ -2279,12 +2311,7 @@ function attacktime(){
         repeat: -1
     });
   
-    this.anims.create({
-        key: 'sword',
-        frames: this.anims.generateFrameNumbers('cecil', { start: 11, end: 13 }),
-        frameRate: 5,
-        repeat: 0
-    });
+    
 
      this.anims.create({
         key: 'tablelampplay',
@@ -2339,19 +2366,19 @@ colorsmear.anims.play('colorsmearplay', true);
 colortrip.anims.play('colortripplay', true);
 outsidebackground.anims.play('outsidebackgroundplay', true);
 if (player.x < 1){
-    player.x += 1;
+    player.x += playerrunspeed;
 }
 
 if (oakloungeclubinside.tilePositionX < 0)
     {
     oakloungeclubinside.tilePositionX = 0;
-    player.x -= 1;
-    doorlights.x -= 1;
-    tablelamp.x -= 1;
-    trianglean.x -= 1;
-    colorsmear.x -= 1;
-    colortrip.x -= 1;
-    outsidebackground.x -= 1;
+    player.x -= playerrunspeed;
+    doorlights.x -= playerrunspeed;
+    tablelamp.x -= playerrunspeed;
+    trianglean.x -= playerrunspeed;
+    colorsmear.x -= playerrunspeed;
+    colortrip.x -= playerrunspeed;
+    outsidebackground.x -= playerrunspeed;
     
  
 
@@ -2360,40 +2387,40 @@ if (oakloungeclubinside.tilePositionX < 0)
     if (oakloungeclubinside.tilePositionX > 559)
     {
     oakloungeclubinside.tilePositionX = 559;
-    player.x += 1;
-    tablelamp.x += 1;
-    doorlights.x += 1;
-    trianglean.x += 1;
-    colorsmear.x += 1;
-    colortrip.x += 1;
-    outsidebackground.x += 1;
+    player.x += playerrunspeed;
+    tablelamp.x += playerrunspeed;
+    doorlights.x += playerrunspeed;
+    trianglean.x += playerrunspeed;
+    colorsmear.x += playerrunspeed;
+    colortrip.x += playerrunspeed;
+    outsidebackground.x += playerrunspeed;
     }
 
   if (keyboardlock == false){
     if (cursors.left.isDown){
     if (player.x < 650){
-    player.x += 1;
-    tablelamp.x += 1;
-    doorlights.x += 1;
-    trianglean.x += 1;
-    colorsmear.x += 1;
-    colortrip.x += 1;
-    outsidebackground.x += 1;
-    oakloungeclubinside.tilePositionX -= 1;
+    player.x += playerrunspeed;
+    tablelamp.x += playerrunspeed;
+    doorlights.x += playerrunspeed;
+    trianglean.x += playerrunspeed;
+    colorsmear.x += playerrunspeed;
+    colortrip.x += playerrunspeed;
+    outsidebackground.x += playerrunspeed;
+    oakloungeclubinside.tilePositionX -= playerrunspeed;
     
     }
     }
     
     else if (cursors.right.isDown){
     if (player.x > 648){
-    player.x -= 1;
-   tablelamp.x -= 1;
-   doorlights.x -= 1;
-   trianglean.x -= 1;
-   colorsmear.x -= 1;
-   colortrip.x -= 1;
-   outsidebackground.x -= 1;
-   oakloungeclubinside.tilePositionX += 1;
+    player.x -= playerrunspeed;
+   tablelamp.x -= playerrunspeed;
+   doorlights.x -= playerrunspeed;
+   trianglean.x -= playerrunspeed;
+   colorsmear.x -= playerrunspeed;
+   colortrip.x -= playerrunspeed;
+   outsidebackground.x -= playerrunspeed;
+   oakloungeclubinside.tilePositionX += playerrunspeed;
     
     }
     }
@@ -2401,7 +2428,7 @@ if (oakloungeclubinside.tilePositionX < 0)
     else if (cursors.up.isDown)
     {
     if (player.y > 176) {
-    player.y -= 1;
+    player.y -= playerrunspeed;
     player.anims.play('walk', true);
     }
 
@@ -2430,7 +2457,7 @@ if (oakloungeclubinside.tilePositionX < 0)
     else if (cursors.down.isDown)
     {
         if (player.y < 600){
-    player.y += 1;
+    player.y += playerrunspeed;
     player.anims.play('walk', true);
     }
     }
@@ -2452,6 +2479,561 @@ text.setText([
         player.y
         
     ]);
+}
+});
+
+//dojoscene
+var dojoscene = new Phaser.Class({
+
+    Extends: Phaser.Scene,
+
+    initialize:
+
+    function dojoscene ()
+    {
+        Phaser.Scene.call(this, { key: 'dojoscene' });
+    },
+
+    preload: function ()
+    {
+      
+    },
+
+create: function ()
+{
+        
+       
+
+        this.dojobackground = this.add.sprite(0, -100, 'dojo2').setOrigin(0, 0); 
+
+        birdtotem1 = this.physics.add.sprite(0, 0, 'birdtotem1');
+        
+        player = this.physics.add.sprite(-26, 418, 'cecil');
+        kang = this.physics.add.sprite(1132, 430, 'kang');
+
+        keyups = true
+        birdtotem1.visible = false
+        totem1healthbar = this.physics.add.sprite(totemhealthbarx, totemhealthbary, '');
+        
+        dojoevents = this.time.addEvent({ delay: 10, callback: dojoevents, callbackScope: this, loop: true,startAt: 1 });
+        dojocounter = this.time.addEvent({ delay: 1000, callback: dojocounter, callbackScope: this, loop: true,startAt: 1 });
+        dojobattleevents = this.time.addEvent({ delay: 1, callback: dojobattleevents, callbackScope: this, loop: true,startAt: 1 });
+        
+        scenename = 'karatedojo'
+
+ this.input.setPollAlways();
+        this.input.on('gameobjectover', function (pointer, gameObject) {
+        gameObject.setTint(0xff0000);
+    });
+    
+        this.input.on('gameobjectout', function (pointer, gameObject) {
+        gameObject.clearTint();
+    });        
+
+        this.anims.create({
+        key: 'walk',
+        frames: this.anims.generateFrameNumbers('cecil', { start: 0, end: 1 }),
+        frameRate: 10,
+        repeat: -1
+    });
+
+dojoreadybutton = this.add.sprite(432, 490, 'dojoreadybutton').setInteractive();
+dojoreadybutton.setOrigin(0, 0); 
+dojoreadybutton.on('pointerdown', function (pointer) {
+this.setTint(0xff0000);
+
+if (dojotraininground == 1){
+dojointrospeech = false
+speechtext = ''
+keyboardlock = false
+kangwalkaway = true
+speechbubbleshow = false
+speechbubble.visible = false
+speechbubblemessage.visible = false
+dojokombatbegin = true
+
+}
+});
+
+dojoreadybutton.visible = false
+  
+      //kanganims
+  
+    
+        this.anims.create({
+        key: 'kangidle',
+        frames: this.anims.generateFrameNumbers('kang', { start: 0, end: 13 }),
+        frameRate: 10,
+        repeat: -1
+    });
+        this.anims.create({
+        key: 'kangwalk',
+        frames: this.anims.generateFrameNumbers('kangwalk', { start: 0, end: 11 }),
+        frameRate: 10,
+        repeat: -1
+    });
+        this.anims.create({
+        key: 'kangrun',
+        frames: this.anims.generateFrameNumbers('kangrun', { start: 0, end: 7 }),
+        frameRate: 10,
+        repeat: 1
+
+    });
+     
+    
+
+    cursors = this.input.keyboard.createCursorKeys();
+    text = this.add.text(10, 10, 'Cursors to move', { font: '16px Courier', fill: '#00ff00' }).setScrollFactor(0);
+    dojotimertxt = this.add.text(645, 30, '', { font: '40px Courier', fill: '#ffffff' }).setScrollFactor(0);
+//dojoevents
+    
+    function dojocounter(){
+        if (dojokombatbegin == true){
+        dojotrainingtimer += 1
+    }
+    }
+
+    function dojoevents() {
+
+    if (player.x < 226){
+        if (playerentersdojo == true){
+        player.setFlipX(true);
+        player.x += 5
+        cursors.right.isDown = true
+        if (dojointrospeech == true){
+            speechtexttime = 25
+        }
+        
+    }
+    }
+    if (player.x > 222){
+        playerentersdojo = false
+        if (dojointrospeech == true)
+        speechbubbleshow = true
+        keyboardlock = true
+        if (speechtexttime > 22){
+        cursors.right.isDown = false
+        player.anims.stop('walk', true);
+        speechtext = 'dojointromessage'
+
+        }
+        
+        
+        if (kangwalkaway == true){
+            if (kang.x  < 1390)  {
+            kang.anims.play('kangrun', true); 
+            kang.setFlipX(false);
+            kang.x += 7;
+        }
+        if (kang.x  > 1390) {
+            dojoreadybutton.visible = false
+            keyboardlock = false
+           
+    }
+    }
+    }
+     if (kangwalkback == true){
+         if (kang.x > 1132) {
+           kang.anims.play('kangrun', true); 
+            kang.setFlipX(true);
+            kang.x -= 7;
+            player.x = 222
+            player.y = 418
+            player.anims.stop('walk', true);
+            player.setFlipX(true);
+            speechtext = 'endround1message'
+
+    }
+    }
+    
+     if (kang.x < 1133) {
+    kangwalkback = false
+    kang.anims.play('kangidle', true); 
+    
+    }
+
+
+
+    }
+
+    function dojobattleevents(){
+        if (dojokombatbegin == true){
+       
+
+        
+        if (cecilattackright == true){
+            
+            if (cecilattacksword == true){
+             birdtotem1health -= cecilattackrating
+             totemhit = true
+            }
+        }
+        if (cecilattackleft == true){
+            
+             if (cecilattacksword == true){
+             birdtotem1health -= cecilattackrating
+             totemhit = true
+            }
+        }
+
+        if (playerfacedirection == 'right'){
+        if (player.y > playertargety - 20){
+            if (player.y < playertargety + 40 ){
+            if (player.x > playertargetx - 45){
+      
+           
+            cecilattackright = true
+            birdtotem1.setTint(0xff0000);
+        }
+        }
+        }
+     
+        if (player.x > playertargetx - 20 ){
+            birdtotem1.clearTint();
+            cecilattackright = false
+        }
+        if (player.y > playertargety + 60){
+            birdtotem1.clearTint();
+            cecilattackright = false
+        }
+        if (player.y < playertargety + 15){
+            birdtotem1.clearTint();
+            cecilattackright = false
+        }
+
+        }
+
+          else {
+        cecilattackright = false
+        cecilattackleft = false
+        birdtotem1.clearTint();
+        }
+        
+    
+      if (playerfacedirection == 'left'){
+            if (player.y > playertargety - 20){
+            if (player.x < playertargetx + 40){
+            if (player.x > playertargetx + 10){
+            
+            cecilattackleft = true
+            birdtotem1.setTint(0xff0000);
+        }
+        }
+        }
+        if (player.y > playertargety + 60){
+            birdtotem1.clearTint();
+            cecilattackleft = false
+        }
+        if (player.y < playertargety + 15){
+            birdtotem1.clearTint();
+            cecilattackleft = false
+        }
+
+        }
+
+        
+        if (totemhit == true){
+            randomtotempositionx = Math.floor(Math.random() * 3);
+            randomtotempositiony = Math.floor(Math.random() * 3);
+           
+           if (randomtotempositionx == 1){
+            totemmovepositionx += 25;
+           }
+           if (randomtotempositiony == 1){
+            totemmovepositiony += 25;
+           }
+           
+           if (randomtotempositionx == 2){
+            totemmovepositionx -= 25;
+           }
+           if (randomtotempositiony == 2){
+            totemmovepositiony -= 25;
+           }
+
+            if (dojotraininground == 1){
+             if (birdtotem1.y > 415){
+            totemmovepositiony -= 28;
+            
+            }
+
+            if (birdtotem1.y < 215){
+            totemmovepositiony += 50;
+            }
+
+            if (birdtotem1.x < 1271){
+            totemmovepositionx += 100
+            }
+             if (birdtotem1.x > 1271){
+            totemmovepositionx -= 950
+            }
+            }
+
+             totemhit = false
+        }
+        
+
+
+    
+      if (birdtotemhealth > 4990 ){
+          totem1healthbar.anims.play('health100', true);  
+      }
+      
+      if (birdtotemhealth < 5000 ){
+          if (birdtotemhealth > 4750 ){
+          totem1healthbar.anims.play('health95', true);  
+      }
+      }
+      
+          if (birdtotemhealth < 4750  ){
+          if (birdtotemhealth > 4500 ){
+          totem1healthbar.anims.play('health90', true);  
+      }
+      }
+
+          if (birdtotemhealth < 4500  ){
+          if (birdtotemhealth > 4250 ){
+          totem1healthbar.anims.play('health85', true);  
+      }
+      }
+
+         if (birdtotemhealth < 4250 ){
+          if (birdtotemhealth > 4000 ){
+          totem1healthbar.anims.play('health80', true);  
+      }
+      }
+          if (birdtotemhealth < 4000  ){
+          if (birdtotemhealth > 3750 ){
+          totem1healthbar.anims.play('health75', true);  
+      }
+      }
+          if (birdtotemhealth < 3750  ){
+          if (birdtotemhealth > 3500 ){
+          totem1healthbar.anims.play('health70', true);  
+      }
+      }
+
+          if (birdtotemhealth < 3500  ){
+          if (birdtotemhealth > 3250 ){
+          totem1healthbar.anims.play('health65', true);  
+      }
+      }
+          if (birdtotem1health < 3250  ){
+          if (birdtotemhealth > 3000 ){
+          totem1healthbar.anims.play('health60', true);  
+      }
+      }
+          if (birdtotemhealth < 3000  ){
+          if (birdtotemhealth > 2750 ){
+          totem1healthbar.anims.play('health55', true);  
+      }
+      }
+          if (birdtotemhealth < 2750  ){
+          if (birdtotemhealth > 2500 ){
+          totem1healthbar.anims.play('health50', true);  
+      }
+      }
+          if (birdtotemhealth < 2500  ){
+          if (birdtotemhealth > 2250 ){
+          totem1healthbar.anims.play('health45', true);  
+      }
+      }
+          if (birdtotemhealth < 2250  ){
+          if (birdtotemhealth > 2000 ){
+          totem1healthbar.anims.play('health40', true);  
+      }
+      }
+          if (birdtotemhealth < 2000  ){
+          if (birdtotemhealth > 1750 ){
+          totem1healthbar.anims.play('health35', true);  
+      }
+      }
+          if (birdtotemhealth < 1750  ){
+          if (birdtotemhealth > 1500 ){
+          totem1healthbar.anims.play('health30', true);  
+      }
+      }
+          if (birdtotemhealth < 1500  ){
+          if (birdtotemhealth > 1250 ){
+          totem1healthbar.anims.play('health25', true);  
+      }
+      }
+          if (birdtotemhealth < 1250  ){
+          if (birdtotemhealth > 1000 ){
+          totem1healthbar.anims.play('health20', true);  
+      }
+      }
+          if (birdtotemhealth < 1000  ){
+          if (birdtotemhealth > 750 ){
+          totem1healthbar.anims.play('health15', true);  
+      }
+      }
+          if (birdtotemhealth < 750  ){
+          if (birdtotemhealth > 500 ){
+          totem1healthbar.anims.play('health10', true);  
+      }
+      }
+          if (birdtotemhealth < 500  ){
+          if (birdtotemhealth > 250 ){
+          totem1healthbar.anims.play('health5', true);  
+      }
+      }
+
+     if (dojotraininground == 1){
+     if (birdtotem1health < 1){
+         kangwalkaway = false
+         dojokombatbegin = false
+         birdtotem1.visible = false
+         totem1healthbar.visible = false
+         kangwalkback = true
+    }
+    }
+    
+    }
+    }
+        
+},
+
+//dojoupdate
+update: function (time, delta)
+{
+if (player.x < 26){
+    player.x = 26
+}
+
+if (totemmovepositionx < 26){
+    totemmovepositionx = 100
+}
+
+
+if (player.x > 1335){
+    player.x = 1335
+}
+
+if (totemmovepositionx > 1335){
+    totemmovepositionx = 1200
+}
+
+if (player.y > 565){
+    player.y = 565
+           
+}
+if (totemmovepositiony > 565){
+    totemmovepositiony -= 700
+           
+}
+
+if (player.y < 313) {
+    player.y = 313
+
+}
+if (totemmovepositiony < 313) {
+    totemmovepositiony += 313
+
+}
+
+if (dojotraininground == 1){
+birdtotemhealth = birdtotem1health
+
+playertargetx = birdtotem1.x
+playertargety = birdtotem1.y
+
+if (birdtotem1.x < totemmovepositionx){
+    birdtotem1.x += 5
+}
+
+if (birdtotem1.x > totemmovepositionx){
+    birdtotem1.x -= 5
+}
+
+if (birdtotem1.y < totemmovepositiony){
+    birdtotem1.y += 5
+}
+
+if (birdtotem1.y > totemmovepositiony){
+    birdtotem1.y -= 5
+}
+}
+
+playercurrentx = player.x
+playercurrenty = player.y
+totem1healthbar.x = birdtotem1.x 
+totem1healthbar.y = birdtotem1.y - 250
+
+
+if (player.y > birdtotem1.y + 30){
+player.setDepth(1);    
+birdtotem1.setDepth(0);
+}
+
+if (player.y < birdtotem1.y + 25 ){
+birdtotem1.setDepth(1);
+player.setDepth(0);
+}
+
+if (kangwalkaway == false){
+if (kangwalkback == false){
+kang.anims.play('kangidle', true); 
+kang.setFlipX(true);
+}
+}
+      
+
+    if (keyboardlock == false){
+    if (walkingdirection == 'left'){
+    if (cursors.left.isDown){
+    }
+    }
+    
+    else if (cursors.right.isDown)
+    {
+    if (walkingdirection == 'right'){
+ 
+    }
+     
+    }
+
+    else if (cursors.up.isDown)
+    {
+     player.anims.play('walk', true);
+    
+    } 
+ 
+    
+    else if (cursors.down.isDown)
+    {
+    player.anims.play('walk', true);
+   
+    }
+    
+    else
+    {
+      
+      
+}
+}
+     
+dojotimertxt.setText([
+    
+    dojotrainingtimer
+
+     ]);
+
+
+
+
+text.setText([
+        'world x: ' + this.input.mousePointer.worldX,
+        'world y: ' + this.input.mousePointer.worldY,
+        cecilattackright,
+        cecilattackleft,
+        player.x,
+        birdtotem1.x,
+        player.y,
+        birdtotem1.y,
+
+        
+    ]);
+
 }
 });
 
@@ -2478,52 +3060,11 @@ create: function ()
        
         this.cityoutskirtsbackground = this.add.sprite(0, 0, 'cityoutskirtsbackground').setOrigin(0, 0);
         player = this.physics.add.sprite(playerx, playery, 'cecil');
-        sword = this.physics.add.sprite(player.x , player.y - 13, 'sword1');
-        sword.visible = false
-        sword.rotation += 0.5;
         scenename = 'outskirts'
 
-attacktime = this.time.addEvent({ delay: 5, callback: attacktime, callbackScope: this, loop: true,startAt: 1 });
 
-function attacktime(){
-    if (cecilattacksword == true){
-      if (playerfacedirection == 'right'){
-        player.anims.play('sword', true);
-        sword.visible = true
-        sword.rotation += 0.2;
-        sword.y += 4;
-        sword.x += 1.6;
-    }
-        if (playerfacedirection == 'left'){
-        player.anims.play('sword', true);
-        sword.visible = true
-        sword.rotation -= 0.2;
-        sword.y += 4;
-        sword.x -= 1.6;
-    }
-      
-    }
-  
-  
-    if (sword.rotation > 2) {
-        cecilattacksword = false
-       player.anims.play('walk', true);
-        sword.visible = false
-        sword.rotation = 0
-        sword.y = player.y - 20
-        sword.x = player.x 
-    } 
-  
-      if (sword.rotation < -2) {
-        cecilattacksword = false
-       player.anims.play('walk', true);
-        sword.visible = false
-        sword.rotation = 0
-        sword.y = player.y - 20
-        sword.x = player.x 
-    } 
 
-}
+
 
  this.input.setPollAlways();
         this.input.on('gameobjectover', function (pointer, gameObject) {
@@ -2541,12 +3082,7 @@ function attacktime(){
         repeat: -1
     });
   
-    this.anims.create({
-        key: 'sword',
-        frames: this.anims.generateFrameNumbers('cecil', { start: 11, end: 13 }),
-        frameRate: 5,
-        repeat: 0
-    });
+    
 
     cursors = this.input.keyboard.createCursorKeys();
     text = this.add.text(10, 10, 'Cursors to move', { font: '16px Courier', fill: '#00ff00' }).setScrollFactor(0);
@@ -2555,10 +3091,13 @@ function attacktime(){
 
 update: function (time, delta)
 {
+playercurrentx = player.x
+playercurrenty = player.y
 
   if (player.x > 1365){
         playerx = 25
         playery = 500
+        keyups = false
          game.scene.stop('cityoutskirtsscene')
          game.scene.start('graveyardgatesscene');
          cursors.left.isDown = false
@@ -2569,6 +3108,7 @@ update: function (time, delta)
       if (player.x < 1){
         playerx = 1300
         playery = 475
+        keyups = false
         stellarcitybackgroundx = 6635
         game.scene.stop('cityoutskirtsscene')
         game.scene.start('stellarscene');
@@ -2596,7 +3136,7 @@ update: function (time, delta)
     {
         if (player.y > 315) {
 
-    player.y -= 1;
+    player.y -= playerrunspeed;
     player.anims.play('walk', true);
     }
     } 
@@ -2605,15 +3145,14 @@ update: function (time, delta)
     else if (cursors.down.isDown)
     {
         if (player.y < 565){
-    player.y += 1;
+    player.y += playerrunspeed;
     player.anims.play('walk', true);
     }
     }
     
     else
     {
-      player.setVelocityX(0);
-      player.anims.stop('walk', true);
+      
       
 }
 }
@@ -2655,52 +3194,11 @@ create: function ()
         this.sky = this.add.tileSprite(0, 0, 4000, 600, 'sky').setOrigin(0, 0);
         this.graveyardgatesbackground = this.add.sprite(0, 0, 'graveyardgatesbackground').setOrigin(0, 0);
         player = this.physics.add.sprite(playerx, playery, 'cecil');
-        sword = this.physics.add.sprite(player.x , player.y - 13, 'sword1');
-        sword.visible = false
-        sword.rotation += 0.5;
         scenename = 'graveyardgates'
 
-attacktime = this.time.addEvent({ delay: 5, callback: attacktime, callbackScope: this, loop: true,startAt: 1 });
 
-function attacktime(){
-    if (cecilattacksword == true){
-      if (playerfacedirection == 'right'){
-        player.anims.play('sword', true);
-        sword.visible = true
-        sword.rotation += 0.2;
-        sword.y += 4;
-        sword.x += 1.6;
-    }
-        if (playerfacedirection == 'left'){
-        player.anims.play('sword', true);
-        sword.visible = true
-        sword.rotation -= 0.2;
-        sword.y += 4;
-        sword.x -= 1.6;
-    }
-      
-    }
-  
-  
-    if (sword.rotation > 2) {
-        cecilattacksword = false
-       player.anims.play('walk', true);
-        sword.visible = false
-        sword.rotation = 0
-        sword.y = player.y - 20
-        sword.x = player.x 
-    } 
-  
-      if (sword.rotation < -2) {
-        cecilattacksword = false
-       player.anims.play('walk', true);
-        sword.visible = false
-        sword.rotation = 0
-        sword.y = player.y - 20
-        sword.x = player.x 
-    } 
 
-}
+
 
  this.input.setPollAlways();
         this.input.on('gameobjectover', function (pointer, gameObject) {
@@ -2733,9 +3231,13 @@ function attacktime(){
 update: function (time, delta)
 {
 this.sky.tilePositionX += 0.5;
+playercurrentx = player.x
+playercurrenty = player.y
+
    if (player.x < 0){
             playerx = 1200
             playery = 325
+            keyups = true
             game.scene.stop('graveyardgatesscene')
             game.scene.start('cityoutskirtsscene');
             cursors.right.isDown = false
@@ -2753,7 +3255,7 @@ this.sky.tilePositionX += 0.5;
    if (player.x > 900){
    if (player.x < 942){
    if (player.y < 495){
-    player.x += 1;
+    player.x += playerrunspeed;
    }
    }
    }
@@ -2764,16 +3266,18 @@ this.sky.tilePositionX += 0.5;
        
    if (player.x > 1230){
    if (player.y < 495){
-    player.x -= 1;
+    player.x -= playerrunspeed;
    }
    }
    
      if (player.x > 1345){
     playerx = 25
     playery = 530
+    keyups = true
     game.scene.stop('graveyardgatesscene')
     game.scene.start('outsidecityscene');
     cursors.left.isDown = false
+    scenename = 'outsidestellarcity'
     areaname = '     Outside City'
 }
     }
@@ -2781,13 +3285,13 @@ this.sky.tilePositionX += 0.5;
     else if (cursors.up.isDown)
     {
     if (player.y > 315) {
-    player.y -= 1;
+    player.y -= playerrunspeed;
     player.anims.play('walk', true);
     }
 
     if (player.x > 1230){
     if (player.y < 495){
-    player.y += 1;
+    player.y += playerrunspeed;
    }
     }
 
@@ -2805,7 +3309,7 @@ this.sky.tilePositionX += 0.5;
 
    if (player.x < 900){
    if (player.y < 495){
-    player.y += 1;
+    player.y += playerrunspeed;
    }
    }
    } 
@@ -2815,15 +3319,14 @@ this.sky.tilePositionX += 0.5;
     else if (cursors.down.isDown)
     {
         if (player.y < 565){
-    player.y += 1;
+    player.y += playerrunspeed;
     player.anims.play('walk', true);
     }
     }
     
     else
     {
-      player.setVelocityX(0);
-      player.anims.stop('walk', true);
+     
       
 }
 }
@@ -2873,11 +3376,9 @@ create: function ()
         scenename = 'graveyarda'
 
         player = this.physics.add.sprite(playerx, playery, 'cecil');
-        sword = this.physics.add.sprite(player.x , player.y - 13, 'sword1');
-        sword.visible = false
-        sword.rotation += 0.5;
+      
 
-attacktime = this.time.addEvent({ delay: 5, callback: attacktime, callbackScope: this, loop: true,startAt: 1 });
+
 
   this.anims.create({
         key: 'graveyardabuildingaplay',
@@ -2912,45 +3413,6 @@ attacktime = this.time.addEvent({ delay: 5, callback: attacktime, callbackScope:
 
 
 
-function attacktime(){
-    if (cecilattacksword == true){
-      if (playerfacedirection == 'right'){
-        player.anims.play('sword', true);
-        sword.visible = true
-        sword.rotation += 0.2;
-        sword.y += 4;
-        sword.x += 1.6;
-    }
-        if (playerfacedirection == 'left'){
-        player.anims.play('sword', true);
-        sword.visible = true
-        sword.rotation -= 0.2;
-        sword.y += 4;
-        sword.x -= 1.6;
-    }
-      
-    }
-  
-  
-    if (sword.rotation > 2) {
-        cecilattacksword = false
-       player.anims.play('walk', true);
-        sword.visible = false
-        sword.rotation = 0
-        sword.y = player.y - 20
-        sword.x = player.x 
-    } 
-  
-      if (sword.rotation < -2) {
-        cecilattacksword = false
-       player.anims.play('walk', true);
-        sword.visible = false
-        sword.rotation = 0
-        sword.y = player.y - 20
-        sword.x = player.x 
-    } 
-
-}
 
  this.input.setPollAlways();
         this.input.on('gameobjectover', function (pointer, gameObject) {
@@ -2968,12 +3430,7 @@ function attacktime(){
         repeat: -1
     });
   
-    this.anims.create({
-        key: 'sword',
-        frames: this.anims.generateFrameNumbers('cecil', { start: 11, end: 13 }),
-        frameRate: 5,
-        repeat: 0
-    });
+  
 
     cursors = this.input.keyboard.createCursorKeys();
     text = this.add.text(10, 10, 'Cursors to move', { font: '16px Courier', fill: '#00ff00' }).setScrollFactor(0);
@@ -2982,6 +3439,8 @@ function attacktime(){
 
 update: function (time, delta)
 {
+playercurrentx = player.x
+playercurrenty = player.y
 
  graveyardabuildinganimationb.anims.play('graveyardabuildingbplay', true);
  graveyardabuildinganimationc.anims.play('graveyardabuildingcplay', true);
@@ -2998,13 +3457,13 @@ if (player.x < 30){
 
 if (player.x > 600){
 if (player.y < 477 ){
-    player.y += 1;
+    player.y += playerrunspeed;
 }    
 }
 
 if (player.x < 600){
 if (player.y < 427){
-    player.y += 1;
+    player.y += playerrunspeed;
 }
 }
 
@@ -3015,6 +3474,7 @@ this.sky.tilePositionX += 0.5;
    if (player.y > 565){
             playerx = 1055
             playery = 333
+            keyups = false
             game.scene.stop('graveyardscenea')
             game.scene.start('graveyardgatesscene');
             cursors.up.isDown = false
@@ -3024,6 +3484,7 @@ this.sky.tilePositionX += 0.5;
 if (player.x > 1345){
     playerx = 25
     playery = 530
+    keyups = true
     game.scene.stop('graveyardscenea')
     game.scene.start('graveyardsceneb');
     cursors.left.isDown = false
@@ -3033,7 +3494,7 @@ if (player.x > 1345){
 if (graveyardsceneabackground.tilePositionX < 0)
     {
     graveyardsceneabackground.tilePositionX = 0;
-    player.x -= 1;
+    player.x -= playerrunspeed;
    
     graveyardabuildinganimationb.x -=1;
     graveyardabuildinganimationc.x -=1;
@@ -3045,37 +3506,37 @@ if (graveyardsceneabackground.tilePositionX < 0)
     if (graveyardsceneabackground.tilePositionX > 559)
     {
     graveyardsceneabackground.tilePositionX = 559;
-    player.x += 1;
+    player.x += playerrunspeed;
 
-    graveyardabuildinganimationb.x +=1;
-    graveyardabuildinganimationc.x +=1;
-    graveyardabuildinganimationd.x +=1;
-    graveyardabuildinganimatione.x +=1;
+    graveyardabuildinganimationb.x += playerrunspeed;
+    graveyardabuildinganimationc.x += playerrunspeed;
+    graveyardabuildinganimationd.x += playerrunspeed;
+    graveyardabuildinganimatione.x += playerrunspeed;
     }
 
   if (keyboardlock == false){
     if (cursors.left.isDown){
     if (player.x < 650){
-    player.x += 1;
+    player.x += playerrunspeed;
   
-    graveyardabuildinganimationb.x +=1;
-    graveyardabuildinganimationc.x +=1;
-    graveyardabuildinganimationd.x +=1;
-    graveyardabuildinganimatione.x +=1;
-    graveyardsceneabackground.tilePositionX -= 1;
+    graveyardabuildinganimationb.x +=playerrunspeed;
+    graveyardabuildinganimationc.x +=playerrunspeed;
+    graveyardabuildinganimationd.x +=playerrunspeed;
+    graveyardabuildinganimatione.x +=playerrunspeed;
+    graveyardsceneabackground.tilePositionX -= playerrunspeed;
     
     }
     }
     
     else if (cursors.right.isDown){
     if (player.x > 648){
-    player.x -= 1;
+    player.x -= playerrunspeed;
   
-    graveyardabuildinganimationb.x -=1;
-    graveyardabuildinganimationc.x -=1;
-    graveyardabuildinganimationd.x -=1;
-    graveyardabuildinganimatione.x -=1;
-    graveyardsceneabackground.tilePositionX += 1;
+    graveyardabuildinganimationb.x -=playerrunspeed;
+    graveyardabuildinganimationc.x -=playerrunspeed;
+    graveyardabuildinganimationd.x -=playerrunspeed;
+    graveyardabuildinganimatione.x -=playerrunspeed;
+    graveyardsceneabackground.tilePositionX += playerrunspeed;
     
     }
     }
@@ -3083,7 +3544,7 @@ if (graveyardsceneabackground.tilePositionX < 0)
     else if (cursors.up.isDown)
     {
     if (player.y > 315) {
-    player.y -= 1;
+    player.y -= playerrunspeed;
     player.anims.play('walk', true);
     }
     } 
@@ -3093,15 +3554,14 @@ if (graveyardsceneabackground.tilePositionX < 0)
     else if (cursors.down.isDown)
     {
         if (player.y < 600){
-    player.y += 1;
+    player.y += playerrunspeed;
     player.anims.play('walk', true);
     }
     }
     
     else
     {
-      player.setVelocityX(0);
-      player.anims.stop('walk', true);
+   
       
 }
 }
@@ -3145,51 +3605,11 @@ create: function ()
         this.graveyardscenebbackground = this.add.tileSprite(0, 0, 1920, 600, 'graveyardscenebbackground').setOrigin(0, 0);
         scenename = 'graveyardb'
         player = this.physics.add.sprite(playerx, playery, 'cecil');
-        sword = this.physics.add.sprite(player.x , player.y - 13, 'sword1');
-        sword.visible = false
-        sword.rotation += 0.5;
-  
-attacktime = this.time.addEvent({ delay: 5, callback: attacktime, callbackScope: this, loop: true,startAt: 1 });
 
-function attacktime(){
-    if (cecilattacksword == true){
-      if (playerfacedirection == 'right'){
-        player.anims.play('sword', true);
-        sword.visible = true
-        sword.rotation += 0.2;
-        sword.y += 4;
-        sword.x += 1.6;
-    }
-        if (playerfacedirection == 'left'){
-        player.anims.play('sword', true);
-        sword.visible = true
-        sword.rotation -= 0.2;
-        sword.y += 4;
-        sword.x -= 1.6;
-    }
-      
-    }
   
-  
-    if (sword.rotation > 2) {
-        cecilattacksword = false
-       player.anims.play('walk', true);
-        sword.visible = false
-        sword.rotation = 0
-        sword.y = player.y - 20
-        sword.x = player.x 
-    } 
-  
-      if (sword.rotation < -2) {
-        cecilattacksword = false
-       player.anims.play('walk', true);
-        sword.visible = false
-        sword.rotation = 0
-        sword.y = player.y - 20
-        sword.x = player.x 
-    } 
 
-}
+
+
 
  this.input.setPollAlways();
         this.input.on('gameobjectover', function (pointer, gameObject) {
@@ -3207,12 +3627,7 @@ function attacktime(){
         repeat: -1
     });
   
-    this.anims.create({
-        key: 'sword',
-        frames: this.anims.generateFrameNumbers('cecil', { start: 11, end: 13 }),
-        frameRate: 5,
-        repeat: 0
-    });
+   
 
     cursors = this.input.keyboard.createCursorKeys();
     text = this.add.text(10, 10, '', { font: '16px Courier', fill: '#00ff00' }).setScrollFactor(0);
@@ -3222,23 +3637,24 @@ function attacktime(){
 update: function (time, delta)
 {
 this.sky.tilePositionX += 0.5;
- 
+playercurrentx = player.x
+playercurrenty = player.y
  if (player.y < 450){
-     player.y += 1;
+     player.y += playerrunspeed;
  }
 
  if (player.x > 804){
      if (player.y < 514){
-     player.y +=1;
+     player.y = 514
  }
  }
 
  if (player.x > 1150){
-     player.x -=1;
+     player.x = 1150
  }
 
  if (player.y > 560){
-     player.y -=1;
+     player.y = 560
  }
 
 if (player.x < 0){
@@ -3254,28 +3670,28 @@ if (player.x < 0){
 if (this.graveyardscenebbackground.tilePositionX < 0)
     {
     this.graveyardscenebbackground.tilePositionX = 0;
-    player.x -= 1;
+    player.x -= playerrunspeed;
     }
 
     if (this.graveyardscenebbackground.tilePositionX > 559)
     {
     this.graveyardscenebbackground.tilePositionX = 559;
-    player.x += 1;
+    player.x += playerrunspeed;
     }
 
   if (keyboardlock == false){
     if (cursors.left.isDown){
     if (player.x < 650){
-    player.x += 1;
-    this.graveyardscenebbackground.tilePositionX -= 1;
+    player.x += playerrunspeed;
+    this.graveyardscenebbackground.tilePositionX -= playerrunspeed;
     
     }
     }
     
     else if (cursors.right.isDown){
     if (player.x > 648){
-    player.x -= 1;
-    this.graveyardscenebbackground.tilePositionX += 1;
+    player.x -= playerrunspeed;
+    this.graveyardscenebbackground.tilePositionX += playerrunspeed;
     
     }
     }
@@ -3283,7 +3699,7 @@ if (this.graveyardscenebbackground.tilePositionX < 0)
     else if (cursors.up.isDown)
     {
     if (player.y > 315) {
-    player.y -= 1;
+    player.y -= playerrunspeed;
     player.anims.play('walk', true);
     }
     } 
@@ -3293,15 +3709,14 @@ if (this.graveyardscenebbackground.tilePositionX < 0)
     else if (cursors.down.isDown)
     {
         if (player.y < 600){
-    player.y += 1;
+    player.y += playerrunspeed;
     player.anims.play('walk', true);
     }
     }
     
     else
     {
-      player.setVelocityX(0);
-      player.anims.stop('walk', true);
+    
       
 }
 }
@@ -3343,52 +3758,11 @@ create: function ()
         outsidecity1frontpiece = this.add.tileSprite(0, 0, 4000, 600, 'outsidecity1frontpiece').setOrigin(0, 0);
         outsidecitycloudpiece.y -= 50;
         player = this.physics.add.sprite(playerx, playery, 'cecil');
-        sword = this.physics.add.sprite(player.x , player.y - 13, 'sword1');
-        sword.visible = false
-        sword.rotation += 0.5;
         scenename = 'outsidecity'
 
-attacktime = this.time.addEvent({ delay: 5, callback: attacktime, callbackScope: this, loop: true,startAt: 1 });
 
-function attacktime(){
-    if (cecilattacksword == true){
-      if (playerfacedirection == 'right'){
-        player.anims.play('sword', true);
-        sword.visible = true
-        sword.rotation += 0.2;
-        sword.y += 4;
-        sword.x += 1.6;
-    }
-        if (playerfacedirection == 'left'){
-        player.anims.play('sword', true);
-        sword.visible = true
-        sword.rotation -= 0.2;
-        sword.y += 4;
-        sword.x -= 1.6;
-    }
-      
-    }
-  
-  
-    if (sword.rotation > 2) {
-        cecilattacksword = false
-       player.anims.play('walk', true);
-        sword.visible = false
-        sword.rotation = 0
-        sword.y = player.y - 20
-        sword.x = player.x 
-    } 
-  
-      if (sword.rotation < -2) {
-        cecilattacksword = false
-       player.anims.play('walk', true);
-        sword.visible = false
-        sword.rotation = 0
-        sword.y = player.y - 20
-        sword.x = player.x 
-    } 
 
-}
+
 
  this.input.setPollAlways();
         this.input.on('gameobjectover', function (pointer, gameObject) {
@@ -3406,12 +3780,7 @@ function attacktime(){
         repeat: -1
     });
   
-    this.anims.create({
-        key: 'sword',
-        frames: this.anims.generateFrameNumbers('cecil', { start: 11, end: 13 }),
-        frameRate: 5,
-        repeat: 0
-    });
+ 
 
     cursors = this.input.keyboard.createCursorKeys();
     text = this.add.text(10, 10, 'Cursors to move', { font: '16px Courier', fill: '#00ff00' }).setScrollFactor(0);
@@ -3422,6 +3791,8 @@ update: function (time, delta)
 {
 outsidecitycloudpiece.tilePositionX += 0.2;
 
+playercurrentx = player.x
+playercurrenty = player.y
 
    if (player.x < 0){
             playerx = 1200
@@ -3436,25 +3807,26 @@ outsidecitycloudpiece.tilePositionX += 0.2;
 if (outsidecity1frontpiece.tilePositionX < 0)
     {
     outsidecity1frontpiece.tilePositionX = 0;
-    player.x -= 1;
+    player.x -= playerrunspeed;
     }
 
     if (outsidecity1frontpiece.tilePositionX > 2465)
     {
     outsidecity1frontpiece.tilePositionX = 2465;
-    player.x += 1;
+    player.x += playerrunspeed;
     }
 
   if (keyboardlock == false){
+      if (cecilattacksword == false){
     if (cursors.left.isDown){
     if (player.x < 650){
-    player.x += 1;
-    outsidecity1frontpiece.tilePositionX -= 1;
+    player.x += playerrunspeed;
+    outsidecity1frontpiece.tilePositionX -= playerrunspeed;
     }
     
     if (player.x < 200){
         if (player.y < 500){
-            player.y += 2
+            player.y += playerrunspeed
         }
     }
 
@@ -3462,8 +3834,8 @@ if (outsidecity1frontpiece.tilePositionX < 0)
     
     else if (cursors.right.isDown){
     if (player.x > 648){
-    player.x -= 1;
-    outsidecity1frontpiece.tilePositionX += 1;
+    player.x -= playerrunspeed;
+    outsidecity1frontpiece.tilePositionX += playerrunspeed;
     
     }
     }
@@ -3472,12 +3844,12 @@ if (outsidecity1frontpiece.tilePositionX < 0)
     {
     
     if (player.y > 385) {
-    player.y -= 1;
+    player.y -= playerrunspeed;
     player.anims.play('walk', true);
     }
     if (player.x < 182) {
         if (player.y < 500){
-            player.y += 1;
+            player.y += playerrunspeed;
 
         }
     }
@@ -3488,19 +3860,19 @@ if (outsidecity1frontpiece.tilePositionX < 0)
     else if (cursors.down.isDown)
     {
         if (player.y < 554){
-    player.y += 1;
+    player.y += playerrunspeed;
     player.anims.play('walk', true);
     }
     }
     
     else
     {
-      player.setVelocityX(0);
-      player.anims.stop('walk', true);
+      
+      
       
 }
 }
-     
+  } 
 
 text.setText([
         'world x: ' + this.input.mousePointer.worldX,
@@ -4064,11 +4436,16 @@ if (keyboardlock == false){
     player.anims.play('walk', true);
       if (cecilofficedoorexit == true){
     stellarcitybackgroundx = 0
-    playerx = 380
+    playerx = 650
     playery = 475
      game.scene.stop('officescene')
+     cursors.up.isDown = false
+     cursors.down.isDown = false
+     cursors.left.isDown = false
+     cursors.right.isDown = false
      game.scene.start('stellarscene')
-     areaname = '     Stellar City'
+
+     areaname = '      Stellar City'
      cecilofficedoorexit = false
     }
     }
@@ -4083,7 +4460,7 @@ if (keyboardlock == false){
 else
     {
       
-      player.anims.stop('walk', true);
+      
 }
  
 }
@@ -4161,16 +4538,21 @@ create: function ()
  diapermafiamessagescreen.visible = false
  diapermafiacallingscreen = this.add.sprite(160, 15, 'diapermafiacallingscreen').setOrigin(0, 0);
  diapermafiacallingscreen.visible = false
- speechnayzramwandfound1 = this.add.sprite(300, 15, 'speechnayzramwandreward1').setOrigin(0, 0);
- speechnayzramwandfound1.visible = false
- speechnayzramwandfound2 = this.add.sprite(300, 15, 'speechnayzramwandreward2').setOrigin(0, 0);
- speechnayzramwandfound2.visible = false
+ speechbubblemessage = this.add.sprite(300, 15, '').setOrigin(0, 0);
+ speechbubblemessage.visible = false
  speechbubble = this.add.sprite(300, 15, 'speechbubble').setOrigin(0, 0);
  speechbubble.visible = false
  buyitembox = this.add.sprite(380, 375, 'buyitembox').setOrigin(0, 0);
  buyitembox.visible = false
  buythisitembox = this.add.sprite(380, 375, '').setOrigin(0, 0);
  buythisitembox.visible = false
+ sword = this.physics.add.sprite(playercurrentx , playercurrenty - 13, 'sword1');
+ sword.visible = false
+ sword.rotation += 0.5;
+
+ shield = this.physics.add.sprite(playercurrentx , playercurrenty , 'blackdragonredshield');
+ shield.visible = false
+
 
 this.registry.set('accountnickname', accountnickname);
 this.registry.set('cecilhealthrating', cecilhealthrating);
@@ -4182,40 +4564,88 @@ this.registry.set('cecilsupportrating', cecilsupportrating);
 
 speechtime = this.time.addEvent({ delay: 2000, callback: speechtime, callbackScope: this, loop: true,startAt: 1 });
 phoneringtime = this.time.addEvent({ delay: 1, callback: phonering, callbackScope: this, loop: true,startAt: 1 });
+attacktime = this.time.addEvent({ delay: 5, callback: attacktime, callbackScope: this, loop: true,startAt: 1 });
+
 this.time.addEvent({ delay: 500, callback: setdata, callbackScope: this, loop: true });
 
       
        this.input.setPollAlways();
         this.input.on('gameobjectover', function (pointer, gameObject) {
-        if (gameObject == leftpointer){
-        scrollleft = true
+        if (gameObject == runbutton){
+        playerrun = true
+        playerrunspeed = 4
         }
-       if (gameObject == rightpointer){
-        scrollright = true
-        }
+        
         gameObject.setTint(0xff0000);
 
     });
         this.input.on('gameobjectout', function (pointer, gameObject) {
-       if (gameObject == leftpointer){
-        scrollleft = false
+       if (gameObject == runbutton){
+       playerrun = false
+       playerrunspeed = 2
         }
-       if (gameObject == rightpointer){
-        scrollright = false
-        }
+     
         gameObject.clearTint();
 
     });
 
-  
-    
-    cecilswordbutton = this.add.sprite(10, 612, 'cecilswordbox').setInteractive();
+    runbutton = this.add.sprite(70, 608, 'runbox').setInteractive(); 
+    runbutton.setOrigin(0, 0);
+    runbutton.on('pointerdown', function (pointer) {
+    this.setTint(0xff0000);
+    playerrun = true
+     
+    });
+
+  //cecilbuttons
+    //cecilswordbutton
+    cecilswordbutton = this.add.sprite(10, 643, 'cecilswordbox').setInteractive();
     cecilswordbutton.setOrigin(0, 0);
     cecilswordbutton.on('pointerdown', function (pointer) {
     this.setTint(0xff0000);
+    sword.x = player.x
+    sword.y = player.y - 20
     cecilattacksword = true
+   
+    });
+
+   //cecilshieldbutton
+    cecilshieldbutton = this.add.sprite(94, 643, 'cecilshieldbox').setInteractive();
+    cecilshieldbutton.setOrigin(0, 0);
+    cecilshieldbutton.on('pointerdown', function (pointer) {
+    this.setTint(0xff0000);
+    cursors.right.isDown = false
+    cursors.left.isDown = false
+    cursors.up.isDown = false
+    cursors.down.isDown = false
+    cecildefendshield = true
+    
     });
     
+    //cecilholybutton
+    cecilholybutton = this.add.sprite(178, 643, 'cecilholybox').setInteractive();
+    cecilholybutton.setOrigin(0, 0);
+    cecilholybutton.on('pointerdown', function (pointer) {
+    this.setTint(0xff0000);
+    cecilcastholy = true
+   
+    });
+
+    //cecilholyswordbutton
+    cecilholyswordbutton = this.add.sprite(262, 643, 'cecilholyswordbox').setInteractive();
+    cecilholyswordbutton.setOrigin(0, 0);
+    cecilholyswordbutton.on('pointerdown', function (pointer) {
+    this.setTint(0xff0000);
+      
+    });
+
+    //ceciltargetbutton
+    ceciltargetbutton = this.add.sprite(345, 643, 'ceciltargetbox').setInteractive();
+    ceciltargetbutton.setOrigin(0, 0);
+    ceciltargetbutton.on('pointerdown', function (pointer) {
+    this.setTint(0xff0000);
+      
+    });
   
     yesbutton = this.add.sprite(625, 555, 'yesbutton').setInteractive();
     yesbutton.setOrigin(0, 0);
@@ -4408,19 +4838,25 @@ this.time.addEvent({ delay: 500, callback: setdata, callbackScope: this, loop: t
     rightpointer = this.add.sprite(760, 710, 'rightpointer').setInteractive();
     rightpointer.on('pointerdown', function (pointer) {
     this.setTint(0xff0000);
+    cursors.right.isDown = true
+
     });
     
     rightpointer.on('pointerup', function (pointer) {
     this.clearTint();
+    cursors.right.isDown = false 
     });
     
     leftpointer = this.add.sprite(600, 710, 'leftpointer').setInteractive();
     leftpointer.on('pointerdown', function (pointer) {
     this.setTint(0xff0000);
+    cursors.left.isDown = true
+
     });
   
     leftpointer.on('pointerup', function (pointer) {
     this.clearTint();
+    cursors.left.isDown = false
     });
 
 //mapbutton
@@ -4657,6 +5093,179 @@ this.time.addEvent({ delay: 500, callback: setdata, callbackScope: this, loop: t
     cellphonebutton.visible = false
 
 
+//uihealthbars
+   this.anims.create({
+        key: 'health100',
+        frames: this.anims.generateFrameNumbers('smallhealthbars', { start: 0, end: 0 }),
+        frameRate: 1,
+        repeat: 0
+    });
+    this.anims.create({
+        key: 'health95',
+        frames: this.anims.generateFrameNumbers('smallhealthbars', { start: 1, end: 1 }),
+        frameRate: 1,
+        repeat: 0
+    });
+
+      this.anims.create({
+        key: 'health90',
+        frames: this.anims.generateFrameNumbers('smallhealthbars', { start: 2, end: 2 }),
+        frameRate: 1,
+        repeat: 0
+    });
+    this.anims.create({
+        key: 'health85',
+        frames: this.anims.generateFrameNumbers('smallhealthbars', { start: 3, end: 3 }),
+        frameRate: 1,
+        repeat: 0
+    });
+   this.anims.create({
+        key: 'health80',
+        frames: this.anims.generateFrameNumbers('smallhealthbars', { start: 4, end: 4 }),
+        frameRate: 1,
+        repeat: 0
+    });
+    this.anims.create({
+        key: 'health75',
+        frames: this.anims.generateFrameNumbers('smallhealthbars', { start: 5, end: 5 }),
+        frameRate: 1,
+        repeat: 0
+    });
+
+      this.anims.create({
+        key: 'health70',
+        frames: this.anims.generateFrameNumbers('smallhealthbars', { start: 6, end: 6 }),
+        frameRate: 1,
+        repeat: 0
+    });
+    this.anims.create({
+        key: 'health65',
+        frames: this.anims.generateFrameNumbers('smallhealthbars', { start: 7, end: 7 }),
+        frameRate: 1,
+        repeat: 0
+    });
+
+   this.anims.create({
+        key: 'health60',
+        frames: this.anims.generateFrameNumbers('smallhealthbars', { start: 8, end: 8 }),
+        frameRate: 1,
+        repeat: 0
+    });
+    this.anims.create({
+        key: 'health55',
+        frames: this.anims.generateFrameNumbers('smallhealthbars', { start: 9, end: 9 }),
+        frameRate: 1,
+        repeat: 0
+    });
+
+      this.anims.create({
+        key: 'health50',
+        frames: this.anims.generateFrameNumbers('smallhealthbars', { start: 10, end: 10 }),
+        frameRate: 1,
+        repeat: 0
+    });
+    this.anims.create({
+        key: 'health45',
+        frames: this.anims.generateFrameNumbers('smallhealthbars', { start: 11, end: 11 }),
+        frameRate: 1,
+        repeat: 0
+    });
+   this.anims.create({
+        key: 'health40',
+        frames: this.anims.generateFrameNumbers('smallhealthbars', { start: 12, end: 12 }),
+        frameRate: 1,
+        repeat: 0
+    });
+    this.anims.create({
+        key: 'health35',
+        frames: this.anims.generateFrameNumbers('smallhealthbars', { start: 13, end: 13 }),
+        frameRate: 1,
+        repeat: 0
+    });
+
+      this.anims.create({
+        key: 'health30',
+        frames: this.anims.generateFrameNumbers('smallhealthbars', { start: 14, end: 14 }),
+        frameRate: 1,
+        repeat: 0
+    });
+    this.anims.create({
+        key: 'health25',
+        frames: this.anims.generateFrameNumbers('smallhealthbars', { start: 15, end: 15 }),
+        frameRate: 1,
+        repeat: 0
+    });
+    this.anims.create({
+        key: 'health20',
+        frames: this.anims.generateFrameNumbers('smallhealthbars', { start: 16, end: 16 }),
+        frameRate: 1,
+        repeat: 0
+    });
+   this.anims.create({
+        key: 'health15',
+        frames: this.anims.generateFrameNumbers('smallhealthbars', { start: 17, end: 17 }),
+        frameRate: 1,
+        repeat: 0
+    });
+    this.anims.create({
+        key: 'health10',
+        frames: this.anims.generateFrameNumbers('smallhealthbars', { start: 18, end: 18 }),
+        frameRate: 1,
+        repeat: 0
+    });
+
+      this.anims.create({
+        key: 'health5',
+        frames: this.anims.generateFrameNumbers('smallhealthbars', { start: 19, end: 19 }),
+        frameRate: 1,
+        repeat: 0
+    });
+
+
+
+
+
+
+//cecilanim
+   this.anims.create({
+        key: 'sword',
+        frames: this.anims.generateFrameNumbers('cecil', { start: 11, end: 13 }),
+        frameRate: 5,
+        repeat: 0
+    });
+
+    this.anims.create({
+        key: 'shield',
+        frames: this.anims.generateFrameNumbers('cecil', { start: 12, end: 12 }),
+        frameRate: 1,
+        repeat: 0
+    });
+
+    this.anims.create({
+        key: 'casting',
+        frames: this.anims.generateFrameNumbers('cecilcasting', { start: 0, end: 7 }),
+        frameRate: 5,
+        yoyo: true,
+        repeat: 0
+    });
+
+//shieldanim
+    this.anims.create({
+        key: 'woodenshield',
+        frames: this.anims.generateFrameNumbers('woodenshield', { start: 0, end: 0 }),
+        frameRate: 1,
+        repeat: 0
+    });
+
+    this.anims.create({
+        key: 'goldshield',
+        frames: this.anims.generateFrameNumbers('goldshield', { start: 0, end: 0 }),
+        frameRate: 1,
+        repeat: 0
+    });
+
+//itemshopanim
+
     this.anims.create({
         key: 'healthupitem',
         frames: this.anims.generateFrameNumbers('itemshopblankitemspot', { start: 0, end: 0 }),
@@ -4746,7 +5355,7 @@ this.time.addEvent({ delay: 500, callback: setdata, callbackScope: this, loop: t
     });
     
     
-
+//upgradeshopanim
      
        this.anims.create({
         key: 'blankitem01',
@@ -4995,6 +5604,7 @@ this.time.addEvent({ delay: 500, callback: setdata, callbackScope: this, loop: t
 
      });
 
+//mapanims
        this.anims.create({
         key: 'mapcurrentpositionlarge',
         frames: this.anims.generateFrameNumbers('mapcurrentpositionlarge', { start: 0, end: 9 }), 
@@ -5010,6 +5620,8 @@ this.time.addEvent({ delay: 500, callback: setdata, callbackScope: this, loop: t
 
      });
 
+     //itemanims
+
      this.anims.create({
         key: 'itemnamecellphone',
         frames: this.anims.generateFrameNumbers('itemnames', { start: 0, end: 0 }),
@@ -5022,6 +5634,80 @@ this.time.addEvent({ delay: 500, callback: setdata, callbackScope: this, loop: t
         frameRate: 1,
         repeat: 0
     });
+
+    //speechanims
+
+    this.anims.create({
+        key: 'cecilthoughtsoffice1',
+        frames: this.anims.generateFrameNumbers('speechnayzramwandreward1', { start: 0, end: 0 }),
+        frameRate: 1,
+        repeat: 0
+    });
+
+    this.anims.create({
+        key: 'speechnayzramwandreward1',
+        frames: this.anims.generateFrameNumbers('speechnayzramwandreward1', { start: 0, end: 0 }),
+        frameRate: 1,
+        repeat: 0
+    });
+     this.anims.create({
+        key: 'speechnayzramwandreward2',
+        frames: this.anims.generateFrameNumbers('speechnayzramwandreward2', { start: 0, end: 0 }),
+        frameRate: 1,
+        repeat: 0
+    });
+
+     this.anims.create({
+        key: 'dojowelcome1',
+        frames: this.anims.generateFrameNumbers('dojowelcome1', { start: 0, end: 0 }),
+        frameRate: 1,
+        repeat: 0
+    });
+     this.anims.create({
+        key: 'dojowelcome2',
+        frames: this.anims.generateFrameNumbers('dojowelcome2', { start: 0, end: 0 }),
+        frameRate: 1,
+        repeat: 0
+    });
+     this.anims.create({
+        key: 'dojowelcome3',
+        frames: this.anims.generateFrameNumbers('dojowelcome3', { start: 0, end: 0 }),
+        frameRate: 1,
+        repeat: 0
+    });
+
+   this.anims.create({
+        key: 'dojobasicwingtotem1',
+        frames: this.anims.generateFrameNumbers('dojobasicwingtotem1', { start: 0, end: 0 }),
+        frameRate: 1,
+        repeat: 0
+    });
+    this.anims.create({
+        key: 'dojobasicwingtotem2',
+        frames: this.anims.generateFrameNumbers('dojobasicwingtotem2', { start: 0, end: 0 }),
+        frameRate: 1,
+        repeat: 0
+    });
+    this.anims.create({
+        key: 'dojobasicwingtotem3',
+        frames: this.anims.generateFrameNumbers('dojobasicwingtotem3', { start: 0, end: 0 }),
+        frameRate: 1,
+        repeat: 0
+    });
+    this.anims.create({
+        key: 'dojobasicwingtotem4',
+        frames: this.anims.generateFrameNumbers('dojobasicwingtotem4', { start: 0, end: 0 }),
+        frameRate: 1,
+        repeat: 0
+    });
+    this.anims.create({
+        key: 'dojobasicwingtotem5',
+        frames: this.anims.generateFrameNumbers('dojobasicwingtotem5', { start: 0, end: 0 }),
+        frameRate: 1,
+        repeat: 0
+    });
+
+
 
 //statustxt
 //status
@@ -5076,15 +5762,14 @@ itemnametxt.visible = false
  }
 
 
-
+//speechtime
      function speechtime(){
         if (nayzramwandquestend == true){
             speechtexttime -= 1;
         if (speechtext == 'nayzramreward1'){
             keyboardlock = true
             if (speechtexttime < 5) {
-                speechnayzramwandfound1.visible = false
-                speechnayzramwandfound2.visible = true
+                speechbubblemessage.anims.play('speechnayzramwandreward2', true); 
             }
         if (speechtexttime < 1) {
                 nayzram.x = -1000
@@ -5098,24 +5783,76 @@ itemnametxt.visible = false
                 questmasterdiapermafiaquestshow = true
                 questmasternayzramwandquestselected = false
                 phoneisanswered = false
-                speechnayzramwandfound1.visible = false
-                speechnayzramwandfound2.visible = false
+                speechbubblemessage.visible = false
                 speechbubbleshow = false
                 speechbubble.visible = false
                 nayzram.visible = false
                 nayzramwandquestend = false
                 keyboardlock = false
-            }
-
-
         }
         }
+        }
+        if (dojointrospeech == true){
+        speechtexttime -= 1;
+        if (speechtexttime < 21 ){
+            if (speechtexttime > 17 ){
+            speechtext = 'dojowelcome2'
+        }
+        if (speechtexttime < 17 ){
+            if (speechtexttime > 15 ){
+            speechtext = 'dojowelcome3'
+        } 
+        }
+        if (speechtexttime < 15 ){
+            if (speechtexttime > 12 ){
+            speechtext = 'dojobasicwingtotem1' 
+            birdtotem1.x = 947
+            birdtotem1.y = 390
+            birdtotem1.visible = true
+        } 
+        }
+        if (speechtexttime < 12 ){
+            if (speechtexttime > 9 ){
+            speechtext = 'dojobasicwingtotem2' 
+        } 
+        }
+        if (speechtexttime < 9 ){
+            if (speechtexttime > 7 ){
+            speechtext = 'dojobasicwingtotem3' 
+        } 
+        }
+          if (speechtexttime < 7 ){
+            if (speechtexttime > 5 ){
+            speechtext = 'dojobasicwingtotem4' 
+        } 
+        }
+        if (speechtexttime < 5 ){
+            if (speechtexttime > 1 ){
+            speechtext = 'dojobasicwingtotem5' 
+            dojotraininground = 1
+            dojoreadybutton.visible = true
+        } 
+        }
+
+
+}
+}
+
      }
       
 },
 //ui
-update: function (time, delta)
-    {
+//uiupdate
+update: function (time, delta){
+if (cecildefendshield ==  false){
+    shield.x = playercurrentx
+}
+
+if (cecilattacksword == false){
+    sword.x = playercurrentx
+    sword.y = playercurrenty - 20
+ }
+       
 if (amazingshopview == true){
     leftpointer.visible = false
     rightpointer.visible = false
@@ -5177,7 +5914,7 @@ playerspeedratingtxt.visible = true
 playermagicratingtxt.visible = true
 playersupportratingtxt.visible = true
 
-keyboardlock = true
+
 if (talentwindowopen == true){
     talentscreenbackground.visible = true
 }
@@ -5193,7 +5930,7 @@ playermagicratingtxt.visible = false
 playersupportratingtxt.visible = false
 talentscreenbutton.visible = false
 talentscreenbackground.visible = false
-keyboardlock = false
+
 }
 //mapwindow
 if (mapwindowopen == true){
@@ -5231,16 +5968,23 @@ if (mapwindowopen == true){
         mapcurrentposition.anims.play('mapcurrentpositionsmall', true); 
     }
 
+         if (scenename == 'outsidestellarcity'){
+        mapcurrentposition.x = 334
+        mapcurrentposition.y = 240
+        mapcurrentposition.visible = true
+        mapcurrentposition.anims.play('mapcurrentpositionsmall', true); 
+    }
+
 
 mapscreenbackgrounda.visible = true
-keyboardlock = true
+
 }
 if (mapwindowopen == false){
 mapscreenbackgrounda.visible = false
 mapcurrentposition.visible = false
 mapcurrentposition.visible = false
 mapcurrentposition.anims.stop('mapcurrentpositionlarge', true); 
-keyboardlock = false
+
 }
 
     if (inventorywindowopen == true){
@@ -5314,30 +6058,94 @@ keyboardlock = false
         yesbutton.visible = false
         nobutton.visible = false
     }
-      
+      //speechbubble
      if (speechbubbleshow == true){
         speechbubble.visible = true
+        speechbubblemessage.visible = true
         if (speechtext == 'nayzramreward1'){
-            speechnayzramwandfound1.visible = true
+            speechbubblemessage.anims.play('speechnayzramwandreward1', true); 
+            speechbubblemessage.visible = true
             speechbubble.x = nayzram.x + 5
-            speechnayzramwandfound1.x = nayzram.x + 5
-            speechnayzramwandfound2.x = nayzram.x + 5
+            speechbubblemessage.x = nayzram.x + 5
+            speechbubblemessage.x = nayzram.x + 5
      }
+      if (speechtext == 'dojointromessage'){ 
+            speechbubblemessage.anims.play('dojowelcome1', true); 
+            speechbubble.setFlipX(true);
+            speechbubblemessage.visible = true
+            speechbubble.x = kang.x - 350
+            speechbubble.y = kang.y - 425
+            speechbubblemessage.y = kang.y - 425
+            speechbubblemessage.x = kang.x - 350
+            }
+      if (speechtext == 'dojowelcome2'){ 
+      speechbubblemessage.anims.play('dojowelcome2', true); 
+      }
+       if (speechtext == 'dojowelcome3'){ 
+      speechbubblemessage.anims.play('dojowelcome3', true); 
+      }
+      if (speechtext == 'dojobasicwingtotem1'){ 
+      speechbubblemessage.anims.play('dojobasicwingtotem1', true); 
+      }
+      if (speechtext == 'dojobasicwingtotem2'){ 
+      speechbubblemessage.anims.play('dojobasicwingtotem2', true); 
+      }
+      if (speechtext == 'dojobasicwingtotem3'){ 
+      speechbubblemessage.anims.play('dojobasicwingtotem3', true); 
+      }
+      if (speechtext == 'dojobasicwingtotem4'){ 
+      speechbubblemessage.anims.play('dojobasicwingtotem4', true); 
+      }
+     if (speechtext == 'dojobasicwingtotem5'){ 
+      speechbubblemessage.anims.play('dojobasicwingtotem5', true);
+      }
+
+
      }
+
 if (cecilattacksword == true){
     cursors.left.isDown = false
     cursors.right.isDown = false
+    cursors.up.isDown = false
+    cursors.down.isDown = false
 }
+
+//uikeys
+
 
 if (keyboardlock == false){
   
+    
+    if (cursors.right.isDown && cursors.up.isDown){
+    keysupright = true
+    player.x += playerrunspeed;
+    player.y -= playerrunspeed;
+    }
+    if (cursors.right.isDown && cursors.down.isDown){
+    keysdownright = true
+    player.x += playerrunspeed;
+    player.y += playerrunspeed;
+    }
+    if (cursors.left.isDown && cursors.up.isDown){
+    keysupleft = true
+    player.x -= playerrunspeed;
+    player.y -= playerrunspeed;
+    }
+    if (cursors.left.isDown && cursors.down.isDown){
+    keysdownleft = true
+    player.x -= playerrunspeed;
+    player.y += playerrunspeed;
+    }
+    
+
     if (cursors.left.isDown)
     {
     playerfacedirection = 'left'
-    player.x -= 1;
+    player.x -= playerrunspeed;
     sword.x = player.x
     player.anims.play('walk', true);
     player.setFlipX(false);
+    cecilcastholy = false
     walkingdirection = 'left'
     }
 
@@ -5345,29 +6153,47 @@ if (keyboardlock == false){
     {
     walkingdirection = 'right'
     playerfacedirection = 'right'
-    player.x += 1;
+    player.x += playerrunspeed;
     sword.x = player.x
     player.anims.play('walk', true);
     player.setFlipX(true);
+    cecilcastholy = false
+    }
+
     
-    }
-
-
     else if (cursors.up.isDown)
+   
     {
-   walkingdirection = 'up'
+    walkingdirection = 'up'
+    player.y -= playerrunspeed;
+    sword.y = player.y
+    player.anims.play('walk', true);
+    cecilcastholy = false
     }
-
+    
  
     
     else if (cursors.down.isDown)
+    
     {
     walkingdirection = 'down'
+    player.y += playerrunspeed;
+    sword.y = player.y
+    player.anims.play('walk', true);
+    cecilcastholy = false
     }
-
+    
     else
     {
       walkingdirection = 'none'
+      keysupright = false
+      keysdownright = false
+      keysupleft = false
+      keysdownleft = false
+
+      if (cecilcastholy == false){
+      player.anims.stop('walk', true);
+      }
     }
 }
       if (debugview == true){
@@ -5380,9 +6206,12 @@ if (keyboardlock == false){
        'nayzramwandquestend   ' + nayzramwandquestend,
        'keyboardlock   ' + keyboardlock,
        'walkingdirection   ' + walkingdirection,
-       scenename,
-       cursors.left.isDown,
-       cursors.right.isDown
+       keyups,
+       playercurrentx,
+       playercurrenty,
+       cursors.up.isDown,
+       cursors.down.isDown,
+       cecilofficedooropen.x
 
     ]);
 }
@@ -5448,6 +6277,117 @@ if (keyboardlock == false){
 }
 
 });
+//functions
+
+function hideadventureui(){
+    mapbutton.visible = false
+    statusbutton.visible = false
+    inventorybutton.visible = false
+    runbutton.visible = false
+    cecilswordbutton.visible = false
+    cecilshieldbutton.visible = false
+    cecilholybutton.visible = false
+    cecilholyswordbutton.visible = false
+    ceciltargetbutton.visible = false
+    cellphonebutton.visible = false
+}
+
+function showadventureui(){
+    mapbutton.visible = true
+    statusbutton.visible = true
+    inventorybutton.visible = true
+    runbutton.visible = true
+    cecilswordbutton.visible = true
+    cecilshieldbutton.visible = true
+    cecilholybutton.visible = true
+    cecilholyswordbutton.visible = true
+    ceciltargetbutton.visible = true
+    cellphonebutton.visible = true
+}
+
+
+function attacktime(){
+    if (cecilcastholy == true){
+    player.anims.play('casting', true);
+    }
+
+    if (cecilattacksword == true){
+        cecildefendshield = false
+    if (playerfacedirection == 'right'){
+        sword.rotation += 0.2;
+        sword.y += 4;
+        sword.x += 1.6;
+        player.anims.play('sword', true);
+        sword.visible = true
+        
+    }
+        if (playerfacedirection == 'left'){
+        sword.rotation -= 0.2;
+        sword.y += 4;
+        sword.x -= 1.6;
+        player.anims.play('sword', true);
+        sword.visible = true
+        
+    }
+    }
+  
+  
+    if (sword.rotation > 2) {
+        cecilattacksword = false
+       player.anims.play('walk', true);
+        sword.visible = false
+        sword.rotation = 0
+        sword.y = playercurrenty - 20
+        sword.x = playercurrentx
+    } 
+  
+      if (sword.rotation < -2) {
+        cecilattacksword = false
+       player.anims.play('walk', true);
+        sword.visible = false
+        sword.rotation = 0
+        sword.y = playercurrenty - 20
+        sword.x = playercurrentx 
+    } 
+
+    if (cecildefendshield == true){
+    if (playerfacedirection == 'right'){
+    if (cursors.right.isDown == false){
+    player.anims.play('shield', true);
+    }
+    shield.visible = true
+    shield.y = playercurrenty + 10
+    shield.x = playercurrentx + 5
+    shield.setFlipX(false);
+    if (cursors.right.isDown == true){
+        cecildefendshield = false
+    }
+    }
+
+    if (playerfacedirection == 'left'){
+    if (cursors.left.isDown == false){
+    player.anims.play('shield', true);
+    }
+    shield.visible = true
+    shield.y = playercurrenty + 10
+    shield.x = playercurrentx - 5
+    shield.setFlipX(true);
+    if (cursors.left.isDown == true){
+        cecildefendshield = false
+    }
+    }
+    }
+    
+    if (cecildefendshield == false){
+        shield.visible = false
+    }
+    if (cursors.up.isDown == true){
+        cecildefendshield = false
+    }
+    if (cursors.down.isDown == true){
+        cecildefendshield = false
+    }
+}
 
   function setdata ()
     {
@@ -5554,7 +6494,7 @@ var config = {
         }
     },
     
-    scene: [startmenuscene,enternamescene, basemenuscene, stellarscene, oakloungescene, cityoutskirtsscene, outsidecityscene, graveyardgatesscene,graveyardscenea,graveyardsceneb, officescene, uiscene]
+    scene: [startmenuscene,enternamescene, basemenuscene, stellarscene, oakloungescene, dojoscene, cityoutskirtsscene, outsidecityscene, graveyardgatesscene,graveyardscenea,graveyardsceneb, officescene, uiscene]
 };
 
  
@@ -5563,7 +6503,9 @@ var accountnickname = ''
 var accountnamesize = 0
 var scenename = ''
 var playercharname = ''
+var playerrunspeed = 2
 
+var playerrun = false
 var playerhealthrating
 var playercurrenthealth
 var playerattackrating
@@ -5572,6 +6514,8 @@ var playermagicrating
 var playerspeedrating
 var playersupportrating
 
+var swordequipname = ''
+var shieldequipname = ''
 
 var cecilhealthrating
 var cecilcurrenthealth
@@ -5580,7 +6524,14 @@ var cecildefenserating
 var cecilmagicrating
 var cecilspeedrating
 var cecilsupportrating
+var cecilattacksword = false
+var cecildefendshield = false
+var cecilcastholy = false
 
+var cecilattackright = false
+var cecilattackleft = false
+var playertargetx 
+var playertargety
 
 var itemcost = 0
 var greenstellarcoins 
@@ -5600,15 +6551,22 @@ var supportupamountowned
 var selectedshopitemname = ''
 
 var questrewardgiven = false
-
 var standingfrontitemshop = false
-var debugview = false
+var debugview = true
 var uix = 0
 var uiy = 601
+var keysupright = false
+var keysdownright = false
+var keysupleft = false
+var keysdownleft = false
+
 var areaname = ''
 var player;
 var playerx 
 var playery 
+var playercurrentx
+var playercurrenty
+
 var playerfacedirection = 'left'
 var walkingdirection = ''
 var cursors;
@@ -5655,6 +6613,28 @@ var questmasterdiapermafiaquestshow = false
 var questmasterdiapermafiaquestselected = false
 var begindiapermafiaquest = false
 var diapermafiaquestcomplete = false
+
+var firsttimeindojo = true
+var dojointrospeech = false
+var playerentersdojo = false
+var dojokombatbegin = false
+var dojotrainingtimer = 0
+
+var kangwalkaway = false
+var kangwalkback = false
+var birdtotemhealth 
+
+var birdtotem1maxhealth = 1000
+var birdtotem1health = 1000
+var birdtotem1x = 0
+var birdtotem1y = 0
+var totemmovepositionx = 947
+var totemmovepositiony = 390
+var totemhit = false
+var totemhealthbarx = 0
+var totemhealthbary = 0
+var dojotraininground = 0
+
 var questmasterquestspot1x = 0
 var questmasterquestspot1y = 0
 var questmasterquestspot2x = 0
@@ -5666,7 +6646,9 @@ var questmasterquestspot4y = 0
 var graveyardsceneabackgroundx = 0
 var stellarcitybackgroundx = 0
 var officebackgroundx = 0
-var cecilattacksword = false
+
+var keyups = false
+
 var game = new Phaser.Game(config);
 
 </script>
