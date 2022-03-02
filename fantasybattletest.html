@@ -1,0 +1,1618 @@
+<!doctype html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8" />
+    <title>Fantasy Battle 0.1</title>
+    <script src="phaser.js"></script>
+    <style type="text/css">
+        body {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    
+<script type="text/javascript">
+
+
+
+//fantasybattle
+var fantasybattle = new Phaser.Class({
+
+    Extends: Phaser.Scene,
+
+    initialize:
+
+    function fantasybattle ()
+    {
+        Phaser.Scene.call(this, { key: 'fantasybattle' });
+    },
+//preload
+preload: function ()
+{
+
+    this.load.image('fantasybattleui', 'assets/ui/fantasycombatui.png');
+    this.load.image('battleuibackground', 'assets/ui/battlemodebackdropA.png');
+    this.load.image('fantasycombatstreet', 'assets/fantasycombat/fantasycombatstreet.png');
+    this.load.spritesheet('fantasyuihealthbar', 'assets/fantasycombat/fantasyuihealthbar.png', { frameWidth: 121, frameHeight: 12 });
+    this.load.image('greenimp', 'assets/fantasycombat/greenimp.png');
+    this.load.image('redimp', 'assets/fantasycombat/redimp.png');
+    this.load.image('purpleimp', 'assets/fantasycombat/purpleimp.png');
+    this.load.image('blueimp', 'assets/fantasycombat/blueimp.png');
+    this.load.image('yellowval', 'assets/fantasycombat/yellowval.png');
+    this.load.image('redval', 'assets/fantasycombat/redval.png');
+    this.load.spritesheet('cecil', 'assets/char/spritesheets/cecilsprite.png', { frameWidth: 96, frameHeight: 95 });
+    this.load.spritesheet('cecilcasting', 'assets/char/cecil/cecilcastoutline.png', { frameWidth: 95, frameHeight: 95 });
+    this.load.spritesheet('cecilidle', 'assets/char/cecil/cecilidle.png', { frameWidth: 96, frameHeight: 95 });
+    this.load.spritesheet('cecilidleselected', 'assets/char/cecil/cecilidleselected.png', { frameWidth: 96, frameHeight: 95 });
+    this.load.spritesheet('cecilholysword', 'assets/char/cecil/holysword.png', { frameWidth: 200, frameHeight: 145 });
+    this.load.spritesheet('cecilsword', 'assets/char/cecil/cecilsword.png', { frameWidth: 150, frameHeight: 151 });
+    this.load.spritesheet('ceciltarget', 'assets/char/cecil/target.png', { frameWidth: 250, frameHeight: 154 });
+    this.load.spritesheet('cecilholy', 'assets/char/cecil/holy.png', { frameWidth: 250, frameHeight: 250 });
+    this.load.image('sword1', 'assets/weapons/sword1.png');
+    //loadcecil
+    this.load.image('cecilswordbox', 'assets/ui/cecil/cecilswordbox.png');
+    this.load.image('cecilshieldbox', 'assets/ui/cecil/cecilshieldbox.png');
+    this.load.image('cecilholybox', 'assets/ui/cecil/cecilholybox.png');
+    this.load.image('cecilholyswordbox', 'assets/ui/cecil/cecilholyswordbox.png');
+    this.load.image('ceciltargetbox', 'assets/ui/cecil/ceciltargetbox.png');
+    this.load.image('cecilpartyname', 'assets/ui/cecil/cecilpartyname.png');
+    //loadkain
+    this.load.spritesheet('kain', 'assets/char/spritesheets/kainsprite.png', { frameWidth: 96, frameHeight: 95 });
+    this.load.image('kainslashbox', 'assets/ui/kain/kainslashbox.png');
+    this.load.image('kainjumpbox', 'assets/ui/kain/kainjumpbox.png');
+    this.load.image('kainstrikebox', 'assets/ui/kain/kainstrikebox.png');
+    this.load.image('kainpartyname', 'assets/ui/kain/kainpartyname.png');
+    this.load.spritesheet('kainjumpweapon', 'assets/char/kain/kainjumpweapon.png', { frameWidth: 150, frameHeight: 82 });
+    this.load.spritesheet('kainjumpimpact', 'assets/char/kain/kainjumpimpact.png', { frameWidth: 250, frameHeight: 88 });
+    this.load.spritesheet('kainslash', 'assets/char/kain/kainslash.png', { frameWidth: 150, frameHeight: 47 });
+    this.load.spritesheet('kainstrike', 'assets/char/kain/kainstrike.png', { frameWidth: 150, frameHeight: 59 });
+
+
+    this.load.spritesheet('valkfireball', 'assets/fantasycombat/valkfireball1.png', { frameWidth: 100, frameHeight: 100 });
+    this.load.image('spark0', 'assets/particles/blue.png');
+    this.load.image('spark1', 'assets/particles/red.png');
+    this.load.atlas('flares', 'assets/particles/flares.png', 'assets/particles/flares.json');
+
+    this.load.image('fantasyselectedsquare', 'assets/ui/fantasyselectedsquare.png');
+
+    this.load.audio('ff2battle1', [
+        'assets/sound/ff2battle1.mp3'
+    ]);
+
+    this.load.audio('kainjumpvoice', [
+        'assets/sound/kainjumpvoice.wav'
+    ]);
+
+    this.load.audio('kainjumpsound', [
+        'assets/sound/kainjumpsound.mp3'
+    ]);
+
+
+    this.load.audio('kainjumpdown', [
+        'assets/sound/kainjumpdown.mp3'
+    ]);
+
+    this.load.audio('kainstrikesound', [
+        'assets/sound/kainstrikesound.mp3'
+    ]);
+    this.load.audio('kainslashsound', [
+        'assets/sound/kainslashsound.mp3'
+    ]);
+
+
+    this.load.audio('ceciltargetsound', [
+        'assets/sound/ceciltargetsound.mp3'
+    ]);
+     this.load.audio('cecilswordsound', [
+        'assets/sound/cecilswordsound.mp3'
+    ]);
+ 
+    this.load.audio('cecilholyswordsound', [
+        'assets/sound/cecilholyswordsound.wav'
+    ]);
+ 
+},
+//fantasybattlecreate
+create: function ()
+{
+game.scene.start('fantasybattleui');
+fantasycombatstreet = this.add.sprite(0, 0, 'fantasycombatstreet').setOrigin(0, 0);
+
+var ff2battle1 = this.sound.add('ff2battle1',{ loop: true });
+ff2battle1.volume = 1;
+
+
+
+ff2battle1.play({
+        seek: 1
+
+    });
+
+
+//streetbattle
+if (battlescenename == 'streetbattlescene'){
+enemy1posx = 985
+enemy1posy = 300
+enemy2posx = 925
+enemy2posy = 350
+enemy3posx = 900
+enemy3posy = 440
+enemy4posx = 960
+enemy4posy = 521
+enemy5posx = 1032
+enemy5posy = 388
+enemy6posx = 1035
+enemy6posy = 476
+
+greenimp = this.add.sprite(enemy1posx, enemy1posy, 'greenimp').setInteractive();
+greenimp.setOrigin(0, 0);
+greenimp.setAlpha(1);
+greenimp.setScale(1.4, 1.4);
+            greenimp.on('pointerdown', function (pointer) {
+            this.setTint(0xff0000);
+            removeenemytint()
+             if (cecilselectingtarget == true){
+                if (cecilattacksword == true){
+                cecilselectedtargetx = enemy1posx
+                cecilselectedtargety = enemy1posy
+                ceciltargetselected = true
+                cecilselectingtarget = false
+                ceciltargetsoundplayed = false
+             }
+             if (cecilattackholysword == true){
+                cecilselectedtargetx = enemy1posx
+                cecilselectedtargety = enemy1posy
+                ceciltargetselected = true
+                cecilselectingtarget = false
+             }
+             if (cecilattacktarget == true){
+                cecilselectedtargetx = enemy1posx
+                cecilselectedtargety = enemy1posy
+                ceciltargetselected = true
+                cecilselectingtarget = false
+             }
+
+           
+             }
+
+            if (kainselectingtarget == true){
+             if (kainattackstrike == true){
+                kainselectedtargetx = enemy1posx
+                kainselectedtargety = enemy1posy
+                kaintargetselected = true
+                kainselectingtarget = false
+             }
+
+               if (kainattackslash == true){
+                kainselectedtargetx = enemy1posx
+                kainselectedtargety = enemy1posy
+                kaintargetselected = true
+                kainselectingtarget = false
+             }
+
+             if (kainattackjump == true){
+                kainselectedtargetx = enemy1posx
+                kainselectedtargety = enemy1posy
+                kaintargetselected = true
+                kainselectingtarget = false
+                
+                game.sound.add( "kainjumpsound" ).play() 
+                kainjumpdownsoundplayed = false
+             }
+
+             }
+
+
+
+          });
+enemy1name = 'greenimp'
+var enemy1health = 1000
+
+
+
+redimp = this.add.sprite(enemy2posx, enemy2posy, 'redimp').setInteractive();
+redimp.setOrigin(0, 0);
+redimp.setAlpha(1);
+redimp.setScale(1.4, 1.4);
+            redimp.on('pointerdown', function (pointer) {
+            removeenemytint()
+            this.setTint(0xff0000);
+             if (cecilselectingtarget == true){
+                if (cecilattacksword == true)
+                cecilselectedtargetx = enemy2posx
+                cecilselectedtargety = enemy2posy
+                ceciltargetselected = true
+                cecilselectingtarget = false
+             }
+
+
+          });
+enemy2name = 'redimp'
+var enemy2health = 1000
+
+purpleimp = this.add.sprite(enemy3posx, enemy3posy, 'purpleimp').setOrigin(0, 0);
+purpleimp.setAlpha(1);
+purpleimp.setScale(1.4, 1.4);
+enemy3name = 'purpleimp'
+var enemy3health = 1000
+
+
+
+blueimp = this.add.sprite(enemy4posx, enemy4posy, 'blueimp').setOrigin(0, 0);
+blueimp.setScale(1.4, 1.4);
+enemy4name = 'blueimp'
+var enemy4health = 1000
+yellowval = this.add.sprite(enemy5posx, enemy5posy, 'yellowval').setOrigin(0, 0);
+yellowval.setScale(1.5, 1.5);
+enemy5name = 'yellowval'
+var enemy5health = 2000
+redval = this.add.sprite(enemy6posx, enemy6posy, 'redval').setOrigin(0, 0);
+redval.setScale(1.5, 1.5);
+enemy6name = 'redval'
+var enemy6health = 2000
+
+greenimptween = this.tweens.add({
+        targets: greenimp,
+        alpha: {
+            from: 0,
+            to: 1
+        },
+        delay: 1000,
+        duration: 1000
+    });
+
+redimptween = this.tweens.add({
+        targets: redimp,
+        alpha: {
+            from: 0,
+            to: 1
+        },
+        delay: 1000,
+        duration: 1000
+    });
+
+purpleimptween = this.tweens.add({
+        targets: purpleimp,
+        alpha: {
+            from: 0,
+            to: 1
+        },
+        delay: 1000,
+        duration: 1000
+    });
+
+
+}
+
+
+
+  
+    
+
+
+cecilholy = this.physics.add.sprite(0, 0 , 'ceciltarget').setOrigin(0, 0);
+cecilholy.visible = false
+cecilholy.setFlipX(true);
+
+cecil = this.physics.add.sprite(cecilx, cecily, 'cecil').setOrigin(0, 0);
+cecil.setFlipX(true);
+
+kain = this.physics.add.sprite(kainx, kainy, 'kain').setOrigin(0, 0);
+kain.setFlipX(true);
+
+sword = this.physics.add.sprite(cecil.x, cecil.y - 13, 'sword1').setOrigin(0, 0);
+sword.visible = false
+sword.rotation += 0.5;
+
+cecilsword = this.physics.add.sprite(cecil.x, cecil.y , 'cecilsword').setOrigin(0, 0);
+cecilsword.visible = false
+cecilsword.setFlipX(true);
+
+cecilholysword = this.physics.add.sprite(cecil.x, cecil.y , 'cecilholysword').setOrigin(0, 0);
+cecilholysword.visible = false
+cecilholysword.setFlipX(true);
+
+ceciltarget = this.physics.add.sprite(cecil.x, cecil.y , 'ceciltarget').setOrigin(0, 0);
+ceciltarget.visible = false
+ceciltarget.setFlipX(true);
+
+kainstrike = this.physics.add.sprite(kain.x, kain.y , 'kainstrike').setOrigin(0, 0);
+kainstrike.visible = false
+kainstrike.setFlipX(true);
+
+kainslash = this.physics.add.sprite(kain.x, kain.y , 'kainslash').setOrigin(0, 0);
+kainslash.visible = false
+kainslash.setFlipX(true);
+
+kainjumpweapon = this.physics.add.sprite(kain.x, kain.y , 'kainjumpweapon').setOrigin(0, 0);
+kainjumpweapon.visible = false
+kainjumpweapon.setFlipX(true);
+kainjumpweapon.rotation += 45;
+
+kainjumpimpact = this.physics.add.sprite(kain.x, kain.y , 'kainjumpimpact').setOrigin(0, 0);
+kainjumpimpact.visible = false
+kainjumpimpact.setFlipX(true);
+kainjumpimpact.rotation += 45;
+
+valkfireball = this.physics.add.sprite(yellowval.x, yellowval.y , 'valkfireball').setOrigin(0, 0); 
+valkfireball.visible = false
+
+
+
+ceciltimer = this.time.addEvent({ delay: 50, callback: cecilaction, callbackScope: this, loop: true,startAt: 1 });
+kaintimer = this.time.addEvent({ delay: 50, callback: kainaction, callbackScope: this, loop: true,startAt: 1 });
+enemyattacktimer = this.time.addEvent({ delay: 35, callback: enemyaction, callbackScope: this, loop: true,startAt: 1 });
+
+var textures = this.textures;
+var origin = cecilholy.getTopLeft();
+
+    var logoSource = {
+        getRandomPoint: function (vec)
+        {
+            do
+            {
+                var x = Phaser.Math.Between(0, cecilholy.width - 1);
+                var y = Phaser.Math.Between(0, cecilholy.height - 1);
+                var pixel = textures.getPixel(x, y, 'cecilholy');
+            } while (pixel.alpha < 255);
+
+            return vec.setTo(x + cecil.x - 75, y + cecil.y - 75);
+        }
+    };
+
+    var particles = this.add.particles('flares');
+//enemyaction
+function enemyaction(){
+if  (enemyturn == true){
+
+    if (battlescenename == 'streetbattlescene'){
+        if (enemyturnnumber == 1){
+            greenimp.setDepth(1);  
+            randomtargetpick = Math.floor(Math.random() * 3);
+            if (randomtargetpick == 1){
+                enemy1selectedtargetx = cecil.x
+                enemy1selectedtargety = cecil.y
+               }
+               if (randomtargetpick == 2){
+                enemy1selectedtargetx = kain.x
+                enemy1selectedtargety = kain.y 
+               }
+            if (greenimp.x > greenimptargetx + 70){
+                greenimp.x -= 25
+            }
+            if (greenimp.y < greenimptargety ){
+                greenimp.y += 5
+            }
+              
+
+            if (greenimp.x < greenimptargetx +71){
+                if (randomtargetpick == 1){
+                    cecil.anims.play('cecilhurt', true);
+                    enemyturnnumber += 1;
+                    greenimp.x = enemy1posx
+                    greenimp.y = enemy1posy
+
+                }
+                   if (randomtargetpick == 2){
+                    kain.anims.play('kainhurt', true);
+                    enemyturnnumber += 1;
+                    greenimp.x = enemy1posx
+                    greenimp.y = enemy1posy
+
+                }
+            }
+        }
+
+            if (enemyturnnumber == 2){
+            redimp.setDepth(1);  
+            randomtargetpick = Math.floor(Math.random() * 3);
+            if (randomtargetpick == 1){
+                enemy2selectedtargetx = cecil.x
+                enemy2selectedtargety = cecil.y
+               }
+               if (randomtargetpick == 2){
+                enemy2selectedtargetx = kain.x
+                enemy2selectedtargety = kain.y 
+               }
+            if (redimp.x > redimptargetx + 70){
+                redimp.x -= 25
+            }
+            if (redimp.y < redimptargety ){
+                redimp.y += 5
+            }
+              
+
+            if (redimp.x < redimptargetx +71){
+                if (randomtargetpick == 1){
+                    cecil.anims.play('cecilhurt', true);
+                    enemyturnnumber += 1;
+                    redimp.x = enemy2posx
+                    redimp.y = enemy2posy
+
+                }
+                   if (randomtargetpick == 2){
+                    kain.anims.play('kainhurt', true);
+                    enemyturnnumber += 1;
+                    redimp.x = enemy2posx
+                    redimp.y = enemy2posy
+
+                }
+            }
+}
+            
+            if (enemyturnnumber == 3){
+            purpleimp.setDepth(1);  
+            randomtargetpick = Math.floor(Math.random() * 3);
+            if (randomtargetpick == 1){
+                enemy3selectedtargetx = cecil.x
+                enemy3selectedtargety = cecil.y
+               }
+               if (randomtargetpick == 2){
+                enemy3selectedtargetx = kain.x
+                enemy3selectedtargety = kain.y 
+               }
+            if (purpleimp.x > purpleimptargetx + 70){
+                purpleimp.x -= 25
+            }
+            if (purpleimp.y < purpleimptargety ){
+                purpleimp.y += 5
+            }
+              
+
+            if (purpleimp.x < purpleimptargetx +71){
+                if (randomtargetpick == 1){
+                    cecil.anims.play('cecilhurt', true);
+                    enemyturnnumber += 1;
+                    purpleimp.x = enemy3posx
+                    purpleimp.y = enemy3posy
+
+                }
+                   if (randomtargetpick == 2){
+                    kain.anims.play('kainhurt', true);
+                    enemyturnnumber += 1;
+                    purpleimp.x = enemy3posx
+                    purpleimp.y = enemy3posy
+
+                }
+            }
+}
+
+           if (enemyturnnumber == 4){
+            blueimp.setDepth(1);  
+            randomtargetpick = Math.floor(Math.random() * 3);
+            if (randomtargetpick == 1){
+                enemy4selectedtargetx = cecil.x
+                enemy4selectedtargety = cecil.y
+               }
+               if (randomtargetpick == 2){
+                enemy4selectedtargetx = kain.x
+                enemy4selectedtargety = kain.y 
+               }
+            if (blueimp.x > blueimptargetx + 70){
+                blueimp.x -= 25
+            }
+            if (blueimp.y > blueimptargety ){
+                blueimp.y -= 5
+            }
+              
+
+            if (blueimp.x < blueimptargetx +71){
+                if (randomtargetpick == 1){
+                    cecil.anims.play('cecilhurt', true);
+                    enemyturnnumber += 1;
+                    blueimp.x = enemy4posx
+                    blueimp.y = enemy4posy
+
+                }
+                   if (randomtargetpick == 2){
+                    kain.anims.play('kainhurt', true);
+                    enemyturnnumber += 1;
+                    blueimp.x = enemy4posx
+                    blueimp.y = enemy4posy
+
+                }
+            }
+}
+
+            if (enemyturnnumber == 5){
+                valkfireball.anims.play('valkfireball', true);
+            randomtargetpick = Math.floor(Math.random() * 3);
+            if (randomtargetpick == 1){
+                enemy5selectedtargetx = cecil.x
+                enemy5selectedtargety = cecil.y
+               }
+               if (randomtargetpick == 2){
+                enemy5selectedtargetx = kain.x
+                enemy5selectedtargety = kain.y 
+               }
+               valkfireball.visible = true
+            if (valkfireball.x > yellowvaltargetx + 70){
+                valkfireball.x -= 25
+            }
+            if (valkfireball.y > yellowvaltargety ){
+                valkfireball.y -= 5
+            }
+              
+
+            if (valkfireball.x < yellowvaltargetx +71){
+                if (randomtargetpick == 1){
+                    cecil.anims.play('cecilhurt', true);
+                    
+                    enemyturnnumber += 1;
+                    enemyturnnumberadded = true
+                    
+                    valkfireball.visible = false
+
+                }
+                   if (randomtargetpick == 2){
+                    kain.anims.play('kainhurt', true);
+                    
+                    enemyturnnumber += 1;
+                    enemyturnnumberadded = true
+                   
+                    valkfireball.visible = false
+                    valkfireball.x = redval.x
+                    valkfireball.y = redval.y
+
+                }
+            }
+}
+           if (enemyturnnumber == 6){
+            valkfireball.anims.play('valkfireball', true);
+            randomtargetpick = Math.floor(Math.random() * 3);
+            if (randomtargetpick == 1){
+                enemy6selectedtargetx = cecil.x
+                enemy6selectedtargety = cecil.y
+               }
+               if (randomtargetpick == 2){
+                enemy6selectedtargetx = kain.x
+                enemy6selectedtargety = kain.y 
+               }
+               valkfireball.visible = true
+            if (valkfireball.x > redvaltargetx + 70){
+                valkfireball.x -= 25
+            }
+            if (valkfireball.y > redvaltargety ){
+                valkfireball.y -= 5
+            }
+              
+
+            if (valkfireball.x < redvaltargetx +71){
+                if (randomtargetpick == 1){
+                    cecil.anims.play('cecilhurt', true);
+                    enemyturnnumber += 1;
+                    valkfireball.visible = false
+                    enemyturn = false
+                    partyturnnumber = 1
+                    enemyturnnumber = 1
+                    enemyturnnumberadded = false
+                    cecil.anims.play('cecilidle', true);
+                    greenimp.setDepth(0);
+                    cecil.setDepth(1);
+                    kain.setDepth(1);
+                    kain.anims.play('kainidle', true); 
+                    valkfireball.x = yellowval.x
+                    valkfireball.y = yellowval.y
+                    
+
+                }
+                   if (randomtargetpick == 2){
+                    kain.anims.play('kainhurt', true);
+                    enemyturnnumber += 1;
+                    valkfireball.visible = false
+                    enemyturn = false
+                    partyturnnumber = 1
+                    enemyturnnumber = 1
+                    enemyturnnumberadded = false
+                    greenimp.setDepth(0);
+                    cecil.setDepth(1);
+                    kain.setDepth(1);
+                    cecil.anims.play('cecilidle', true);
+                    kain.anims.play('kainidle', true); 
+                    valkfireball.x = yellowval.x
+                    valkfireball.y = yellowval.y
+                    
+
+                }
+                    
+            }
+}
+
+}
+}
+}
+
+   //kainaction
+function kainaction(){
+if (kaintargetselected == true){
+    if (kainattackstrike == true){
+if (kain.x < kaintargetx - 75){
+            kain.anims.play('kainwalk', true);
+            kain.x += 25
+            
+        }
+         if (kain.y > kaintargety - 25){
+            kain.y -= 5
+        }
+        
+        if (kain.x > kaintargetx - 76){
+        kainstriketime -= 1;
+        kainstrike.x = kain.x 
+        kainstrike.y = kain.y + 25
+        kain.anims.play('kainattacksword', true);
+        if (kainstrikesoundplayed == false){
+            game.sound.add( "kainstrikesound" ).play() 
+            kainstrikesoundplayed = true
+        }
+        kainstrike.anims.play('kainstrike', true);
+        kainstrike.visible = true
+    }
+
+    if (kainstriketime < 1){
+        kainattackstrike = false
+        kainstrike.visible = false
+        kain.x = kainx
+        kain.y = kainy
+        kain.anims.play('kainidle', true);
+        kaintargetselected = false
+        fantasyselectedsquare.visible = false
+        partyturnnumber += 1
+    }
+
+}
+    if (kainattackslash == true){
+    if (kain.x < kaintargetx - 75){
+            kain.anims.play('kainwalk', true);
+            kain.x += 25
+            
+        }
+         if (kain.y > kaintargety - 25){
+            kain.y -= 5
+        }
+        
+        if (kain.x > kaintargetx - 76){
+        kainslashtime -= 1;
+        kainslash.x = kain.x 
+        kainslash.y = kain.y + 25
+        kain.anims.play('kainattacksword', true);
+        kainslash.anims.play('kainslash', true);
+        if (kainslashsoundplayed == false){
+        game.sound.add( "kainslashsound" ).play() 
+        kainslashsoundplayed = true
+    }
+        kainslash.visible = true
+    }
+
+    if (kainslashtime < 1){
+        kainattackslash = false
+        kainslash.visible = false
+        kain.x = kainx
+        kain.y = kainy
+        kain.anims.play('kainidle', true);
+        kaintargetselected = false
+        fantasyselectedsquare.visible = false
+        partyturnnumber += 1
+}
+}
+//kainjump
+if (kainattackjump == true){
+    kainjumptime -= 1;
+    if (kainjumptime > 21){
+        
+    if (kain.y > -200){
+        kain.y -= 35
+    }
+
+    if (kain.x < kaintargetx){
+        kain.x += 35
+    }
+    }
+
+    if (kainjumptime < 20){
+    if (kain.y < kaintargety - 100 ){
+        kain.y += 35
+        kainjumpweapon.anims.play('kainjumpweapon', true);
+        kain.anims.play('kainjump', true);
+        kainjumpweapon.visible = true
+        kainjumpweapon.x = kain.x + 25
+        kainjumpweapon.y = kain.y - 20
+    if (kain.x > kaintargetx - 20){
+        kain.x -= 20;
+    }
+    }  
+    
+    if (kain.y > kaintargety - 101)
+      kainjumpimpact.visible = true
+      kainjumpimpact.anims.play('kainjumpimpact', true);
+      kainjumpimpact.x = kaintargetx
+      kainjumpimpact.y = kaintargety - 120
+      if (kainjumpdownsoundplayed == false){
+      game.sound.add( "kainjumpdown" ).play() 
+      kainjumpdownsoundplayed = true
+  }
+    }
+
+    if (kainjumptime < 1){
+        kainattackjump = false
+        kainjumpweapon.visible = false
+        kainjumpimpact.visible = false
+        kain.x = kainx
+        kain.y = kainy
+        kain.anims.play('kainidle', true);
+        kaintargetselected = false
+        fantasyselectedsquare.visible = false
+        partyturnnumber += 1
+    }
+
+
+
+
+
+
+}
+}
+}
+//cecilaction
+function cecilaction(){
+
+    if (cecilcastholy == true){
+        cecilholy.x = cecil.x - 85
+        cecilholy.y = cecil.y - 80
+        cecil.anims.play('cecilcasting', true);
+        cecilholy.anims.play('cecilholy', true);
+        cecilholy.visible = true
+        cecilholytime -= 0.5;
+        particles.createEmitter({
+        x: 0,
+        y: 0,
+        lifespan: 1000,
+        gravityY: 10,
+        scale: { start: 0, end: 0.25, ease: 'Quad.easeOut' },
+        alpha: { start: 1, end: 0, ease: 'Quad.easeIn' },
+        blendMode: 'ADD',
+        emitZone: { type: 'random', source: logoSource }
+    });
+    
+
+    if (cecilholytime < 1){
+        cecilcastholy = false
+        cecil.anims.play('cecilidle', true);
+        cecilholy.visible = false
+        fantasyselectedsquare.visible = false
+        cecilholyaura = true
+        partyturnnumber += 1   
+      
+    }
+    }
+
+//cecilattack
+    if (ceciltargetselected == true){
+    if (cecilattacktarget == true){
+        if (cecil.x < ceciltargetx - 75){
+            cecil.anims.play('cecilwalk', true);
+            cecil.x += 25
+            
+        }
+         if (cecil.y > ceciltargety - 25){
+            cecil.y -= 5
+        }
+
+        
+        if (cecil.x > ceciltargetx - 76){
+        ceciltargettime -= 1;
+        ceciltarget.x = cecil.x - 100
+        ceciltarget.y = cecil.y - 25
+        cecil.anims.play('cecilsword', true);
+        ceciltarget.anims.play('ceciltarget', true);
+        if (ceciltargetsoundplayed == false){
+            game.sound.add( "ceciltargetsound" ).play() 
+            ceciltargetsoundplayed = true
+        }
+        ceciltarget.visible = true
+    }
+
+    if (ceciltargettime < 1){
+        cecilattacktarget = false
+        ceciltarget.visible = false
+        cecil.x = cecilx
+        cecil.y = cecily
+        cecil.anims.play('cecilidle', true);
+        ceciltargetselected = false
+        fantasyselectedsquare.visible = false
+        partyturnnumber += 1
+        
+    }
+}
+//cecilholysword
+    if (cecilattackholysword == true){
+        if (cecil.x < ceciltargetx - 75){
+            cecil.anims.play('cecilwalk', true);
+            cecil.x += 25
+            
+        }
+         if (cecil.y > ceciltargety - 25){
+            cecil.y -= 5
+        }
+
+        
+        if (cecil.x > ceciltargetx - 76){
+        cecilholyswordtime -= 1;
+        cecilholysword.x = cecil.x - 50
+        cecilholysword.y = cecil.y - 25
+        cecil.anims.play('cecilattacksword', true);
+        cecilholysword.anims.play('cecilholysword', true);
+         if (cecilholyswordsoundplayed == false){
+            game.sound.add( "cecilholyswordsound" ).play() 
+            cecilholyswordsoundplayed = true
+        }
+        cecilholysword.visible = true
+    }
+
+    if (cecilholyswordtime < 1){
+        cecilattackholysword = false
+        cecilholysword.visible = false
+        cecil.x = cecilx
+        cecil.y = cecily
+        cecil.anims.play('cecilidle', true);
+        ceciltargetselected = false
+        fantasyselectedsquare.visible = false
+        partyturnnumber += 1
+    }
+}
+//cecilsword
+    if (cecilattacksword == true){
+        if (cecil.x < ceciltargetx - 75){
+            cecil.anims.play('cecilwalk', true);
+            cecil.x += 25
+            
+        }
+         if (cecil.y > ceciltargety - 25){
+            cecil.y -= 5
+        }
+
+        if (cecil.x > ceciltargetx - 76){
+            cecilswordtime -= 1;
+        cecilsword.x = cecil.x - 7
+        cecilsword.y = cecil.y - 25
+        cecil.anims.play('cecilattacksword', true);
+        if (cecilswordsoundplayed == false){
+            game.sound.add( "cecilswordsound" ).play() 
+            
+            cecilswordsoundplayed = true
+        }
+        cecilsword.anims.play('cecilsword', true);
+        cecilsword.visible = true
+    }
+
+if (cecilswordtime < 1){
+        cecilattacksword = false
+        cecilsword.visible = false
+        cecil.x = cecilx
+        cecil.y = cecily
+        cecil.anims.play('cecilidle', true);
+        ceciltargetselected = false
+        fantasyselectedsquare.visible = false
+        partyturnnumber += 1
+    }
+
+    }
+    }
+}
+
+
+
+
+//kainanim
+
+this.anims.create({
+        key: 'kainwalk',
+        frames: this.anims.generateFrameNumbers('kain', { start: 0, end: 1 }),
+        frameRate: 5,
+        repeat: -1
+    });
+
+    this.anims.create({
+        key: 'kainhurt',
+        frames: this.anims.generateFrameNumbers('kain', { start: 4, end: 4 }),
+        frameRate: 5,
+        repeat: -1
+    });
+this.anims.create({
+        key: 'kainidle',
+        frames: this.anims.generateFrameNumbers('kain', { start: 0, end: 0 }),
+        frameRate: 1,
+        repeat: -1
+    });
+    this.anims.create({
+        key: 'kainjump',
+        frames: this.anims.generateFrameNumbers('kain', { start: 3, end: 3 }),
+        frameRate: 1,
+        repeat: -1
+    });
+
+this.anims.create({
+        key: 'kainattacksword',
+        frames: this.anims.generateFrameNumbers('kain', { start: 10, end: 12 }),
+        frameRate: 5,
+        repeat: 0
+    });
+
+this.anims.create({
+        key: 'kainstrike',
+        frames: this.anims.generateFrameNumbers('kainstrike', { start: 0, end: 6 }),
+        frameRate: 15,
+        repeat: -1
+    });
+
+this.anims.create({
+        key: 'kainslash',
+        frames: this.anims.generateFrameNumbers('kainslash', { start: 0, end: 7 }),
+        frameRate: 15,
+        repeat: -1
+    });
+
+    this.anims.create({
+        key: 'kainjumpweapon',
+        frames: this.anims.generateFrameNumbers('kainjumpweapon', { start: 0, end: 16 }),
+        frameRate: 15,
+        repeat: -1
+    });
+
+  this.anims.create({
+        key: 'kainjumpimpact',
+        frames: this.anims.generateFrameNumbers('kainjumpimpact', { start: 0, end: 7 }),
+        frameRate: 15,
+        repeat: -1
+    });
+
+//cecilanim
+this.anims.create({
+        key: 'cecilwalk',
+        frames: this.anims.generateFrameNumbers('cecil', { start: 0, end: 1 }),
+        frameRate: 5,
+        repeat: -1
+    });
+
+    this.anims.create({
+        key: 'cecilhurt',
+        frames: this.anims.generateFrameNumbers('cecil', { start: 4, end: 4 }),
+        frameRate: 5,
+        repeat: -1
+    });
+
+this.anims.create({
+        key: 'cecilidle',
+        frames: this.anims.generateFrameNumbers('cecilidle', { start: 0, end: 2 }),
+        frameRate: 2,
+        yoyo: true,
+        repeat: -1
+    });
+
+this.anims.create({
+        key: 'cecilidleselected',
+        frames: this.anims.generateFrameNumbers('cecilidleselected', { start: 0, end: 2 }),
+        frameRate: 5,
+        yoyo: true,
+        repeat: -1
+    });
+
+
+   this.anims.create({
+        key: 'cecilattacksword',
+        frames: this.anims.generateFrameNumbers('cecil', { start: 10, end: 12 }),
+        frameRate: 5,
+        repeat: 0
+    });
+
+    this.anims.create({
+        key: 'cecilholysword',
+        frames: this.anims.generateFrameNumbers('cecilholysword', { start: 0, end: 12 }),
+        frameRate: 15,
+        repeat: 0
+    });
+    this.anims.create({
+        key: 'cecilsword',
+        frames: this.anims.generateFrameNumbers('cecilsword', { start: 0, end: 11 }),
+        frameRate: 15,
+        repeat: 0
+    });
+    this.anims.create({
+        key: 'ceciltarget',
+        frames: this.anims.generateFrameNumbers('ceciltarget', { start: 0, end: 11 }),
+        frameRate: 15,
+        repeat: 0
+    });
+
+    this.anims.create({
+        key: 'cecilholy',
+        frames: this.anims.generateFrameNumbers('cecilholy', { start: 0, end: 31 }),
+        frameRate: 20,
+        repeat: 0
+    });
+
+    this.anims.create({
+        key: 'cecilshield',
+        frames: this.anims.generateFrameNumbers('cecil', { start: 12, end: 12 }),
+        frameRate: 1,
+        repeat: 0
+    });
+
+    this.anims.create({
+        key: 'cecilcasting',
+        frames: this.anims.generateFrameNumbers('cecilcasting', { start: 0, end: 7 }),
+        frameRate: 5,
+        yoyo: true,
+        repeat: 0
+    });
+
+     this.anims.create({
+        key: 'valkfireball',
+        frames: this.anims.generateFrameNumbers('valkfireball', { start: 25, end: 58 }),
+        frameRate: 50,
+         yoyo: true,
+        repeat: -1
+    });
+
+       
+
+
+//  Input Events
+cursors = this.input.keyboard.createCursorKeys();
+
+this.input.setPollAlways();
+this.input.on('gameobjectover', function (pointer, gameObject) {
+
+});
+this.input.on('gameobjectout', function (pointer, gameObject) {
+
+});
+     
+text = this.add.text(10, 10, '', { font: '16px Courier', fill: '#00ff00' }).setScrollFactor(0);
+},
+
+
+//fantasybattleupdate
+update: function (time, delta)
+{
+ceciltargetx = cecilselectedtargetx
+ceciltargety = cecilselectedtargety
+kaintargetx = kainselectedtargetx
+kaintargety = kainselectedtargety
+greenimptargetx = enemy1selectedtargetx
+greenimptargety = enemy1selectedtargety
+redimptargetx = enemy2selectedtargetx
+redimptargety = enemy2selectedtargety
+purpleimptargetx = enemy3selectedtargetx
+purpleimptargety = enemy3selectedtargety
+blueimptargetx = enemy4selectedtargetx
+blueimptargety = enemy4selectedtargety
+yellowvaltargetx = enemy5selectedtargetx
+yellowvaltargety = enemy5selectedtargety
+redvaltargetx = enemy6selectedtargetx
+redvaltargety = enemy6selectedtargety
+
+
+    text.setText([
+        'world x: ' + this.input.mousePointer.worldX,
+        'world y: ' + this.input.mousePointer.worldY,
+        kainjumptime,
+        partyturnnumber,
+        enemyturnnumber
+       
+                 
+    ]);
+}
+
+
+});
+
+//fantasybattleui
+var fantasybattleui = new Phaser.Class({
+
+    Extends: Phaser.Scene,
+
+    initialize:
+
+    function fantasybattleui ()
+    {
+        Phaser.Scene.call(this, { key: 'fantasybattleui' });
+    },
+
+    preload: function ()
+    {
+      
+    },
+//fantasybattleuicreate
+create: function ()
+{
+battlebackdrop = this.add.sprite(uix, uiy, 'battleuibackground').setOrigin(0, 0);
+fantasybattleui = this.add.sprite(uix, uiy, 'fantasybattleui').setOrigin(0, 0);
+
+
+//partybuttons
+//kainbuttons
+
+kainstrikebutton = this.add.sprite(partyactionbutton1x, partyactionbutton1y, 'kainstrikebox').setInteractive();
+kainstrikebutton.setOrigin(0, 0); 
+            kainstrikebutton.on('pointerdown', function (pointer) {
+            this.setTint(0xff0000);
+            setenemytint()
+            kainattackstrike = true
+            kainstriketime = 8
+            kainselectingtarget = true
+           fantasyselectedsquare.x = partyactionbutton1x - 3
+           fantasyselectedsquare.y = partyactionbutton1y - 3
+           fantasyselectedsquare.visible = true
+           kainstrikesoundplayed = false
+          });
+kainstrikebutton.visible = false
+
+
+kainslashbutton = this.add.sprite(partyactionbutton2x, partyactionbutton2y, 'kainslashbox').setInteractive();
+kainslashbutton.setOrigin(0, 0); 
+            kainslashbutton.on('pointerdown', function (pointer) {
+            this.setTint(0xff0000);
+            setenemytint()
+            kainattackslash = true
+            kainslashtime = 8
+            kainselectingtarget = true
+           fantasyselectedsquare.x = partyactionbutton2x - 3
+           fantasyselectedsquare.y = partyactionbutton2y - 3
+           fantasyselectedsquare.visible = true
+           kainslashsoundplayed = false
+          });
+kainslashbutton.visible = false
+
+
+kainjumpbutton = this.add.sprite(partyactionbutton3x, partyactionbutton3y, 'kainjumpbox').setInteractive();
+kainjumpbutton.setOrigin(0, 0); 
+            kainjumpbutton.on('pointerdown', function (pointer) {
+            this.setTint(0xff0000);
+            setenemytint()
+            kainattackjump = true
+            kainjumptime = 75
+            kainselectingtarget = true
+           fantasyselectedsquare.x = partyactionbutton3x - 3
+           fantasyselectedsquare.y = partyactionbutton3y - 3
+           fantasyselectedsquare.visible = true
+          });
+kainjumpbutton.visible = false
+
+
+
+//cecilbuttons
+cecilswordbutton = this.add.sprite(partyactionbutton1x, partyactionbutton1y, 'cecilswordbox').setInteractive();
+cecilswordbutton.setOrigin(0, 0);
+            cecilswordbutton.on('pointerdown', function (pointer) {
+            this.setTint(0xff0000);
+            setenemytint()
+            cecilattacksword = true
+            cecilswordtime = 8
+            cecilselectingtarget = true
+           fantasyselectedsquare.x = partyactionbutton1x - 3
+           fantasyselectedsquare.y = partyactionbutton1y - 3
+           fantasyselectedsquare.visible = true
+           cecilswordsoundplayed = false
+          });
+cecilswordbutton.visible = false
+
+cecilshieldbutton = this.add.sprite(partyactionbutton2x, partyactionbutton2y, 'cecilshieldbox').setInteractive();
+cecilshieldbutton.setOrigin(0, 0);
+            cecilshieldbutton.on('pointerdown', function (pointer) {
+            this.setTint(0xff0000);
+          });
+cecilshieldbutton.visible = false
+
+cecilholybutton = this.add.sprite(partyactionbutton3x, partyactionbutton3y, 'cecilholybox').setInteractive();
+cecilholybutton.setOrigin(0, 0);
+            cecilholybutton.on('pointerdown', function (pointer) {
+            this.setTint(0xff0000);
+            
+            cecilcastholy = true
+            cecilholytime = 30
+            cecilholyaura = false
+            fantasyselectedsquare.x = partyactionbutton3x - 3
+            fantasyselectedsquare.y = partyactionbutton3y - 3
+            fantasyselectedsquare.visible = true
+          });
+cecilholybutton.visible = false
+
+cecilholyswordbutton = this.add.sprite(partyactionbutton4x, partyactionbutton4y, 'cecilholyswordbox').setInteractive();
+cecilholyswordbutton.setOrigin(0, 0);
+            cecilholyswordbutton.on('pointerdown', function (pointer) {
+            this.setTint(0xff0000);
+            setenemytint()
+            cecilattackholysword = true
+            cecilholyswordtime = 8
+            cecilselectingtarget = true
+           fantasyselectedsquare.x = partyactionbutton4x - 3
+           fantasyselectedsquare.y = partyactionbutton4y - 3
+           fantasyselectedsquare.visible = true
+           cecilholyswordsoundplayed = false
+          });
+cecilholyswordbutton.visible = false
+
+ceciltargetbutton = this.add.sprite(partyactionbutton5x, partyactionbutton5y, 'ceciltargetbox').setInteractive();
+ceciltargetbutton.setOrigin(0, 0);
+            ceciltargetbutton.on('pointerdown', function (pointer) {
+            this.setTint(0xff0000);
+           cecilattacktarget = true
+           setenemytint()
+           ceciltargettime = 8
+           cecilselectingtarget = true
+           fantasyselectedsquare.x = partyactionbutton5x - 3
+           fantasyselectedsquare.y = partyactionbutton5y - 3
+           fantasyselectedsquare.visible = true
+           ceciltargetsoundplayed = false
+          });
+ceciltargetbutton.visible = false
+
+
+cecilselectedpartyname = this.add.sprite(partymemberselectednamex, partymemberselectednamey, 'cecilpartyname').setOrigin(0, 0);
+cecilpartymemberhealthname = this.add.sprite(partymember1healthnamex, partymember1healthnamey, 'cecilpartyname').setOrigin(0, 0);
+kainpartymemberhealthname = this.add.sprite(partymember2healthnamex, partymember2healthnamey, 'kainpartyname').setOrigin(0, 0);
+
+cecilhealthtxt = this.add.text(403, 625, '', { font: '16px Courier', fill: '#00ff00' }).setScrollFactor(0);
+kainhealthtxt = this.add.text(403, 661, '', { font: '16px Courier', fill: '#00ff00' }).setScrollFactor(0);
+
+fantasyselectedsquare = this.add.sprite(0, 0, 'fantasyselectedsquare').setOrigin(0, 0);
+fantasyselectedsquare.visible = false
+
+
+
+//anims
+  this.anims.create({
+        key: 'fantasyuihealthbar100',
+        frames: this.anims.generateFrameNumbers('fantasyuihealthbar', { start: 0, end: 0 }),
+        frameRate: 1,
+        repeat: -1
+    });
+  this.anims.create({
+        key: 'fantasyuihealthbar90',
+        frames: this.anims.generateFrameNumbers('fantasyuihealthbar', { start: 1, end: 1 }),
+        frameRate: 1,
+        repeat: -1
+    });
+   this.anims.create({
+        key: 'fantasyuihealthbar80',
+        frames: this.anims.generateFrameNumbers('fantasyuihealthbar', { start: 2, end: 2 }),
+        frameRate: 1,
+        repeat: -1
+    });
+      this.anims.create({
+        key: 'fantasyuihealthbar70',
+        frames: this.anims.generateFrameNumbers('fantasyuihealthbar', { start: 3, end: 3 }),
+        frameRate: 1,
+        repeat: -1
+    });
+         this.anims.create({
+        key: 'fantasyuihealthbar60',
+        frames: this.anims.generateFrameNumbers('fantasyuihealthbar', { start: 4, end: 4 }),
+        frameRate: 1,
+        repeat: -1
+    });
+    this.anims.create({
+        key: 'fantasyuihealthbar50',
+        frames: this.anims.generateFrameNumbers('fantasyuihealthbar', { start: 5, end: 5 }),
+        frameRate: 1,
+        repeat: -1
+    });
+    this.anims.create({
+        key: 'fantasyuihealthbar40',
+        frames: this.anims.generateFrameNumbers('fantasyuihealthbar', { start: 6, end: 6 }),
+        frameRate: 1,
+        repeat: -1
+    });
+
+      this.anims.create({
+        key: 'fantasyuihealthbar30',
+        frames: this.anims.generateFrameNumbers('fantasyuihealthbar', { start: 7, end: 7 }),
+        frameRate: 1,
+        repeat: -1
+    });
+       this.anims.create({
+        key: 'fantasyuihealthbar20',
+        frames: this.anims.generateFrameNumbers('fantasyuihealthbar', { start: 8, end: 8 }),
+        frameRate: 1,
+        repeat: -1
+    });
+       this.anims.create({
+        key: 'fantasyuihealthbar10',
+        frames: this.anims.generateFrameNumbers('fantasyuihealthbar', { start: 9, end: 9 }),
+        frameRate: 1,
+        repeat: -1
+    });
+
+
+enemy1healthbar = this.add.sprite(774, 636, '').setOrigin(0, 0);
+enemy1healthbar.anims.play('fantasyuihealthbar100', true); 
+enemy1name = this.add.text(799, 615, 'Green Imp', { font: '16px Arial', fill: '#ffffff' }).setScrollFactor(0);
+
+enemy2healthbar = this.add.sprite(774, 672, '').setOrigin(0, 0);
+enemy2healthbar.anims.play('fantasyuihealthbar100', true); 
+enemy2name = this.add.text(799, 658, 'Red Imp', { font: '16px Arial', fill: '#ffffff' }).setScrollFactor(0);
+
+enemy3healthbar = this.add.sprite(774, 708, '').setOrigin(0, 0);
+enemy3healthbar.anims.play('fantasyuihealthbar100', true); 
+
+enemy4healthbar = this.add.sprite(911, 636, '').setOrigin(0, 0);
+enemy4healthbar.anims.play('fantasyuihealthbar100', true); 
+
+enemy5healthbar = this.add.sprite(911, 672, '').setOrigin(0, 0);
+enemy5healthbar.anims.play('fantasyuihealthbar100', true); 
+
+enemy6healthbar = this.add.sprite(911, 708, '').setOrigin(0, 0);
+enemy6healthbar.anims.play('fantasyuihealthbar100', true); 
+
+
+
+this.input.setPollAlways();
+this.input.on('gameobjectover', function (pointer, gameObject) {
+gameObject.setTint(0x00ff00);
+});
+this.input.on('gameobjectout', function (pointer, gameObject) {
+gameObject.clearTint();
+});
+cursors = this.input.keyboard.createCursorKeys();
+        
+},
+
+//fantasybattleuiupdate
+
+update: function (time, delta)
+{
+
+if (enemyturn == true){
+    cecilswordbutton.visible = false
+    cecilshieldbutton.visible = false
+    cecilholybutton.visible = false
+    cecilholyswordbutton.visible = false
+    ceciltargetbutton.visible = false
+    kainjumpbutton.visible = false 
+    kainslashbutton.visible = false 
+    kainstrikebutton.visible = false 
+}
+
+if (enemyturn == false){
+if (cecilselected == true){
+    cecilswordbutton.visible = true
+    cecilshieldbutton.visible = true
+    cecilholybutton.visible = true
+    cecilholyswordbutton.visible = true
+    ceciltargetbutton.visible = true
+
+}
+
+if (cecilselected == false){
+    cecilswordbutton.visible = false
+    cecilshieldbutton.visible = false
+    cecilholybutton.visible = false
+    cecilholyswordbutton.visible = false
+    ceciltargetbutton.visible = false
+
+}
+
+if (kainselected == true){
+    kainjumpbutton.visible = true
+    kainslashbutton.visible = true
+    kainstrikebutton.visible = true
+}
+}
+if (partyturnnumber == 1){
+    cecilselected = true
+    kainselected = false
+}
+if (partyturnnumber == 2){
+    cecilselected = false
+    kainselected = true
+}
+
+if (partyturnnumber > partysize){
+    enemyturn = true
+}
+
+
+ cecilhealthtxt.setText([
+        cecilcurrenthealth + '/' + cecilhealthrating
+                 
+    ]);
+
+  kainhealthtxt.setText([
+        kaincurrenthealth + '/' + kainhealthrating
+                 
+    ]);
+
+}
+
+
+
+
+});
+
+function setenemytint(){
+greenimp.setTint(0xff0000);
+redimp.setTint(0xff0000);
+purpleimp.setTint(0xff0000);
+blueimp.setTint(0xff0000);
+yellowval.setTint(0xff0000);
+redval.setTint(0xff0000);
+}
+
+
+function removeenemytint(){
+greenimp.clearTint();
+redimp.clearTint();
+purpleimp.clearTint();
+blueimp.clearTint();
+yellowval.clearTint();
+redval.clearTint();
+}
+
+var config = {
+    type: Phaser.AUTO,
+    width: 1360,
+    height: 768,
+    backgroundColor: '#000000',
+    parent: 'phaser-example',
+     physics: {
+        default: 'arcade',
+        arcade: {
+            gravity: { y: 0 },
+            debug: false
+        }
+
+    },
+    
+    scene: [fantasybattle,fantasybattleui ]
+};
+
+ 
+//var
+var player;
+var text;
+var scrollright = false
+var scrollleft = false
+var uix = 0
+var uiy = 601
+var game = new Phaser.Game(config);
+
+var enemy1posx = 0
+var enemy1posy = 0
+var enemy2posx = 0
+var enemy2posy = 0
+var enemy3posx = 0
+var enemy3posy = 0
+var enemy4posx = 0
+var enemy4posy = 0
+var enemy5posx = 0
+var enemy5posy = 0
+var enemy6posx = 0
+var enemy6posy = 0
+var enemy1selectedtargetx = 0
+var enemy1selectedtargety = 0
+var enemy2selectedtargetx = 0
+var enemy2selectedtargety = 0
+var enemy3selectedtargetx = 0
+var enemy3selectedtargety = 0
+var enemy4selectedtargetx = 0
+var enemy4selectedtargety = 0
+var enemy5selectedtargetx = 0
+var enemy5selectedtargety = 0
+var enemy6selectedtargetx = 0
+var enemy6selectedtargety = 0
+
+var partymember1posx = 0
+var partymember1poxy = 0
+var partymember1name = ''
+var partymember2posx = 0
+var partymember2poxy = 0
+var partymember2name = ''
+var partymember3posx = 0
+var partymember3poxy = 0
+var partymember3name = ''
+var partymember4posx = 0
+var partymember4poxy = 0
+var partymember4name = ''
+var partymember5posx = 0
+var partymember5poxy = 0
+var partymember5name = ''
+var partymember6posx = 0
+var partymember6poxy = 0
+var partymember6name = ''
+var partymember7posx = 0
+var partymember7poxy = 0
+var partymember7name = ''
+var partymember8posx = 0
+var partymember8poxy = 0
+var partymember8name = ''
+var battlescenename = 'streetbattlescene'
+var partyturnnumber = 1
+var enemyturnnumber = 1
+var enemyturnnumberadded = false
+var partysize = 2
+var enemyturn = false
+
+var partyactionbutton1x = 21
+var partyactionbutton1y = 648
+var partyactionbutton2x = 94
+var partyactionbutton2y = 648
+var partyactionbutton3x = 167
+var partyactionbutton3y = 648
+var partyactionbutton4x = 240
+var partyactionbutton4y = 648
+var partyactionbutton5x = 313
+var partyactionbutton5y = 648
+
+
+var kainhealthrating = 1000
+var kaincurrenthealth = 1000
+var kainattackrating = 50
+var kaindefenserating = 25
+var kainmagicrating = 25
+var kainspeedrating = 25
+var kainsupportrating = 0
+var kainx = 74
+var kainy = 325
+var kainselectedtargetx = 0
+var kainselectedtargety = 0
+var kainselected = true
+var kainselectingtarget = false
+var kaintargetselected = false
+var kainattackjump = false
+var kainattackslash = false
+var kainattackstrike = false
+var kainactive = true
+var kaintargetx = enemy1posx
+var kaintargety = enemy1posy
+var kainstriketime = 1
+var kainslashtime = 1
+var kainjumptime = 1
+var kainjumpdownsoundplayed = false
+var kainstrikesoundplayed = false
+var kainslashsoundplayed = false
+
+var cecilhealthrating = 1000
+var cecilcurrenthealth = 1000
+var cecilattackrating = 25
+var cecildefenserating = 100
+var cecilmagicrating = 50
+var cecilspeedrating = 10
+var cecilsupportrating = 50
+var cecilx = 164
+var cecily = 398
+var cecilselectedtargetx = 0
+var cecilselectedtargety = 0
+
+var partymemberselectednamex = 179
+var partymemberselectednamey = 609
+var partymember1healthnamex = 428
+var partymember1healthnamey = 612
+var partymember2healthnamex = 428
+var partymember2healthnamey = 648
+
+var cecilattacksword = false
+var cecilattackholysword = false
+var cecilattacktarget = false
+var cecilcastholy = false
+var cecilholyaura = false
+var cecilselected = false
+var cecilactive = true
+var cecilselectingtarget = false
+var ceciltargetselected = false
+var ceciltargetx = enemy1posx
+var ceciltargety = enemy1posy
+var cecilholyswordtime = 1
+var cecilswordtime = 1
+var ceciltargettime = 1
+var cecilholytime = 5
+var ceciltargetsoundplayed = false
+var cecilholyswordsoundplayed = false
+var cecilswordsoundplayed = false
+
+var randomtargetpick 
+var fantasyselectedsquarex = 0
+var fantasyselectedsquarey = 0
+
+</script>
+</html>
