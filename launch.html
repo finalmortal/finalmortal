@@ -1,0 +1,609 @@
+<!doctype html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8" />
+    <title>Testlaunch 0.1</title>
+    <script src="phaser.js"></script>
+    <style type="text/css">
+        body {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    
+<script type="text/javascript">
+//launchscene
+var launchscene = new Phaser.Class({
+
+    Extends: Phaser.Scene,
+
+    initialize:
+
+    function launchscene ()
+    {
+        Phaser.Scene.call(this, { key: 'launchscene' });
+    },
+//preload
+preload: function ()
+{
+
+    this.load.image('whaleui', 'assets/launchtower/whaleui.png');
+    this.load.image('launchtowerfrontpiece', 'assets/launchtower/launchtowerfrontpiece.png');
+    this.load.image('whale9000toppiece', 'assets/launchtower/whale9000modeltop.png');
+    this.load.image('whale9000', 'assets/launchtower/whale9000model.png');
+    this.load.image('sky', 'assets/stellar/stellarcity-cloudpiece.png');
+    this.load.image('liftoffbutton', 'assets/launchtower/liftoffbutton.png');
+    this.load.image('launchbackground1', 'assets/launchtower/towerbackground1.jpg');
+    this.load.spritesheet('whale9000cannon', 'assets/launchtower/whale9000cannon.png', { frameWidth: 44, frameHeight: 121 });
+    this.load.spritesheet('whale9000thruster', 'assets/launchtower/whalethruster.png', { frameWidth: 65, frameHeight: 91 });
+    this.load.spritesheet('whale9000bullet1', 'assets/launchtower/whalecannonbullet1.png', { frameWidth: 16, frameHeight: 16 });
+    this.load.image('whale9000firebullet1button', 'assets/launchtower/whale9000firebullet1button.png');
+    this.load.image('whale9000plasmabulletbutton', 'assets/launchtower/whale9000plasmabulletbutton.png');
+    this.load.spritesheet('spacerock1', 'assets/launchtower/spacerock1.png', { frameWidth: 60, frameHeight: 60 });
+    this.load.spritesheet('spacerock2', 'assets/launchtower/spacerock2.png', { frameWidth: 120, frameHeight: 120 });
+    this.load.image('cecilspacesuit', 'assets/launchtower/cecilspacesuit.png');
+    this.load.image('rosaspacesuit', 'assets/launchtower/rosaspacesuit.png');
+    this.load.image('terraspacesuit', 'assets/launchtower/terraspacesuit.png');
+    this.load.image('expandingearthedge', 'assets/launchtower/expandingearthedge.png');
+    this.load.image('spacelayer1', 'assets/launchtower/spacelayer1.png');
+    this.load.image('spacelayer2', 'assets/launchtower/spacelayer2.jpg');
+    this.load.image('spacelayer3', 'assets/launchtower/spacelayer3.jpg');
+    this.load.image('spark0', 'assets/launchtower/blue.png');
+    this.load.image('spark1', 'assets/launchtower/red.png');
+    this.load.atlas('flares', 'assets/launchtower/flares.png', 'assets/launchtower/flares.json');
+
+
+},
+//launchcreate
+create: function ()
+{
+launchbackground1 = this.add.tileSprite(0, 0, 1920, 1200, 'launchbackground1').setOrigin(0, 0);
+sky = this.add.tileSprite(0, 0, 4000, 600, 'sky').setOrigin(0, 0);
+whale9000thruster1l = this.physics.add.sprite(whale9000x, whale9000y, 'whale9000thruster').setOrigin(0, 0);
+whale9000thruster1r = this.physics.add.sprite(whale9000x, whale9000y, 'whale9000thruster').setOrigin(0, 0);
+whale9000 = this.add.sprite(whale9000x, whale9000y, 'whale9000').setOrigin(0, 0);
+whale9000cannon = this.physics.add.sprite(whale9000.x + 162, whale9000.y + 42, 'whale9000cannon').setOrigin(0, 0);
+whale9000top = this.add.sprite(whale9000.x + 126, whale9000.y + 63, 'whale9000toppiece').setOrigin(0, 0);
+whaleui = this.add.sprite(uix, uiy, 'whaleui').setOrigin(0, 0);
+cecilspacesuit = this.add.sprite(uix +632 , uiy + 48, 'cecilspacesuit').setOrigin(0, 0);
+rosaspacesuit = this.add.sprite(uix +884 , uiy + 48, 'rosaspacesuit').setOrigin(0, 0);
+terraspacesuit = this.add.sprite(uix +380 , uiy + 48, 'terraspacesuit').setOrigin(0, 0);
+launchtowerfrontpiece = this.add.sprite(0, 0, 'launchtowerfrontpiece').setOrigin(0, 0);
+
+
+//  Input Events
+cursors = this.input.keyboard.createCursorKeys();
+
+this.input.setPollAlways();
+this.input.on('gameobjectover', function (pointer, gameObject) {
+gameObject.setTint(0x00ff00);
+if (gameObject = liftoffbutton){
+    gameObject.setTint(0x00ff00);
+}
+});
+this.input.on('gameobjectout', function (pointer, gameObject) {
+gameObject.clearTint();
+});
+
+liftoffbutton = this.add.sprite(600, 200, 'liftoffbutton').setInteractive();
+liftoffbutton.on('pointerdown', function (pointer) {
+whalelaunched = true
+liftoffbutton.visible = false
+});
+
+this.anims.create({
+        key: 'whalecannonplay',
+        frames: this.anims.generateFrameNumbers('whale9000cannon', { start: 0, end: 11 }),
+        frameRate: 10,
+        repeat: -1
+    });
+
+this.anims.create({
+        key: 'whalethrusterplay',
+        frames: this.anims.generateFrameNumbers('whale9000thruster', { start: 0, end: 9 }),
+        frameRate: 20,
+        repeat: -1
+    });
+
+this.anims.create({
+        key: 'spacerock1play',
+        frames: this.anims.generateFrameNumbers('spacerock1', { start: 0, end: 40 }),
+        frameRate: 10,
+        repeat: -1
+    });
+
+this.anims.create({
+        key: 'spacerock2play',
+        frames: this.anims.generateFrameNumbers('spacerock2', { start: 0, end: 58 }),
+        frameRate: 10,
+        repeat: -1
+    });
+
+this.anims.create({
+        key: 'whale9000bullet1play',
+        frames: this.anims.generateFrameNumbers('whale9000bullet1', { start: 0, end: 3 }),
+        frameRate: 10,
+        repeat: -1
+    });
+
+     
+text = this.add.text(10, 10, '', { font: '16px Courier', fill: '#00ff00' }).setScrollFactor(0);
+},
+
+
+//launchupdate
+update: function (time, delta)
+{
+sky.tilePositionX += 2;
+
+    if (launchbackground1.tilePositionX < 550){
+    launchbackground1.tilePositionX += 0.1;
+    }
+
+    if (launchbackground1.tilePositionY < 600){
+    launchbackground1.tilePositionY += 0.1;
+    }
+
+     if (launchbackground1.tilePositionY > 600){
+    launchbackground1.tilePositionY -= 0.1;
+    }
+
+ if (whale9000.y < - 200){
+            game.scene.stop('launchscene')
+            game.scene.start('spacescene');
+            
+         
+        }
+
+
+    whale9000thruster1l.anims.play('whalethrusterplay', true);
+    whale9000thruster1r.anims.play('whalethrusterplay', true);
+    whale9000cannon.anims.play('whalecannonplay', true);
+    
+
+    whale9000top.x = whale9000.x + 126
+    whale9000top.y = whale9000.y + 63
+    whale9000cannon.x = whale9000.x + 162
+    whale9000cannon.y = whale9000.y + 42
+    whale9000thruster1l.y = whale9000.y + 173
+    whale9000thruster1l.x = whale9000.x + 26
+    whale9000thruster1l.y = whale9000.y + 173
+    whale9000thruster1r.x = whale9000.x + 284
+    whale9000thruster1r.y = whale9000.y + 173
+    if (whalelaunched == true){
+    whale9000.y -= 3
+    }
+
+
+    text.setText([
+        'world x: ' + this.input.mousePointer.worldX,
+        'world y: ' + this.input.mousePointer.worldY,
+        launchbackground1.tilePositionY,
+        launchbackground1.tilePositionX,
+     
+      
+    ]);
+}
+
+
+});
+
+//spacescene
+var spacescene = new Phaser.Class({
+
+    Extends: Phaser.Scene,
+
+    initialize:
+
+    function spacescene ()
+    {
+        Phaser.Scene.call(this, { key: 'spacescene' });
+    },
+
+    preload: function ()
+    {
+      
+    },
+//spacecreate
+create: function ()
+{
+
+this.input.setPollAlways();
+this.input.on('gameobjectover', function (pointer, gameObject) {
+gameObject.setTint(0x00ff00);
+if (gameObject = liftoffbutton){
+    gameObject.setTint(0x00ff00);
+}
+});
+this.input.on('gameobjectout', function (pointer, gameObject) {
+gameObject.clearTint();
+});
+
+whale9000thruster1l.anims.stop('whalethrusterplay', true);
+whale9000thruster1r.anims.stop('whalethrusterplay', true);
+whale9000x = 490
+spacelayer1 = this.add.tileSprite(0, 0, 2400, 3200, 'spacelayer1').setOrigin(0, 0);
+spacelayer2 = this.add.tileSprite(0, 0, 5000, 2000, 'spacelayer2').setAlpha(0);
+spacelayer3 = this.add.tileSprite(0, 0, 3840, 2160, 'spacelayer3').setAlpha(0);
+expandingearthedge = this.add.tileSprite(-500, -200, 2606, 956, 'expandingearthedge').setOrigin(0, 0);
+whale9000thruster1l = this.physics.add.sprite(whale9000x, whale9000y, 'whale9000thruster').setOrigin(0, 0);
+whale9000thruster1r = this.physics.add.sprite(whale9000x, whale9000y, 'whale9000thruster').setOrigin(0, 0);
+whale9000 = this.add.sprite(whale9000x, whale9000y - 75, 'whale9000').setOrigin(0, 0);
+whale9000cannon = this.physics.add.sprite(whale9000.x + 167, whale9000.y + 42, 'whale9000cannon').setOrigin(0, 0);
+whale9000bullet1 = this.physics.add.sprite(whale9000cannon.x + 10, whale9000cannon.y - 7, 'whale9000bullet1').setOrigin(0, 0);
+whale9000bullet1.visible = false
+whale9000top = this.add.sprite(whale9000.x + 126, whale9000.y + 63, 'whale9000toppiece').setOrigin(0, 0);
+spacerock1 = this.physics.add.sprite(2000, -1000, 'spacerock1').setOrigin(0, 0);
+spacerock2 = this.physics.add.sprite(+2000, -1000, 'spacerock2').setOrigin(0, 0);
+whaleui = this.add.sprite(uix, uiy, 'whaleui').setOrigin(0, 0);
+cecilspacesuit = this.add.sprite(uix +632 , uiy + 48, 'cecilspacesuit').setOrigin(0, 0);
+rosaspacesuit = this.add.sprite(uix +884 , uiy + 48, 'rosaspacesuit').setOrigin(0, 0);
+terraspacesuit = this.add.sprite(uix +380 , uiy + 48, 'terraspacesuit').setOrigin(0, 0);
+particles = this.add.particles('flares');
+
+  this.tweens.add({
+  targets: spacelayer2,
+            alphaTopLeft: { value: 1, duration: 5000, ease: 'Power1' },
+            alphaBottomRight: { value: 1, duration: 10000, ease: 'Power1' },
+            alphaBottomLeft: { value: 1, duration: 5000, ease: 'Power1', delay: 5000 },
+            yoyo: true,
+            loop: -1
+
+        });
+
+  this.tweens.add({
+  targets: spacelayer3,
+            alphaTopLeft: { value: 1, duration: 2500, ease: 'Power1' },
+            alphaBottomRight: { value: 1, duration: 5000, ease: 'Power1' },
+            alphaBottomLeft: { value: 1, duration: 2500, ease: 'Power1', delay: 5000 },
+            yoyo: true,
+            loop: -1
+
+        });
+
+
+  emitter0 = this.add.particles('spark0').createEmitter({
+        x: 400,
+        y: 300,
+        speed: { min: -800, max: 800 },
+        angle: { min: 0, max: 360 },
+        scale: { start: 0.5, end: 0 },
+        blendMode: 'SCREEN',
+        //active: false,
+        lifespan: 600,
+        gravityY: 800
+    });
+  emitter0.visible = false
+
+     emitter1 = this.add.particles('spark1').createEmitter({
+        x: 400,
+        y: 300,
+        speed: { min: -800, max: 800 },
+        angle: { min: 0, max: 360 },
+        scale: { start: 0.3, end: 0 },
+        blendMode: 'SCREEN',
+        //active: false,
+        lifespan: 300,
+        gravityY: 800
+    });
+    emitter1.visible = false
+
+
+   
+    
+    particles.createEmitter({
+        frame: 'red',
+        radial: false,
+        x: whale9000cannon.x,
+        y: { start: whale9000cannon.y, end: 0, steps: 25 },
+        lifespan: 100,
+        speedX: { min: 1000, max: 2000 },
+        quantity: 3,
+        gravityY: +200,
+        scale: { start: 2, end: 0, ease: 'Power3' },
+        blendMode: 'SCREEN'
+    });
+    particles.visible = false
+
+//uibuttons
+ whale9000firebullet1button = this.add.sprite(uix +278, uiy + 18, 'whale9000firebullet1button').setInteractive();
+ whale9000firebullet1button.setOrigin(0, 0);
+            whale9000firebullet1button.on('pointerdown', function (pointer) {
+            this.setTint(0xff0000);
+            whale9000bullet1fire = true
+          });
+
+whale9000plasmabulletbutton = this.add.sprite(uix +188, uiy + 18, 'whale9000plasmabulletbutton').setInteractive();
+whale9000plasmabulletbutton.setOrigin(0, 0);
+            whale9000plasmabulletbutton.on('pointerdown', function (pointer) {
+            this.setTint(0xff0000);
+            whale9000plasmafire = true
+            particles.visible = true
+            whale9000plasmatime = 3
+            particles.x = whale9000cannon.x
+            particles.y = whale9000cannon.y
+
+
+          });
+
+
+
+text2 = this.add.text(10, 10, '', { font: '16px Courier', fill: '#00ff00' }).setScrollFactor(0);
+cursors = this.input.keyboard.createCursorKeys();
+this.time.addEvent({ delay: 1000, callback: bullettimers, callbackScope: this, loop: true });
+
+        
+},
+
+
+//spacesceneupdate
+//spaceupdate
+update: function (time, delta)
+{
+spacerock1.anims.play('spacerock1play', true);
+spacerock2.anims.play('spacerock2play', true);
+whale9000bullet1.anims.play('whale9000bullet1play', true);
+spacelayer1.tilePositionY -= 0.5;
+spacelayer2.tilePositionY -= 0.3;
+spacelayer2.tilePositionX += 0.1;
+spacelayer3.tilePositionY -= 0.1;
+
+expandingearthedge.y += 0.5
+spacerock1.y += 2
+spacerock2.y += 2
+spacerock1.x += randomspacerockdirectionx
+
+if (whale9000plasmafire == true){
+    particles.visible = true
+}
+
+if (cursors.right.isDown && cursors.up.isDown){
+spacelayer1.tilePositionX += 1;
+expandingearthedge.x -= 1;
+spacerock1.x -= 1;
+spacerock2.x -= 1;
+
+
+}
+if (cursors.right.isDown && cursors.down.isDown){
+}
+if (cursors.left.isDown && cursors.up.isDown){
+spacelayer1.tilePositionX -= 1;
+expandingearthedge.x += 1;
+spacerock1.x += 1;
+spacerock2.x += 1;
+
+}
+if (cursors.left.isDown && cursors.down.isDown){
+}
+
+if (cursors.up.isDown)
+{  
+spacelayer1.tilePositionY -= 1;
+expandingearthedge.y += 1
+spacerock1.y += 2
+spacerock2.y += 2
+whale9000thruster1l.visible = true
+whale9000thruster1r.visible = true
+}
+
+if (cursors.down.isDown)
+{  
+
+}
+
+ if (cursors.left.isDown)
+{  
+
+
+}
+ if (cursors.right.isDown)
+{  
+
+
+}
+
+
+else {
+
+
+}
+
+//whalecannonbullets
+
+if (whale9000bullet1fire == true){
+    whale9000bullet1.visible = true
+    whale9000bullet1.y -= 10;
+if (whale9000bullet1.y < whale9000cannon.y - 8){
+    if (spacerock1.y > 1){
+        if (spacerock1.y < 600){
+        if (spacerock1.x > 0){
+            if (spacerock1.x < 1360){
+    if (whale9000bullet1.x < spacerock1.x){
+        whale9000bullet1.x += 25
+    }
+    if (whale9000bullet1.x > spacerock1.x){
+        whale9000bullet1.x -= 25
+    }
+
+    if (whale9000bullet1.y > spacerock1.y - 5){
+        whale9000bullet1.y -= 25
+        whale9000bullet1hit = true
+        emitter0.setPosition(spacerock1.x, spacerock1.y);
+        emitter1.setPosition(spacerock1.x, spacerock1.y);
+        emitter0.visible = true
+        emitter1.visible = true
+        emitter0.explode();
+        emitter1.explode();
+
+
+    }
+
+    if (whale9000bullet1.y < spacerock1.y + 5){
+        whale9000bullet1.y += 25
+        whale9000bullet1hit = true
+        emitter0.setPosition(spacerock1.x, spacerock1.y);
+        emitter1.setPosition(spacerock1.x, spacerock1.y);
+        emitter0.visible = true
+        emitter1.visible = true
+        emitter0.explode();
+        emitter1.explode();
+    }
+}
+}
+}
+ }   
+    if (whale9000bullet1.x > spacerock1.x -1){
+        if (whale9000bullet1.x < spacerock1.x +1){
+        if (whale9000bullet1.y = spacerock1.y){
+        whale9000bullet1hit = true
+        whale9000bullet1fire = false
+        whale9000bullet1.visible = false
+        whale9000bullet1.y = whale9000cannon.y - 7
+        whale9000bullet1.x = whale9000cannon.x + 10
+        }
+    }
+    
+}
+}
+    if (whale9000bullet1.x > 1360){
+        whale9000bullet1fire = false
+        whale9000bullet1.y = whale9000cannon.y - 7
+        whale9000bullet1.visible = false
+        whale9000bullet1.x = whale9000cannon.x + 10
+        whale9000bullet1hit = false
+        
+    }
+    if (whale9000bullet1.x < 1){
+        whale9000bullet1fire = false
+        whale9000bullet1.y = whale9000cannon.y - 7
+        whale9000bullet1.visible = false
+        whale9000bullet1.x = whale9000cannon.x + 10
+        whale9000bullet1hit = false
+        
+    }
+
+  
+    if (whale9000bullet1.y < 1){
+        whale9000bullet1fire = false
+        whale9000bullet1.y = whale9000cannon.y - 7
+        whale9000bullet1.visible = false
+        whale9000bullet1.x = whale9000cannon.x + 10
+        whale9000bullet1hit = false
+        
+    }
+
+
+}
+
+
+//spacerockdirections
+if (spacerock1.y > 900){
+    randomdirectionpicker = Math.floor(Math.random() * 6);
+    randomspacerockx = Math.floor(Math.random() * 1300);
+    if (randomdirectionpicker < 3){
+    randomspacerockdirectionx = Math.floor(Math.random() * -15);
+    }
+    if (randomdirectionpicker > 3){
+    randomspacerockdirectionx = Math.floor(Math.random() * 15);
+    }
+
+    spacerock1.y = -500
+    spacerock1.x = randomspacerockx
+}
+
+if (spacerock2.y > 2600){
+    randomdirectionpicker2 = Math.floor(Math.random() * 6);
+    randomspacerock2x = Math.floor(Math.random() * 3000);
+    if (randomdirectionpicker2 < 3){
+    randomspacerock2directionx = Math.floor(Math.random() * -15);
+    }
+    if (randomdirectionpicker > 3){
+    randomspacerock2directionx = Math.floor(Math.random() * 15);
+    }
+
+    spacerock2.y = -500
+    spacerock2.x = randomspacerock2x
+}
+
+
+text2.setText([
+        'world x: ' + this.input.mousePointer.worldX,
+        'world y: ' + this.input.mousePointer.worldY,
+        spacelayer1.tilePositionY,
+        spacelayer1.tilePositionX,
+        whale9000bullet1pathx,
+        whale9000bullet1hit,
+        spacelayer2.tilePositionY,
+        spacelayer2.tilePositionX
+                  
+      
+    ]);
+
+}
+
+
+
+
+});
+
+
+function bullettimers(){
+    if (whale9000plasmafire == true){
+        particles.visible = true
+      
+        whale9000plasmatime -= 1
+    }
+    if (whale9000plasmatime < 1){
+        whale9000plasmafire = false
+       particles.visible = false
+       
+    }
+   
+}
+
+var config = {
+    type: Phaser.AUTO,
+    width: 1360,
+    height: 768,
+    backgroundColor: '#000000',
+    parent: 'phaser-example',
+     physics: {
+        default: 'arcade',
+        arcade: {
+            gravity: { y: 0 },
+            debug: false
+        }
+    },
+    
+    scene: [launchscene,spacescene ]
+};
+
+ 
+//var
+
+var player;
+var text;
+var scrollright = false
+var scrollleft = false
+var uix = 0
+var uiy = 601
+var whale9000x = 461
+var whale9000y = 420
+var whalelaunched = false
+var randomspacerockdirectionx = 1
+var randomspacerock2directionx = 1
+var whale9000cannontargetx = 0
+var whale9000cannontargety = 0
+var whale9000bullet1fire = false
+var whale9000plasmafire = false
+var whale9000plasmatime = 3
+var whale9000bullet1path = false
+var whale9000bullet1hit = false
+var whale9000bullet1pathx = 0
+
+var game = new Phaser.Game(config);
+
+</script>
+</html>
