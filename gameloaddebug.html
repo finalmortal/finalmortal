@@ -2,7 +2,7 @@
 <html lang="en"> 
 <head> 
     <meta charset="UTF-8" />
-    <title>Final Mortal Fantasy Kombat Alpha 0.3</title>
+    <title>Final Mortal Fantasy Kombat Alpha 0.4</title>
     <script src="//cdn.jsdelivr.net/npm/phaser@3.11.0/dist/phaser.js"></script>
     <style type="text/css">
         body {
@@ -149,10 +149,13 @@ this.load.image('bigtree1', 'assets/outsidecity/bigtree1.png');
 this.load.image('pileofrocks', 'assets/outsidecity/pileofrocks.png');
 this.load.image('teep1', 'assets/outsidecity/teepee2.png');
 this.load.image('tanzi', 'assets/outsidecity/tanzistandingstill.png');
+this.load.spritesheet('butterfly1', 'assets/outsidecity/butter1.png', { frameWidth:70, frameHeight: 65 });
+this.load.spritesheet('butterfly2', 'assets/outsidecity/butter2.png', { frameWidth:48, frameHeight: 55 });
 this.load.image('outsidecity1frontpiece', 'assets/outsidecity/outsidecity1frontpiece.png');
 this.load.image('outsidecity2frontpiece', 'assets/outsidecity/outsidecity2frontpiece.png');
 this.load.image('outsidecitybackground', 'assets/outsidecity/outsidecitybackground.png');
 this.load.image('outsidecitycloudpiece', 'assets/outsidecity/outsidecity-cloudpiece.png');
+this.load.image('outsidecitybackgroundbig', 'assets/outsidecity/outsidecitybackgroundbig.png');
 this.load.image('dumpgroundentrancegate', 'assets/outsidecity/dumpgroundentrancegate.png');
 
 //loadoutdumpground
@@ -161,11 +164,12 @@ this.load.image('dumpground1frontpiece', 'assets/dumpground/dumpground1frontpiec
 this.load.image('dumpground2frontpiece', 'assets/dumpground/dumpground2frontpiece.png');
 this.load.image('dumpgroundfrontwall', 'assets/dumpground/dumpgroundfrontwall.png');
 this.load.image('dumptree', 'assets/dumpground/dumptree.png');
+this.load.image('trashymonster', 'assets/dumpground/trashymonster.png');
+this.load.image('trashymonsterred1', 'assets/dumpground/trashymonsterred1.png');
+this.load.image('trashymonsterred2', 'assets/dumpground/trashymonsterred2.png');
 
 
-
-this.load.spritesheet('butterfly1', 'assets/outsidecity/butter1.png', { frameWidth:70, frameHeight: 65 });
-this.load.spritesheet('butterfly2', 'assets/outsidecity/butter2.png', { frameWidth:48, frameHeight: 55 });
+//loadoutriver
 this.load.image('waterfallbackground', 'assets/outsidecity/waterfallbackground.png');
 this.load.image('waterfallfrontwall', 'assets/outsidecity/waterfallfrontwall.png');
 this.load.spritesheet('falls', 'assets/outsidecity/falls.png', { frameWidth:220, frameHeight: 327 });
@@ -173,18 +177,57 @@ this.load.image('riverfallsbackground', 'assets/outsidecity/riverfallsbackground
 this.load.image('riverfallsbridge', 'assets/outsidecity/riverfallsbridge.png');
 this.load.image('riverfallsbridgetop', 'assets/outsidecity/riverfallsbridgetop.png');
 this.load.image('riverfallsfrontwall', 'assets/outsidecity/riverfallsfrontwall.png');
+this.load.image('riverrock1', 'assets/outsidecity/riverrock1.png');
+
+//loadoutmountains
 this.load.spritesheet('riverwaterflow', 'assets/outsidecity/bridgewater.jpg', { frameWidth:910, frameHeight: 300 });
 this.load.image('mountain1frontpiece', 'assets/outsidecity/mountainbackground1.png');
+this.load.image('mountain1fronttreepiece', 'assets/outsidecity/mountain1fronttreepiece.png');
 this.load.image('mountain2frontpiece', 'assets/outsidecity/mountainbackground2.png');
+this.load.image('mountain2fronttreepiece', 'assets/outsidecity/mountain2fronttreepiece.png');
 this.load.image('mountainfrontwall', 'assets/outsidecity/mountainfrontwall.png');
 this.load.image('mountainclouds1', 'assets/outsidecity/mountainclouds1.png');
 this.load.image('mountainclouds2', 'assets/outsidecity/mountainclouds2.png');
 
+//loadoutfields
+this.load.image('fields1frontpiece', 'assets/outsidecity/fields1frontpiece.png');
+this.load.image('fields1fronttreepiece', 'assets/outsidecity/fields1fronttreepiece.png');
+this.load.image('fieldclouds1', 'assets/clouds/cloud8105.png');
+this.load.image('fieldclouds2', 'assets/clouds/cloud8102.png');
+this.load.image('fields2frontpiece', 'assets/outsidecity/fields2frontpiece.png');
+this.load.image('fields2frontwall', 'assets/outsidecity/fields2frontwall.png');
+this.load.image('fields3backpiece', 'assets/outsidecity/fields3backpiece.png');
+this.load.image('fields3frontpiece', 'assets/outsidecity/fields3frontpiece.png');
+this.load.image('fields3frontwall', 'assets/outsidecity/fields3frontwall.png');
+this.load.image('fields3sandstorm', 'assets/outsidecity/fields3sandstorm.png');
+this.load.image('fields3sandgrass', 'assets/outsidecity/fields3sandgrass.png');
+this.load.image('fields3rockpile', 'assets/outsidecity/fields3rockpile.png');
+this.load.image('fields3clouds1', 'assets/clouds/PngItem786917.png');
+this.load.image('fields3clouds2', 'assets/clouds/PngItem1728232.png');
+this.load.image('fields4backpiece', 'assets/outsidecity/fields4backpiece.png');
+this.load.image('fields4frontpiece', 'assets/outsidecity/fields4frontpiece.png');
+this.load.image('fields4frontwall', 'assets/outsidecity/fields4frontwall.png');
+this.load.image('fields4bigtree', 'assets/outsidecity/fields4bigtree.png');
+this.load.image('fields4cavedoor', 'assets/outsidecity/fields4cavedoor.png');
+this.load.image('fields4clouds1', 'assets/clouds/PngItem786917.png');
+this.load.image('fields4clouds2', 'assets/clouds/PngItem1728232.png');
+
+//desert
+this.load.image('fields5backpiece', 'assets/outsidecity/fields5backpiece.png');
+this.load.image('fields5frontpiece', 'assets/outsidecity/fields5frontpiece.png');
+this.load.image('fields5frontwall', 'assets/outsidecity/fields5frontwall.png');
+this.load.image('fields6backpiece', 'assets/outsidecity/fields6backpiece.png');
+this.load.image('fields6frontpiece', 'assets/outsidecity/fields6frontpiece.png');
+this.load.image('fields6frontwall', 'assets/outsidecity/fields6frontwall.png');
+this.load.spritesheet('fields6templeface', 'assets/outsidecity/fields6templeface.png', { frameWidth: 480, frameHeight: 480 });
+this.load.image('fields6backrock', 'assets/outsidecity/fields6backrock.png');
 
 
 
 
-
+//loadoutancienttempledoor
+this.load.image('fields4cavedoorinside', 'assets/outsidecity/fields4cavedoorinside.png');
+this.load.image('enterancienttempledoor', 'assets/outsidecity/enterancienttemplebutton.png');
 
 
 //loadshops
@@ -247,6 +290,11 @@ this.load.image('graveyardbottomgate', 'assets/graveyard/graveyardbottomgate.png
 //loadui
 this.load.image('adventureui', 'assets/ui/adventureui.png');
 this.load.image('adventureuibackground', 'assets/ui/adventureuibackground.png');
+this.load.image('uiuparrow', 'assets/ui/uparrow.png');
+this.load.image('uidownarrow', 'assets/ui/downarrow.png');
+this.load.image('uileftarrow', 'assets/ui/leftarrow.png');
+this.load.image('uirightarrow', 'assets/ui/rightarrow.png');
+
 this.load.spritesheet('smallhealthbars', 'assets/ui/smallhealthbars.png', { frameWidth: 500, frameHeight: 50 });
 this.load.spritesheet('smallenemyactionbars', 'assets/ui/smallenemyaction.png', { frameWidth: 500, frameHeight: 50 });
 this.load.image('speechbubble', 'assets/ui/speech/speechbubble.png');
@@ -405,7 +453,12 @@ this.load.audio('waterfalltheme', [
 this.load.audio('dumpgroundtheme', [
         'assets/sound/tracks/dumpgroundtheme.mp3'
     ]);
-
+this.load.audio('deserttheme', [
+        'assets/sound/tracks/deserttheme.mp3'
+    ]);
+    this.load.audio('desertambience2495', [
+        'assets/sound/sfx/desertambience2495.mp3'
+    ]);
 
 
 },
@@ -849,18 +902,18 @@ create: function ()
 
         });
         
-            stellarbutton = this.add.sprite(50, 200, 'stellarbutton').setInteractive();
+            stellarbutton = this.add.sprite(500, 200, 'stellarbutton').setInteractive();
             stellarbutton.on('pointerdown', function (pointer) {
             this.setTint(0xff0000);
-            playerx = 500
-            playery = 490
+            playerx = 50
+            playery = 525
             stellarcitybackgroundx = 0
             
             game.scene.stop('basemenuscene')
             game.scene.start('uiscene');
-            game.scene.start('outsidecity1scene');   
+            game.scene.start('fields4scene');    
             
-            
+             
             
         });
 
@@ -958,12 +1011,15 @@ itemshopwindow.visible = false
 amazingshopwindow = this.physics.add.sprite(0, 0, 'amazingshopwindow').setOrigin(0, 0);
 amazingshopwindow.visible = false
 scenename = 'stellarscene'
-areaname = '   Stellar City'
+areaname = '     Stellar City'
 
+if (stellarthemeplaying == false){
 var stellartheme = this.sound.add('stellartheme',{ loop: true });
 stellartheme.play({
        
     });
+    stellarthemeplaying = true
+}
 
 this.input.setPollAlways();
 this.input.on('gameobjectover', function (pointer, gameObject) {
@@ -1677,7 +1733,7 @@ itemshopsupportupbutton.visible = false
 
 
 cursors = this.input.keyboard.createCursorKeys();
-text = this.add.text(10, 10, '', { font: '16px Courier', fill: '#00ff00' }).setScrollFactor(0);
+
 cursors.up.isDown = false
 cursors.down.isDown = false
 cursors.left.isDown = false
@@ -2112,6 +2168,7 @@ gameObject.setTint(0x0000ff);
         playery = 308
      officebackgroundx = 639
      this.sound.stopAll();
+     stellarthemeplaying = false
      game.scene.stop('stellarscene')
      game.scene.start('officescene')
    
@@ -2305,15 +2362,7 @@ game.scene.start('oakloungescene')
  
 }
 
-if (debugview == true){
-text.setText([
-        'world x: ' + this.input.mousePointer.worldX,
-        'world y: ' + this.input.mousePointer.worldY,
-        this.city.tilePositionX,
-        player.x,
-        oakloungedoor.y
-    ]);
-}
+
 }
 });
 
@@ -3149,7 +3198,7 @@ create: function ()
         this.cityoutskirtsbackground = this.add.sprite(0, 0, 'cityoutskirtsbackground').setOrigin(0, 0);
         player = this.physics.add.sprite(playerx, playery, 'cecil');
         scenename = 'outskirts'
-        areaname = '     Outskirts'
+        areaname = '       Outskirts'
 
 
 
@@ -3174,7 +3223,7 @@ create: function ()
     
 
     cursors = this.input.keyboard.createCursorKeys();
-    text = this.add.text(10, 10, 'Cursors to move', { font: '16px Courier', fill: '#00ff00' }).setScrollFactor(0);
+    
         
 },
 
@@ -3187,6 +3236,7 @@ playercurrenty = player.y
         playerx = 25
         playery = 500
          this.sound.stopAll();
+         stellarthemeplaying = false
          game.scene.stop('cityoutskirtsscene')
          game.scene.start('graveyardgatesscene');
          cursors.left.isDown = false
@@ -3197,7 +3247,8 @@ playercurrenty = player.y
       if (player.x < 1){
         playerx = 1300
         playery = 475
-       
+        this.sound.stopAll();
+        misctheme3playing = false
         stellarcitybackgroundx = 6635
         game.scene.stop('cityoutskirtsscene')
         game.scene.start('stellarscene');
@@ -3247,14 +3298,7 @@ playercurrenty = player.y
 }
      
 
-text.setText([
-        'world x: ' + this.input.mousePointer.worldX,
-        'world y: ' + this.input.mousePointer.worldY,
-        player.x,
-        playerx,
-        player.y
-        
-    ]);
+
 }
 });
 
@@ -3320,7 +3364,7 @@ misctheme3playing = true
     });
 
     cursors = this.input.keyboard.createCursorKeys();
-    text = this.add.text(10, 10, 'Cursors to move', { font: '16px Courier', fill: '#00ff00' }).setScrollFactor(0);
+    
         
 },
 
@@ -3392,7 +3436,7 @@ playercurrenty = player.y
 
     if (player.x > 1000){
         if (player.y < 320){
-            playerx = 1103
+            playerx = 833
             playery = 540
             graveyardsceneabackgroundx = 0
             game.scene.stop('graveyardgatesscene')
@@ -3426,14 +3470,7 @@ playercurrenty = player.y
 }
 }
      
-text.setText([
-        'world x: ' + this.input.mousePointer.worldX,
-        'world y: ' + this.input.mousePointer.worldY,
-        player.x,
-        playerx,
-        player.y
-        
-    ]);
+
 }
 });
 
@@ -3532,7 +3569,7 @@ cursors.down.isDown = false
 
     cursors = this.input.keyboard.createCursorKeys();
 
-    text = this.add.text(10, 10, 'Cursors to move', { font: '16px Courier', fill: '#00ff00' }).setScrollFactor(0);
+    
         
 },
 
@@ -3679,16 +3716,7 @@ if (graveyardsceneabackground.tilePositionX < 0)
 }
 }
      
-text.setText([
-        graveyardsceneabackground.tilePositionX,
-        graveyardsceneabackgroundx,
-        'world x: ' + this.input.mousePointer.worldX,
-        'world y: ' + this.input.mousePointer.worldY,
-        player.x,
-        playerx,
-        player.y
-        
-    ]);
+
 }
 });
 
@@ -3744,7 +3772,7 @@ create: function ()
    
 
     cursors = this.input.keyboard.createCursorKeys();
-    text = this.add.text(10, 10, '', { font: '16px Courier', fill: '#00ff00' }).setScrollFactor(0);
+
         
 },
 
@@ -3839,15 +3867,7 @@ if (this.graveyardscenebbackground.tilePositionX < 0)
 }
 }
      
-text.setText([
-        this.graveyardscenebbackground.tilePositionX,
-        'world x: ' + this.input.mousePointer.worldX,
-        'world y: ' + this.input.mousePointer.worldY,
-        player.x,
-        playerx,
-        player.y
-        
-    ]);
+
 }
 });
 
@@ -3883,7 +3903,13 @@ create: function ()
 
 
        
-
+if (misctheme3playing == false){
+var misctheme3 = this.sound.add('misctheme3',{ loop: true });
+misctheme3.play({
+       
+    });
+misctheme3playing = true
+}
 
  this.input.setPollAlways();
         this.input.on('gameobjectover', function (pointer, gameObject) {
@@ -3908,7 +3934,7 @@ create: function ()
     cursors.right.isDown = false
     cursors.up.isDown = false
     cursors.down.isDown = false
-    text = this.add.text(10, 10, 'Cursors to move', { font: '16px Courier', fill: '#00ff00' }).setScrollFactor(0);
+    
         
 },
 
@@ -3934,6 +3960,8 @@ playercurrenty = player.y
     if (player.x < dumpgroundentrancegate.x + 275){
             playerx = 500
             playery = 505
+            this.sound.stopAll();
+            misctheme3playing = false
             game.scene.stop('outsidecity1scene')
             game.scene.start('dumpgroundentrancescene'); 
             cursors.right.isDown = false
@@ -4027,15 +4055,7 @@ if (outsidecity1frontpiece.tilePositionX < 0)
 }
   } 
 
-text.setText([
-        'world x: ' + this.input.mousePointer.worldX,
-        'world y: ' + this.input.mousePointer.worldY,
-        player.x,
-        playerx,
-        outsidecity1frontpiece.tilePositionX,
-        player.y
-        
-    ]);
+
 }
 });
 
@@ -4151,7 +4171,7 @@ misctheme3playing = true
     cursors.right.isDown = false
     cursors.up.isDown = false
     cursors.down.isDown = false
-    text = this.add.text(10, 10, 'Cursors to move', { font: '16px Courier', fill: '#00ff00' }).setScrollFactor(0);
+   
         
 },
 
@@ -4340,15 +4360,7 @@ if (outsidecity2frontpiece.tilePositionX < 0)
 }
 }
      
-text.setText([
-        outsidecity2frontpiece.tilePositionX,
-        'world x: ' + this.input.mousePointer.worldX,
-        'world y: ' + this.input.mousePointer.worldY,
-        player.x,
-        playerx,
-        player.y
-        
-    ]);
+
 }
 });
 
@@ -4420,7 +4432,7 @@ dumpgroundthemeplaying = true
     cursors.right.isDown = false
     cursors.up.isDown = false
     cursors.down.isDown = false
-    text = this.add.text(10, 10, 'Cursors to move', { font: '16px Courier', fill: '#00ff00' }).setScrollFactor(0);
+    
         
 },
 
@@ -4454,8 +4466,11 @@ if (player.y > 564){
     playerx = 550
     playery = 400
     outsidecity1background = 864
+    this.sound.stopAll();
+    dumpgroundthemeplaying == false
     game.scene.stop('dumpgroundentrancescene')
     game.scene.start('outsidecity1scene');
+    
 }
 
 if (player.x > 1360){
@@ -4499,13 +4514,7 @@ if (player.x < 1){
       
 }
 }
-   text.setText([
-        'world x: ' + this.input.mousePointer.worldX,
-        'world y: ' + this.input.mousePointer.worldY,
-        player.x,
-        player.y
-      
-    ]);  
+  
 }
 
 
@@ -4530,15 +4539,15 @@ var dumpground1scene = new Phaser.Class({
 
 create: function ()
 {
-         outsidecitybackground = this.add.sprite(0, 0, 'outsidecitybackground').setOrigin(0, 0);
+        outsidecitybackground = this.add.sprite(0, 0, 'outsidecitybackground').setOrigin(0, 0);
         outsidecitycloudpiece = this.add.tileSprite(0, 0, 2240, 350, 'outsidecitycloudpiece').setOrigin(0, 0);
         dumpground1frontpiece = this.add.tileSprite(0, 0, 3200, 600, 'dumpground1frontpiece').setOrigin(0, 0);
         dumpground1frontpiece.tilePositionX = dumpground1background
         outsidecitycloudpiece.y -= 50;
         player = this.physics.add.sprite(playerx, playery, 'cecil');
         dumpgroundfrontwall = this.add.tileSprite(0, 400, 4000, 200, 'dumpgroundfrontwall').setOrigin(0, 0);
-        scenename = 'dumpground1'
-        areaname = "    DumpGround"
+        scenename = 'dumpgrounda'
+        areaname = "    Dumpground"
 
 
        
@@ -4565,7 +4574,7 @@ create: function ()
     cursors = this.input.keyboard.createCursorKeys();
     cursors.left.isDown = false
   
-    text = this.add.text(10, 10, 'Cursors to move', { font: '16px Courier', fill: '#00ff00' }).setScrollFactor(0);
+    
         
 },
 
@@ -4668,14 +4677,7 @@ if (dumpground1frontpiece.tilePositionX < 0)
 }
   } 
 
-text.setText([
-        'world x: ' + this.input.mousePointer.worldX,
-        'world y: ' + this.input.mousePointer.worldY,
-        player.x,
-        playerx,
-        dumpground1frontpiece.tilePositionX,
-        dumpgroundfrontwall.tilePositionX
-    ]);
+
 }
 });
 
@@ -4700,13 +4702,14 @@ create: function ()
 {
         outsidecitybackground = this.add.sprite(0, 0, 'outsidecitybackground').setOrigin(0, 0);
         outsidecitycloudpiece = this.add.tileSprite(0, 0, 2240, 350, 'outsidecitycloudpiece').setOrigin(0, 0);
+        outsidecitycloudpiece.y -= 50;
         dumpground2frontpiece = this.add.tileSprite(0, 0, 3200, 600, 'dumpground2frontpiece').setOrigin(0, 0);
         dumpground2frontpiece.tilePositionX = dumpground2background
-        outsidecitycloudpiece.y -= 50;
         player = this.physics.add.sprite(playerx, playery, 'cecil');
+
         dumpgroundfrontwall = this.add.tileSprite(0, 400, 4000, 200, 'dumpgroundfrontwall').setOrigin(0, 0);
-        scenename = 'dumpground2'
-        areaname = "    Dump Ground"
+        scenename = 'dumpgroundb'
+        areaname = "    Dumpground"
 
 
        
@@ -4735,7 +4738,7 @@ create: function ()
     cursors.right.isDown = false
     cursors.up.isDown = false
     cursors.down.isDown = false
-    text = this.add.text(10, 10, 'Cursors to move', { font: '16px Courier', fill: '#00ff00' }).setScrollFactor(0);
+    
         
 },
 
@@ -4841,14 +4844,7 @@ if (dumpground2frontpiece.tilePositionX < 0)
 }
   } 
 
-text.setText([
-        'world x: ' + this.input.mousePointer.worldX,
-        'world y: ' + this.input.mousePointer.worldY,
-        player.x,
-        playerx,
-        dumpground2frontpiece.tilePositionX,
-        dumpgroundfrontwall.tilePositionX
-    ]);
+
 }
 });
 
@@ -4928,7 +4924,7 @@ create: function ()
     cursors.right.isDown = false
     cursors.up.isDown = false
     cursors.down.isDown = false
-    text = this.add.text(10, 10, 'Cursors to move', { font: '16px Courier', fill: '#00ff00' }).setScrollFactor(0);
+   
         
 },
 
@@ -5026,6 +5022,7 @@ create: function ()
 {
         riverwaterflow = this.add.sprite(176, 343, 'riverwaterflow').setOrigin(0, 0);
         riverfallsbackground = this.add.sprite(0, 0, 'riverfallsbackground').setOrigin(0, 0); 
+        riverrock1 = this.add.sprite(882, 461, 'riverrock1').setOrigin(0, 0); 
         riverfallsbridge = this.add.sprite(11, 371, 'riverfallsbridge').setOrigin(0, 0);
         player = this.physics.add.sprite(playerx, playery, 'cecil');
         riverfallsbridgetop = this.add.sprite(11, 371, 'riverfallsbridgetop').setOrigin(0, 0);
@@ -5074,7 +5071,7 @@ create: function ()
     cursors.right.isDown = false
     cursors.up.isDown = false
     cursors.down.isDown = false
-    text = this.add.text(10, 10, 'Cursors to move', { font: '16px Courier', fill: '#00ff00' }).setScrollFactor(0);
+    
         
 },
 
@@ -5193,9 +5190,10 @@ create: function ()
         mountain1frontpiece = this.add.tileSprite(0, 0, 1920, 600, 'mountain1frontpiece').setOrigin(0, 0);
         mountain1frontpiece.tilePositionX = mountain1background
         player = this.physics.add.sprite(playerx, playery, 'cecil');
+        mountain1fronttreepiece = this.add.tileSprite(0, 0, 1920, 600, 'mountain1fronttreepiece').setOrigin(0, 0); 
         mountainfrontwall = this.add.tileSprite(0, 527, 2800, 73, 'mountainfrontwall').setOrigin(0, 0);
         scenename = 'mountains1'
-        areaname = "    The Mountains"
+        areaname = "  The Mountains"
 
 
        
@@ -5224,7 +5222,7 @@ create: function ()
     cursors.right.isDown = false
     cursors.up.isDown = false
     cursors.down.isDown = false
-    text = this.add.text(10, 10, 'Cursors to move', { font: '16px Courier', fill: '#00ff00' }).setScrollFactor(0);
+   
         
 },
 
@@ -5238,6 +5236,7 @@ playercurrenty = player.y
    if (player.x < 0){
             playerx = 1200
             playery = 505
+            mountain1background = 0
             game.scene.stop('mountain1scene') 
             game.scene.start('riverbridgescene');
             cursors.right.isDown = false
@@ -5248,6 +5247,7 @@ playercurrenty = player.y
 if (mountain1frontpiece.tilePositionX < 0)
     {
     mountain1frontpiece.tilePositionX = 0;
+    mountain1fronttreepiece.tilePositionX = 0;
     mountainfrontwall.tilePositionX = 0;
     player.x -= 3;
     }
@@ -5255,6 +5255,7 @@ if (mountain1frontpiece.tilePositionX < 0)
     if (mountain1frontpiece.tilePositionX > 558)
     {
     mountain1frontpiece.tilePositionX = 558;
+    mountain1fronttreepiece.tilePositionX = 558;
    mountainfrontwall.tilePositionX = 748;
     player.x += 3;
     }
@@ -5265,6 +5266,7 @@ if (mountain1frontpiece.tilePositionX < 0)
     if (player.x < 650){
     player.x += 3;
     mountain1frontpiece.tilePositionX -= 3;
+    mountain1fronttreepiece.tilePositionX -= 3;
     mountainfrontwall.tilePositionX -= 4;
     }
     
@@ -5280,12 +5282,13 @@ if (mountain1frontpiece.tilePositionX < 0)
     if (player.x > 648){
     player.x -= 3;
     mountain1frontpiece.tilePositionX += 3;
+    mountain1fronttreepiece.tilePositionX += 3;
     mountainfrontwall.tilePositionX += 4;
     }
     if (player.x > 1360){
         playerx = 35
         playery = 523
-         outsidecity2background = 0
+         mountain2background = 0
          game.scene.stop('mountain1scene')
          game.scene.start('mountain2scene');
          cursors.left.isDown = false
@@ -5327,17 +5330,7 @@ if (mountain1frontpiece.tilePositionX < 0)
 }
   } 
 
-text.setText([
-        'world x: ' + this.input.mousePointer.worldX,
-        'world y: ' + this.input.mousePointer.worldY,
-        player.x,
-        playerx,
-        mountain1frontpiece.tilePositionX,
-        mountainfrontwall.tilePositionX
-        
-       
-        
-    ]);
+
 }
 });
 
@@ -5367,12 +5360,20 @@ create: function ()
         mountain2frontpiece = this.add.tileSprite(0, 0, 1920, 600, 'mountain2frontpiece').setOrigin(0, 0);
         mountain2frontpiece.tilePositionX = mountain2background
         player = this.physics.add.sprite(playerx, playery, 'cecil');
+        mountain2fronttreepiece = this.add.tileSprite(0, 0, 1920, 600, 'mountain2fronttreepiece').setOrigin(0, 0); 
         mountainfrontwall = this.add.tileSprite(0, 527, 2800, 73, 'mountainfrontwall').setOrigin(0, 0);
         scenename = 'mountains2'
-        areaname = "    The Mountains"
+        areaname = "  The Mountains"
 
 
+       if (waterfallthemeplaying == false){
+       var waterfalltheme = this.sound.add('waterfalltheme',{ loop: true });
+waterfalltheme.play({
        
+    });
+waterfallthemeplaying = true
+
+}
 
 
  this.input.setPollAlways();
@@ -5398,7 +5399,7 @@ create: function ()
     cursors.right.isDown = false
     cursors.up.isDown = false
     cursors.down.isDown = false
-    text = this.add.text(10, 10, 'Cursors to move', { font: '16px Courier', fill: '#00ff00' }).setScrollFactor(0);
+    
         
 },
 
@@ -5423,6 +5424,7 @@ playercurrenty = player.y
 if (mountain2frontpiece.tilePositionX < 0)
     {
     mountain2frontpiece.tilePositionX = 0;
+    mountain2fronttreepiece.tilePositionX = 0;
     mountainfrontwall.tilePositionX = 0;
     player.x -= 3;
     }
@@ -5430,7 +5432,8 @@ if (mountain2frontpiece.tilePositionX < 0)
     if (mountain2frontpiece.tilePositionX > 560)
     {
     mountain2frontpiece.tilePositionX = 560;
-    mountainfrontwall.tilePositionX = 748;
+    mountain2fronttreepiece.tilePositionX = 560;
+    mountainfrontwall.tilePositionX = 746;
     player.x += 3;
     }
 
@@ -5440,6 +5443,7 @@ if (mountain2frontpiece.tilePositionX < 0)
     if (player.x < 650){
     player.x += 3;
     mountain2frontpiece.tilePositionX -= 3;
+    mountain2fronttreepiece.tilePositionX -= 3;
     mountainfrontwall.tilePositionX -= 4;
 
     }
@@ -5456,15 +5460,213 @@ if (mountain2frontpiece.tilePositionX < 0)
     if (player.x > 648){
     player.x -= 3;
     mountain2frontpiece.tilePositionX += 3;
+    mountain2fronttreepiece.tilePositionX += 3;
     mountainfrontwall.tilePositionX += 4;
     
     }
     if (player.x > 1360){
         playerx = 35
         playery = 523
-         
+         fields1background = 0
+         this.sound.stopAll();
+         waterfallthemeplaying = false
          game.scene.stop('mountain2scene')
-         game.scene.start('mountain2scene');
+         game.scene.start('fields1scene'); 
+         cursors.left.isDown = false
+
+        
+    }
+    }
+
+    else if (cursors.up.isDown)
+    {
+    
+    if (player.y > 385) {
+    player.y -= 3;
+    player.anims.play('walk', true);
+    }
+    if (player.x < 182) {
+        if (player.y < 500){
+            player.y += 3;
+
+        }
+    }
+    } 
+ 
+ 
+    
+    else if (cursors.down.isDown)
+    {
+        if (player.y < 554){
+    player.y += 3;
+    player.anims.play('walk', true);
+    }
+    }
+    
+    else
+    {
+      
+      
+      
+}
+}
+  } 
+
+
+}
+});
+
+//fields1scene
+var fields1scene = new Phaser.Class({
+
+    Extends: Phaser.Scene,
+
+    initialize:
+
+    function fields1scene ()
+    {
+        Phaser.Scene.call(this, { key: 'fields1scene' });
+    },
+
+    preload: function ()
+    {
+      
+    },
+
+create: function ()
+{
+        
+        outsidecitybackground = this.add.sprite(0, 0, 'outsidecitybackground').setOrigin(0, 0);
+        fieldclouds1 = this.add.sprite(25, -60, 'fieldclouds1').setOrigin(0, 0); 
+        mountainclouds1 = this.add.sprite(500, 0, 'mountainclouds1').setOrigin(0, 0); 
+        fields1frontpiece = this.add.tileSprite(0, 0, 1920, 600, 'fields1frontpiece').setOrigin(0, 0);
+        fields1frontpiece.tilePositionX = fields1background
+        player = this.physics.add.sprite(playerx, playery, 'cecil');
+        fields1fronttreepiece = this.add.tileSprite(0, 0, 2700, 600, 'fields1fronttreepiece').setOrigin(0, 0);
+        mountainfrontwall = this.add.tileSprite(0, 527, 2800, 73, 'mountainfrontwall').setOrigin(0, 0);
+        scenename = 'fields1'
+        areaname = "    The Fields"
+
+
+if (desertthemeplaying == false){
+var deserttheme = this.sound.add('deserttheme',{ loop: true });
+deserttheme.play({
+       
+    });
+desertthemeplaying = true
+
+}
+
+
+if (desertambienceplaying == false){
+var desertambience2495 = this.sound.add('desertambience2495',{ loop: true }); 
+desertambience2495.play({
+       
+    });
+desertambienceplaying = true
+
+}
+
+
+ this.input.setPollAlways();
+        this.input.on('gameobjectover', function (pointer, gameObject) {
+        gameObject.setTint(0xff0000);
+    });
+    
+        this.input.on('gameobjectout', function (pointer, gameObject) {
+        gameObject.clearTint();
+    });        
+
+        this.anims.create({
+        key: 'walk',
+        frames: this.anims.generateFrameNumbers('cecil', { start: 0, end: 1 }),
+        frameRate: 10,
+        repeat: -1
+    });
+  
+ 
+
+    cursors = this.input.keyboard.createCursorKeys();
+    cursors.left.isDown = false
+    cursors.right.isDown = false
+    cursors.up.isDown = false
+    cursors.down.isDown = false
+   
+        
+},
+
+update: function (time, delta)
+{
+mountainclouds1.x -= 0.2;
+fieldclouds1.x += 0.3;
+
+playercurrentx = player.x
+playercurrenty = player.y
+
+   if (player.x < 0){
+            playerx = 1200
+            playery = 505
+            mountain2background = 560
+            this.sound.stopAll();
+            desertthemeplaying = false
+            desertambienceplaying = false
+            game.scene.stop('fields1scene') 
+            game.scene.start('mountain2scene'); 
+            mountain2frontpiece.tilePositionX = 560;
+            mountain2fronttreepiece.tilePositionX = 560;
+            mountainfrontwall.tilePositionX = 746;
+            cursors.right.isDown = false
+            
+           
+   }
+
+if (fields1frontpiece.tilePositionX < 0)
+    {
+    fields1frontpiece.tilePositionX = 0;
+    fields1fronttreepiece.tilePositionX = 0;
+    mountainfrontwall.tilePositionX = 0;
+    player.x -= 3;
+    }
+
+    if (fields1frontpiece.tilePositionX > 858)
+    {
+    fields1frontpiece.tilePositionX = 858;
+    fields1fronttreepiece.tilePositionX = 858;
+    mountainfrontwall.tilePositionX = 1144;
+    player.x += 3;
+    }
+
+  if (keyboardlock == false){
+      if (cecilattacksword == false){
+    if (cursors.left.isDown){
+    if (player.x < 650){
+    player.x += 3;
+    fields1frontpiece.tilePositionX -= 3;
+    fields1fronttreepiece.tilePositionX -= 3;
+    mountainfrontwall.tilePositionX -= 4;
+    }
+    
+    if (player.x < 200){
+        if (player.y < 500){
+            player.y += 3
+        }
+    }
+
+    }
+    
+    else if (cursors.right.isDown){
+    if (player.x > 648){
+    player.x -= 3;
+    fields1frontpiece.tilePositionX += 3;
+    fields1fronttreepiece.tilePositionX += 3;
+    mountainfrontwall.tilePositionX += 4;
+    }
+    if (player.x > 1360){
+        playerx = 35
+        playery = 523
+         fields2background = 0
+         game.scene.stop('fields1scene')
+         game.scene.start('fields2scene');
          cursors.left.isDown = false
         
     }
@@ -5504,15 +5706,1077 @@ if (mountain2frontpiece.tilePositionX < 0)
 }
   } 
 
-text.setText([
-        'world x: ' + this.input.mousePointer.worldX,
-        'world y: ' + this.input.mousePointer.worldY,
-        player.x,
-        playerx,
-        mountain2frontpiece.tilePositionX
-       
+
+}
+});
+
+//fields2scene
+var fields2scene = new Phaser.Class({
+
+    Extends: Phaser.Scene,
+
+    initialize:
+
+    function fields2scene ()
+    {
+        Phaser.Scene.call(this, { key: 'fields2scene' });
+    },
+
+    preload: function ()
+    {
+      
+    },
+
+create: function ()
+{
         
-    ]);
+        outsidecitybackground = this.add.sprite(0, 0, 'outsidecitybackground').setOrigin(0, 0);
+        fieldclouds1 = this.add.sprite(25, -60, 'fieldclouds1').setOrigin(0, 0); 
+        fieldclouds2 = this.add.sprite(600, -35, 'fieldclouds2').setOrigin(0, 0); 
+        fields2frontpiece = this.add.tileSprite(0, 0, 1920, 600, 'fields2frontpiece').setOrigin(0, 0);
+        fields2frontpiece.tilePositionX = fields2background
+        player = this.physics.add.sprite(playerx, playery, 'cecil');
+
+        fields2frontwall = this.add.tileSprite(0 - fields2background, 0, 2700, 600, 'fields2frontwall').setOrigin(0, 0);
+        scenename = 'fields2'
+        areaname = "    The Fields"
+
+
+       
+
+
+ this.input.setPollAlways();
+        this.input.on('gameobjectover', function (pointer, gameObject) {
+        gameObject.setTint(0xff0000);
+    });
+    
+        this.input.on('gameobjectout', function (pointer, gameObject) {
+        gameObject.clearTint();
+    });        
+
+        this.anims.create({
+        key: 'walk',
+        frames: this.anims.generateFrameNumbers('cecil', { start: 0, end: 1 }),
+        frameRate: 10,
+        repeat: -1
+    });
+  
+ 
+
+    cursors = this.input.keyboard.createCursorKeys();
+    cursors.left.isDown = false
+    cursors.right.isDown = false
+    cursors.up.isDown = false
+    cursors.down.isDown = false
+    
+        
+},
+
+update: function (time, delta)
+{
+fieldclouds1.x += 0.3;
+fieldclouds2.x -= 0.2;
+playercurrentx = player.x
+playercurrenty = player.y
+
+   if (player.x < 0){
+            playerx = 1200
+            playery = 505
+            fields1background = 858
+            game.scene.stop('fields2scene') 
+            game.scene.start('fields1scene'); 
+            mountainfrontwall.tilePositionX = 1144;
+            fields1frontpiece.tilePositionX = 858;
+            fields1fronttreepiece.tilePositionX = 858;
+           
+            cursors.right.isDown = false
+           
+   }
+
+if (fields2frontpiece.tilePositionX < 0)
+    {
+    fields2frontpiece.tilePositionX = 0;
+    fields2frontwall.x = 0
+    player.x -= 3;
+    }
+
+    if (fields2frontpiece.tilePositionX > 858)
+    {
+    fields2frontpiece.tilePositionX = 858;
+    fields2frontwall.x  +=3;
+    player.x += 3;
+    }
+
+  if (keyboardlock == false){
+     if (cecilattacksword == false){
+    if (cursors.left.isDown){
+    if (player.x < 650){
+    player.x += 3;
+    fields2frontpiece.tilePositionX -= 3;
+    fields2frontwall.x += 3;
+    }
+    
+    if (player.x < 200){
+        if (player.y < 500){
+            player.y += 3
+        }
+    }
+
+    }
+    
+    else if (cursors.right.isDown){
+    if (player.x > 648){
+    player.x -= 3;
+    fields2frontpiece.tilePositionX += 3;
+    fields2frontwall.x -= 3;
+    }
+    if (player.x > 1360){
+        playerx = 50
+        playery = 123
+         fields3background = 0
+         game.scene.stop('fields2scene')
+         game.scene.start('fields3scene');
+         cursors.left.isDown = false
+        
+    }
+    }
+
+    else if (cursors.up.isDown)
+    {
+    
+    if (player.y > 385) {
+    player.y -= 3;
+    player.anims.play('walk', true);
+    }
+    if (player.x < 182) {
+        if (player.y < 500){
+            player.y += 3;
+
+        }
+    }
+    } 
+ 
+ 
+    
+    else if (cursors.down.isDown)
+    {
+        if (player.y < 554){
+    player.y += 3;
+    player.anims.play('walk', true);
+    }
+    }
+    
+    else
+    {
+      
+      
+      
+}
+}
+  } 
+
+
+}
+});
+
+//fields3scene
+var fields3scene = new Phaser.Class({
+
+    Extends: Phaser.Scene,
+
+    initialize:
+
+    function fields3scene ()
+    {
+        Phaser.Scene.call(this, { key: 'fields3scene' });
+    },
+
+    preload: function ()
+    {
+
+    },
+
+create: function ()
+{
+        
+        outsidecitybackground = this.add.sprite(0, 0, 'outsidecitybackground').setOrigin(0, 0);
+        fields3clouds1 = this.add.sprite(500, 0, 'fields3clouds1').setOrigin(0, 0); 
+        fields3backpiece = this.add.tileSprite(0, 0, 1920, 396, 'fields3backpiece').setOrigin(0, 0);
+        fields3frontpiece = this.add.tileSprite(0, 0, 1920, 600, 'fields3frontpiece').setOrigin(0, 0);
+        fields3frontpiece.tilePositionX = fields3background
+        player = this.physics.add.sprite(playerx, playery, 'cecil');
+        fields3rockpile = this.add.sprite(866 - fields3background, 245, 'fields3rockpile').setOrigin(0, 0); 
+        fields3sandgrass = this.add.sprite(46 - fields3background, 80, 'fields3sandgrass').setOrigin(0, 0); 
+        fields3sandstorm = this.add.sprite(6500, 0, 'fields3sandstorm').setOrigin(0, 0); 
+        fields3frontwall = this.add.tileSprite(0, 103, 1900, 497, 'fields3frontwall').setOrigin(0, 0);
+        scenename = 'fields3'
+        areaname = "  The Fields"
+      
+
+       
+
+
+ this.input.setPollAlways();
+        this.input.on('gameobjectover', function (pointer, gameObject) {
+        gameObject.setTint(0xff0000);
+    });
+    
+        this.input.on('gameobjectout', function (pointer, gameObject) {
+        gameObject.clearTint();
+    });        
+
+        this.anims.create({
+        key: 'walk',
+        frames: this.anims.generateFrameNumbers('cecil', { start: 0, end: 1 }),
+        frameRate: 10,
+        repeat: -1
+    });
+
+  
+ 
+
+    cursors = this.input.keyboard.createCursorKeys();
+    cursors.left.isDown = false
+    cursors.right.isDown = false
+    cursors.up.isDown = false
+    cursors.down.isDown = false
+   
+        
+},
+
+update: function (time, delta)
+{
+fields3clouds1.x -= 0.2;
+fields3sandstorm.x -= 25;
+playercurrentx = player.x
+playercurrenty = player.y
+
+if (fields3sandstorm.x < -2500){
+    fields3sandstorm.x = 6500
+}
+
+
+   if (player.x < 0){
+            playerx = 1200
+            playery = 505
+            fields2background = 858
+            game.scene.stop('fields3scene') 
+            game.scene.start('fields2scene');
+            
+            cursors.right.isDown = false
+            cursors.left.isDown = false
+           
+   }
+
+if (fields3frontpiece.tilePositionX < 0)
+    {
+    fields3frontpiece.tilePositionX = 0;
+    fields3frontwall.tilePositionX = 0;
+    fields3backpiece.tilePositionX = 0;
+    fields3sandgrass.x = 46;
+    fields3rockpile.x =  866;
+    player.x -= 3;
+    }
+
+    if (fields3frontpiece.tilePositionX > 558)
+    {
+    fields3frontpiece.tilePositionX = 558;
+    fields3frontwall.tilePositionX = 558;
+    fields3backpiece.tilePositionX = 558;
+    player.x += 3;
+    fields3sandgrass.x += 3;
+    fields3rockpile.x +=  3;
+
+
+    }
+
+  if (keyboardlock == false){
+      if (cecilattacksword == false){
+    if (cursors.left.isDown){
+    if (player.x < 650){
+    player.x += 3;
+    fields3frontpiece.tilePositionX -= 3;
+    fields3frontwall.tilePositionX -= 3;
+    fields3backpiece.tilePositionX -= 3;
+    fields3sandgrass.x += 3;
+    fields3rockpile.x += 3;
+    }
+    
+      if (player.x > fields3rockpile.x + 350){
+         player.y += 0.6
+          
+       
+    }
+
+       if (player.x < fields3rockpile.x + 350){
+         player.y -= 0.6
+                
+       
+    }
+
+    }
+    
+    else if (cursors.right.isDown){
+    if (player.x > 648){
+    player.x -= 3;
+    fields3frontpiece.tilePositionX += 3;
+    fields3frontwall.tilePositionX += 3;
+    fields3backpiece.tilePositionX += 3;
+    fields3sandgrass.x -= 3;
+    fields3rockpile.x -= 3;
+
+    }
+    if (player.x > 1360){
+        playerx = 35
+        playery = 225
+         
+         game.scene.stop('fields3scene')
+         game.scene.start('fields4scene');
+         cursors.left.isDown = false
+        
+    }
+    
+     if (player.x < fields3rockpile.x + 350){
+         player.y += 0.6
+          
+       
+    }
+
+       if (player.x > fields3rockpile.x + 350){
+         player.y -= 0.6
+                
+       
+    }
+
+    }
+
+    else if (cursors.up.isDown)
+    {
+    
+
+    } 
+ 
+ 
+    
+    else if (cursors.down.isDown)
+    {
+
+    }
+    
+    else
+    {
+      
+   
+      
+}
+}
+  } 
+
+
+}
+});
+
+//fields4scene
+var fields4scene = new Phaser.Class({
+
+    Extends: Phaser.Scene,
+
+    initialize:
+
+    function fields4scene ()
+    {
+        Phaser.Scene.call(this, { key: 'fields4scene' });
+    },
+
+    preload: function ()
+    {
+
+    },
+
+create: function ()
+{
+        
+        outsidecitybackground = this.add.sprite(0, 0, 'outsidecitybackgroundbig').setOrigin(0, 0);
+        fields4clouds1 = this.add.sprite(500, 0, 'fields4clouds1').setOrigin(0, 0); 
+        fields4clouds2 = this.add.sprite(-200, -150, 'fieldclouds2').setOrigin(0, 0);  
+        fields4frontpiece = this.add.tileSprite(0, 0, 3600, 600, 'fields4frontpiece').setOrigin(0, 0);
+        fields4frontpiece.tilePositionX = fields4background
+        fields4cavedoor = this.add.sprite(1870 -fields4background, 339, 'fields4cavedoor').setOrigin(0, 0); 
+        fields4cavedoor.visible = false
+        player = this.physics.add.sprite(playerx, playery, 'cecil');
+        fields4bigtree = this.add.sprite(0 -fields4background, 0, 'fields4bigtree').setOrigin(0, 0); 
+        fields4frontwall = this.add.tileSprite(0, 458, 3600, 497, 'fields4frontwall').setOrigin(0, 0);
+
+        scenename = 'fields4'
+        areaname = "  The Fields"
+       
+
+       
+
+
+ this.input.setPollAlways();
+        this.input.on('gameobjectover', function (pointer, gameObject) {
+        gameObject.setTint(0xff0000);
+    });
+    
+        this.input.on('gameobjectout', function (pointer, gameObject) {
+        gameObject.clearTint();
+    });        
+
+        this.anims.create({
+        key: 'walk',
+        frames: this.anims.generateFrameNumbers('cecil', { start: 0, end: 1 }),
+        frameRate: 10,
+        repeat: -1
+    });
+ 
+
+    cursors = this.input.keyboard.createCursorKeys();
+    cursors.left.isDown = false
+    cursors.right.isDown = false
+    cursors.up.isDown = false
+    cursors.down.isDown = false
+   
+  
+   
+        
+},
+
+update: function (time, delta)
+{
+
+currenttileposition = fields4frontpiece.tilePositionX
+currenttileposition2 = fields4frontwall.tilePositionX
+fields4clouds1.x -= 0.2;
+fields4clouds2.x += 0.5;
+playercurrentx = player.x
+playercurrenty = player.y
+
+
+if (player.y > 556){
+    player.y = 556
+}
+
+ if (player.x < fields4cavedoor.x ){
+        fields4cavedoor.visible = false
+        fields4cavedoorenter = false
+    }
+   if (player.x > fields4cavedoor.x +200){
+        fields4cavedoor.visible = false
+        fields4cavedoorenter = false
+    }
+    if (player.x > fields4cavedoor.x +10 ){
+        if (player.x < fields4cavedoor.x +199){
+        fields4cavedoor.visible = true
+        fields4cavedoorenter = true
+    }
+}
+
+   if (player.x < 0){
+            playerx = 1256
+            playery = 236
+            fields3background = 558
+            game.scene.stop('fields4scene') 
+            game.scene.start('fields3scene');
+            fields3frontwall.tilePositionX = 558
+            fields3backpiece.tilePositionX = 558
+         
+           
+   }
+
+      if (player.x > 1360){
+            playerx = 50
+            playery = 525
+            game.scene.stop('fields4scene') 
+            game.scene.start('fields5scene');
+          
+           
+   }
+
+
+if (fields4frontpiece.tilePositionX < 0)
+    {
+    fields4frontpiece.tilePositionX = 0;
+    fields4frontwall.tilePositionX = 0;
+    fields4bigtree.x = 0
+    fields4cavedoor.x = 1870
+    player.x -= 3;
+    }
+
+    if (fields4frontpiece.tilePositionX > 1958)
+    {
+    fields4frontpiece.tilePositionX = 1958;
+    fields4frontwall.tilePositionX = 1958 ;
+    player.x += 3;
+    fields4bigtree.x += 3;
+    fields4cavedoor.x += 3;
+    }
+
+  if (keyboardlock == false){
+     if (cecilattacksword == false){
+    if (cursors.left.isDown){
+    if (player.x < 650){
+    player.x += 3;
+    fields4frontpiece.tilePositionX -= 3;
+    fields4frontwall.tilePositionX -= 3;
+    fields4bigtree.x += 3;
+    fields4cavedoor.x += 3;
+    }
+    
+   
+
+
+
+if (player.x < fields4cavedoor.x -300 ){
+    player.y -= 0.6;
+   
+}
+
+if (player.x > fields4cavedoor.x +200 ){
+    player.y += 0.1;
+}
+    }
+    
+    else if (cursors.right.isDown){
+    if (player.x > 648){
+    player.x -= 3;
+    fields4frontpiece.tilePositionX += 3;
+    fields4frontwall.tilePositionX += 3;
+    fields4bigtree.x -= 3;
+    fields4cavedoor.x -= 3;
+
+    }
+
+    if (player.x < fields4cavedoor.x ){
+    player.y += 0.6;
+}
+
+  if (player.x > fields4cavedoor.x +200 ){
+      if (player.x < fields4cavedoor.x +600 ){
+    player.y -= 0.1;
+}
+}
+
+    if (player.x > 1360){
+        playerx = 35
+        playery = 523
+ 
+        
+    }
+
+
+    }
+
+    else if (cursors.up.isDown)
+    {
+    if (fields4cavedoorenter == true){
+            playerx = 500
+            playery = 515
+            fields4background = 1314
+            game.scene.stop('fields4scene') 
+            game.scene.start('ancienttempledoorscene');
+            cursors.right.isDown = false
+            cursors.left.isDown = false
+            cursors.up.isDown = false
+            cursors.down.isDown = false
+    }
+
+    } 
+ 
+ 
+    
+    else if (cursors.down.isDown)
+    {
+
+    }
+    
+    else
+    {
+      
+   
+      
+}
+}
+  } 
+
+
+}
+});
+
+//fields5scene
+var fields5scene = new Phaser.Class({
+
+    Extends: Phaser.Scene,
+
+    initialize:
+
+    function fields5scene ()
+    {
+        Phaser.Scene.call(this, { key: 'fields5scene' });
+    },
+
+    preload: function ()
+    {
+
+
+    },
+
+create: function ()
+{
+        
+        outsidecitybackground = this.add.sprite(0, 0, 'outsidecitybackgroundbig').setOrigin(0, 0);
+        fields5clouds1 = this.add.sprite(500, 0, 'fields3clouds1').setOrigin(0, 0); 
+        fields5frontpiece = this.add.tileSprite(0, 0, 3600, 600, 'fields5frontpiece').setOrigin(0, 0);
+        fields5frontpiece.tilePositionX = fields5background
+        player = this.physics.add.sprite(playerx, playery, 'cecil');
+        fields5frontwall = this.add.tileSprite(0, 498, 3357, 102, 'fields5frontwall').setOrigin(0, 0);
+
+        scenename = 'fields5'
+        areaname = "  The Desert"
+        
+
+       
+
+
+ this.input.setPollAlways();
+        this.input.on('gameobjectover', function (pointer, gameObject) {
+        gameObject.setTint(0xff0000);
+    });
+    
+        this.input.on('gameobjectout', function (pointer, gameObject) {
+        gameObject.clearTint();
+    });        
+
+        this.anims.create({
+        key: 'walk',
+        frames: this.anims.generateFrameNumbers('cecil', { start: 0, end: 1 }),
+        frameRate: 10,
+        repeat: -1
+    });
+ 
+
+    cursors = this.input.keyboard.createCursorKeys();
+    cursors.left.isDown = false
+    cursors.up.isDown = false
+    cursors.down.isDown = false
+   
+  
+   
+        
+},
+
+update: function (time, delta)
+{
+fields5clouds1.x -= 0.2;
+playercurrentx = player.x
+playercurrenty = player.y
+
+
+if (player.y > 556){
+    player.y = 556
+}
+
+
+
+   if (player.x < 0){
+            playerx = 1307
+            playery = 542
+            game.scene.stop('fields5scene') 
+            game.scene.start('fields4scene');
+            fields4background = 1958
+            fields4frontpiece.tilePositionX = 1958
+            fields4frontwall.tilePositionX = 1958
+            cursors.right.isDown = false
+            cursors.left.isDown = false
+           
+   }
+
+   if (player.x > 1360){
+            playerx = 50
+            playery = 525
+            game.scene.stop('fields5scene') 
+            game.scene.start('fields6scene');
+            cursors.right.isDown = false
+            cursors.left.isDown = false
+           
+   }
+
+if (fields5frontpiece.tilePositionX < 0)
+    {
+    fields5frontpiece.tilePositionX = 0;
+    fields5frontwall.tilePositionX = 0;
+   
+    player.x -= 3;
+    }
+
+    if (fields5frontpiece.tilePositionX > 1958)
+    {
+    fields5frontpiece.tilePositionX = 1958;
+    fields5frontwall.tilePositionX = 1958;
+    player.x += 3;
+
+    }
+
+  if (keyboardlock == false){
+     if (cecilattacksword == false){
+    if (cursors.left.isDown){
+    if (player.x < 650){
+    player.x += 3;
+    fields5frontpiece.tilePositionX -= 3;
+    fields5frontwall.tilePositionX -= 3;
+
+    }
+    }
+    
+    else if (cursors.right.isDown){
+    if (player.x > 648){
+    player.x -= 3;
+    fields5frontpiece.tilePositionX += 3;
+    fields5frontwall.tilePositionX += 3;
+
+    }
+
+  
+    if (player.x > 1360){
+        playerx = 35
+        playery = 523
+ 
+        
+    }
+    }
+
+    else if (cursors.up.isDown)
+    {
+ 
+    } 
+ 
+ 
+    
+    else if (cursors.down.isDown)
+    {
+
+    }
+    
+    else
+    {
+      
+   
+      
+}
+}
+  } 
+
+
+}
+});
+
+
+//fields6scene
+var fields6scene = new Phaser.Class({
+
+    Extends: Phaser.Scene,
+
+    initialize:
+
+    function fields6scene ()
+    {
+        Phaser.Scene.call(this, { key: 'fields6scene' });
+    },
+
+    preload: function ()
+    {
+
+
+    },
+
+create: function ()
+{
+        
+        outsidecitybackground = this.add.sprite(0, 0, 'outsidecitybackgroundbig').setOrigin(0, 0);
+        fields6clouds1 = this.add.sprite(500, -300, 'fields3clouds1').setOrigin(0, 0); 
+        fields6backpiece = this.add.tileSprite(0, 0, 3600, 600, 'fields6backpiece').setOrigin(0, 0);
+        sandstorm = this.add.sprite(500, 0, 'fields3sandstorm').setOrigin(0, 0); 
+        fields6frontpiece = this.add.tileSprite(0, 0, 3600, 600, 'fields6frontpiece').setOrigin(0, 0); 
+        fields6frontpiece.tilePositionX = fields6background
+        fields6templeface = this.add.sprite(1254, 15, 'fields6templeface').setOrigin(0, 0);   
+        fields6backrock = this.add.sprite(3200, 100, 'fields6backrock').setOrigin(0, 0); 
+        player = this.physics.add.sprite(playerx, playery, 'cecil');
+        fields6frontwall = this.add.tileSprite(0, 457, 3600, 143, 'fields6frontwall').setOrigin(0, 0);
+
+        scenename = 'fields6'
+        areaname = "  The Desert"
+       
+
+       
+
+
+ this.input.setPollAlways();
+        this.input.on('gameobjectover', function (pointer, gameObject) {
+        gameObject.setTint(0xff0000);
+    });
+    
+        this.input.on('gameobjectout', function (pointer, gameObject) {
+        gameObject.clearTint();
+    });        
+
+        this.anims.create({
+        key: 'walk',
+        frames: this.anims.generateFrameNumbers('cecil', { start: 0, end: 1 }),
+        frameRate: 10,
+        repeat: -1
+    });
+
+       this.anims.create({
+        key: 'templefaceplay',
+        frames: this.anims.generateFrameNumbers('fields6templeface', { start: 0, end: 3 }), 
+        frameRate: 10,
+        repeat: -1
+    });
+ 
+ 
+
+    cursors = this.input.keyboard.createCursorKeys();
+    cursors.left.isDown = false
+    cursors.right.isDown = false
+    cursors.up.isDown = false
+    cursors.down.isDown = false
+   
+  
+   
+        
+},
+
+update: function (time, delta)
+{
+fields6templeface.anims.play('templefaceplay', true);
+fields6clouds1.x -= 0.2;
+sandstorm.x -= 30;
+playercurrentx = player.x
+playercurrenty = player.y
+
+if (sandstorm.x < -20000){
+    sandstorm.x = 1500
+}
+
+
+if (player.y > 556){
+    player.y = 556
+}
+
+
+
+   if (player.x < 0){
+            playerx = 1300
+            playery = 525
+            fields5background = 1958
+            game.scene.stop('fields6scene') 
+            game.scene.start('fields5scene');
+            fields5frontpiece.tilePositionX = 1958;
+            fields5frontwall.tilePositionX = 1958;
+            cursors.right.isDown = false
+            cursors.left.isDown = false
+           
+   }
+
+if (fields6frontpiece.tilePositionX < 0)
+    {
+    fields6frontpiece.tilePositionX = 0;
+    fields6backpiece.tilePositionX = 0;
+    fields6frontwall.tilePositionX = 0;
+    fields6templeface.x = 1254
+    player.x -= 3;
+    }
+
+    if (fields6frontpiece.tilePositionX > 2200)
+    {
+    fields6frontpiece.tilePositionX = 2200;
+    fields6backpiece.tilePositionX = 2200;
+    fields6frontwall.tilePositionX = 2200;
+    fields6backrock.x += 3;
+    fields6templeface.x += 3;
+    player.x += 3;
+
+    }
+
+  if (keyboardlock == false){
+     if (cecilattacksword == false){
+    if (cursors.left.isDown){
+    if (player.x < 650){
+    player.x += 3;
+    fields6frontpiece.tilePositionX -= 3;
+    fields6backpiece.tilePositionX -= 3;
+    fields6frontwall.tilePositionX -= 3;
+    fields6backrock.x += 3;
+    fields6templeface.x += 3;
+
+    }
+    }
+    
+    else if (cursors.right.isDown){
+    if (player.x > 648){
+    player.x -= 3;
+    fields6frontpiece.tilePositionX += 3;
+    fields6backpiece.tilePositionX += 3;
+    fields6frontwall.tilePositionX += 3;
+    fields6templeface.x -= 3;
+    fields6backrock.x -= 3;
+
+    }
+
+  
+    if (player.x > 1360){
+        playerx = 35
+        playery = 523
+ 
+        
+    }
+    }
+
+    else if (cursors.up.isDown)
+    {
+ 
+    } 
+ 
+ 
+    
+    else if (cursors.down.isDown)
+    {
+
+    }
+    
+    else
+    {
+      
+   
+      
+}
+}
+} 
+}
+});
+
+
+
+//ancienttempledoorscene
+var ancienttempledoorscene = new Phaser.Class({
+
+    Extends: Phaser.Scene,
+
+    initialize:
+
+    function ancienttempledoorscene ()
+    {
+        Phaser.Scene.call(this, { key: 'ancienttempledoorscene' });
+    },
+
+    preload: function ()
+    {
+      
+    },
+
+create: function ()
+{
+        
+       
+        ancienttempledoorbackground = this.add.sprite(0, 0, 'fields4cavedoorinside').setOrigin(0, 0);
+        ancienttempledoor = this.add.sprite(529, 321, 'enterancienttempledoor').setOrigin(0, 0); 
+        player = this.physics.add.sprite(playerx, playery, 'cecil');
+        scenename = 'ancienttempledoor'
+        areaname = '  Ancient Temple'
+
+
+
+
+
+ this.input.setPollAlways();
+        this.input.on('gameobjectover', function (pointer, gameObject) {
+        gameObject.setTint(0xff0000);
+    });
+    
+        this.input.on('gameobjectout', function (pointer, gameObject) {
+        gameObject.clearTint();
+    });        
+
+        this.anims.create({
+        key: 'walk',
+        frames: this.anims.generateFrameNumbers('cecil', { start: 0, end: 1 }),
+        frameRate: 10,
+        repeat: -1
+    });
+  
+    
+
+    cursors = this.input.keyboard.createCursorKeys();
+    
+        
+},
+
+update: function (time, delta)
+{
+playercurrentx = player.x
+playercurrenty = player.y
+
+  if (player.y > 548){
+        playerx = 650
+        playery = 556
+         this.sound.stopAll();
+         stellarthemeplaying = false
+         game.scene.stop('ancienttempledoorscene') 
+         game.scene.start('fields4scene'); 
+         fields4frontwall.tilePositionX = 1314
+         cursors.up.isDown = false
+         cursors.down.isDown = false
+         
+     }
+
+      if (player.y <  400 ){
+      //entertemple
+   
+        
+     }
+
+  if (keyboardlock == false){
+    if (walkingdirection == 'left'){
+    if (cursors.left.isDown){
+ 
+    
+    }
+    }
+    
+    else if (cursors.right.isDown)
+    {
+    if (walkingdirection == 'right'){
+    }
+     
+    }
+
+    else if (cursors.up.isDown)
+    {
+        if (player.y > 315) {
+
+    player.y -= 3;
+    player.anims.play('walk', true);
+    }
+    } 
+ 
+    
+    else if (cursors.down.isDown)
+    {
+        if (player.y < 565){
+    player.y += 3;
+    player.anims.play('walk', true);
+    }
+    }
+    
+    else
+    {
+      
+      
+}
+}
+     
+
+
 }
 });
 
@@ -5543,12 +6807,13 @@ create: function ()
 
      
 
-
+if (misctheme1playing == false){
 var misctheme1 = this.sound.add('misctheme1',{ loop: true });
 misctheme1.play({
        
     });
-
+    misctheme1playing = true
+}
 
    questmasteropenscreen = this.add.sprite(globescreen.x - 20 - officebackgroundx, globescreen.y -20, 'questmasteropenscreen').setInteractive();
    questmasteropenscreen.setOrigin(0, 0);
@@ -5753,7 +7018,7 @@ misctheme1.play({
     questmasterdiapermafiaquestquote = this.physics.add.sprite(0, 0, 'questmasterdiapermafiaquestquote').setOrigin(0, 0);
     questmasterdiapermafiaquestquote.visible = false
     
-    text = this.add.text(10, 10, '', { font: '16px Courier', fill: '#00ff00' }).setScrollFactor(0);
+   
 
         
 function hidequestmaster() {
@@ -5964,22 +7229,22 @@ update: function (time, delta)
 
     if (player.x > 1336)
     {
-    player.x -= 3;
+    player.x = 1336;
     }
       
       if (player.x < 1)
     {
-    player.x += 3;
+    player.x = 1;
     }
 
      if (player.y < 248)
     {
-    player.y += 3;
+    player.y = 248;
     }
 
        if (player.y > 543)
     {
-    player.y -= 3;
+    player.y = 543;
     }
       
     if (player.y < 253){
@@ -6023,8 +7288,7 @@ if (keyboardlock == false){
 
    
     if (cursors.left.isDown){
-   
-   
+      
     this.officeroombackground.tilePositionX -= 3;
     globescreen.x += 3;
     screen1.x += 3;
@@ -6038,13 +7302,8 @@ if (keyboardlock == false){
     arcademachine1.x += 3;
     featherlighter.x += 3;
     cellphoneobject.x += 3;
-   
-
-    if (this.officeroombackground.tilePositionX > 1){
-        player.x -= 3;
-    }
-  
-   
+    player.x += 3;
+     
     }
 
     else if (cursors.right.isDown){
@@ -6070,25 +7329,21 @@ if (keyboardlock == false){
 
 
     else if (cursors.up.isDown){
-    player.y -= 1;
+    player.y -= 3;
     player.anims.play('walk', true);
       if (cecilofficedoorexit == true){
          this.sound.stopAll();
+         misctheme1playing = false
   
-    stellarcitybackgroundx = 0
-    playerx = 650
-    playery = 475
-
-    
-
+     stellarcitybackgroundx = 0
+     playerx = 650
+     playery = 475
      game.scene.stop('officescene')
      cursors.up.isDown = false
      cursors.down.isDown = false
      cursors.left.isDown = false
      cursors.right.isDown = false
      game.scene.start('stellarscene')
-     
-     areaname = '      Stellar City'
      cecilofficedoorexit = false
     }
     }
@@ -6096,7 +7351,7 @@ if (keyboardlock == false){
  
     
     else if (cursors.down.isDown){
-    player.y += 1;
+    player.y += 3;
     player.anims.play('walk', true);
     }
 
@@ -6110,12 +7365,7 @@ else
 
 
 
-text.setText([
-        'world x: ' + this.input.mousePointer.worldX,
-        'world y: ' + this.input.mousePointer.worldY,
-        player.y,
-        player.x
-    ]);
+
     }
 
 });
@@ -6225,7 +7475,7 @@ this.time.addEvent({ delay: 500, callback: setdata, callbackScope: this, loop: t
 
     });
 
-  
+ 
 
   //cecilbuttons
     //cecilswordbutton
@@ -6464,12 +7714,42 @@ this.time.addEvent({ delay: 500, callback: setdata, callbackScope: this, loop: t
     this.clearTint();
     });
     onmywaybutton.visible = false
+
+
+//uipointers
+//uiarrow
+    uppointer = this.add.sprite(uix +661,uiy +75, 'uiuparrow').setInteractive();
+    uppointer.setOrigin(0, 0);
+    uppointer.on('pointerdown', function (pointer) {
+    this.setTint(0xff0000);
+    cursors.up.isDown = true
+    });
+    
+    uppointer.on('pointerup', function (pointer) {
+    this.clearTint();
+    cursors.up.isDown = false 
+    });
+
+    
+    downpointer = this.add.sprite(uix +661,uiy +126, 'uidownarrow').setInteractive();
+    downpointer.setOrigin(0, 0);
+    downpointer.on('pointerdown', function (pointer) {
+    this.setTint(0xff0000);
+    cursors.down.isDown = true
+    });
+    
+    downpointer.on('pointerup', function (pointer) {
+    this.clearTint();
+    cursors.down.isDown = false 
+    });
+
+
       
-    rightpointer = this.add.sprite(760, 710, 'rightpointer').setInteractive();
+    rightpointer = this.add.sprite(uix +706,uiy +102, 'uirightarrow').setInteractive();
+    rightpointer.setOrigin(0, 0);
     rightpointer.on('pointerdown', function (pointer) {
     this.setTint(0xff0000);
     cursors.right.isDown = true
-
     });
     
     rightpointer.on('pointerup', function (pointer) {
@@ -6477,7 +7757,8 @@ this.time.addEvent({ delay: 500, callback: setdata, callbackScope: this, loop: t
     cursors.right.isDown = false 
     });
     
-    leftpointer = this.add.sprite(600, 710, 'leftpointer').setInteractive();
+    leftpointer = this.add.sprite(uix +613,uiy+ 102, 'uileftarrow').setInteractive();
+    leftpointer.setOrigin(0, 0);
     leftpointer.on('pointerdown', function (pointer) {
     this.setTint(0xff0000);
     cursors.left.isDown = true
@@ -6488,6 +7769,8 @@ this.time.addEvent({ delay: 500, callback: setdata, callbackScope: this, loop: t
     this.clearTint();
     cursors.left.isDown = false
     });
+
+
 
 //mapbutton
     mapbutton = this.add.sprite(583, 605, 'mapbutton').setInteractive();
@@ -7381,7 +8664,8 @@ playersupportratingtxt = this.add.text(155, 305, '', { font: '40px Arial', fill:
 playersupportratingtxt.visible = false
 
 
-statustxt = this.add.text(5, 165, '', { font: '17px Arial', fill: '#00ff00' }).setScrollFactor(0);
+
+statustxt = this.add.text(10, 10, '', { font: '17px Arial', fill: '#00ff00' }).setScrollFactor(0);
 areanametxt = this.add.text(560, 637, '', { font: '30px Arial', fill: '#00ff00' }).setScrollFactor(0);
 charnametxt = this.add.text(185, 680, 'Cecil', { font: '30px Arial', fill: '#00ff00' }).setScrollFactor(0);
 itemnametxt = this.add.text(615, 555, '', { font: '23px Courier', fill: '#ffffff' }).setScrollFactor(0);
@@ -7464,16 +8748,108 @@ itemnametxt.visible = false
         } 
         }
 
-
 }
 }
 
      }
+
+bkey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.B);   
+nkey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.N);   
+mkey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.M);
+kkey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.K);
+zkey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.Z);
+keys = this.input.keyboard.addKeys('W,A,S,D');
+
       
 },
 //ui
 //uiupdate
 update: function (time, delta){
+
+
+if (wasdkeyson == true){
+    if (keys.W.isDown){
+        cursors.up.isDown = true
+    }
+
+    else if (keys.A.isDown){
+        cursors.left.isDown = true
+    }
+
+    else if (keys.S.isDown){
+        cursors.down.isDown = true
+    }
+    
+    else if (keys.D.isDown){
+        cursors.right.isDown = true
+    }
+
+    else {
+        cursors.up.isDown = false
+        cursors.down.isDown = false
+        cursors.left.isDown = false
+        cursors.right.isDown = false
+    }
+}
+
+
+    if (Phaser.Input.Keyboard.JustDown(mkey))
+    {
+        if (mapwindowopen == false){
+    statuswindowopen = false
+    talentwindowopen = false
+    inventorywindowopen = false
+    mapwindowopen = true
+    keyboardlock = true
+    }
+    else mapwindowopen = false
+    keyboardlock = false
+    }
+
+    if (Phaser.Input.Keyboard.JustDown(bkey))
+    {
+    if (statuswindowopen == false){
+    statuswindowopen = true
+    mapwindowopen = false
+    inventorywindowopen = false
+    keyboardlock = true
+    }
+    else statuswindowopen = false
+    talentwindowopen = false
+    keyboardlock = false
+    }
+
+
+if (Phaser.Input.Keyboard.JustDown(nkey)){
+ if (inventorywindowopen == false){
+        mapwindowopen = false
+        statuswindowopen = false
+        talentwindowopen = false
+    inventorywindowopen = true
+    keyboardlock = true
+    }
+    else inventorywindowopen = false
+    keyboardlock = false
+}
+
+if (Phaser.Input.Keyboard.JustDown(kkey)){
+    if (wasdkeyson == false){
+        wasdkeyson = true
+    }
+    else if (wasdkeyson == true){
+        wasdkeyson = false
+    }
+}
+
+if (Phaser.Input.Keyboard.JustDown(zkey)){
+    if (debugview == false){
+        debugview = true
+    }
+    else if (debugview == true){
+        debugview = false
+    }
+}
+
 if (cecildefendshield ==  false){
     shield.x = playercurrentx
 }
@@ -7587,13 +8963,13 @@ if (mapwindowopen == true){
     }
          if (scenename == 'graveyarda'){
         mapcurrentposition.x = 248
-        mapcurrentposition.y = 182
+        mapcurrentposition.y = 140
         mapcurrentposition.visible = true
         mapcurrentposition.anims.play('mapcurrentpositionsmall', true); 
     }
          if (scenename == 'graveyardb'){
         mapcurrentposition.x = 334
-        mapcurrentposition.y = 182
+        mapcurrentposition.y = 140
         mapcurrentposition.visible = true
         mapcurrentposition.anims.play('mapcurrentpositionsmall', true); 
     }
@@ -7605,12 +8981,33 @@ if (mapwindowopen == true){
         mapcurrentposition.anims.play('mapcurrentpositionsmall', true); 
     }
 
-         if (scenename == 'outergrounds'){
+    if (scenename == 'dumpgroundentrance'){ 
+        mapcurrentposition.x = 334
+        mapcurrentposition.y = 192
+        mapcurrentposition.visible = true
+        mapcurrentposition.anims.play('mapcurrentpositionsmall', true); 
+    }
+    if (scenename == 'dumpgrounda'){ 
+        mapcurrentposition.x = 420
+        mapcurrentposition.y = 192
+        mapcurrentposition.visible = true
+        mapcurrentposition.anims.play('mapcurrentpositionsmall', true); 
+    }
+
+      if (scenename == 'dumpgroundb'){ 
+        mapcurrentposition.x = 504
+        mapcurrentposition.y = 192
+        mapcurrentposition.visible = true
+        mapcurrentposition.anims.play('mapcurrentpositionsmall', true); 
+    }
+      if (scenename == 'outergrounds'){
         mapcurrentposition.x = 420
         mapcurrentposition.y = 240
         mapcurrentposition.visible = true
         mapcurrentposition.anims.play('mapcurrentpositionsmall', true); 
     }
+
+
 
      if (scenename == 'waterfall'){
         mapcurrentposition.x = 502
@@ -7640,8 +9037,47 @@ if (mapwindowopen == true){
     }
 
 
+     if (scenename == 'fields1'){
+        mapcurrentposition.x = 841
+        mapcurrentposition.y = 240
+        mapcurrentposition.visible = true
+        mapcurrentposition.anims.play('mapcurrentpositionsmall', true); 
+    }
 
+     if (scenename == 'fields2'){
+        mapcurrentposition.x = 925
+        mapcurrentposition.y = 240
+        mapcurrentposition.visible = true
+        mapcurrentposition.anims.play('mapcurrentpositionsmall', true); 
+      }
 
+     if (scenename == 'fields3'){
+        mapcurrentposition.x = 1009
+        mapcurrentposition.y = 240
+        mapcurrentposition.visible = true
+        mapcurrentposition.anims.play('mapcurrentpositionsmall', true); 
+      }
+
+     if (scenename == 'fields4'){
+        mapcurrentposition.x = 1093
+        mapcurrentposition.y = 240
+        mapcurrentposition.visible = true
+        mapcurrentposition.anims.play('mapcurrentpositionsmall', true); 
+    }
+
+     if (scenename == 'fields5'){
+        mapcurrentposition.x = 1177
+        mapcurrentposition.y = 240
+        mapcurrentposition.visible = true
+        mapcurrentposition.anims.play('mapcurrentpositionsmall', true); 
+      }
+
+     if (scenename == 'fields6'){
+        mapcurrentposition.x = 1261
+        mapcurrentposition.y = 240
+        mapcurrentposition.visible = true
+        mapcurrentposition.anims.play('mapcurrentpositionsmall', true); 
+      }
 
 
 
@@ -7795,6 +9231,8 @@ if (keyboardlock == false){
     player.setFlipX(false);
     cecilcastholy = false
     walkingdirection = 'left'
+    leftpointer.setTint(0xff0000);
+
     }
 
     else if (cursors.right.isDown)
@@ -7806,6 +9244,7 @@ if (keyboardlock == false){
     player.anims.play('walk', true);
     player.setFlipX(true);
     cecilcastholy = false
+    rightpointer.setTint(0xff0000);
     }
 
     
@@ -7817,6 +9256,7 @@ if (keyboardlock == false){
     sword.y = player.y
     player.anims.play('walk', true);
     cecilcastholy = false
+    uppointer.setTint(0xff0000);
     }
     
  
@@ -7829,6 +9269,7 @@ if (keyboardlock == false){
     sword.y = player.y
     player.anims.play('walk', true);
     cecilcastholy = false
+    downpointer.setTint(0xff0000);
     }
     
     else
@@ -7839,30 +9280,38 @@ if (keyboardlock == false){
       keysupleft = false
       keysdownleft = false
 
+      uppointer.clearTint();
+      downpointer.clearTint();
+      leftpointer.clearTint();
+      rightpointer.clearTint();
+
       if (cecilcastholy == false){
       player.anims.stop('walk', true);
       }
     }
 }
       if (debugview == true){
+       statustxt.visible = true
        statustxt.setText([
-           
-       'nayzramwandquestselected   '+ nayzramwandquestend,
-       'nayzramwandquestcomplete   ' + nayzramwandquestcomplete,
-       'questmasternayzramwandquestselected   '+ questmasternayzramwandquestselected,
-       'questmasternayzranwandquestshow   ' + questmasternayzramwandquestshow,
-       'nayzramwandquestend   ' + nayzramwandquestend,
+       fields4background,
+       fields5background,
        'keyboardlock   ' + keyboardlock,
        'walkingdirection   ' + walkingdirection,
        playercurrentx,
        playercurrenty,
+       currenttileposition,
+       currenttileposition2,
        cursors.up.isDown,
        cursors.down.isDown,
-       playerrun,
-       cecilofficedooropen.x
+       'wasd' + ' ' + wasdkeyson
+       
 
     ]);
 }
+if (debugview == false){
+    statustxt.visible = false
+}
+
 
     playerhealthratingtxt.setText([
       playerhealthrating
@@ -8142,7 +9591,7 @@ var config = {
         }
     },
     
-    scene: [startmenuscene,enternamescene, basemenuscene, stellarscene, oakloungescene, dojoscene, cityoutskirtsscene, outsidecity1scene,outsidecity2scene,dumpgroundentrancescene,dumpground1scene,dumpground2scene,waterfallscene,riverbridgescene,mountain1scene,mountain2scene, graveyardgatesscene,graveyardscenea,graveyardsceneb, officescene, uiscene]
+    scene: [startmenuscene,enternamescene, basemenuscene, stellarscene, oakloungescene, dojoscene, cityoutskirtsscene, outsidecity1scene,outsidecity2scene,dumpgroundentrancescene,dumpground1scene,dumpground2scene,waterfallscene,riverbridgescene,mountain1scene,mountain2scene,fields1scene,fields2scene,fields3scene,fields4scene,fields5scene,fields6scene,ancienttempledoorscene, graveyardgatesscene,graveyardscenea,graveyardsceneb, officescene, uiscene]
 };
 
  
@@ -8151,8 +9600,9 @@ var accountnickname = ''
 var accountnamesize = 0
 var scenename = ''
 var playercharname = ''
+var wasdkeyson = false
 
-
+var keys
 var playerrun = false
 var playerhealthrating
 var playercurrenthealth
@@ -8214,6 +9664,8 @@ var playerx
 var playery 
 var playercurrentx
 var playercurrenty
+var currenttileposition = 0
+var currenttileposition2 = 0
 
 var playerfacedirection = 'left'
 var walkingdirection = ''
@@ -8300,12 +9752,20 @@ var dumpground2background = 0
 var officebackgroundx = 0
 var mountain1background = 0
 var mountain2background = 0
+var fields1background = 0
+var fields2background = 0
+var fields3background = 0
+var fields4background = 0
+var fields5background = 0
+var fields6background = 0
 
 var stellarthemeplaying = false
+var misctheme1playing = false
 var misctheme3playing = false
 var waterfallthemeplaying = false
 var dumpgroundthemeplaying = false
-
+var desertthemeplaying = false
+var desertambienceplaying = false
 
 var game = new Phaser.Game(config);
 
