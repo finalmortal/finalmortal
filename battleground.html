@@ -1,0 +1,6095 @@
+<!doctype html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8" />
+    <title>Ancient Temple Battleground</title>
+    <script src="//cdn.jsdelivr.net/npm/phaser@3.11.0/dist/phaser.js"></script>
+    <style type="text/css">
+        body {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    
+<script type="text/javascript">
+
+
+
+//templebattleground
+var templebattleground = new Phaser.Class({
+
+    Extends: Phaser.Scene,
+
+    initialize:
+
+    function templebattleground ()
+    {
+        Phaser.Scene.call(this, { key: 'templebattleground' });
+    },
+
+    preload: function ()
+    {
+
+//loadoutancienttemple
+this.load.image('ancienttemplefrontpiece', 'assets/battlegrounds/ancienttemplefrontpiece.png');
+this.load.image('ancienttemplebackground', 'assets/battlegrounds/ancienttemplebackground.png');
+this.load.image('ancienttemplefrontwall', 'assets/battlegrounds/ancienttemplefrontwall.png');
+this.load.spritesheet('ancienttemplehead', 'assets/battlegrounds/ancienttemplehead.png', { frameWidth: 182, frameHeight: 153 });
+
+
+//************char
+//loadcecil
+
+this.load.spritesheet('cecil', 'assets/char/spritesheets/cecilsprite.png', { frameWidth: 96, frameHeight: 95 });
+this.load.spritesheet('cecilcasting', 'assets/char/cecil/cecilcastoutline.png', { frameWidth: 95, frameHeight: 95 });
+this.load.spritesheet('cecilidle', 'assets/char/cecil/cecilidle.png', { frameWidth: 96, frameHeight: 95 });
+this.load.spritesheet('cecilidleselected', 'assets/char/cecil/cecilidleselected.png', { frameWidth: 96, frameHeight: 95 });
+this.load.spritesheet('cecilholysword', 'assets/char/cecil/holysword.png', { frameWidth: 200, frameHeight: 145 });
+this.load.spritesheet('cecilsword', 'assets/char/cecil/cecilsword.png', { frameWidth: 150, frameHeight: 151 });
+this.load.spritesheet('ceciltarget', 'assets/char/cecil/target.png', { frameWidth: 250, frameHeight: 154 });
+this.load.spritesheet('cecilholy', 'assets/char/cecil/holy.png', { frameWidth: 250, frameHeight: 250 });
+this.load.image('sword1', 'assets/weapons/sword1.png');
+this.load.image('cecilswordbox', 'assets/ui/cecil/cecilswordbox.png');
+this.load.image('cecilshieldbox', 'assets/ui/cecil/cecilshieldbox.png');
+this.load.image('cecilholybox', 'assets/ui/cecil/cecilholybox.png');
+this.load.image('cecilholyswordbox', 'assets/ui/cecil/cecilholyswordbox.png');
+this.load.image('ceciltargetbox', 'assets/ui/cecil/ceciltargetbox.png');
+
+ this.load.audio('ceciltargetsound', [
+        'assets/sound/ceciltargetsound.mp3'
+    ]);
+     this.load.audio('cecilswordsound', [
+        'assets/sound/cecilswordsound.mp3'
+    ]);
+ 
+    this.load.audio('cecilholyswordsound', [
+        'assets/sound/cecilholyswordsound.wav'
+    ]);
+
+
+    //loadkain
+    this.load.spritesheet('kain', 'assets/char/spritesheets/kainsprite.png', { frameWidth: 96, frameHeight: 95 });
+    this.load.spritesheet('kainpower', 'assets/char/kain/kainpower.png', { frameWidth: 225, frameHeight: 251 });
+    this.load.image('kainslashbox', 'assets/ui/kain/kainslashbox.png');
+    this.load.image('kainjumpbox', 'assets/ui/kain/kainjumpbox.png');
+    this.load.image('kainstrikebox', 'assets/ui/kain/kainstrikebox.png');
+    this.load.image('kainpowerbox', 'assets/ui/kain/kainpowerbox.png');
+    this.load.image('kainpartyname', 'assets/ui/kain/kainpartyname.png');
+    this.load.spritesheet('kainjumpweapon', 'assets/char/kain/kainjumpweapon.png', { frameWidth: 150, frameHeight: 82 });
+    this.load.spritesheet('kainjumpimpact', 'assets/char/kain/kainjumpimpact.png', { frameWidth: 250, frameHeight: 88 });
+    this.load.spritesheet('kainslash', 'assets/char/kain/kainslash.png', { frameWidth: 150, frameHeight: 47 });
+    this.load.spritesheet('kainstrike', 'assets/char/kain/kainstrike.png', { frameWidth: 150, frameHeight: 59 });
+
+    this.load.audio('kainjumpvoice', [
+        'assets/sound/kainjumpvoice.wav'
+    ]);
+
+    this.load.audio('kainjumpsound', [
+        'assets/sound/kainjumpsound.mp3'
+    ]);
+
+
+    this.load.audio('kainjumpdown', [
+        'assets/sound/kainjumpdown.mp3'
+    ]);
+
+    this.load.audio('kainstrikesound', [
+        'assets/sound/kainstrikesound.mp3'
+    ]);
+    this.load.audio('kainslashsound', [
+        'assets/sound/kainslashsound.mp3'
+    ]);
+
+    //loadkang
+this.load.spritesheet('kangspear', 'assets/char/kang/kangspear.png', { frameWidth: 48, frameHeight: 110 });
+this.load.spritesheet('kangdead', 'assets/char/kang/kangdead.png', { frameWidth: 82, frameHeight: 25 });
+this.load.spritesheet('kang', 'assets/char/kang/kangidle.png', { frameWidth: 45, frameHeight: 104 });
+this.load.spritesheet('kangwalk', 'assets/char/kang/kangwalk.png', { frameWidth: 55, frameHeight: 102 });
+this.load.spritesheet('kangrun', 'assets/char/kang/kangrun.png', { frameWidth: 40, frameHeight: 110 });
+this.load.spritesheet('kangflykick', 'assets/char/kang/kangflykick.png', { frameWidth: 68, frameHeight: 110 });
+this.load.spritesheet('kangdragon', 'assets/char/kang/kangdragon.png', { frameWidth: 108, frameHeight: 140 });
+this.load.spritesheet('kangprayer', 'assets/char/kang/kangprayer.png', { frameWidth: 62, frameHeight: 129 });
+this.load.spritesheet('kangprayerbolt', 'assets/char/kang/kangprayerbolt.png', { frameWidth: 200, frameHeight: 500 });
+this.load.spritesheet('kangbicycle', 'assets/char/kang/kangbicycle.png', { frameWidth: 65, frameHeight: 110 });
+this.load.spritesheet('kangfireball', 'assets/char/kang/kangfireball.png', { frameWidth: 45, frameHeight: 110 });
+this.load.spritesheet('kangfireballgr', 'assets/char/kang/kangfireballgr.png', { frameWidth: 75, frameHeight: 30 });
+this.load.spritesheet('kangfireballexplode', 'assets/char/kang/kangfireballexplode.png', { frameWidth: 100, frameHeight: 146 });
+this.load.image('kangflykickbox', 'assets/ui/kang/kangflykickbox.png');
+this.load.image('kangfireballbox', 'assets/ui/kang/kangfireballbox.png');
+this.load.image('kangbicyclebox', 'assets/ui/kang/kangbicyclebox.png');
+this.load.image('kangdragonbox', 'assets/ui/kang/kangdragonbox.png');
+this.load.image('kangprayerbox', 'assets/ui/kang/kangprayerbox.png');
+
+    this.load.audio('kangflykick', [
+        'assets/sound/kang-flykick.mp3'
+    ]);
+    this.load.audio('kangbicyclekick', [
+        'assets/sound/kang-bicyclekick.mp3'
+    ]);
+    this.load.audio('kangfireballsound', [
+        'assets/sound/kang-fireball.mp3'
+    ]); 
+
+    //endloadkang
+
+//loadorchid
+this.load.spritesheet('orchiddead', 'assets/char/orchid/orchiddead.png', { frameWidth: 115, frameHeight: 57 });
+this.load.spritesheet('orchid', 'assets/char/orchid/orchididle.png', { frameWidth: 80, frameHeight: 135 });
+this.load.spritesheet('orchidwalk', 'assets/char/orchid/orchidwalk.png', { frameWidth: 90, frameHeight: 135 });
+this.load.spritesheet('orchidwheel', 'assets/char/orchid/orchidwheel.png', { frameWidth: 155, frameHeight: 151 });
+this.load.spritesheet('orchidfireba', 'assets/char/orchid/orchidfireba.png', { frameWidth: 100, frameHeight: 150 });
+this.load.spritesheet('orchidfirebaexplode', 'assets/char/orchid/orchidfirebaexplode.png', { frameWidth: 128, frameHeight: 128 });
+this.load.spritesheet('orchidbaton', 'assets/char/orchid/orchidbaton.png', { frameWidth: 120, frameHeight: 131 });
+this.load.spritesheet('orchidcat', 'assets/char/orchid/orchidcat.png', { frameWidth: 185, frameHeight: 120 });
+this.load.spritesheet('orchidfit', 'assets/char/orchid/orchidfit.png', { frameWidth: 90, frameHeight: 140 });
+this.load.spritesheet('orchidfirebagr', 'assets/char/orchid/orchidfirebagr.png', { frameWidth: 70, frameHeight: 80 });
+this.load.image('orchidwheelbox', 'assets/ui/orchid/orchidwheelbox.png');
+this.load.image('orchidcatbox', 'assets/ui/orchid/orchidcatbox.png');
+this.load.image('orchidbatonbox', 'assets/ui/orchid/orchidbatonbox.png');
+this.load.image('orchidfirebabox', 'assets/ui/orchid/orchidfirebabox.png');
+this.load.image('orchidfitbox', 'assets/ui/orchid/orchidfitbox.png');
+
+    this.load.audio('orchidlasaken', [
+        'assets/sound/orchid-lasakin.mp3'
+    ]);
+    this.load.audio('orchidcat', [
+        'assets/sound/orchid-cat.mp3'
+    ]);
+     this.load.audio('orchidfit', [
+        'assets/sound/orchid-fitvoice.mp3'
+    ]);
+    this.load.audio('orchidbaton', [
+        'assets/sound/orchid-batonvoice.mp3'
+    ]);
+    this.load.audio('orchidwheel', [
+        'assets/sound/orchid-wheelvoice.mp3'
+    ]);
+
+//endloadorchid
+
+
+//loadspinal
+this.load.spritesheet('spinaldead', 'assets/char/spinal/spinaldead.png', { frameWidth: 131, frameHeight: 55 });
+this.load.spritesheet('spinal', 'assets/char/spinal/spinalidle.png', { frameWidth: 100, frameHeight: 155 });
+this.load.spritesheet('spinalwalk', 'assets/char/spinal/spinalwalk.png', { frameWidth: 112, frameHeight: 155 });
+this.load.spritesheet('spinalrun', 'assets/char/spinal/spinalrun.png', { frameWidth: 120, frameHeight: 160 });
+this.load.spritesheet('spinalslice', 'assets/char/spinal/spinalslashup.png', { frameWidth: 165, frameHeight: 180 });
+this.load.spritesheet('spinalslash', 'assets/char/spinal/spinaldoubleslash.png', { frameWidth: 150, frameHeight: 170 });
+this.load.spritesheet('spinalbash', 'assets/char/spinal/spinalshieldbash.png', { frameWidth: 135, frameHeight: 180 });
+this.load.spritesheet('spinalspike', 'assets/char/spinal/spinalshieldspike.png', { frameWidth: 135, frameHeight: 155 });
+this.load.spritesheet('spinalblock', 'assets/char/spinal/spinalblock.png', { frameWidth: 85, frameHeight: 155 });
+this.load.image('spinalslicebox', 'assets/ui/spinal/spinalslicebox.png');
+this.load.image('spinalslashbox', 'assets/ui/spinal/spinalslashbox.png');
+this.load.image('spinalbashbox', 'assets/ui/spinal/spinalbashbox.png');
+this.load.image('spinalspikebox', 'assets/ui/spinal/spinalspikebox.png');
+this.load.image('spinalblockbox', 'assets/ui/spinal/spinalblockbox.png');
+
+    this.load.audio('spinalslashvoice', [
+        'assets/sound/spinal-slashvoice.mp3'
+    ]);
+    this.load.audio('spinalslicevoice', [
+        'assets/sound/spinal-slicevoice.mp3'
+    ]);
+    this.load.audio('spinalbashvoice', [
+        'assets/sound/spinal-bashvoice.mp3'
+    ]);
+//endloadspinal
+
+//*************endchar
+
+
+//loadparticle
+this.load.image('spark0', 'assets/particles/blue.png');
+this.load.image('spark1', 'assets/particles/red.png');
+this.load.atlas('flares', 'assets/particles/flares.png', 'assets/particles/flares.json');
+//loadbattleui
+this.load.image('battlegroundbox', 'assets/battlegrounds/battlegroundbox.png');
+this.load.image('battlegroundbackbox', 'assets/battlegrounds/battlegroundboxbackground.png');
+this.load.image('matchstartinggraphic', 'assets/battlegrounds/matchstartinggraphic.png');
+this.load.image('leftplayerbox', 'assets/battlegrounds/leftplayeractionbox.png');
+this.load.image('rightplayerbox', 'assets/battlegrounds/rightplayeractionbox.png');
+this.load.image('player1selectabilitybox', 'assets/battlegrounds/player1abilityselectbox.png');
+this.load.image('player2selectabilitybox', 'assets/battlegrounds/player2abilityselectbox.png');
+this.load.image('player1selecttargetbox', 'assets/battlegrounds/player1selecttargetbox.png');
+this.load.image('player2selecttargetbox', 'assets/battlegrounds/player2selecttargetbox.png');
+this.load.image('playerpositionsquare', 'assets/battlegrounds/playerpositionbox.png');
+this.load.image('focusbox', 'assets/ui/focusboxui.png');
+this.load.image('focuschargebox', 'assets/ui/focuschargeboxui.png');
+
+//nameplates
+this.load.image('kangname', 'assets/ui/kangnameplate.png');
+this.load.image('spinalname', 'assets/ui/spinalnameplate.png');
+this.load.image('glaciusname', 'assets/ui/glaciusnameplate.png');
+this.load.image('kanoname', 'assets/ui/kanonameplate.png');
+this.load.image('sindelname', 'assets/ui/sindelnameplate.png');
+this.load.image('kabalname', 'assets/ui/kabalnameplate.png');
+this.load.image('jagoname', 'assets/ui/jagonameplate.png');
+this.load.image('cyraxname', 'assets/ui/cyraxnameplate.png');
+this.load.image('cecilname', 'assets/ui/cecilnameplate.png');
+this.load.image('cyanname', 'assets/ui/cyannameplate.png');
+this.load.image('golbezname', 'assets/ui/golbeznameplate.png');
+this.load.image('kainname', 'assets/ui/kainnameplate.png');
+this.load.image('terraname', 'assets/ui/terranameplate.png');
+this.load.image('rosaname', 'assets/ui/rosanameplate.png');
+this.load.image('mogname', 'assets/ui/mognameplate.png');
+this.load.image('kunglaoname', 'assets/ui/kunglaonameplate.png');
+this.load.image('sonjaname', 'assets/ui/sonjanameplate.png');
+this.load.image('sektorname', 'assets/ui/sektornameplate.png');
+this.load.image('comboname', 'assets/ui/combonameplate.png');
+this.load.image('orchidname', 'assets/ui/orchidnameplate.png');
+
+},
+//endload****************************************************************
+////////////////////////////////////////////////////////////////////////
+//begincreate battleground************************************************************
+create: function ()
+{
+        
+        ancienttemplebackground = this.physics.add.sprite(0, 0, 'ancienttemplebackground').setOrigin(0, 0); 
+        ancienttemplefrontpiece = this.physics.add.sprite(0, 0, 'ancienttemplefrontpiece').setOrigin(0, 0);
+        ancienttemplehead = this.physics.add.sprite(592, 0, 'ancienttemplehead').setOrigin(0, 0);
+        matchstartinggraphic = this.physics.add.sprite(298, 5, 'matchstartinggraphic').setOrigin(0, 0);
+        matchstartinggraphic.visible = false
+
+        
+        //team1
+        player1positiont1 = this.physics.add.sprite(103, 429, 'playerpositionsquare').setOrigin(0, 0);
+        player2positiont1 = this.physics.add.sprite(103, 323, 'playerpositionsquare').setOrigin(0, 0);
+        player3positiont1 = this.physics.add.sprite(17, 465, 'playerpositionsquare').setOrigin(0, 0);
+        player4positiont1 = this.physics.add.sprite(17, 373, 'playerpositionsquare').setOrigin(0, 0);
+        player5positiont1 = this.physics.add.sprite(17, 281, 'playerpositionsquare').setOrigin(0, 0);
+        //team2
+        player1positiont2 = this.physics.add.sprite(1197, 429, 'playerpositionsquare').setOrigin(0, 0);
+        player2positiont2 = this.physics.add.sprite(1197, 323, 'playerpositionsquare').setOrigin(0, 0);
+        player3positiont2 = this.physics.add.sprite(1283, 465, 'playerpositionsquare').setOrigin(0, 0);
+        player4positiont2 = this.physics.add.sprite(1283, 373, 'playerpositionsquare').setOrigin(0, 0);
+        player5positiont2 = this.physics.add.sprite(1283, 281, 'playerpositionsquare').setOrigin(0, 0);
+
+
+    //loadcecil     
+    if (loadcecil == true){
+    if (player1cecil == true){
+    if (player1p1name == 'CECIL') {      
+    p1cecilx = team1player1x - 20
+    p1cecily = team1player1y - 35
+    }
+    if (player1p2name == 'CECIL') {      
+    p1cecilx = team1player2x - 20
+    p1cecily = team1player2y - 35
+    }
+     if (player1p3name == 'CECIL') {      
+    p1cecilx = team1player3x - 20
+    p1cecily = team1player3y - 35
+    }
+    if (player1p4name == 'CECIL') {      
+    p1cecilx = team1player4x - 20
+    p1cecily = team1player4y - 35
+    }
+     if (player1p5name == 'CECIL') {      
+    p1cecilx = team1player5x - 20
+    p1cecily = team1player5y - 35
+    }
+
+    p1cecil = this.add.sprite(p1cecilx, p1cecily, 'cecil').setInteractive();
+    p1cecil.setOrigin(0, 0);
+    p1cecil.setFlipX(true);
+    p1cecil.on('pointerdown', function (pointer) {
+    if (team1turn == true){
+    p1cecilselected = true
+    player1selectabilitybox.visible = true
+    p1cecilswordbutton.visible = true
+    p1cecilholybutton.visible = true 
+    p1cecilholyswordbutton.visible = true
+    p1cecilshieldbutton.visible = true
+    p1ceciltargetbutton.visible = true
+    }
+    
+    if (team2turn == true){
+        if (p2cecilselectingtarget == true){
+        currentattacktargetname = 'p1cecil'
+        p2ceciltargetselected = true
+        currentenemyposx = p1cecilx
+        currentenemyposy = p1cecily
+        setenemyposition()
+    }
+    
+    if (p2kainselectingtarget == true){
+        currentattacktargetname = 'p1cecil'
+        p2kaintargetselected = true
+        currentenemyposx = p1cecilx
+        currentenemyposy = p1cecily
+        setenemyposition()
+    }
+
+    if (p2kangselectingtarget == true){
+        currentattacktargetname = 'p1cecil'
+        p2kangtargetselected = true
+        currentenemyposx = p1cecilx
+        currentenemyposy = p1cecily
+        setenemyposition()
+    }
+
+    if (p2orchidselectingtarget == true){
+        currentattacktargetname = 'p1cecil'
+        p2orchidtargetselected = true
+        currentenemyposx = p1cecilx
+        currentenemyposy = p1cecily
+        setenemyposition()
+    }
+
+
+    }
+    });
+    p1ceciltimer = this.time.addEvent({ delay: 50, callback: p1cecilaction, callbackScope: this, loop: true,startAt: 1 });
+    }   
+//loadcecil1end
+    if (player2cecil == true){
+    if (player2p1name == 'CECIL') {     
+    p2cecilx = team2player1x - 25
+    p2cecily = team2player1y - 35
+    }
+    if (player2p2name == 'CECIL') {     
+    p2cecilx = team2player2x - 25
+    p2cecily = team2player2y - 35
+    }
+    if (player2p3name == 'CECIL') {     
+    p2cecilx = team2player3x - 25
+    p2cecily = team2player3y - 35
+    }
+    if (player2p4name == 'CECIL') {     
+    p2cecilx = team2player4x - 25
+    p2cecily = team2player4y - 35
+    }
+    if (player2p5name == 'CECIL') {     
+    p2cecilx = team2player5x - 25
+    p2cecily = team2player5y - 35
+    }
+
+
+    p2cecil = this.add.sprite(p2cecilx, p2cecily, 'cecil').setInteractive();
+    p2cecil.setOrigin(0, 0);
+    p2cecil.on('pointerdown', function (pointer) {
+    if (team2turn == true){
+    p2cecilselected = true
+    player2selectabilitybox.visible = true
+    p2cecilswordbutton.visible = true
+    p2cecilholybutton.visible = true 
+    p2cecilholyswordbutton.visible = true
+    p2cecilshieldbutton.visible = true
+    p2ceciltargetbutton.visible = true
+    }
+
+    if (team1turn == true){
+        if (p1cecilselectingtarget == true){
+        p1ceciltargetselected = true
+        currentattacktargetname = 'p2cecil'
+        currentenemyposx = p2cecilx
+        currentenemyposy = p2cecily
+        setenemyposition()
+    }
+        if (p1kainselectingtarget == true){
+        p1kaintargetselected = true
+        currentattacktargetname = 'p2cecil'
+        currentenemyposx = p2cecilx
+        currentenemyposy = p2cecily
+        setenemyposition()
+    }
+    if (p1kangselectingtarget == true){
+        p1kangtargetselected = true
+        currentattacktargetname = 'p2cecil'
+        currentenemyposx = p2cecilx
+        currentenemyposy = p2cecily
+        setenemyposition()
+    }
+
+    if (p1orchidselectingtarget == true){
+        p1orchidtargetselected = true
+        currentattacktargetname = 'p2cecil'
+        currentenemyposx = p2cecilx
+        currentenemyposy = p2cecily
+        setenemyposition()
+    }
+    
+    if (p1spinalselectingtarget == true){
+        p1spinaltargetselected = true
+        currentattacktargetname = 'p2cecil'
+        currentenemyposx = p2cecilx
+        currentenemyposy = p2cecily
+        setenemyposition()
+    }
+
+    }
+    });
+    p2ceciltimer = this.time.addEvent({ delay: 50, callback: p2cecilaction, callbackScope: this, loop: true,startAt: 1 });
+    }
+    }
+//loadcecil2end    
+//loadcecilend
+
+//loadkain     
+    if (loadkain == true){
+    if (player1kain == true){
+    if (player1p1name == 'KAIN') {      
+    p1kainx = team1player1x - 20
+    p1kainy = team1player1y - 35
+    }
+    if (player1p2name == 'KAIN') {      
+    p1kainx = team1player2x - 20
+    p1kainy = team1player2y - 35
+    }
+     if (player1p3name == 'KAIN') {      
+    p1kainx = team1player3x - 20
+    p1kainy = team1player3y - 35
+    }
+    if (player1p4name == 'KAIN') {      
+    p1kainx = team1player4x - 20
+    p1kainy = team1player4y - 35
+    }
+     if (player1p5name == 'KAIN') {      
+    p1kainx = team1player5x - 20
+    p1kainy = team1player5y - 35
+    }
+
+    p1kain = this.add.sprite(p1kainx, p1kainy, 'kain').setInteractive();
+    p1kain.setOrigin(0, 0);
+    p1kain.setFlipX(true);
+    p1kain.on('pointerdown', function (pointer) {
+
+    if (team1turn == true){
+    p1kainselected = true
+    player1selectabilitybox.visible = true
+    p1kainslashbutton.visible = true
+    p1kainjumpbutton.visible = true
+    p1kainstrikebutton.visible = true
+    p1kainpowerbutton.visible = true
+ 
+    }
+
+    if (team2turn == true){
+        if (p2cecilselectingtarget == true){
+        p2ceciltargetselected = true
+        currentattacktargetname = 'p1kain'
+        currentenemyposx = p1kainx
+        currentenemyposy = p1kainy
+        setenemyposition()
+    }
+        if (p2kainselectingtarget == true){
+        p2kaintargetselected = true
+        currentattacktargetname = 'p1kain'
+        currentenemyposx = p1kainx
+        currentenemyposy = p1kainy
+        setenemyposition()
+    }
+        if (p2kangselectingtarget == true){
+        p2kangtargetselected = true
+        currentattacktargetname = 'p1kain'
+        currentenemyposx = p1kainx
+        currentenemyposy = p1kainy
+        setenemyposition()
+    }
+
+    if (p2orchidselectingtarget == true){
+        p2orchidtargetselected = true
+        currentattacktargetname = 'p1kain'
+        currentenemyposx = p1kainx
+        currentenemyposy = p1kainy
+        setenemyposition()
+    }
+    
+    
+    }
+   
+    });
+    p1kaintimer = this.time.addEvent({ delay: 50, callback: p1kainaction, callbackScope: this, loop: true,startAt: 1 });
+    }   
+    //loadkain1end
+
+    if (player2kain == true){
+    if (player2p1name == 'KAIN') {     
+    p2kainx = team2player1x - 25
+    p2kainy = team2player1y - 35
+    }
+    if (player2p2name == 'KAIN') {     
+    p2kainx = team2player2x - 25
+    p2kainy = team2player2y - 35
+    }
+    if (player2p3name == 'KAIN') {     
+    p2kainx = team2player3x - 25
+    p2kainy = team2player3y - 35
+    }
+    if (player2p4name == 'KAIN') {     
+    p2kainx = team2player4x - 25
+    p2kainy = team2player4y - 35
+    }
+    if (player2p5name == 'KAIN') {     
+    p2kainx = team2player5x - 25
+    p2kainy = team2player5y - 35
+    }
+
+
+    p2kain = this.add.sprite(p2kainx, p2kainy, 'kain').setInteractive();
+    p2kain.setOrigin(0, 0);
+    p2kain.on('pointerdown', function (pointer) {
+        
+    if (team2turn == true){
+    p2kainselected = true
+    player2selectabilitybox.visible = true
+    p2kainslashbutton.visible = true
+    p2kainjumpbutton.visible = true
+    p2kainstrikebutton.visible = true
+    p2kainpowerbutton.visible = true
+    }
+
+
+    if (team1turn == true){
+        if (p1cecilselectingtarget == true){
+        p1ceciltargetselected = true
+        currentattacktargetname = 'p2kain'
+        currentenemyposx = p2kainx
+        currentenemyposy = p2kainy
+        setenemyposition()
+    }
+
+    if (p1kainselectingtarget == true){
+        p1kaintargetselected = true
+        currentattacktargetname = 'p2kain'
+        currentenemyposx = p2kainx
+        currentenemyposy = p2kainy
+        setenemyposition()
+    }
+    if (p1kangselectingtarget == true){
+        p1kangtargetselected = true
+        currentattacktargetname = 'p2kain'
+        currentenemyposx = p2kainx
+        currentenemyposy = p2kainy
+        setenemyposition()
+    }
+
+    if (p1orchidselectingtarget == true){
+        p1orchidtargetselected = true
+        currentattacktargetname = 'p2kain'
+        currentenemyposx = p2kainx
+        currentenemyposy = p2kainy
+        setenemyposition()
+    }
+
+    if (p1spinalselectingtarget == true){
+        p1spinaltargetselected = true
+        currentattacktargetname = 'p2kain'
+        currentenemyposx = p2kainx
+        currentenemyposy = p2kainy
+        setenemyposition()
+    }
+
+
+    }
+    });
+    p2kaintimer = this.time.addEvent({ delay: 50, callback: p2kainaction, callbackScope: this, loop: true,startAt: 1 });
+    }
+    }
+//loadkain2end
+//loadkainend
+
+//loadkang     
+    if (loadkang == true){
+    if (player1kang == true){
+    if (player1p1name == 'KANG') {      
+    p1kangx = team1player1x 
+    p1kangy = team1player1y - 80
+    }
+    if (player1p2name == 'KANG') {      
+    p1kangx = team1player2x 
+    p1kangy = team1player2y - 80
+    }
+     if (player1p3name == 'KANG') {      
+    p1kangx = team1player3x 
+    p1kangy = team1player3y - 80
+    }
+    if (player1p4name == 'KANG') {      
+    p1kangx = team1player4x 
+    p1kangy = team1player4y - 80
+    }
+     if (player1p5name == 'KANG') {      
+    p1kangx = team1player5x 
+    p1kangy = team1player5y - 80
+    }
+
+    p1kang = this.add.sprite(p1kangx, p1kangy, 'kang').setInteractive();
+    p1kang.setOrigin(0, 0);
+    p1kang.setScale(1.4, 1.4);
+    p1kang.on('pointerdown', function (pointer) {
+    if (team1turn == true){
+    p1kangselected = true
+    player1selectabilitybox.visible = true
+    p1kangflykickbutton.visible = true
+    p1kangfireballbutton.visible = true 
+    p1kangbicyclebutton.visible = true
+    p1kangdragonbutton.visible = true
+    p1kangprayerbutton.visible = true
+    }
+    
+    if (team2turn == true){
+    if (p2cecilselectingtarget == true){
+        currentattacktargetname = 'p1kang'
+        p2ceciltargetselected = true
+        currentenemyposx = p1kangx
+        currentenemyposy = p1kangy
+        setenemyposition()
+    }
+    
+    if (p2kainselectingtarget == true){
+        currentattacktargetname = 'p1kang'
+        p2kaintargetselected = true
+        currentenemyposx = p1kangx
+        currentenemyposy = p1kangy
+        setenemyposition()
+    }
+     if (p2kangselectingtarget == true){
+        currentattacktargetname = 'p1kang'
+        p2kangtargetselected = true
+        currentenemyposx = p1kangx
+        currentenemyposy = p1kangy
+        setenemyposition()
+    }
+
+    if (p2orchidselectingtarget == true){
+        currentattacktargetname = 'p1kang'
+        p2orchidtargetselected = true
+        currentenemyposx = p1kangx
+        currentenemyposy = p1kangy
+        setenemyposition()
+    }
+    }
+
+    });
+    p1kangtimer = this.time.addEvent({ delay: 50, callback: p1kangaction, callbackScope: this, loop: true,startAt: 1 });
+    }   
+//loadkang1end
+    if (player2kang == true){
+    if (player2p1name == 'KANG') {     
+    p2kangx = team2player1x 
+    p2kangy = team2player1y - 80
+    }
+    if (player2p2name == 'KANG') {     
+    p2kangx = team2player2x 
+    p2kangy = team2player2y - 80
+    }
+    if (player2p3name == 'KANG') {     
+    p2kangx = team2player3x 
+    p2kangy = team2player3y - 80
+    }
+    if (player2p4name == 'KANG') {     
+    p2kangx = team2player4x 
+    p2kangy = team2player4y - 80
+    }
+    if (player2p5name == 'KANG') {     
+    p2kangx = team2player5x 
+    p2kangy = team2player5y - 80
+    }
+
+
+    p2kang = this.add.sprite(p2kangx, p2kangy, 'kang').setInteractive();
+    p2kang.setOrigin(0, 0);
+    p2kang.setScale(1.4, 1.4);
+    p2kang.setFlipX(true);
+    p2kang.on('pointerdown', function (pointer) {
+    if (team2turn == true){
+    p2kangselected = true
+    player2selectabilitybox.visible = true
+    p2kangfireballbutton.visible = true
+    p2kangflykickbutton.visible = true 
+    p2kangbicyclebutton.visible = true
+    p2kangdragonbutton.visible = true
+    p2kangprayerbutton.visible = true
+    }
+
+    if (team1turn == true){
+        if (p1cecilselectingtarget == true){
+        p1ceciltargetselected = true
+        currentattacktargetname = 'p2kang'
+        currentenemyposx = p2kangx
+        currentenemyposy = p2kangy
+        setenemyposition()
+    }
+        if (p1kainselectingtarget == true){
+        p1kaintargetselected = true
+        currentattacktargetname = 'p2kang'
+        currentenemyposx = p2kangx
+        currentenemyposy = p2kangy
+        setenemyposition()
+    }
+    
+    if (p1kangselectingtarget == true){
+        p1kangtargetselected = true
+        currentattacktargetname = 'p2kang'
+        currentenemyposx = p2kangx
+        currentenemyposy = p2kangy
+        setenemyposition()
+    }
+    if (p1orchidselectingtarget == true){
+        p1orchidtargetselected = true
+        currentattacktargetname = 'p2kang'
+        currentenemyposx = p2kangx
+        currentenemyposy = p2kangy
+        setenemyposition()
+    }
+    if (p1spinalselectingtarget == true){
+        p1spinaltargetselected = true
+        currentattacktargetname = 'p2kang'
+        currentenemyposx = p2kangx
+        currentenemyposy = p2kangy
+        setenemyposition()
+    }
+
+    }
+    });
+    p2kangtimer = this.time.addEvent({ delay: 50, callback: p2kangaction, callbackScope: this, loop: true,startAt: 1 });
+    }
+    }
+//loadkang2end    
+//loadkangend
+
+//p1orchidload
+//loadorchid1     
+    if (loadorchid == true){
+    if (player1orchid == true){
+    if (player1p1name == 'ORCHID') {      
+    p1orchidx = team1player1x 
+    p1orchidy = team1player1y - 75
+    
+    }
+    if (player1p2name == 'ORCHID') {      
+    p1orchidx = team1player2x 
+    p1orchidy = team1player2y - 75
+    }
+     if (player1p3name == 'ORCHID') {      
+    p1orchidx = team1player3x 
+    p1orchidy = team1player3y - 75
+    }
+    if (player1p4name == 'ORCHID') {      
+    p1orchidx = team1player4x 
+    p1orchidy = team1player4y - 75
+    }
+     if (player1p5name == 'ORCHID') {      
+    p1orchidx = team1player5x 
+    p1orchidy = team1player5y - 75
+    }
+
+    p1orchid = this.add.sprite(p1orchidx, p1orchidy, 'orchid').setInteractive();
+    p1orchid.setOrigin(0, 0);
+    p1orchid.on('pointerdown', function (pointer) {
+    if (team1turn == true){
+    p1orchidselected = true
+    player1selectabilitybox.visible = true
+    p1orchidwheelbutton.visible = true
+    p1orchidfirebabutton.visible = true 
+    p1orchidcatbutton.visible = true
+    p1orchidbatonbutton.visible = true
+    p1orchidfitbutton.visible = true
+    }
+    
+    if (team2turn == true){
+    if (p2cecilselectingtarget == true){
+        currentattacktargetname = 'p1orchid'
+        p2ceciltargetselected = true
+        currentenemyposx = p1orchidx
+        currentenemyposy = p1orchidy
+        setenemyposition()
+    }
+    
+    if (p2kainselectingtarget == true){
+        currentattacktargetname = 'p1orchid'
+        p2kaintargetselected = true
+        currentenemyposx = p1orchidx
+        currentenemyposy = p1orchidy
+        setenemyposition()
+    }
+     if (p2kangselectingtarget == true){
+        currentattacktargetname = 'p1orchid'
+        p2kangtargetselected = true
+        currentenemyposx = p1orchidx
+        currentenemyposy = p1orchidy
+        setenemyposition()
+    }
+     if (p2orchidselectingtarget == true){
+        currentattacktargetname = 'p1orchid'
+        p2orchidtargetselected = true
+        currentenemyposx = p1orchidx
+        currentenemyposy = p1orchidy
+        setenemyposition()
+    }
+  
+
+    }
+
+
+    });
+    p1orchidtimer = this.time.addEvent({ delay: 50, callback: p1orchidaction, callbackScope: this, loop: true,startAt: 1 });
+    }   
+    }
+//loadorchid1end
+//p2orchidload
+//loadorchid2     
+    if (loadorchid == true){
+    if (player1orchid == true){
+    if (player1p2name == 'ORCHID') {      
+    p2orchidx = team2player1x 
+    p2orchidy = team2player1y - 75
+    }
+    if (player1p2name == 'ORCHID') {      
+    p2orchidx = team2player2x 
+    p2orchidy = team2player2y - 75
+    }
+     if (player1p3name == 'ORCHID') {      
+    p2orchidx = team2player3x 
+    p2orchidy = team2player3y - 75
+    }
+    if (player1p4name == 'ORCHID') {      
+    p2orchidx = team2player4x 
+    p2orchidy = team2player4y - 75
+    }
+     if (player1p5name == 'ORCHID') {      
+    p2orchidx = team2player5x 
+    p2orchidy = team2player5y - 75
+    }
+
+    p2orchid = this.add.sprite(p2orchidx, p2orchidy, 'orchid').setInteractive();
+    p2orchid.setOrigin(0, 0);
+    p2orchid.setFlipX(true);
+    p2orchid.on('pointerdown', function (pointer) {
+    if (team2turn == true){
+    p2orchidselected = true
+    player2selectabilitybox.visible = true
+    p2orchidwheelbutton.visible = true
+    p2orchidfirebabutton.visible = true 
+    p2orchidcatbutton.visible = true
+    p2orchidbatonbutton.visible = true
+    p2orchidfitbutton.visible = true
+    }
+    
+    if (team1turn == true){
+    if (p1cecilselectingtarget == true){
+        currentattacktargetname = 'p2orchid'
+        p1ceciltargetselected = true
+        currentenemyposx = p2orchidx
+        currentenemyposy = p2orchidy
+        setenemyposition()
+    }
+    
+    if (p1kainselectingtarget == true){
+        currentattacktargetname = 'p2orchid'
+        p1kaintargetselected = true
+        currentenemyposx = p2orchidx
+        currentenemyposy = p2orchidy
+        setenemyposition()
+    }
+     if (p1kangselectingtarget == true){
+        currentattacktargetname = 'p2orchid'
+        p1kangtargetselected = true
+        currentenemyposx = p2orchidx
+        currentenemyposy = p2orchidy
+        setenemyposition()
+    }
+
+    if (p1orchidselectingtarget == true){
+        currentattacktargetname = 'p2orchid'
+        p1orchidtargetselected = true
+        currentenemyposx = p2orchidx
+        currentenemyposy = p2orchidy
+        setenemyposition()
+    }
+    if (p1spinalselectingtarget == true){
+        currentattacktargetname = 'p2orchid'
+        p1spinaltargetselected = true
+        currentenemyposx = p2orchidx
+        currentenemyposy = p2orchidy
+        setenemyposition()
+    }
+  
+    }
+
+
+    });
+    p2orchidtimer = this.time.addEvent({ delay: 50, callback: p2orchidaction, callbackScope: this, loop: true,startAt: 1 });
+    }   
+    }
+//loadorchid1end
+ //p1spinalload
+     //loadspinal1     
+    if (loadspinal == true){
+    if (player1spinal == true){
+    if (player1p1name == 'SPINAL') {      
+    p1spinalx = team1player1x 
+    p1spinaly = team1player1y - 100
+    }
+    if (player1p2name == 'SPINAL') {      
+    p1spinalx = team1player2x 
+    p1spinaly = team1player2y - 100
+    }
+     if (player1p3name == 'SPINAL') {      
+    p1spinalx = team1player3x 
+    p1spinaly = team1player3y - 100
+    }
+    if (player1p4name == 'SPINAL') {      
+    p1spinalx = team1player4x 
+    p1spinaly = team1player4y - 100
+    }
+     if (player1p5name == 'SPINAL') {      
+    p1spinalx = team1player5x 
+    p1spinaly = team1player5y - 100
+    }
+
+    p1spinal = this.add.sprite(p1spinalx, p1spinaly, 'spinal').setInteractive();
+    p1spinal.setOrigin(0, 0);
+    p1spinal.on('pointerdown', function (pointer) {
+    if (team1turn == true){
+    p1spinalselected = true
+    player1selectabilitybox.visible = true
+    p1spinalslicebutton.visible = true
+    p1spinalslashbutton.visible = true 
+    p1spinalbashbutton.visible = true
+    p1spinalspikebutton.visible = true
+    p1spinalblockbutton.visible = true
+    }
+    
+    if (team2turn == true){
+    if (p2cecilselectingtarget == true){
+        currentattacktargetname = 'p1spinal'
+        p2ceciltargetselected = true
+        currentenemyposx = p1spinalx
+        currentenemyposy = p1spinaly
+        setenemyposition()
+    }
+    
+    if (p2kainselectingtarget == true){
+        currentattacktargetname = 'p1spinal'
+        p2kaintargetselected = true
+        currentenemyposx = p1spinalx
+        currentenemyposy = p1spinaly
+        setenemyposition()
+    }
+     if (p2kangselectingtarget == true){
+        currentattacktargetname = 'p1spinal'
+        p2kangtargetselected = true
+        currentenemyposx = p1spinalx
+        currentenemyposy = p1spinaly
+        setenemyposition()
+    }
+
+    if (p2orchidselectingtarget == true){
+        currentattacktargetname = 'p1spinal'
+        p2orchidtargetselected = true
+        currentenemyposx = p1spinalx
+        currentenemyposy = p1spinaly
+        setenemyposition()
+    }
+
+     if (p2spinalselectingtarget == true){
+        currentattacktargetname = 'p1spinal'
+        p2spinaltargetselected = true
+        currentenemyposx = p1spinalx
+        currentenemyposy = p1spinaly
+        setenemyposition()
+    }
+  
+
+    }
+
+
+    });
+    p1spinaltimer = this.time.addEvent({ delay: 50, callback: p1spinalaction, callbackScope: this, loop: true,startAt: 1 });
+    }   
+    }      
+
+    
+        ancienttemplefrontwall = this.physics.add.sprite(0, 474, 'ancienttemplefrontwall').setOrigin(0, 0);
+        scenename = 'ancienttemplebattleground'
+        areaname = "  The battleground"
+
+bufftimer = this.time.addEvent({ delay: 100, callback: bufftimer, callbackScope: this, loop: true,startAt: 1 });
+function bufftimer(){
+     if (p1cecilholyaura == true){
+         p1cecilholyparticles.visible = true
+        p1cecilholyauratime -= 1
+        if (p1cecilholyaurastatup == false){
+        p1cecildefenserating += 100;
+        p1cecilholyaurastatup = true
+    } 
+}
+
+    if (p1cecilholyauratime < 1){
+        if (p1cecilholyaurastatup == true){
+        p1cecildefenserating -= 100;
+        p1cecilholyparticles.visible = false
+        p1cecilholyaurastatup = false
+        p1cecilholyaura = false
+        p1cecilholyauratime = 500
+    }
+}
+
+     if (p2cecilholyaura == true){
+         p2cecilholyparticles.visible = true
+        p2cecilholyauratime -= 1
+        if (p2cecilholyaurastatup == false){
+        p2cecildefenserating += 100;
+        p2cecilholyaurastatup = true
+    } 
+}
+
+    if (p2cecilholyauratime < 1){
+        if (p2cecilholyaurastatup == true){
+        p2cecildefenserating -= 100;
+        p2cecilholyparticles.visible = false
+        p2cecilholyaurastatup = false
+        p2cecilholyaura = false
+        p2cecilholyauratime = 500
+    }
+}
+
+}
+
+//cecilattacksp1
+p1cecilsword = this.physics.add.sprite(p1cecil.x, p1cecil.y , 'cecilsword').setOrigin(0, 0);
+p1cecilsword.visible = false
+p1cecilsword.setFlipX(true);
+
+p1cecilholysword = this.physics.add.sprite(p1cecil.x, p1cecil.y , 'cecilholysword').setOrigin(0, 0);
+p1cecilholysword.visible = false
+p1cecilholysword.setFlipX(true);
+
+p1ceciltarget = this.physics.add.sprite(p1cecil.x, p1cecil.y , 'ceciltarget').setOrigin(0, 0);
+p1ceciltarget.visible = false
+p1ceciltarget.setFlipX(true);
+
+p2cecilsword = this.physics.add.sprite(p2cecil.x, p2cecil.y , 'cecilsword').setOrigin(0, 0);
+p2cecilsword.visible = false
+
+
+p2cecilholysword = this.physics.add.sprite(p2cecil.x, p2cecil.y , 'cecilholysword').setOrigin(0, 0);
+p2cecilholysword.visible = false
+
+
+p2ceciltarget = this.physics.add.sprite(p2cecil.x, p2cecil.y , 'ceciltarget').setOrigin(0, 0);
+p2ceciltarget.visible = false
+
+//kainattacksp1
+p1kainstrike = this.physics.add.sprite(p1kain.x, p1kain.y , 'kainstrike').setOrigin(0, 0);
+p1kainstrike.visible = false
+p1kainstrike.setFlipX(true);
+
+p1kainslash = this.physics.add.sprite(p1kain.x, p1kain.y , 'kainslash').setOrigin(0, 0);
+p1kainslash.visible = false
+p1kainslash.setFlipX(true);
+
+p1kainjumpweapon = this.physics.add.sprite(p1kain.x, p1kain.y , 'kainjumpweapon').setOrigin(0, 0);
+p1kainjumpweapon.visible = false
+p1kainjumpweapon.setFlipX(true);
+p1kainjumpweapon.rotation += 45;
+
+p1kainjumpimpact = this.physics.add.sprite(p1kain.x, p1kain.y , 'kainjumpimpact').setOrigin(0, 0);
+p1kainjumpimpact.visible = false
+p1kainjumpimpact.setFlipX(true);
+p1kainjumpimpact.rotation += 45;
+
+
+p2kainstrike = this.physics.add.sprite(p2kain.x, p2kain.y , 'kainstrike').setOrigin(0, 0);
+p2kainstrike.visible = false
+p2kainstrike.setFlipX(true);
+
+p2kainslash = this.physics.add.sprite(p2kain.x, p2kain.y , 'kainslash').setOrigin(0, 0);
+p2kainslash.visible = false
+p2kainslash.setFlipX(true);
+
+p2kainjumpweapon = this.physics.add.sprite(p2kain.x, p2kain.y , 'kainjumpweapon').setOrigin(0, 0);
+p2kainjumpweapon.visible = false
+p2kainjumpweapon.setFlipX(true);
+p2kainjumpweapon.rotation += 45;
+
+p2kainjumpimpact = this.physics.add.sprite(p2kain.x, p2kain.y , 'kainjumpimpact').setOrigin(0, 0);
+p2kainjumpimpact.visible = false
+p2kainjumpimpact.setFlipX(true);
+p2kainjumpimpact.rotation += 45;
+        
+p1cecilholy = this.physics.add.sprite(0, 0 , 'ceciltarget').setOrigin(0, 0);
+p1cecilholy.visible = false
+p1cecilholy.setFlipX(true);
+
+p2cecilholy = this.physics.add.sprite(0, 0 , 'ceciltarget').setOrigin(0, 0);
+p2cecilholy.visible = false
+p2cecilholy.setFlipX(true);
+
+p1orchidfireba = this.physics.add.sprite(p1orchid.x, p1orchid.y +20, 'orchidfirebagr').setOrigin(0, 0);
+p1orchidfireba.visible = false
+
+p2orchidfireba = this.physics.add.sprite(p2orchid.x, p2orchid.y +20, 'orchidfirebagr').setOrigin(0, 0);
+p2orchidfireba.visible = false
+p2orchidfireba.setFlipX(true);
+
+
+//kangattacksp1
+p1kangfireball = this.physics.add.sprite(p1kang.x, p1kang.y , 'kangfireballgr').setOrigin(0, 0); 
+p1kangfireball.visible = false
+p1kangfireballexplode = this.physics.add.sprite(p1kang.x, p1kang.y -50, 'kangfireballexplode').setOrigin(0, 0);
+p1kangfireballexplode.visible = false
+p1kangprayerboltstrike = this.physics.add.sprite(p1kang.x, p1kang.y -450, 'kangprayerbolt').setOrigin(0, 0);
+p1kangprayerboltstrike.visible = false
+
+//kangattacksp2
+p2kangfireball = this.physics.add.sprite(p2kang.x, p2kang.y -50, 'kangfireballgr').setOrigin(0, 0); 
+p2kangfireball.visible = false
+p2kangfireballexplode = this.physics.add.sprite(p2kang.x, p2kang.y -50, 'kangfireballexplode').setOrigin(0, 0);
+p2kangfireballexplode.visible = false
+p2kangprayerboltstrike = this.physics.add.sprite(p2kang.x, p2kang.y -450, 'kangprayerbolt').setOrigin(0, 0);
+p2kangprayerboltstrike.visible = false
+
+    this.input.setPollAlways();
+        this.input.on('gameobjectover', function (pointer, gameObject) {
+        gameObject.setTint(0xff0000);
+    });
+    
+        this.input.on('gameobjectout', function (pointer, gameObject) {
+        gameObject.clearTint();
+    });        
+
+var p1cecilholytextures = this.textures;
+var holyorigin = p1cecilholy.getTopLeft();
+
+    var p1holyauraSource = {
+        getRandomPoint: function (vec)
+        {
+            do
+            {
+                var x = Phaser.Math.Between(0, p1cecilholy.width - 1);
+                var y = Phaser.Math.Between(0, p1cecilholy.height - 1);
+                var pixel = p1cecilholytextures.getPixel(x, y, 'cecilholy');
+            } while (pixel.alpha < 255);
+
+            return vec.setTo(x + p1cecil.x - 75, y + p1cecil.y - 75);
+        }
+    };
+    var p1cecilholyparticles = this.add.particles('flares');
+
+
+
+var p2cecilholytextures = this.textures;
+var p2holyorigin = p2cecilholy.getTopLeft();
+
+    var p2holyauraSource = {
+        getRandomPoint: function (vec)
+        {
+            do
+            {
+                var x = Phaser.Math.Between(0, p2cecilholy.width - 1);
+                var y = Phaser.Math.Between(0, p2cecilholy.height - 1);
+                var pixel = p2cecilholytextures.getPixel(x, y, 'cecilholy');
+            } while (pixel.alpha < 255);
+
+            return vec.setTo(x + p2cecil.x - 75, y + p2cecil.y - 75);
+        }
+    };
+    var p2cecilholyparticles = this.add.particles('flares');
+
+//BEGINACTIONS************************************
+//cecil1action
+function p1cecilaction(){
+if (p1cecilselected == true){
+if (p1cecilcastholy == true){
+        p1cecilholy.x = p1cecil.x - 85
+        p1cecilholy.y = p1cecil.y - 80
+        p1cecil.anims.play('cecilcasting', true);
+        p1cecilholy.anims.play('cecilholy', true);
+        p1cecilholy.visible = true
+        p1cecilholytime -= 0.5;
+        //holyaura
+        p1cecilholyparticles.createEmitter({
+        x: 0,
+        y: 0,
+        lifespan: 1000,
+        gravityY: 10,
+        scale: { start: 0, end: 0.25, ease: 'Quad.easeOut' },
+        alpha: { start: 1, end: 0, ease: 'Quad.easeIn' },
+        blendMode: 'ADD',
+        emitZone: { type: 'random', source: p1holyauraSource }
+
+    });
+
+    if (p1cecilholytime < 1){
+        p1cecilcastholy = false
+        p1cecil.anims.play('cecilidle', true);
+        p1cecilholy.visible = false
+        p1cecilholyaura = true
+        playerabilityselected = false
+        p1cecilselected = false
+        player1selectabilitybox.visible = false
+        team2turn = true
+        team1turn = false
+      
+    }
+
+}
+
+//cecil1attacktarget******************
+  if (p1ceciltargetselected == true){
+    if (p1cecilattacktarget == true){
+
+        if (p1cecil.x < p1ceciltargetx - 75){
+            p1cecil.anims.play('cecilwalk', true);
+            p1cecil.x += 25
+            
+        }
+         if (p1cecil.y > p1ceciltargety - 25){
+            p1cecil.y -= 5
+        }
+        if (p1cecil.y < p1ceciltargety - 25){
+            p1cecil.y += 5
+        }
+        
+
+        if (p1cecil.x > p1ceciltargetx - 76){
+         
+        p1ceciltargettime -= 1;
+        p1ceciltarget.x = p1cecil.x - 100
+        p1ceciltarget.y = p1cecil.y - 25
+        playerbattleattack()
+        p1cecil.anims.play('cecilsword', true);
+        p1ceciltarget.anims.play('ceciltarget', true);
+        
+        if (p1ceciltargetsoundplayed == false){
+            playerattacking = true 
+            game.sound.add( "ceciltargetsound" ).play() 
+            p1ceciltargetsoundplayed = true
+            
+        }
+        p1ceciltarget.visible = true
+    }
+
+    if (p1ceciltargettime < 1){
+        p1cecilattacktarget = false
+        p1ceciltarget.visible = false
+        p1cecil.x = p1cecilx
+        p1cecil.y = p1cecily
+       
+        p1cecil.anims.play('cecilidle', true);
+        p1ceciltargetselected = false
+        playerabilityselected = false
+        p1cecilselected = false
+        player1selectabilitybox.visible = false
+        team2turn = true
+        team1turn = false
+       
+
+        
+}
+}
+//endcecilattacktarget***********************
+//cecilholysword
+    if (p1cecilattackholysword == true){
+        if (p1cecil.x < p1ceciltargetx - 75){
+            p1cecil.anims.play('cecilwalk', true);
+            p1cecil.x += 25
+            
+        }
+         if (p1cecil.y > p1ceciltargety - 25){
+            p1cecil.y -= 5
+        }
+        if (p1cecil.y < p1ceciltargety - 25){
+            p1cecil.y += 5
+        }
+        
+        
+        if (p1cecil.x > p1ceciltargetx - 76){
+        p1cecilholyswordtime -= 1;
+        p1cecilholysword.x = p1cecil.x - 50
+        p1cecilholysword.y = p1cecil.y - 25
+        playerbattleattack()
+        p1cecil.anims.play('cecilattacksword', true);
+        p1cecilholysword.anims.play('cecilholysword', true);
+         if (p1cecilholyswordsoundplayed == false){
+            playerattacking = true 
+            game.sound.add( "cecilholyswordsound" ).play() 
+            p1cecilholyswordsoundplayed = true
+        }
+        p1cecilholysword.visible = true
+    }
+
+    if (p1cecilholyswordtime < 1){
+        p1cecilattackholysword = false
+        p1cecilholysword.visible = false
+        p1cecil.x = p1cecilx
+        p1cecil.y = p1cecily
+        p1cecil.anims.play('cecilidle', true);
+        p1ceciltargetselected = false
+        playerabilityselected = false
+        p1cecilselected = false
+        player1selectabilitybox.visible = false
+        team2turn = true
+        team1turn = false
+        
+    }
+}
+//endcecilholysword
+//cecilsword
+    if (p1cecilattacksword == true){
+        if (p1cecil.x < p1ceciltargetx - 75){
+            p1cecil.anims.play('cecilwalk', true);
+            p1cecil.x += 25
+            
+        }
+         if (p1cecil.y > p1ceciltargety - 25){
+            p1cecil.y -= 5
+        }
+        if (p1cecil.y < p1ceciltargety - 25){
+            p1cecil.y += 5
+        }
+        
+        if (p1cecil.x > p1ceciltargetx - 76){
+            p1cecilswordtime -= 1;
+        p1cecilsword.x = p1cecil.x - 7
+        p1cecilsword.y = p1cecil.y - 25
+        playerbattleattack()
+        p1cecil.anims.play('cecilattacksword', true);
+        if (p1cecilswordsoundplayed == false){
+            playerattacking = true 
+            game.sound.add( "cecilswordsound" ).play() 
+            //playerbattleattackhere
+            p1cecilswordsoundplayed = true
+        }
+        p1cecilsword.anims.play('cecilsword', true);
+        p1cecilsword.visible = true
+    }
+
+if (p1cecilswordtime < 1){
+        p1cecilattacksword = false
+        p1cecilsword.visible = false
+        p1cecil.x = p1cecilx
+        p1cecil.y = p1cecily
+        p1cecil.anims.play('cecilidle', true);
+        p1ceciltargetselected = false
+        playerabilityselected = false
+        p1cecilselected = false
+        player1selectabilitybox.visible = false
+        team2turn = true
+        team1turn = false
+        
+    }
+
+    }
+}
+}
+}
+//cecil2action
+function p2cecilaction(){
+if (p2cecilselected == true){
+if (p2cecilcastholy == true){
+        p2cecilholy.x = p2cecil.x - 85
+        p2cecilholy.y = p2cecil.y - 80
+        p2cecil.anims.play('cecilcasting', true);
+        p2cecilholy.anims.play('cecilholy', true);
+        p2cecilholy.visible = true
+        p2cecilholytime -= 0.5;
+        //holyaura
+        p2cecilholyparticles.createEmitter({
+        x: 0,
+        y: 0,
+        lifespan: 1000,
+        gravityY: 10,
+        scale: { start: 0, end: 0.25, ease: 'Quad.easeOut' },
+        alpha: { start: 1, end: 0, ease: 'Quad.easeIn' },
+        blendMode: 'ADD',
+        emitZone: { type: 'random', source: p2holyauraSource }
+
+    });
+
+    if (p2cecilholytime < 1){
+        p2cecilcastholy = false
+        p2cecil.anims.play('cecilidle', true);
+        p2cecilholy.visible = false
+        p2cecilholyaura = true
+        playerabilityselected = false
+        p2cecilselected = false
+        player2selectabilitybox.visible = false
+        team1turn = true
+        team2turn = false
+      
+    }
+}
+    //cecil2attacktarget******************
+  if (p2ceciltargetselected == true){
+    if (p2cecilattacktarget == true){
+
+        if (p2cecil.x > p2ceciltargetx + 75){
+            p2cecil.anims.play('cecilwalk', true);
+            p2cecil.x -= 25
+            
+        }
+         if (p2cecil.y < p2ceciltargety + 25){
+            p2cecil.y += 5
+        }
+        if (p2cecil.y > p2ceciltargety + 25){
+            p2cecil.y -= 5
+        }
+        
+
+        if (p2cecil.x < p2ceciltargetx + 76){
+         
+        p2ceciltargettime -= 1;
+        p2ceciltarget.x = p2cecil.x - 100
+        p2ceciltarget.y = p2cecil.y - 25
+        playerbattleattack()
+        p2cecil.anims.play('cecilsword', true);
+        p2ceciltarget.anims.play('ceciltarget', true);
+        
+        if (p2ceciltargetsoundplayed == false){
+            playerattacking = true 
+            game.sound.add( "ceciltargetsound" ).play() 
+            p2ceciltargetsoundplayed = true
+            
+        }
+        p2ceciltarget.visible = true
+    }
+
+    if (p2ceciltargettime < 1){
+        p2cecilattacktarget = false
+        p2ceciltarget.visible = false
+        p2cecil.x = p2cecilx
+        p2cecil.y = p2cecily
+        
+        p2cecil.anims.play('cecilidle', true);
+        p2ceciltargetselected = false
+        playerabilityselected = false
+        p2cecilselected = false
+        player2selectabilitybox.visible = false
+        team1turn = true
+        team2turn = false
+       
+
+        
+}
+}
+//endcecilattacktarget***********************8
+//cecil2holysword
+    if (p2cecilattackholysword == true){
+        if (p2cecil.x > p2ceciltargetx + 75){
+            p2cecil.anims.play('cecilwalk', true);
+            p2cecil.x -= 25
+            
+        }
+         if (p2cecil.y < p2ceciltargety + 25){
+            p2cecil.y += 5
+        }
+        if (p2cecil.y > p2ceciltargety + 25){
+            p2cecil.y -= 5
+        }
+        
+        
+        if (p2cecil.x < p2ceciltargetx + 76){
+        p2cecilholyswordtime -= 1;
+        p2cecilholysword.x = p2cecil.x - 50
+        p2cecilholysword.y = p2cecil.y - 25
+        playerbattleattack()
+        p2cecil.anims.play('cecilattacksword', true);
+        p2cecilholysword.anims.play('cecilholysword', true);
+         if (p2cecilholyswordsoundplayed == false){
+            playerattacking = true 
+            game.sound.add( "cecilholyswordsound" ).play() 
+            p2cecilholyswordsoundplayed = true
+        }
+        p2cecilholysword.visible = true
+    }
+
+    if (p2cecilholyswordtime < 1){
+        p2cecilattackholysword = false
+        p2cecilholysword.visible = false
+        p2cecil.x = p2cecilx
+        p2cecil.y = p2cecily
+        p2cecil.anims.play('cecilidle', true);
+        p2ceciltargetselected = false
+        playerabilityselected = false
+        p2cecilselected = false
+        player2selectabilitybox.visible = false
+        team1turn = true
+        team2turn = false
+        
+    }
+}
+//endcecilholysword
+//cecil2sword
+    if (p2cecilattacksword == true){
+        if (p2cecil.x > p2ceciltargetx + 75){
+            p2cecil.anims.play('cecilwalk', true);
+            p2cecil.x -= 25
+            
+        }
+         if (p2cecil.y < p2ceciltargety + 25){
+            p2cecil.y += 5
+        }
+        if (p2cecil.y > p2ceciltargety + 25){
+            p2cecil.y -= 5
+        }
+        
+        if (p2cecil.x < p2ceciltargetx + 76){
+        p2cecilswordtime -= 1;
+        p2cecilsword.x = p2cecil.x - 7
+        p2cecilsword.y = p2cecil.y - 25
+        playerbattleattack()
+        p2cecil.anims.play('cecilattacksword', true);
+        if (p2cecilswordsoundplayed == false){
+            playerattacking = true 
+            game.sound.add( "cecilswordsound" ).play() 
+            //playerbattleattackhere
+            p2cecilswordsoundplayed = true
+        }
+        p2cecilsword.anims.play('cecilsword', true);
+        p2cecilsword.visible = true
+    }
+
+if (p2cecilswordtime < 1){
+        p2cecilattacksword = false
+        p2cecilsword.visible = false
+        p2cecil.x = p2cecilx
+        p2cecil.y = p2cecily
+        p2cecil.anims.play('cecilidle', true);
+        p2ceciltargetselected = false
+        playerabilityselected = false
+        p2cecilselected = false
+        player2selectabilitybox.visible = false
+        team1turn = true
+        team2turn = false
+        
+        
+    }
+    }
+
+}
+}
+}
+//kain1action
+function p1kainaction(){
+if (p1kaintargetselected == true){
+if (p1kainattackstrike == true){
+if (p1kain.x < p1kaintargetx - 75){
+            p1kain.anims.play('kainwalk', true);
+            p1kain.x += 25
+            
+        }
+         if (p1kain.y > p1kaintargety - 25){
+            p1kain.y -= 5
+        }
+        if (p1kain.y < p1kaintargety - 25){
+            p1kain.y += 5
+        }
+        
+        if (p1kain.x > p1kaintargetx - 76){
+        p1kainstriketime -= 1;
+        p1kainstrike.x = p1kain.x 
+        p1kainstrike.y = p1kain.y + 25
+        p1kain.anims.play('kainattacksword', true);
+        if (p1kainstrikesoundplayed == false){
+             
+            game.sound.add( "kainstrikesound" ).play() 
+            
+            p1kainstrikesoundplayed = true
+        }
+        p1kainstrike.anims.play('kainstrike', true);
+        p1kainstrike.visible = true
+    }
+
+    if (p1kainstriketime < 1){
+        playerattacking = true
+        playerbattleattack()
+        p1kainstrike.visible = false
+        p1kain.x = p1kainx
+        p1kain.y = p1kainy
+        p1kain.anims.play('kainidle', true);
+        p1kaintargetselected = false
+        playerabilityselected = false
+        p1kainselected = false
+        player1selectabilitybox.visible = false
+        team2turn = true
+        team1turn = false
+        p1kainattackstrike = false
+        
+       
+    }
+
+}
+    if (p1kainattackslash == true){
+    if (p1kain.x < p1kaintargetx - 75){
+            p1kain.anims.play('kainwalk', true);
+            p1kain.x += 25
+            
+        }
+         if (p1kain.y > p1kaintargety - 25){
+            p1kain.y -= 5
+        }
+        if (p1kain.y < p1kaintargety - 25){
+            p1kain.y += 5
+        }
+
+        if (p1kain.x > p1kaintargetx - 76){
+        p1kainslashtime -= 1;
+        p1kainslash.x = p1kain.x 
+        p1kainslash.y = p1kain.y + 25
+        p1kain.anims.play('kainattacksword', true);
+        p1kainslash.anims.play('kainslash', true);
+        if (p1kainslashsoundplayed == false){
+        
+        game.sound.add( "kainslashsound" ).play() 
+        
+        p1kainslashsoundplayed = true
+    }
+        p1kainslash.visible = true
+    }
+
+    if (p1kainslashtime < 1){
+        playerattacking = true
+        playerbattleattack()
+        p1kainslash.visible = false
+        p1kain.x = p1kainx
+        p1kain.y = p1kainy
+        p1kain.anims.play('kainidle', true);
+        p1kaintargetselected = false
+        playerabilityselected = false
+        p1kainselected = false
+        player1selectabilitybox.visible = false
+        team2turn = true
+        team1turn = false
+        p1kainattackslash = false
+
+        
+        
+}
+}
+//p1kainjump
+if (p1kainattackjump == true){
+if (p1kaintargetselected == true){
+    p1kainjumptime -= 1;
+    if (p1kainjumptime > 21){
+        
+    if (p1kain.y > -200){
+        p1kain.y -= 35
+    }
+
+    if (p1kain.x < p1kaintargetx){
+        p1kain.x += 35
+    }
+    }
+
+    if (p1kainjumptime < 20){
+    if (p1kain.y < p1kaintargety - 100 ){
+        p1kain.y += 35
+        p1kainjumpweapon.anims.play('kainjumpweapon', true);
+        p1kain.anims.play('kainjump', true);
+        p1kainjumpweapon.visible = true
+        p1kainjumpweapon.x = p1kain.x + 25
+        p1kainjumpweapon.y = p1kain.y - 20
+    if (p1kain.x > p1kaintargetx - 20){
+        p1kain.x -= 20;
+    }
+    }  
+    
+    if (p1kain.y > p1kaintargety - 101)
+      p1kainjumpimpact.visible = true
+      p1kainjumpimpact.anims.play('kainjumpimpact', true);
+      p1kainjumpimpact.x = p1kaintargetx
+      p1kainjumpimpact.y = p1kaintargety - 120
+      if (p1kainjumpdownsoundplayed == false){
+      game.sound.add( "kainjumpdown" ).play() 
+      p1kainjumpdownsoundplayed = true
+  }
+    }
+
+    if (p1kainjumptime < 1){
+        playerattacking = true
+        playerbattleattack()
+        p1kainattackjump = false
+        p1kainjumpweapon.visible = false
+        p1kainjumpimpact.visible = false
+        p1kain.x = p1kainx
+        p1kain.y = p1kainy
+        p1kain.anims.play('kainidle', true);
+        p1kaintargetselected = false
+        playerabilityselected = false
+        p1kainselected = false
+        player1selectabilitybox.visible = false
+        team2turn = true
+        team1turn = false
+        p1kainattackjump = false
+       
+        
+    }
+
+}
+}
+
+    
+}
+}
+
+//p2kainaction
+function p2kainaction(){
+if (p2kaintargetselected == true){
+if (p2kainattackstrike == true){
+if (p2kain.x > p2kaintargetx + 109){
+            p2kain.anims.play('kainwalk', true);
+            p2kain.x -= 25
+            
+        }
+         if (p2kain.y < p2kaintargety + 25){
+            p2kain.y += 2
+        }
+        if (p2kain.y > p2kaintargety + 25){
+            p2kain.y -= 3
+        }
+        
+        if (p2kain.x < p2kaintargetx + 110){
+        p2kainstriketime -= 1;
+        p2kainstrike.x = p2kain.x - 45
+        p2kainstrike.y = p2kain.y + 25
+        p2kain.anims.play('kainattacksword', true);
+        if (p2kainstrikesoundplayed == false){
+            game.sound.add( "kainstrikesound" ).play() 
+            p2kainstrikesoundplayed = true
+        }
+        p2kainstrike.anims.play('kainstrike', true);
+        p2kainstrike.visible = true
+    }
+
+    if (p2kainstriketime < 1){
+        playerattacking = true
+        playerbattleattack()
+        p2kainstrike.visible = false
+        p2kain.x = p2kainx
+        p2kain.y = p2kainy
+        p2kain.anims.play('kainidle', true);
+        p2kaintargetselected = false
+        playerabilityselected = false
+        p2kainselected = false
+        player2selectabilitybox.visible = false
+        team1turn = true
+        team2turn = false
+        p2kainattackstrike = false
+        
+       
+    }
+
+}
+    if (p2kainattackslash == true){
+    if (p2kain.x > p2kaintargetx + 125){
+            p2kain.anims.play('kainwalk', true);
+            p2kain.x -= 25
+            
+        }
+         if (p2kain.y < p2kaintargety + 25){
+            p2kain.y += 2
+        }
+        if (p2kain.y > p2kaintargety + 25){
+            p2kain.y -= 3
+        }
+
+        if (p2kain.x < p2kaintargetx + 124){
+        p2kainslashtime -= 1;
+        p2kainslash.x = p2kain.x -45
+        p2kainslash.y = p2kain.y + 25
+        p2kain.anims.play('kainattacksword', true);
+        p2kainslash.anims.play('kainslash', true);
+        if (p2kainslashsoundplayed == false){
+        
+        game.sound.add( "kainslashsound" ).play() 
+        
+        p2kainslashsoundplayed = true
+    }
+        p2kainslash.visible = true
+    }
+
+    if (p2kainslashtime < 1){
+        playerattacking = true
+        playerbattleattack()
+        p2kainslash.visible = false
+        p2kain.x = p2kainx
+        p2kain.y = p2kainy
+        p2kain.anims.play('kainidle', true);
+        p2kaintargetselected = false
+        playerabilityselected = false
+        p2kainselected = false
+        player2selectabilitybox.visible = false
+        team1turn = true
+        team2turn = false
+        p2kainattackslash = false
+        
+        
+}
+}
+//p2kainjump
+if (p2kainattackjump == true){
+     
+    p2kainjumptime -= 1;
+    if (p2kainjumptime > 21){
+        
+    if (p2kain.y > -200){
+        p2kain.y -= 35
+    }
+
+    if (p2kain.x > p2kaintargetx){
+        p2kain.x -= 35
+    }
+    }
+
+    if (p2kainjumptime < 20){
+    if (p2kain.y < p2kaintargety - 100 ){
+        p2kain.y += 35
+        p2kainjumpweapon.anims.play('kainjumpweapon', true);
+        p2kain.anims.play('kainjump', true);
+        p2kainjumpweapon.visible = true
+        p2kainjumpweapon.x = p2kain.x + 25
+        p2kainjumpweapon.y = p2kain.y - 20
+    if (p2kain.x > p2kaintargetx + 20){
+        p2kain.x -= 20;
+    }
+    }  
+    
+    if (p2kain.y > p2kaintargety - 101)
+      p2kainjumpimpact.visible = true
+      p2kainjumpimpact.anims.play('kainjumpimpact', true);
+      p2kainjumpimpact.x = p2kaintargetx
+      p2kainjumpimpact.y = p2kaintargety - 120
+      if (p2kainjumpdownsoundplayed == false){
+     
+      game.sound.add( "kainjumpdown" ).play() 
+      
+      p2kainjumpdownsoundplayed = true
+  }
+    }
+
+    if (p2kainjumptime < 1){
+        playerattacking = true
+        playerbattleattack()
+        p2kainjumpweapon.visible = false
+        p2kainjumpimpact.visible = false
+        p2kain.x = p2kainx
+        p2kain.y = p2kainy
+        p2kain.anims.play('kainidle', true);
+        p2kaintargetselected = false
+        playerabilityselected = false
+        p2kainselected = false
+        player2selectabilitybox.visible = false
+        team1turn = true
+        team2turn = false
+        p2kainattackjump = false
+       
+        
+    }
+
+}
+}
+}
+
+
+//p1kang1action
+function p1kangaction(){
+//kangidle    
+if (p1kangidle == true){
+p1kang.anims.play('kangidle', true);
+}
+//kangidle
+//p1kangflykick
+if (p1kangattackflykick == true){
+if (p1kangtargetselected == true){
+p1kangidle = false
+if (p1kang.x < p1kangtargetx) {
+p1kang.anims.play('kangflykick', true);
+p1kang.x += 50
+if (p1kang.y < p1kangtargety){
+    p1kang.y += 7;
+}
+if (p1kang.y > p1kangtargety){
+    p1kang.y -= 7;
+}
+
+if (p1kang.x > p1kangtargetx - 25) {
+playerattacking = true
+playerbattleattack()
+p1kangattackflykick = false
+p1kangidle = true
+p1kang.x = p1kangx
+p1kang.y = p1kangy
+p1kangtargetselected = false
+playerabilityselected = false
+p1kangselected = false
+player1selectabilitybox.visible = false
+team2turn = true
+team1turn = false
+}
+}
+}
+}
+//endkangflykick
+//p1kangfireball
+if (p1kangattackfireball == true){
+if (p1kangtargetselected == true){
+p1kangidle = false
+if (p1kang.x < p1kangtargetx) {
+if (p1kangfireballsoundplayed == false){
+p1kang.anims.play('kangfireball', true);
+game.sound.add( "kangfireballsound" ).play()
+p1kangfireballsoundplayed = true
+}
+p1kangfireball.visible = true
+p1kangfireball.anims.play('kangfireballgr', true);
+p1kangfireball.x += 45 
+if (p1kangfireball.y < p1kangtargety){
+    p1kangfireball.y += 7;
+}
+if (p1kangfireball.y > p1kangtargety){
+    p1kangfireball.y -= 7;
+}
+
+if (p1kangfireball.x > p1kangtargetx - 25) {
+playerattacking = true
+playerbattleattack()
+p1kangidle = true
+p1kangfireballsoundplayed = false
+p1kangfireball.visible = false
+p1kangfireball.x = p1kang.x
+p1kangfireball.y = p1kang.y
+p1kangtargetselected = false
+playerabilityselected = false
+p1kangselected = false
+player1selectabilitybox.visible = false
+team2turn = true
+team1turn = false
+p1kangattackfireball = false
+}
+}
+}
+}
+//endp1kangfireball
+//p1kangbicycle
+if (p1kangattackbicycle == true){
+if (p1kangtargetselected == true){
+p1kangidle = false
+
+if (p1kang.x < p1kangtargetx - 6) {
+if (p1kang.x < p1kangtargetx -301){
+p1kang.anims.play('kangrun', true);
+}
+p1kang.x += 15 
+if (p1kang.y < p1kangtargety){
+    p1kang.y += 7;
+}
+if (p1kang.y > p1kangtargety){
+    p1kang.y -= 7;
+}
+if (p1kang.x > p1kangtargetx - 300) {
+p1kang.anims.play('kangbicycle', true);
+}
+
+if (p1kang.x > p1kangtargetx -5){
+playerattacking = true
+playerbattleattack()
+p1kang.x = p1kangx
+p1kang.y = p1kangy
+p1kangidle = true
+p1kangtargetselected = false
+playerabilityselected = false
+p1kangselected = false
+player1selectabilitybox.visible = false
+team2turn = true
+team1turn = false
+p1kangattackbicycle = false
+}
+}
+}
+}
+//endp1kangbicycle
+//p1kangdragon
+if (p1kangattackdragon == true){
+if (p1kangtargetselected == true){
+p1kangidle = false
+p1kangdragontime -= 1;
+if (p1kang.x < p1kangtargetx - 6) {
+if (p1kang.x < p1kangtargetx ){
+p1kang.anims.play('kangrun', true);
+}
+p1kang.x += 15 
+if (p1kang.y < p1kangtargety){
+    p1kang.y += 7;
+}
+if (p1kang.y > p1kangtargety){
+    p1kang.y -= 7;
+}
+if (p1kang.x > p1kangtargetx - 25) {
+p1kang.anims.play('kangdragon', true);
+p1kang.x -= 11;
+p1kang.y -= 13;
+}
+
+if (p1kangdragontime < 1){
+    p1kangdragontime = 1
+}
+}
+}
+if (p1kangdragontime < 1){
+playerattacking = true
+playerbattleattack()
+p1kangidle = true
+playerabilityselected = false
+p1kangselected = false
+player1selectabilitybox.visible = false
+p1kangtargetselected = false
+p1kang.x = p1kangx
+p1kang.y = p1kangy
+team2turn = true
+team1turn = false
+p1kangattackdragon = false
+}
+}
+//endp1kangdragon
+
+//p1kangprayer
+if (p1kangattackprayer == true){
+p1kangprayertime -= 1;
+if (p1kang.x < 326){
+p1kang.anims.play('kangrun', true);
+}
+if (p1kang.x < p1kangtargetx -300 ) {
+p1kangidle = false
+p1kang.x += 25 
+if (p1kang.x > p1kangtargetx -325) {
+p1kangprayerboltstrike.x = p1kang.x
+p1kangprayerboltstrike.visible = true
+p1kang.anims.play('kangprayer', true);
+p1kangprayerboltstrike.anims.play('kangprayerbolt', true);
+
+}
+}
+if (p1kangprayertime < 1){
+p1kangtargetselected = false
+playerattacking = true
+p1kangprayerboltstrike.visible = false
+p1kang.x = p1kangx
+p1kang.y = p1kangy
+p1kangidle = true
+p1kangtargetselected = false
+playerabilityselected = false
+p1kangselected = false
+player1selectabilitybox.visible = false
+p1kangattackprayer = false
+team2turn = true
+team1turn = false
+
+}
+}
+//endp1kangprayer
+}
+//endkang1action
+
+//kang2action
+//p2kang1action
+function p2kangaction(){
+//kangidle    
+if (p2kangidle == true){
+p2kang.anims.play('kangidle', true);
+}
+//kangidle
+//p2kangflykick
+if (p2kangattackflykick == true){
+if (p2kangtargetselected == true){
+p2kangidle = false
+if (p2kang.x > p2kangtargetx) {
+p2kang.anims.play('kangflykick', true);
+p2kang.x -= 50
+if (p2kang.y < p2kangtargety){
+    p2kang.y += 7;
+}
+if (p2kang.y > p2kangtargety){
+    p2kang.y -= 7;
+}
+
+if (p2kang.x < p2kangtargetx + 25) {
+playerattacking = true
+playerbattleattack()
+p2kangattackflykick = false
+p2kangidle = true
+p2kang.x = p2kangx
+p2kang.y = p2kangy
+p2kangtargetselected = false
+playerabilityselected = false
+p2kangselected = false
+player2selectabilitybox.visible = false
+team1turn = true
+team2turn = false
+}
+}
+}
+}
+//endkangflykick
+//p2kangfireball
+if (p2kangattackfireball == true){
+if (p2kangtargetselected == true){
+p2kangidle = false
+
+if (p2kang.x > p2kangtargetx) {
+if (p2kangfireballsoundplayed == false){
+p2kang.anims.play('kangfireball', true);
+game.sound.add( "kangfireballsound" ).play()
+p2kangfireballsoundplayed = true
+}
+p2kangfireball.visible = true
+p2kangfireball.anims.play('kangfireballgr', true);
+p2kangfireball.x -= 45 
+if (p2kangfireball.y < p2kangtargety){
+    p2kangfireball.y += 7;
+}
+if (p2kangfireball.y > p2kangtargety){
+    p2kangfireball.y -= 7;
+}
+
+if (p2kangfireball.x < p2kangtargetx + 25) {
+playerattacking = true
+playerbattleattack()
+p2kangidle = true
+p2kangfireballsoundplayed = false
+p2kangfireball.visible = false
+p2kangfireball.x = p2kang.x
+p2kangfireball.y = p2kang.y
+p2kangtargetselected = false
+playerabilityselected = false
+p2kangselected = false
+player2selectabilitybox.visible = false
+team1turn = true
+team2turn = false
+p2kangattackfireball = false
+}
+}
+}
+}
+//endp2kangfireball
+//p2kangbicycle
+if (p2kangattackbicycle == true){
+if (p2kangtargetselected == true){
+p2kangidle = false
+
+if (p2kang.x > p2kangtargetx + 6) {
+if (p2kang.x > p2kangtargetx +301){
+p2kang.anims.play('kangrun', true);
+}
+p2kang.x -= 15 
+if (p2kang.y < p2kangtargety){
+    p2kang.y += 7;
+}
+if (p2kang.y > p2kangtargety){
+    p2kang.y -= 7;
+}
+if (p2kang.x < p2kangtargetx + 300) {
+p2kang.anims.play('kangbicycle', true);
+}
+
+if (p2kang.x < p2kangtargetx +20){
+playerattacking = true
+playerbattleattack()
+p2kang.x = p2kangx
+p2kang.y = p2kangy
+p2kangidle = true
+p2kangtargetselected = false
+playerabilityselected = false
+p2kangselected = false
+player2selectabilitybox.visible = false
+team1turn = true
+team2turn = false
+p2kangattackbicycle = false
+}
+}
+}
+}
+//endp2kangbicycle
+//p2kangdragon
+if (p2kangattackdragon == true){
+if (p2kangtargetselected == true){
+p2kangidle = false
+p2kangdragontime -= 1;
+if (p2kang.x > p2kangtargetx + 6) {
+if (p2kang.x > p2kangtargetx ){
+p2kang.anims.play('kangrun', true);
+}
+p2kang.x -= 15 
+if (p2kang.y < p2kangtargety){
+    p2kang.y += 7;
+}
+if (p2kang.y > p2kangtargety){
+    p2kang.y -= 7;
+}
+if (p2kang.x < p2kangtargetx + 25) {
+p2kang.anims.play('kangdragon', true);
+p2kang.x -= 11;
+p2kang.y -= 13;
+}
+
+if (p2kangdragontime < 1){
+    p2kangdragontime = 1
+}
+}
+}
+if (p2kangdragontime < 1){
+playerattacking = true
+playerbattleattack()
+p2kangidle = true
+playerabilityselected = false
+p2kangselected = false
+player2selectabilitybox.visible = false
+p2kangtargetselected = false
+p2kang.x = p2kangx
+p2kang.y = p2kangy
+team1turn = true
+team2turn = false
+p2kangattackdragon = false
+}
+}
+//endp2kangdragon
+
+//p2kangprayer
+if (p2kangattackprayer == true){
+p2kangprayertime -= 1;
+if (p2kang.x > 326){
+p2kang.anims.play('kangrun', true);
+}
+if (p2kang.x > p2kangtargetx +300 ) {
+p2kangidle = false
+p2kang.x += 25 
+if (p2kang.x < p2kangtargetx +325) {
+p2kangprayerboltstrike.x = p2kang.x
+p2kangprayerboltstrike.visible = true
+p2kang.anims.play('kangprayer', true);
+p2kangprayerboltstrike.anims.play('kangprayerbolt', true);
+
+}
+}
+if (p2kangprayertime < 1){
+p2kangtargetselected = false
+playerattacking = true
+p2kangprayerboltstrike.visible = false
+p2kang.x = p2kangx
+p2kang.y = p2kangy
+p2kangidle = true
+p2kangtargetselected = false
+playerabilityselected = false
+p2kangselected = false
+player2selectabilitybox.visible = false
+p2kangattackprayer = false
+team1urn = true
+team2turn = false
+
+}
+}
+//endp2kangprayer
+}
+//endkang2action
+//endkangaction
+
+//p1orchidaction
+function p1orchidaction(){
+if (p1orchididle == true){
+p1orchid.anims.play('orchididle', true);
+}
+
+if (p1orchidattackwheel == true){
+if (p1orchidtargetselected == true){
+p1orchidwheeltime -= 0.2;
+p1orchididle = false
+if (p1orchid.x < p1orchidtargetx - 99) {
+p1orchid.anims.play('orchidwalk', true);
+p1orchid.x += 25 
+if (p1orchid.y < p1orchidtargety){
+    p1orchid.y += 7;
+}
+if (p1orchid.y > p1orchidtargety){
+    p1orchid.y -= 7;
+}
+if (p1orchid.x > p1orchidtargetx - 100) {
+p1orchid.anims.play('orchidwheel', true);
+
+}
+}
+if (p1orchidwheeltime < 1){
+playerattacking = true
+playerbattleattack()
+p1orchididle = true
+playerabilityselected = false
+p1orchidselected = false
+player1selectabilitybox.visible = false
+p1orchidtargetselected = false
+p1orchid.x = p1orchidx
+p1orchid.y = p1orchidy
+team2turn = true
+team1turn = false
+p1orchidattackwheel = false
+}
+}
+}
+
+if (p1orchidattackfireba == true){
+if (p1orchidtargetselected == true){
+p1orchididle = false
+
+if (p1orchidfirebasoundplayed == false){
+p1orchid.anims.play('orchidfireba', true);
+game.sound.add( "orchidlasaken" ).play()
+p1orchidfirebasoundplayed = true
+}
+if (p1orchid.x < p1orchidtargetx) {
+p1orchidfireba.visible = true
+p1orchidfireba.anims.play('orchidfirebagr', true);
+p1orchidfireba.x += 45 
+if (p1orchidfireba.y < p1orchidtargety){
+    p1orchidfireba.y += 7;
+}
+if (p1orchidfireba.y > p1orchidtargety){
+    p1orchidfireba.y -= 7;
+}
+if (p1orchidfireba.x > p1orchidtargetx - 25) {
+playerattacking = true
+playerbattleattack()
+p1orchididle = true
+playerabilityselected = false
+p1orchidselected = false
+player1selectabilitybox.visible = false
+p1orchidtargetselected = false
+p1orchidfireba.x = p1orchidx
+p1orchidfireba.y = p1orchidy
+p1orchidfireba.visible = false
+p1orchidfirebasoundplayed = false
+p1orchid.x = p1orchidx
+p1orchid.y = p1orchidy
+team2turn = true
+team1turn = false
+p1orchidattackfireba = false
+}
+}
+}
+}
+
+if (p1orchidattackcat == true){
+if (p1orchidtargetselected){
+p1orchididle = false
+p1orchid.anims.play('orchidcat', true);
+p1orchid.x += 50 
+if (p1orchid.y < p1orchidtargety){
+    p1orchid.y += 15;
+}
+if (p1orchid.y > p1orchidtargety){
+    p1orchid.y -= 15;
+}
+if (p1orchidcatsoundplayed == false){
+game.sound.add( "orchidcat" ).play()
+p1orchidcatsoundplayed = true
+}
+if (p1orchid.x > p1orchidtargetx - 25) {
+playerattacking = true
+playerbattleattack()
+p1orchididle = true
+playerabilityselected = false
+p1orchidselected = false
+player1selectabilitybox.visible = false
+p1orchidtargetselected = false
+p1orchidfireba.x = p1orchidx
+p1orchidfireba.y = p1orchidy
+p1orchidfireba.visible = false
+p1orchidfirebasoundplayed = false
+p1orchid.x = p1orchidx
+p1orchid.y = p1orchidy
+team2turn = true
+team1turn = false
+p1orchidcatsoundplayed = false
+p1orchidattackcat = false
+
+}
+}
+}
+
+if (p1orchidattackbaton == true){
+if (p1orchidtargetselected == true){
+p1orchidbatontime -= 0.2;
+p1orchididle = false
+if (p1orchid.x < p1orchidtargetx - 99) {
+p1orchid.anims.play('orchidwalk', true);
+p1orchid.x += 25 
+if (p1orchid.y < p1orchidtargety){
+    p1orchid.y += 7;
+}
+if (p1orchid.y > p1orchidtargety){
+    p1orchid.y -= 7;
+}
+if (p1orchid.x > p1orchidtargetx - 100) {
+p1orchid.anims.play('orchidbaton', true);
+
+}
+}
+if (p1orchidbatontime < 1){
+playerattacking = true
+playerbattleattack()
+p1orchididle = true
+playerabilityselected = false
+p1orchidselected = false
+player1selectabilitybox.visible = false
+p1orchidtargetselected = false
+p1orchid.x = p1orchidx
+p1orchid.y = p1orchidy
+team2turn = true
+team1turn = false
+p1orchidattackbaton = false
+}
+}
+}
+
+//p1orchidfit
+if (p1orchidattackfit == true){
+ if (p1orchidtargetselected == true){
+p1orchididle = false
+p1orchidfittime -= 0.2;
+if (p1orchid.x < 326){
+p1orchid.anims.play('orchidwalk', true);
+}
+if (p1orchid.x < p1orchidtargetx -300 ) {
+p1orchididle = false
+p1orchid.x += 25 
+if (p1orchid.x > p1orchidtargetx -325) {
+    if (p1orchidfitsoundplayed == false){
+        game.sound.add( "orchidfit" ).play()
+        p1orchidfitsoundplayed = true
+    }
+p1orchid.anims.play('orchidfit', true);
+
+
+}
+}
+}
+if (p1orchidfittime < 1){
+p1orchidtargetselected = false
+playerattacking = true
+p1orchid.x = p1orchidx
+p1orchid.y = p1orchidy
+p1orchididle = true
+p1orchidtargetselected = false
+playerabilityselected = false
+p1orchidselected = false
+player1selectabilitybox.visible = false
+p1orchidfitsoundplayed = false
+p1orchidattackfit = false
+team2turn = true
+team1turn = false
+
+}
+}
+//endp1orchidfit
+}
+//p1orchidaction
+
+//p2orchidaction
+function p2orchidaction(){
+if (p2orchididle == true){
+p2orchid.anims.play('orchididle', true);
+}
+
+if (p2orchidattackwheel == true){
+if (p2orchidtargetselected == true){
+p2orchidwheeltime -= 0.2;
+p2orchididle = false
+if (p2orchid.x > p2orchidtargetx + 48) {
+p2orchid.anims.play('orchidwalk', true);
+p2orchid.x -= 25 
+if (p2orchid.y < p2orchidtargety){
+    p2orchid.y += 7;
+}
+if (p2orchid.y > p2orchidtargety){
+    p2orchid.y -= 7;
+}
+if (p2orchid.x < p2orchidtargetx + 49) {
+p2orchid.anims.play('orchidwheel', true);
+
+}
+}
+if (p2orchidwheeltime < 1){
+playerattacking = true
+playerbattleattack()
+p2orchididle = true
+playerabilityselected = false
+p2orchidselected = false
+player2selectabilitybox.visible = false
+p2orchidtargetselected = false
+p2orchid.x = p2orchidx
+p2orchid.y = p2orchidy
+team1turn = true
+team2turn = false
+p2orchidattackwheel = false
+}
+}
+}
+
+if (p2orchidattackfireba == true){
+if (p2orchidtargetselected == true){
+p2orchididle = false
+if (p2orchidfirebasoundplayed == false){
+p2orchid.anims.play('orchidfireba', true);
+game.sound.add( "orchidlasaken" ).play()
+p2orchidfirebasoundplayed = true
+}
+if (p2orchid.x > p2orchidtargetx) {
+p2orchidfireba.visible = true
+p2orchidfireba.anims.play('orchidfirebagr', true);
+p2orchidfireba.x -= 45 
+if (p2orchidfireba.y < p2orchidtargety){
+    p2orchidfireba.y += 7;
+}
+if (p2orchidfireba.y > p2orchidtargety){
+    p2orchidfireba.y -= 7;
+}
+if (p2orchidfireba.x < p2orchidtargetx ) {
+playerattacking = true
+playerbattleattack()
+p2orchididle = true
+playerabilityselected = false
+p2orchidselected = false
+player2selectabilitybox.visible = false
+p2orchidtargetselected = false
+p2orchidfireba.x = p2orchidx
+p2orchidfireba.y = p2orchidy
+p2orchidfireba.visible = false
+p2orchidfirebasoundplayed = false
+p2orchid.x = p2orchidx
+p2orchid.y = p2orchidy
+team1turn = true
+team2turn = false
+p2orchidattackfireba = false
+}
+}
+}
+}
+
+if (p2orchidattackcat == true){
+if (p2orchidtargetselected){
+p2orchididle = false
+p2orchid.anims.play('orchidcat', true);
+p2orchid.x -= 50 
+if (p2orchid.y < p2orchidtargety){
+    p2orchid.y += 7;
+}
+if (p2orchid.y > p2orchidtargety){
+    p2orchid.y -= 7;
+}
+if (p2orchidcatsoundplayed == false){
+game.sound.add( "orchidcat" ).play()
+p2orchidcatsoundplayed = true
+}
+if (p2orchid.x < p2orchidtargetx ) {
+playerattacking = true
+playerbattleattack()
+p2orchididle = true
+playerabilityselected = false
+p2orchidselected = false
+player2selectabilitybox.visible = false
+p2orchidtargetselected = false
+p2orchidfireba.x = p2orchidx
+p2orchidfireba.y = p2orchidy
+p2orchidfireba.visible = false
+p2orchidfirebasoundplayed = false
+p2orchid.x = p2orchidx
+p2orchid.y = p2orchidy
+team1turn = true
+team2turn = false
+p2orchidcatsoundplayed = false
+p2orchidattackcat = false
+
+}
+}
+}
+
+if (p2orchidattackbaton == true){
+if (p2orchidtargetselected == true){
+p2orchidbatontime -= 0.2;
+p2orchididle = false
+if (p2orchid.x > p2orchidtargetx + 99) {
+p2orchid.anims.play('orchidwalk', true);
+p2orchid.x -= 25 
+if (p2orchid.y < p2orchidtargety){
+    p2orchid.y += 7;
+}
+if (p2orchid.y > p2orchidtargety){
+    p2orchid.y -= 7;
+}
+if (p2orchid.x < p2orchidtargetx + 100) {
+p2orchid.anims.play('orchidbaton', true);
+
+}
+}
+if (p2orchidbatontime < 1){
+playerattacking = true
+playerbattleattack()
+p2orchididle = true
+playerabilityselected = false
+p2orchidselected = false
+player2selectabilitybox.visible = false
+p2orchidtargetselected = false
+p2orchid.x = p2orchidx
+p2orchid.y = p2orchidy
+team1turn = true
+team2turn = false
+p2orchidattackbaton = false
+}
+}
+}
+
+//p2orchidfit
+if (p2orchidattackfit == true){
+ if (p2orchidtargetselected == true){
+p2orchididle = false
+p2orchidfittime -= 0.2;
+if (p2orchid.x > 326){
+p2orchid.anims.play('orchidwalk', true);
+}
+if (p2orchid.x > p2orchidtargetx +300 ) {
+p2orchididle = false
+p2orchid.x -= 25 
+if (p2orchid.x < p2orchidtargetx +325) {
+    if (p2orchidfitsoundplayed == false){
+        game.sound.add( "orchidfit" ).play()
+        p2orchidfitsoundplayed = true
+    }
+p2orchid.anims.play('orchidfit', true);
+
+
+}
+}
+}
+if (p2orchidfittime < 1){
+p2orchidtargetselected = false
+playerattacking = true
+p2orchid.x = p2orchidx
+p2orchid.y = p2orchidy
+p2orchididle = true
+p2orchidtargetselected = false
+playerabilityselected = false
+p2orchidselected = false
+player2selectabilitybox.visible = false
+p2orchidfitsoundplayed = false
+p2orchidattackfit = false
+team1turn = true
+team2turn = false
+
+}
+}
+//endp2orchidfit
+}
+
+//p1spinalaction
+function p1spinalaction(){
+if (p1spinalidle == true){
+p1spinal.anims.play('spinalidle', true);
+}
+//spinalattackslice
+if (p1spinalattackslice == true){
+p1spinalslicetime -= 0.1
+if (p1spinaltargetselected == true){
+p1spinalidle = false
+if (p1spinal.x < p1spinaltargetx - 51) {
+p1spinal.anims.play('spinalrun', true);
+p1spinal.x += 25 
+if (p1spinal.y < p1spinaltargety){
+    p1spinal.y += 7;
+}
+if (p1spinal.y > p1spinaltargety){
+    p1spinal.y -= 7;
+}
+}
+if (p1spinal.x > p1spinaltargetx - 50) {
+p1spinal.anims.play('spinalslice', true);
+p1spinal.x -= 15
+p1spinal.y -= 35
+}
+if (p1spinalslicetime < 1){
+playerattacking = true
+playerbattleattack()
+p1spinalidle = true
+playerabilityselected = false
+p1spinalselected = false
+player1selectabilitybox.visible = false
+p1spinaltargetselected = false
+p1spinal.x = p1spinalx
+p1spinal.y = p1spinaly
+team2turn = true
+team1turn = false
+p1spinalattackslice = false
+
+}
+}
+}
+//endspinalslice
+
+//spinalattackslash
+if (p1spinalattackslash == true){
+p1spinalslashtime -= 0.1
+if (p1spinaltargetselected == true){
+p1spinalidle = false
+if (p1spinal.x < p1spinaltargetx - 51) {
+p1spinal.anims.play('spinalrun', true);
+p1spinal.x += 25 
+if (p1spinal.y < p1spinaltargety){
+    p1spinal.y += 7;
+}
+if (p1spinal.y > p1spinaltargety){
+    p1spinal.y -= 7;
+}
+}
+if (p1spinal.x > p1spinaltargetx - 50) {
+p1spinal.anims.play('spinalslash', true);
+p1spinal.x -= 15
+p1spinal.y -= 35
+}
+if (p1spinalslashtime < 1){
+playerattacking = true
+playerbattleattack()
+p1spinalidle = true
+playerabilityselected = false
+p1spinalselected = false
+player1selectabilitybox.visible = false
+p1spinaltargetselected = false
+p1spinal.x = p1spinalx
+p1spinal.y = p1spinaly
+team2turn = true
+team1turn = false
+p1spinalattackslash = false
+
+}
+}
+}
+//endspinalslash
+//spinalattackbash
+if (p1spinalattackbash == true){
+p1spinalbashtime -= 0.1
+if (p1spinaltargetselected == true){
+p1spinalidle = false
+if (p1spinal.x < p1spinaltargetx - 51) {
+p1spinal.anims.play('spinalrun', true);
+p1spinal.x += 25 
+if (p1spinal.y < p1spinaltargety){
+    p1spinal.y += 7;
+}
+if (p1spinal.y > p1spinaltargety){
+    p1spinal.y -= 7;
+}
+}
+if (p1spinal.x > p1spinaltargetx - 50) {
+p1spinal.anims.play('spinalbash', true);
+p1spinal.x -= 15
+p1spinal.y -= 35
+}
+if (p1spinalbashtime < 1){
+playerattacking = true
+playerbattleattack()
+p1spinalidle = true
+playerabilityselected = false
+p1spinalselected = false
+player1selectabilitybox.visible = false
+p1spinaltargetselected = false
+p1spinal.x = p1spinalx
+p1spinal.y = p1spinaly
+team2turn = true
+team1turn = false
+p1spinalattackbash = false
+
+}
+}
+}
+//endspinalbash
+//spinalattackspike
+if (p1spinalattackspike == true){
+p1spinalspiketime -= 0.1
+if (p1spinaltargetselected == true){
+p1spinalidle = false
+if (p1spinal.x < p1spinaltargetx - 51) {
+p1spinal.anims.play('spinalrun', true);
+p1spinal.x += 25 
+if (p1spinal.y < p1spinaltargety){
+    p1spinal.y += 7;
+}
+if (p1spinal.y > p1spinaltargety){
+    p1spinal.y -= 7;
+}
+}
+if (p1spinal.x > p1spinaltargetx - 50) {
+p1spinal.anims.play('spinalspike', true);
+p1spinal.x -= 15
+p1spinal.y -= 35
+}
+if (p1spinalspiketime < 1){
+playerattacking = true
+playerbattleattack()
+p1spinalidle = true
+playerabilityselected = false
+p1spinalselected = false
+player1selectabilitybox.visible = false
+p1spinaltargetselected = false
+p1spinal.x = p1spinalx
+p1spinal.y = p1spinaly
+team2turn = true
+team1turn = false
+p1spinalattackspike = false
+
+}
+}
+}
+//endspinalspike
+}
+
+//endactions***************************************
+
+    //BEGINANIM battleground******************************************************
+    //anim
+    //cecilanim*********************
+    this.anims.create({
+        key: 'cecilwalk',
+        frames: this.anims.generateFrameNumbers('cecil', { start: 0, end: 1 }),
+        frameRate: 5,
+        repeat: -1
+    });
+
+    this.anims.create({
+        key: 'cecilhurt',
+        frames: this.anims.generateFrameNumbers('cecil', { start: 4, end: 4 }),
+        frameRate: 5,
+        repeat: -1
+    });
+
+    this.anims.create({
+        key: 'cecilidle',
+        frames: this.anims.generateFrameNumbers('cecilidle', { start: 0, end: 2 }),
+        frameRate: 2,
+        yoyo: true,
+        repeat: -1
+    });
+
+    this.anims.create({
+        key: 'cecilidleselected',
+        frames: this.anims.generateFrameNumbers('cecilidleselected', { start: 0, end: 2 }),
+        frameRate: 5,
+        yoyo: true,
+        repeat: -1
+    });
+
+
+   this.anims.create({
+        key: 'cecilattacksword',
+        frames: this.anims.generateFrameNumbers('cecil', { start: 10, end: 12 }),
+        frameRate: 5,
+        repeat: 0
+    });
+
+    this.anims.create({
+        key: 'cecilholysword',
+        frames: this.anims.generateFrameNumbers('cecilholysword', { start: 0, end: 12 }),
+        frameRate: 15,
+        repeat: 0
+    });
+    this.anims.create({
+        key: 'cecilsword',
+        frames: this.anims.generateFrameNumbers('cecilsword', { start: 0, end: 11 }),
+        frameRate: 15,
+        repeat: 0
+    });
+    this.anims.create({
+        key: 'ceciltarget',
+        frames: this.anims.generateFrameNumbers('ceciltarget', { start: 0, end: 11 }),
+        frameRate: 15,
+        repeat: 0
+    });
+
+    this.anims.create({
+        key: 'cecilholy',
+        frames: this.anims.generateFrameNumbers('cecilholy', { start: 0, end: 31 }),
+        frameRate: 20,
+        repeat: 0
+    });
+
+    this.anims.create({
+        key: 'cecilshield',
+        frames: this.anims.generateFrameNumbers('cecil', { start: 12, end: 12 }),
+        frameRate: 1,
+        repeat: 0
+    });
+
+    this.anims.create({
+        key: 'cecilcasting',
+        frames: this.anims.generateFrameNumbers('cecilcasting', { start: 0, end: 7 }),
+        frameRate: 5,
+        yoyo: true,
+        repeat: 0
+    });
+    //endcecilanim***************
+
+
+    //kainanim
+    //kainanim
+
+this.anims.create({
+        key: 'kainwalk',
+        frames: this.anims.generateFrameNumbers('kain', { start: 0, end: 1 }),
+        frameRate: 5,
+        repeat: -1
+    });
+
+    this.anims.create({
+        key: 'kainhurt',
+        frames: this.anims.generateFrameNumbers('kain', { start: 4, end: 4 }),
+        frameRate: 5,
+        repeat: -1
+    });
+    this.anims.create({
+        key: 'kainidle',
+        frames: this.anims.generateFrameNumbers('kain', { start: 0, end: 0 }),
+        frameRate: 1,
+        repeat: -1
+    });
+    this.anims.create({
+        key: 'kaincasting',
+        frames: this.anims.generateFrameNumbers('kain', { start: 6, end: 7 }),
+        frameRate: 1,
+        repeat: -1
+    });
+    this.anims.create({
+        key: 'kainpower',
+        frames: this.anims.generateFrameNumbers('kainpower', { start: 0, end: 13 }),
+        frameRate: 15,
+        repeat: 0
+    });
+    this.anims.create({
+        key: 'kainjump',
+        frames: this.anims.generateFrameNumbers('kain', { start: 3, end: 3 }),
+        frameRate: 1,
+        repeat: -1
+    });
+
+this.anims.create({
+        key: 'kainattacksword',
+        frames: this.anims.generateFrameNumbers('kain', { start: 10, end: 12 }),
+        frameRate: 5,
+        repeat: 0
+    });
+
+this.anims.create({
+        key: 'kainstrike',
+        frames: this.anims.generateFrameNumbers('kainstrike', { start: 0, end: 6 }),
+        frameRate: 15,
+        repeat: -1
+    });
+
+this.anims.create({
+        key: 'kainslash',
+        frames: this.anims.generateFrameNumbers('kainslash', { start: 0, end: 7 }),
+        frameRate: 15,
+        repeat: -1
+    });
+
+    this.anims.create({
+        key: 'kainjumpweapon',
+        frames: this.anims.generateFrameNumbers('kainjumpweapon', { start: 0, end: 16 }),
+        frameRate: 15,
+        repeat: -1
+    });
+
+  this.anims.create({
+        key: 'kainjumpimpact',
+        frames: this.anims.generateFrameNumbers('kainjumpimpact', { start: 0, end: 7 }),
+        frameRate: 15,
+        repeat: -1
+    });
+    //endkainanim
+
+ 
+        this.anims.create({
+        key: 'ancienttempleheadplay',
+        frames: this.anims.generateFrameNumbers('ancienttemplehead', { start: 0, end: 9 }),
+        frameRate: 10,
+        yoyo: true,
+        repeat: -1
+    });
+
+
+     //kanganims
+
+  this.anims.create({
+        key: 'kangdead',
+        frames: this.anims.generateFrameNumbers('kangdead', { start: 0, end: 0 }),
+        frameRate: 1,
+        repeat: 0
+    });
+    
+       this.anims.create({
+        key: 'kangidle',
+        frames: this.anims.generateFrameNumbers('kang', { start: 0, end: 13 }),
+        frameRate: 10,
+     
+        repeat: 1
+    });
+
+     this.anims.create({
+        key: 'kangflykick',
+        frames: this.anims.generateFrameNumbers('kangflykick', { start: 0, end: 0 }),
+        frameRate: 10,
+     
+        repeat: 1
+    });
+     this.anims.create({
+        key: 'kangfireball',
+        frames: this.anims.generateFrameNumbers('kangfireball', { start: 0, end: 3 }),
+        frameRate: 15,
+     
+        repeat: 0
+    });
+     this.anims.create({
+        key: 'kangfireballgr',
+        frames: this.anims.generateFrameNumbers('kangfireballgr', { start: 0, end: 3 }),
+        frameRate: 15,
+     
+        repeat: 0
+    });
+     this.anims.create({
+        key: 'kangfireballexplode',
+        frames: this.anims.generateFrameNumbers('kangfireballexplode', { start: 0, end: 18 }),
+        frameRate: 20,
+     
+        repeat: 0
+    });
+      this.anims.create({
+        key: 'kangbicycle',
+        frames: this.anims.generateFrameNumbers('kangbicycle', { start: 0, end: 4 }),
+        frameRate: 10,
+        yoyo: true,
+        repeat: -1
+    });
+       this.anims.create({
+        key: 'kangwalk',
+        frames: this.anims.generateFrameNumbers('kangwalk', { start: 0, end: 11 }),
+        frameRate: 10,
+        repeat: -1
+    });
+     this.anims.create({
+        key: 'kangrun',
+        frames: this.anims.generateFrameNumbers('kangrun', { start: 0, end: 7 }),
+        frameRate: 10,
+        repeat: 1
+
+    });
+     this.anims.create({
+        key: 'kangdragon',
+        frames: this.anims.generateFrameNumbers('kangdragon', { start: 0, end: 6 }),
+        frameRate: 10,
+        yoyo: true,
+        repeat: 3
+    });
+     this.anims.create({
+        key: 'kangprayer',
+        frames: this.anims.generateFrameNumbers('kangprayer', { start: 0, end: 0 }),
+        frameRate: 2,
+        repeat: 0
+    });
+
+     this.anims.create({
+        key: 'kangprayerbolt',
+        frames: this.anims.generateFrameNumbers('kangprayerbolt', { start: 0, end: 26 }),
+        frameRate: 20,
+        repeat: -1
+    });
+
+    //orchidanims
+  
+  this.anims.create({
+        key: 'orchiddead',
+        frames: this.anims.generateFrameNumbers('orchiddead', { start: 0, end: 0 }),
+        frameRate: 1,
+        repeat: 0
+    });
+       this.anims.create({
+        key: 'orchididle',
+        frames: this.anims.generateFrameNumbers('orchid', { start: 0, end: 7 }),
+        frameRate: 10,
+        yoyo: true,
+        repeat: -1
+    });
+  
+       this.anims.create({
+        key: 'orchidwalk',
+        frames: this.anims.generateFrameNumbers('orchidwalk', { start: 0, end: 11 }),
+        frameRate: 10,
+        repeat: -1
+    });
+        this.anims.create({
+        key: 'orchidwheel',
+        frames: this.anims.generateFrameNumbers('orchidwheel', { start: 0, end: 19 }),
+        frameRate: 10,
+        repeat: -1
+    });
+        this.anims.create({
+        key: 'orchidfireba',
+        frames: this.anims.generateFrameNumbers('orchidfireba', { start: 0, end: 13 }),
+        frameRate: 10,
+        repeat: 0
+    });
+        this.anims.create({
+        key: 'orchidfirebagr',
+        frames: this.anims.generateFrameNumbers('orchidfirebagr', { start: 0, end: 4 }),
+        frameRate: 10,
+        repeat: -1
+    });
+       this.anims.create({
+        key: 'orchidfirebaexplode',
+        frames: this.anims.generateFrameNumbers('orchidfirebaexplode', { start: 0, end: 39 }),
+        frameRate: 20,
+        repeat: 0
+    });
+
+        this.anims.create({
+        key: 'orchidbaton',
+        frames: this.anims.generateFrameNumbers('orchidbaton', { start: 0, end: 14 }),
+        frameRate: 10,
+        repeat: -1
+    });
+        this.anims.create({
+        key: 'orchidcat',
+        frames: this.anims.generateFrameNumbers('orchidcat', { start: 0, end: 15 }),
+        frameRate: 7,
+        repeat: 0
+    });
+    this.anims.create({
+        key: 'orchidfit',
+        frames: this.anims.generateFrameNumbers('orchidfit', { start: 0, end: 27 }),
+        frameRate: 20,
+        repeat: 0
+    });
+//endorchidanim
+
+//spinalanim
+
+        this.anims.create({
+        key: 'spinaldead',
+        frames: this.anims.generateFrameNumbers('spinaldead', { start: 0, end: 0 }),
+        frameRate: 1,
+        repeat: 0
+    });
+       this.anims.create({
+        key: 'spinalidle',
+        frames: this.anims.generateFrameNumbers('spinal', { start: 0, end: 8 }),
+        frameRate: 10,
+        yoyo: true,
+        repeat: -1
+    });
+  
+       this.anims.create({
+        key: 'spinalwalk',
+        frames: this.anims.generateFrameNumbers('spinalwalk', { start: 0, end: 11 }),
+        frameRate: 10,
+        repeat: -1
+    });
+    
+     this.anims.create({
+        key: 'spinalrun',
+        frames: this.anims.generateFrameNumbers('spinalrun', { start: 0, end: 11 }),
+        frameRate: 10,
+        repeat: -1
+    });
+     this.anims.create({
+        key: 'spinalslice',
+        frames: this.anims.generateFrameNumbers('spinalslice', { start: 0, end: 12 }),
+        frameRate: 10,
+        repeat: -1
+    });
+     this.anims.create({
+        key: 'spinalslash',
+        frames: this.anims.generateFrameNumbers('spinalslash', { start: 0, end: 15 }),
+        frameRate: 10,
+        repeat: -1
+    });
+     this.anims.create({
+        key: 'spinalbash',
+        frames: this.anims.generateFrameNumbers('spinalbash', { start: 0, end: 11 }),
+        frameRate: 10,
+        repeat: -1
+    });
+    this.anims.create({
+        key: 'spinalspike',
+        frames: this.anims.generateFrameNumbers('spinalspike', { start: 0, end: 6 }),
+        frameRate: 10,
+        repeat: -1
+    });
+    this.anims.create({
+        key: 'spinalblock',
+        frames: this.anims.generateFrameNumbers('spinalblock', { start: 0, end: 1 }),
+        frameRate: 2,
+        repeat: -1
+    });
+
+//endspinal
+
+
+    //ENDANIM****************************************************************8
+    
+    cursors = this.input.keyboard.createCursorKeys();
+    cursors.left.isDown = false
+    cursors.right.isDown = false
+    cursors.up.isDown = false
+    cursors.down.isDown = false
+   
+  //loadui
+   game.scene.start('battlegroundui');
+   //endloadui
+        
+},
+//ENDCREATE battleground*********************************************
+
+//BEGINUPDATE battleground*******************************************
+//update1
+update: function (time, delta)
+{
+
+
+
+
+ancienttemplehead.anims.play('ancienttempleheadplay', true);
+p1ceciltargetx = p1cecilselectedtargetx
+p1ceciltargety = p1cecilselectedtargety
+
+p2ceciltargetx = p2cecilselectedtargetx
+p2ceciltargety = p2cecilselectedtargety
+
+p1kaintargetx = p1kainselectedtargetx
+p1kaintargety = p1kainselectedtargety
+
+p2kaintargetx = p2kainselectedtargetx
+p2kaintargety = p2kainselectedtargety
+
+p1kangtargetx = p1kangselectedtargetx
+p1kangtargety = p1kangselectedtargety
+
+p2kangtargetx = p2kangselectedtargetx
+p2kangtargety = p2kangselectedtargety
+
+p1orchidtargetx = p1orchidselectedtargetx
+p1orchidtargety = p1orchidselectedtargety
+
+p2orchidtargetx = p2orchidselectedtargetx
+p2orchidtargety = p2orchidselectedtargety
+
+p1spinaltargetx = p1spinalselectedtargetx
+p1spinaltargety = p1spinalselectedtargety
+
+
+    if (player1p1name == 'KANG') {      
+    p1kang.setDepth(5);
+    }
+    if (player1p2name == 'KANG') {      
+    p1kang.setDepth(4);
+    }
+     if (player1p3name == 'KANG') {      
+    p1kang.setDepth(3);
+    }
+    if (player1p4name == 'KANG') {      
+    p1kang.setDepth(2);
+    }
+    if (player1p5name == 'KANG') {      
+    p1kang.setDepth(1);
+    }
+    if (player1p1name == 'KANG') {      
+    p2kang.setDepth(5);
+    }
+    if (player1p2name == 'KANG') {      
+    p2kang.setDepth(4);
+    }
+     if (player1p3name == 'KANG') {      
+    p2kang.setDepth(3);
+    }
+    if (player1p4name == 'KANG') {      
+    p2kang.setDepth(2);
+    }
+    if (player1p5name == 'KANG') {      
+    p2kang.setDepth(1);
+    }
+
+        if (player1p1name == 'ORCHID') {      
+    p1orchid.setDepth(5);
+    }
+    if (player1p2name == 'ORCHID') {      
+    p1orchid.setDepth(4);
+    }
+     if (player1p3name == 'ORCHID') {      
+    p1orchid.setDepth(3);
+    }
+    if (player1p4name == 'ORCHID') {      
+    p1orchid.setDepth(2);
+    }
+    if (player1p5name == 'ORCHID') {      
+    p1orchid.setDepth(1);
+    }
+    if (player1p1name == 'ORCHID') {      
+    p2orchid.setDepth(5);
+    }
+    if (player1p2name == 'ORCHID') {      
+    p2orchid.setDepth(4);
+    }
+     if (player1p3name == 'ORCHID') {      
+    p2orchid.setDepth(3);
+    }
+    if (player1p4name == 'ORCHID') {      
+    p2orchid.setDepth(2);
+    }
+    if (player1p5name == 'ORCHID') {      
+    p2orchid.setDepth(1);
+    }
+
+//*******************
+if (matchbegin == true){
+    matchstartinggraphic.visible = true
+}
+
+if (matchbegin == false){
+    matchstartinggraphic.visible = false
+}
+//ENDUPDATE*****************
+//////////////////////////////
+//ENDUPDATE***************
+//BEGIN UI
+}
+});
+//ui
+var battlegroundui = new Phaser.Class({
+
+    Extends: Phaser.Scene,
+
+    initialize:
+
+    function battlegroundui ()
+    {
+        Phaser.Scene.call(this, { key: 'battlegroundui' });
+    },
+
+    preload: function ()
+    {
+      
+    },
+//BEGINCREATE UI ******************************************************************
+create: function ()
+{
+//backbox
+battlegroundbackbox = this.add.sprite(uix, uiy, 'battlegroundbackbox').setOrigin(0, 0);
+//team1boxes
+battlegroundboxt1p1 = this.add.sprite(21, 609, 'battlegroundbox').setOrigin(0, 0);
+battlegroundboxt1p2 = this.add.sprite(150, 609, 'battlegroundbox').setOrigin(0, 0);
+battlegroundboxt1p3 = this.add.sprite(279, 609, 'battlegroundbox').setOrigin(0, 0);
+battlegroundboxt1p4 = this.add.sprite(408, 609, 'battlegroundbox').setOrigin(0, 0);
+battlegroundboxt1p5 = this.add.sprite(537, 609, 'battlegroundbox').setOrigin(0, 0);
+//team2boxes
+battlegroundboxt2p1 = this.add.sprite(700, 609, 'battlegroundbox').setOrigin(0, 0);
+battlegroundboxt2p2 = this.add.sprite(829, 609, 'battlegroundbox').setOrigin(0, 0);
+battlegroundboxt2p3 = this.add.sprite(958, 609, 'battlegroundbox').setOrigin(0, 0);
+battlegroundboxt2p4 = this.add.sprite(1087, 609, 'battlegroundbox').setOrigin(0, 0);
+battlegroundboxt2p5 = this.add.sprite(1216, 609, 'battlegroundbox').setOrigin(0, 0);
+player1selectabilitybox = this.add.sprite(149, 533, 'player1selectabilitybox').setOrigin(0, 0);
+player1selectabilitybox.visible = false
+player1selecttargetbox = this.add.sprite(27, 6, 'player1selecttargetbox').setOrigin(0, 0);
+player1selecttargetbox.visible = false
+player2selectabilitybox = this.add.sprite(857, 533, 'player2selectabilitybox').setOrigin(0, 0);
+player2selectabilitybox.visible = false
+player2selecttargetbox = this.add.sprite(810, 6, 'player2selecttargetbox').setOrigin(0, 0);
+player2selecttargetbox.visible = false
+
+this.input.setPollAlways();
+        this.input.on('gameobjectover', function (pointer, gameObject) {
+        gameObject.setTint(0xff0000);
+    });
+    
+        this.input.on('gameobjectout', function (pointer, gameObject) {
+        gameObject.clearTint();
+    });      
+
+    cursors = this.input.keyboard.createCursorKeys();
+    statustxt = this.add.text(10, 10, '', { font: '17px Arial', fill: '#00ff00' }).setScrollFactor(0);
+
+//loadcecil***************************************
+  if (loadcecil == true){
+  if (player1p1name == 'CECIL') {
+p1cecilnamex = battlegroundboxt1p1.x + 2
+p1cecilnamey = battlegroundboxt1p1.y + 30
+p1cecilnameplate = this.physics.add.sprite(p1cecilnamex, p1cecilnamey, 'cecilname').setOrigin(0, 0);
+p1cecilhealthtextx = battlegroundboxt1p1.x + 35
+p1cecilhealthtexty = battlegroundboxt1p1.y + 3         
+p1cecilhealthtext = this.add.text(p1cecilhealthtextx, p1cecilhealthtexty, '', { font: '25px Arial', fill: '#00ff00' }).setScrollFactor(0);
+
+ }
+  if (player1p2name == 'CECIL') {
+p1cecilnamex = battlegroundboxt1p2.x + 2
+p1cecilnamey = battlegroundboxt1p2.y + 30         
+p1cecilnameplate = this.physics.add.sprite(p1cecilnamex, p1cecilnamey, 'cecilname').setOrigin(0, 0);
+p1cecilhealthtextx = battlegroundboxt1p2.x + 35
+p1cecilhealthtexty = battlegroundboxt1p2.y + 3         
+p1cecilhealthtext = this.add.text(p1cecilhealthtextx, p1cecilhealthtexty, '', { font: '25px Arial', fill: '#00ff00' }).setScrollFactor(0);
+ }
+   if (player1p3name == 'CECIL') {
+p1cecilnamex = battlegroundboxt1p3.x + 2
+p1cecilnamey = battlegroundboxt1p3.y + 30         
+p1cecilnameplate = this.physics.add.sprite(p1cecilnamex, p1cecilnamey, 'cecilname').setOrigin(0, 0);
+p1cecilhealthtextx = battlegroundboxt1p3.x + 35
+p1cecilhealthtexty = battlegroundboxt1p3.y + 3         
+p1cecilhealthtext = this.add.text(p1cecilhealthtextx, p1cecilhealthtexty, '', { font: '25px Arial', fill: '#00ff00' }).setScrollFactor(0);
+ }
+   if (player1p4name == 'CECIL') {
+p1cecilnamex = battlegroundboxt1p4.x + 2
+p1cecilnamey = battlegroundboxt1p4.y + 30         
+p1cecilnameplate = this.physics.add.sprite(p1cecilnamex, p1cecilnamey, 'cecilname').setOrigin(0, 0);
+p1cecilhealthtextx = battlegroundboxt1p4.x + 35
+p1cecilhealthtexty = battlegroundboxt1p4.y + 3         
+p1cecilhealthtext = this.add.text(p1cecilhealthtextx, p1cecilhealthtexty, '', { font: '25px Arial', fill: '#00ff00' }).setScrollFactor(0);
+ }
+   if (player1p5name == 'CECIL') {
+p1cecilnamex = battlegroundboxt1p5.x + 2
+p1cecilnamey = battlegroundboxt1p5.y + 30         
+p1cecilnameplate = this.physics.add.sprite(p1cecilnamex, p1cecilnamey, 'cecilname').setOrigin(0, 0);
+p1cecilhealthtextx = battlegroundboxt1p5.x + 35
+p1cecilhealthtexty = battlegroundboxt1p5.y + 3         
+p1cecilhealthtext = this.add.text(p1cecilhealthtextx, p1cecilhealthtexty, '', { font: '25px Arial', fill: '#00ff00' }).setScrollFactor(0);
+ }
+
+
+
+        
+if (player2p1name == 'CECIL') {     
+p2cecilnamex = battlegroundboxt2p1.x + 2
+p2cecilnamey = battlegroundboxt2p1.y + 30  
+p2cecilnameplate = this.physics.add.sprite(p2cecilnamex, p2cecilnamey, 'cecilname').setOrigin(0, 0);
+p2cecilhealthtextx = battlegroundboxt2p1.x + 35
+p2cecilhealthtexty = battlegroundboxt2p1.y + 3         
+p2cecilhealthtext = this.add.text(p2cecilhealthtextx, p2cecilhealthtexty, '', { font: '25px Arial', fill: '#00ff00' }).setScrollFactor(0);
+ }
+if (player2p2name == 'CECIL') {     
+p2cecilnamex = battlegroundboxt2p2.x + 2
+p2cecilnamey = battlegroundboxt2p2.y + 30  
+p2cecilnameplate = this.physics.add.sprite(p2cecilnamex, p2cecilnamey, 'cecilname').setOrigin(0, 0);
+p2cecilhealthtextx = battlegroundboxt2p2.x + 35
+p2cecilhealthtexty = battlegroundboxt2p2.y + 3         
+p2cecilhealthtext = this.add.text(p2cecilhealthtextx, p2cecilhealthtexty, '', { font: '25px Arial', fill: '#00ff00' }).setScrollFactor(0);
+ }
+
+if (player2p3name == 'CECIL') {     
+p2cecilnamex = battlegroundboxt2p3.x + 2
+p2cecilnamey = battlegroundboxt2p3.y + 30  
+p2cecilnameplate = this.physics.add.sprite(p2cecilnamex, p2cecilnamey, 'cecilname').setOrigin(0, 0);
+p2cecilhealthtextx = battlegroundboxt2p3.x + 35
+p2cecilhealthtexty = battlegroundboxt2p3.y + 3         
+p2cecilhealthtext = this.add.text(p2cecilhealthtextx, p2cecilhealthtexty, '', { font: '25px Arial', fill: '#00ff00' }).setScrollFactor(0);
+ }
+
+if (player2p4name == 'CECIL') {     
+p2cecilnamex = battlegroundboxt2p4.x + 2
+p2cecilnamey = battlegroundboxt2p4.y + 30  
+p2cecilnameplate = this.physics.add.sprite(p2cecilnamex, p2cecilnamey, 'cecilname').setOrigin(0, 0);
+p2cecilhealthtextx = battlegroundboxt2p4.x + 35
+p2cecilhealthtexty = battlegroundboxt2p4.y + 3         
+p2cecilhealthtext = this.add.text(p2cecilhealthtextx, p2cecilhealthtexty, '', { font: '25px Arial', fill: '#00ff00' }).setScrollFactor(0);
+ }
+
+if (player2p5name == 'CECIL') {     
+p2cecilnamex = battlegroundboxt2p5.x + 2
+p2cecilnamey = battlegroundboxt2p5.y + 30  
+p2cecilnameplate = this.physics.add.sprite(p2cecilnamex, p2cecilnamey, 'cecilname').setOrigin(0, 0);
+p2cecilhealthtextx = battlegroundboxt2p5.x + 35
+p2cecilhealthtexty = battlegroundboxt2p5.y + 3         
+p2cecilhealthtext = this.add.text(p2cecilhealthtextx, p2cecilhealthtexty, '', { font: '25px Arial', fill: '#00ff00' }).setScrollFactor(0);
+ }
+
+
+
+ }
+ //endloadcecil***********************************
+
+//loadkain***************************************
+  if (loadkain == true){
+  if (player1p1name == 'KAIN') {
+p1kainnamex = battlegroundboxt1p1.x + 2
+p1kainnamey = battlegroundboxt1p1.y + 30
+p1kainnameplate = this.physics.add.sprite(p1kainnamex, p1kainnamey, 'kainname').setOrigin(0, 0);
+p1kainhealthtextx = battlegroundboxt1p1.x + 35
+p1kainhealthtexty = battlegroundboxt1p1.y + 3         
+p1kainhealthtext = this.add.text(p1kainhealthtextx, p1kainhealthtexty, '', { font: '25px Arial', fill: '#00ff00' }).setScrollFactor(0);
+
+ }
+  if (player1p2name == 'KAIN') {
+p1kainnamex = battlegroundboxt1p2.x + 2
+p1kainnamey = battlegroundboxt1p2.y + 30         
+p1kainnameplate = this.physics.add.sprite(p1kainnamex, p1kainnamey, 'kainname').setOrigin(0, 0);
+p1kainhealthtextx = battlegroundboxt1p2.x + 35
+p1kainhealthtexty = battlegroundboxt1p2.y + 3         
+p1kainhealthtext = this.add.text(p1kainhealthtextx, p1kainhealthtexty, '', { font: '25px Arial', fill: '#00ff00' }).setScrollFactor(0);
+ }
+   if (player1p3name == 'KAIN') {
+p1kainnamex = battlegroundboxt1p3.x + 2
+p1kainnamey = battlegroundboxt1p3.y + 30         
+p1kainnameplate = this.physics.add.sprite(p1kainnamex, p1kainnamey, 'kainname').setOrigin(0, 0);
+p1kainhealthtextx = battlegroundboxt1p3.x + 35
+p1kainhealthtexty = battlegroundboxt1p3.y + 3         
+p1kainhealthtext = this.add.text(p1kainhealthtextx, p1kainhealthtexty, '', { font: '25px Arial', fill: '#00ff00' }).setScrollFactor(0);
+ }
+   if (player1p4name == 'KAIN') {
+p1kainnamex = battlegroundboxt1p4.x + 2
+p1kainnamey = battlegroundboxt1p4.y + 30         
+p1kainnameplate = this.physics.add.sprite(p1kainnamex, p1kainnamey, 'kainname').setOrigin(0, 0);
+p1kainhealthtextx = battlegroundboxt1p4.x + 35
+p1kainhealthtexty = battlegroundboxt1p4.y + 3         
+p1kainhealthtext = this.add.text(p1kainhealthtextx, p1kainhealthtexty, '', { font: '25px Arial', fill: '#00ff00' }).setScrollFactor(0);
+ }
+   if (player1p5name == 'KAIN') {
+p1kainnamex = battlegroundboxt1p5.x + 2
+p1kainnamey = battlegroundboxt1p5.y + 30         
+p1kainnameplate = this.physics.add.sprite(p1kainnamex, p1kainnamey, 'kainname').setOrigin(0, 0);
+p1kainhealthtextx = battlegroundboxt1p5.x + 35
+p1kainhealthtexty = battlegroundboxt1p5.y + 3         
+p1kainhealthtext = this.add.text(p1kainhealthtextx, p1kainhealthtexty, '', { font: '25px Arial', fill: '#00ff00' }).setScrollFactor(0);
+ }
+
+        
+if (player2p1name == 'KAIN') {     
+p2kainnamex = battlegroundboxt2p1.x + 2
+p2kainnamey = battlegroundboxt2p1.y + 30  
+p2kainnameplate = this.physics.add.sprite(p2kainnamex, p2kainnamey, 'kainname').setOrigin(0, 0);
+p2kainhealthtextx = battlegroundboxt2p1.x + 35
+p2kainhealthtexty = battlegroundboxt2p1.y + 3         
+p2kainhealthtext = this.add.text(p2kainhealthtextx, p2kainhealthtexty, '', { font: '25px Arial', fill: '#00ff00' }).setScrollFactor(0);
+ }
+if (player2p2name == 'KAIN') {     
+p2kainnamex = battlegroundboxt2p2.x + 2
+p2kainnamey = battlegroundboxt2p2.y + 30  
+p2kainnameplate = this.physics.add.sprite(p2kainnamex, p2kainnamey, 'kainname').setOrigin(0, 0);
+p2kainhealthtextx = battlegroundboxt2p2.x + 35
+p2kainhealthtexty = battlegroundboxt2p2.y + 3         
+p2kainhealthtext = this.add.text(p2kainhealthtextx, p2kainhealthtexty, '', { font: '25px Arial', fill: '#00ff00' }).setScrollFactor(0);
+ }
+
+if (player2p3name == 'KAIN') {     
+p2kainnamex = battlegroundboxt2p3.x + 2
+p2kainnamey = battlegroundboxt2p3.y + 30  
+p2kainnameplate = this.physics.add.sprite(p2kainnamex, p2kainnamey, 'kainname').setOrigin(0, 0);
+p2kainhealthtextx = battlegroundboxt2p3.x + 35
+p2kainhealthtexty = battlegroundboxt2p3.y + 3         
+p2kainhealthtext = this.add.text(p2kainhealthtextx, p2kainhealthtexty, '', { font: '25px Arial', fill: '#00ff00' }).setScrollFactor(0);
+ }
+
+if (player2p4name == 'KAIN') {     
+p2kainnamex = battlegroundboxt2p4.x + 2
+p2kainnamey = battlegroundboxt2p4.y + 30  
+p2kainnameplate = this.physics.add.sprite(p2kainnamex, p2kainnamey, 'kainname').setOrigin(0, 0);
+p2kainhealthtextx = battlegroundboxt2p4.x + 35
+p2kainhealthtexty = battlegroundboxt2p4.y + 3         
+p2kainhealthtext = this.add.text(p2kainhealthtextx, p2kainhealthtexty, '', { font: '25px Arial', fill: '#00ff00' }).setScrollFactor(0);
+ }
+
+if (player2p5name == 'KAIN') {     
+p2kainnamex = battlegroundboxt2p5.x + 2
+p2kainnamey = battlegroundboxt2p5.y + 30  
+p2kainnameplate = this.physics.add.sprite(p2kainnamex, p2kainnamey, 'kainname').setOrigin(0, 0);
+p2kainhealthtextx = battlegroundboxt2p5.x + 35
+p2kainhealthtexty = battlegroundboxt2p5.y + 3         
+p2kainhealthtext = this.add.text(p2kainhealthtextx, p2kainhealthtexty, '', { font: '25px Arial', fill: '#00ff00' }).setScrollFactor(0);
+ }
+
+
+
+ }
+ //endloadkain***********************************
+if (loadkang == true){
+  if (player1p1name == 'KANG') {
+p1kangnamex = battlegroundboxt1p1.x + 2
+p1kangnamey = battlegroundboxt1p1.y + 30
+p1kangnameplate = this.physics.add.sprite(p1kangnamex, p1kangnamey, 'kangname').setOrigin(0, 0);
+p1kanghealthtextx = battlegroundboxt1p1.x + 35
+p1kanghealthtexty = battlegroundboxt1p1.y + 3         
+p1kanghealthtext = this.add.text(p1kanghealthtextx, p1kanghealthtexty, '', { font: '25px Arial', fill: '#00ff00' }).setScrollFactor(0);
+
+ }
+  if (player1p2name == 'KANG') {
+p1kangnamex = battlegroundboxt1p2.x + 2
+p1kangnamey = battlegroundboxt1p2.y + 30         
+p1kangnameplate = this.physics.add.sprite(p1kangnamex, p1kangnamey, 'kangname').setOrigin(0, 0);
+p1kanghealthtextx = battlegroundboxt1p2.x + 35
+p1kanghealthtexty = battlegroundboxt1p2.y + 3         
+p1kanghealthtext = this.add.text(p1kanghealthtextx, p1kanghealthtexty, '', { font: '25px Arial', fill: '#00ff00' }).setScrollFactor(0);
+ }
+   if (player1p3name == 'KANG') {
+p1kangnamex = battlegroundboxt1p3.x + 2
+p1kangnamey = battlegroundboxt1p3.y + 30         
+p1kangnameplate = this.physics.add.sprite(p1kangnamex, p1kangnamey, 'kangname').setOrigin(0, 0);
+p1kanghealthtextx = battlegroundboxt1p3.x + 35
+p1kanghealthtexty = battlegroundboxt1p3.y + 3         
+p1kanghealthtext = this.add.text(p1kanghealthtextx, p1kanghealthtexty, '', { font: '25px Arial', fill: '#00ff00' }).setScrollFactor(0);
+ }
+   if (player1p4name == 'KANG') {
+p1kangnamex = battlegroundboxt1p4.x + 2
+p1kangnamey = battlegroundboxt1p4.y + 30         
+p1kangnameplate = this.physics.add.sprite(p1kangnamex, p1kangnamey, 'kangname').setOrigin(0, 0);
+p1kanghealthtextx = battlegroundboxt1p4.x + 35
+p1kanghealthtexty = battlegroundboxt1p4.y + 3         
+p1kanghealthtext = this.add.text(p1kanghealthtextx, p1kanghealthtexty, '', { font: '25px Arial', fill: '#00ff00' }).setScrollFactor(0);
+ }
+   if (player1p5name == 'KANG') {
+p1kangnamex = battlegroundboxt1p5.x + 2
+p1kangnamey = battlegroundboxt1p5.y + 30         
+p1kangnameplate = this.physics.add.sprite(p1kangnamex, p1kangnamey, 'kangname').setOrigin(0, 0);
+p1kanghealthtextx = battlegroundboxt1p5.x + 35
+p1kanghealthtexty = battlegroundboxt1p5.y + 3         
+p1kanghealthtext = this.add.text(p1kanghealthtextx, p1kanghealthtexty, '', { font: '25px Arial', fill: '#00ff00' }).setScrollFactor(0);
+ }
+
+        
+if (player2p1name == 'KANG') {     
+p2kangnamex = battlegroundboxt2p1.x + 2
+p2kangnamey = battlegroundboxt2p1.y + 30  
+p2kangnameplate = this.physics.add.sprite(p2kangnamex, p2kangnamey, 'kangname').setOrigin(0, 0);
+p2kanghealthtextx = battlegroundboxt2p1.x + 35
+p2kanghealthtexty = battlegroundboxt2p1.y + 3         
+p2kanghealthtext = this.add.text(p2kanghealthtextx, p2kanghealthtexty, '', { font: '25px Arial', fill: '#00ff00' }).setScrollFactor(0);
+ }
+if (player2p2name == 'KANG') {     
+p2kangnamex = battlegroundboxt2p2.x + 2
+p2kangnamey = battlegroundboxt2p2.y + 30  
+p2kangnameplate = this.physics.add.sprite(p2kangnamex, p2kangnamey, 'kangname').setOrigin(0, 0);
+p2kanghealthtextx = battlegroundboxt2p2.x + 35
+p2kanghealthtexty = battlegroundboxt2p2.y + 3         
+p2kanghealthtext = this.add.text(p2kanghealthtextx, p2kanghealthtexty, '', { font: '25px Arial', fill: '#00ff00' }).setScrollFactor(0);
+ }
+
+if (player2p3name == 'KANG') {     
+p2kangnamex = battlegroundboxt2p3.x + 2
+p2kangnamey = battlegroundboxt2p3.y + 30  
+p2kangnameplate = this.physics.add.sprite(p2kangnamex, p2kangnamey, 'kangname').setOrigin(0, 0);
+p2kanghealthtextx = battlegroundboxt2p3.x + 35
+p2kanghealthtexty = battlegroundboxt2p3.y + 3         
+p2kanghealthtext = this.add.text(p2kanghealthtextx, p2kanghealthtexty, '', { font: '25px Arial', fill: '#00ff00' }).setScrollFactor(0);
+ }
+
+if (player2p4name == 'KANG') {     
+p2kangnamex = battlegroundboxt2p4.x + 2
+p2kangnamey = battlegroundboxt2p4.y + 30  
+p2kangnameplate = this.physics.add.sprite(p2kangnamex, p2kangnamey, 'kangname').setOrigin(0, 0);
+p2kanghealthtextx = battlegroundboxt2p4.x + 35
+p2kanghealthtexty = battlegroundboxt2p4.y + 3         
+p2kanghealthtext = this.add.text(p2kanghealthtextx, p2kanghealthtexty, '', { font: '25px Arial', fill: '#00ff00' }).setScrollFactor(0);
+ }
+
+if (player2p5name == 'KANG') {     
+p2kangnamex = battlegroundboxt2p5.x + 2
+p2kangnamey = battlegroundboxt2p5.y + 30  
+p2kangnameplate = this.physics.add.sprite(p2kangnamex, p2kangnamey, 'kangname').setOrigin(0, 0);
+p2kanghealthtextx = battlegroundboxt2p5.x + 35
+p2kanghealthtexty = battlegroundboxt2p5.y + 3         
+p2kanghealthtext = this.add.text(p2kanghealthtextx, p2kanghealthtexty, '', { font: '25px Arial', fill: '#00ff00' }).setScrollFactor(0);
+ }
+
+//loadorchid***************************************
+  if (loadorchid == true){
+  if (player1p1name == 'ORCHID') {
+p1orchidnamex = battlegroundboxt1p1.x + 2
+p1orchidnamey = battlegroundboxt1p1.y + 30
+p1orchidnameplate = this.physics.add.sprite(p1orchidnamex, p1orchidnamey, 'orchidname').setOrigin(0, 0);
+p1orchidhealthtextx = battlegroundboxt1p1.x + 35
+p1orchidhealthtexty = battlegroundboxt1p1.y + 3         
+p1orchidhealthtext = this.add.text(p1orchidhealthtextx, p1orchidhealthtexty, '', { font: '25px Arial', fill: '#00ff00' }).setScrollFactor(0);
+
+ }
+  if (player1p2name == 'ORCHID') {
+p1orchidnamex = battlegroundboxt1p2.x + 2
+p1orchidnamey = battlegroundboxt1p2.y + 30         
+p1orchidnameplate = this.physics.add.sprite(p1orchidnamex, p1orchidnamey, 'orchidname').setOrigin(0, 0);
+p1orchidhealthtextx = battlegroundboxt1p2.x + 35
+p1orchidhealthtexty = battlegroundboxt1p2.y + 3         
+p1orchidhealthtext = this.add.text(p1orchidhealthtextx, p1orchidhealthtexty, '', { font: '25px Arial', fill: '#00ff00' }).setScrollFactor(0);
+ }
+   if (player1p3name == 'ORCHID') {
+p1orchidnamex = battlegroundboxt1p3.x + 2
+p1orchidnamey = battlegroundboxt1p3.y + 30         
+p1orchidnameplate = this.physics.add.sprite(p1orchidnamex, p1orchidnamey, 'orchidname').setOrigin(0, 0);
+p1orchidhealthtextx = battlegroundboxt1p3.x + 35
+p1orchidhealthtexty = battlegroundboxt1p3.y + 3         
+p1orchidhealthtext = this.add.text(p1orchidhealthtextx, p1orchidhealthtexty, '', { font: '25px Arial', fill: '#00ff00' }).setScrollFactor(0);
+ }
+   if (player1p4name == 'ORCHID') {
+p1orchidnamex = battlegroundboxt1p4.x + 2
+p1orchidnamey = battlegroundboxt1p4.y + 30         
+p1orchidnameplate = this.physics.add.sprite(p1orchidnamex, p1orchidnamey, 'orchidname').setOrigin(0, 0);
+p1orchidhealthtextx = battlegroundboxt1p4.x + 35
+p1orchidhealthtexty = battlegroundboxt1p4.y + 3         
+p1orchidhealthtext = this.add.text(p1orchidhealthtextx, p1orchidhealthtexty, '', { font: '25px Arial', fill: '#00ff00' }).setScrollFactor(0);
+ }
+   if (player1p5name == 'ORCHID') {
+p1orchidnamex = battlegroundboxt1p5.x + 2
+p1orchidnamey = battlegroundboxt1p5.y + 30         
+p1orchidnameplate = this.physics.add.sprite(p1orchidnamex, p1orchidnamey, 'orchidname').setOrigin(0, 0);
+p1orchidhealthtextx = battlegroundboxt1p5.x + 35
+p1orchidhealthtexty = battlegroundboxt1p5.y + 3         
+p1orchidhealthtext = this.add.text(p1orchidhealthtextx, p1orchidhealthtexty, '', { font: '25px Arial', fill: '#00ff00' }).setScrollFactor(0);
+ }
+
+        
+if (player2p1name == 'ORCHID') {     
+p2orchidnamex = battlegroundboxt2p1.x + 2
+p2orchidnamey = battlegroundboxt2p1.y + 30  
+p2orchidnameplate = this.physics.add.sprite(p2orchidnamex, p2orchidnamey, 'orchidname').setOrigin(0, 0);
+p2orchidhealthtextx = battlegroundboxt2p1.x + 35
+p2orchidhealthtexty = battlegroundboxt2p1.y + 3         
+p2orchidhealthtext = this.add.text(p2orchidhealthtextx, p2orchidhealthtexty, '', { font: '25px Arial', fill: '#00ff00' }).setScrollFactor(0);
+ }
+if (player2p2name == 'ORCHID') {     
+p2orchidnamex = battlegroundboxt2p2.x + 2
+p2orchidnamey = battlegroundboxt2p2.y + 30  
+p2orchidnameplate = this.physics.add.sprite(p2orchidnamex, p2orchidnamey, 'orchidname').setOrigin(0, 0);
+p2orchidhealthtextx = battlegroundboxt2p2.x + 35
+p2orchidhealthtexty = battlegroundboxt2p2.y + 3         
+p2orchidhealthtext = this.add.text(p2orchidhealthtextx, p2orchidhealthtexty, '', { font: '25px Arial', fill: '#00ff00' }).setScrollFactor(0);
+ }
+
+if (player2p3name == 'ORCHID') {     
+p2orchidnamex = battlegroundboxt2p3.x + 2
+p2orchidnamey = battlegroundboxt2p3.y + 30  
+p2orchidnameplate = this.physics.add.sprite(p2orchidnamex, p2orchidnamey, 'orchidname').setOrigin(0, 0);
+p2orchidhealthtextx = battlegroundboxt2p3.x + 35
+p2orchidhealthtexty = battlegroundboxt2p3.y + 3         
+p2orchidhealthtext = this.add.text(p2orchidhealthtextx, p2orchidhealthtexty, '', { font: '25px Arial', fill: '#00ff00' }).setScrollFactor(0);
+ }
+
+if (player2p4name == 'ORCHID') {     
+p2orchidnamex = battlegroundboxt2p4.x + 2
+p2orchidnamey = battlegroundboxt2p4.y + 30  
+p2orchidnameplate = this.physics.add.sprite(p2orchidnamex, p2orchidnamey, 'orchidname').setOrigin(0, 0);
+p2orchidhealthtextx = battlegroundboxt2p4.x + 35
+p2orchidhealthtexty = battlegroundboxt2p4.y + 3         
+p2orchidhealthtext = this.add.text(p2orchidhealthtextx, p2orchidhealthtexty, '', { font: '25px Arial', fill: '#00ff00' }).setScrollFactor(0);
+ }
+
+if (player2p5name == 'ORCHID') {     
+p2orchidnamex = battlegroundboxt2p5.x + 2
+p2orchidnamey = battlegroundboxt2p5.y + 30  
+p2orchidnameplate = this.physics.add.sprite(p2orchidnamex, p2orchidnamey, 'orchidname').setOrigin(0, 0);
+p2orchidhealthtextx = battlegroundboxt2p5.x + 35
+p2orchidhealthtexty = battlegroundboxt2p5.y + 3         
+p2orchidhealthtext = this.add.text(p2orchidhealthtextx, p2orchidhealthtexty, '', { font: '25px Arial', fill: '#00ff00' }).setScrollFactor(0);
+ }
+ }
+ //endloadorchid***********************************
+  if (loadspinal == true){
+  if (player1p1name == 'SPINAL') {
+p1spinalnamex = battlegroundboxt1p1.x + 2
+p1spinalnamey = battlegroundboxt1p1.y + 30
+p1spinalnameplate = this.physics.add.sprite(p1spinalnamex, p1spinalnamey, 'spinalname').setOrigin(0, 0);
+p1spinalhealthtextx = battlegroundboxt1p1.x + 35
+p1spinalhealthtexty = battlegroundboxt1p1.y + 3         
+p1spinalhealthtext = this.add.text(p1spinalhealthtextx, p1spinalhealthtexty, '', { font: '25px Arial', fill: '#00ff00' }).setScrollFactor(0);
+
+ }
+  if (player1p2name == 'SPINAL') {
+p1spinalnamex = battlegroundboxt1p2.x + 2
+p1spinalnamey = battlegroundboxt1p2.y + 30         
+p1spinalnameplate = this.physics.add.sprite(p1spinalnamex, p1spinalnamey, 'spinalname').setOrigin(0, 0);
+p1spinalhealthtextx = battlegroundboxt1p2.x + 35
+p1spinalhealthtexty = battlegroundboxt1p2.y + 3         
+p1spinalhealthtext = this.add.text(p1spinalhealthtextx, p1spinalhealthtexty, '', { font: '25px Arial', fill: '#00ff00' }).setScrollFactor(0);
+ }
+   if (player1p3name == 'SPINAL') {
+p1spinalnamex = battlegroundboxt1p3.x + 2
+p1spinalnamey = battlegroundboxt1p3.y + 30         
+p1spinalnameplate = this.physics.add.sprite(p1spinalnamex, p1spinalnamey, 'spinalname').setOrigin(0, 0);
+p1spinalhealthtextx = battlegroundboxt1p3.x + 35
+p1spinalhealthtexty = battlegroundboxt1p3.y + 3         
+p1spinalhealthtext = this.add.text(p1spinalhealthtextx, p1spinalhealthtexty, '', { font: '25px Arial', fill: '#00ff00' }).setScrollFactor(0);
+ }
+   if (player1p4name == 'SPINAL') {
+p1spinalnamex = battlegroundboxt1p4.x + 2
+p1spinalnamey = battlegroundboxt1p4.y + 30         
+p1spinalnameplate = this.physics.add.sprite(p1spinalnamex, p1spinalnamey, 'spinalname').setOrigin(0, 0);
+p1spinalhealthtextx = battlegroundboxt1p4.x + 35
+p1spinalhealthtexty = battlegroundboxt1p4.y + 3         
+p1spinalhealthtext = this.add.text(p1spinalhealthtextx, p1spinalhealthtexty, '', { font: '25px Arial', fill: '#00ff00' }).setScrollFactor(0);
+ }
+   if (player1p5name == 'SPINAL') {
+p1spinalnamex = battlegroundboxt1p5.x + 2
+p1spinalnamey = battlegroundboxt1p5.y + 30         
+p1spinalnameplate = this.physics.add.sprite(p1spinalnamex, p1spinalnamey, 'spinalname').setOrigin(0, 0);
+p1spinalhealthtextx = battlegroundboxt1p5.x + 35
+p1spinalhealthtexty = battlegroundboxt1p5.y + 3         
+p1spinalhealthtext = this.add.text(p1spinalhealthtextx, p1spinalhealthtexty, '', { font: '25px Arial', fill: '#00ff00' }).setScrollFactor(0);
+ }
+
+        
+if (player2p1name == 'SPINAL') {     
+p2spinalnamex = battlegroundboxt2p1.x + 2
+p2spinalnamey = battlegroundboxt2p1.y + 30  
+p2spinalnameplate = this.physics.add.sprite(p2spinalnamex, p2spinalnamey, 'spinalname').setOrigin(0, 0);
+p2spinalhealthtextx = battlegroundboxt2p1.x + 35
+p2spinalhealthtexty = battlegroundboxt2p1.y + 3         
+p2spinalhealthtext = this.add.text(p2spinalhealthtextx, p2spinalhealthtexty, '', { font: '25px Arial', fill: '#00ff00' }).setScrollFactor(0);
+ }
+if (player2p2name == 'SPINAL') {     
+p2spinalnamex = battlegroundboxt2p2.x + 2
+p2spinalnamey = battlegroundboxt2p2.y + 30  
+p2spinalnameplate = this.physics.add.sprite(p2spinalnamex, p2spinalnamey, 'spinalname').setOrigin(0, 0);
+p2spinalhealthtextx = battlegroundboxt2p2.x + 35
+p2spinalhealthtexty = battlegroundboxt2p2.y + 3         
+p2spinalhealthtext = this.add.text(p2spinalhealthtextx, p2spinalhealthtexty, '', { font: '25px Arial', fill: '#00ff00' }).setScrollFactor(0);
+ }
+
+if (player2p3name == 'SPINAL') {     
+p2spinalnamex = battlegroundboxt2p3.x + 2
+p2spinalnamey = battlegroundboxt2p3.y + 30  
+p2spinalnameplate = this.physics.add.sprite(p2spinalnamex, p2spinalnamey, 'spinalname').setOrigin(0, 0);
+p2spinalhealthtextx = battlegroundboxt2p3.x + 35
+p2spinalhealthtexty = battlegroundboxt2p3.y + 3         
+p2spinalhealthtext = this.add.text(p2spinalhealthtextx, p2spinalhealthtexty, '', { font: '25px Arial', fill: '#00ff00' }).setScrollFactor(0);
+ }
+
+if (player2p4name == 'SPINAL') {     
+p2spinalnamex = battlegroundboxt2p4.x + 2
+p2spinalnamey = battlegroundboxt2p4.y + 30  
+p2spinalnameplate = this.physics.add.sprite(p2spinalnamex, p2spinalnamey, 'spinalname').setOrigin(0, 0);
+p2spinalhealthtextx = battlegroundboxt2p4.x + 35
+p2spinalhealthtexty = battlegroundboxt2p4.y + 3         
+p2spinalhealthtext = this.add.text(p2spinalhealthtextx, p2spinalhealthtexty, '', { font: '25px Arial', fill: '#00ff00' }).setScrollFactor(0);
+ }
+
+if (player2p5name == 'SPINAL') {     
+p2spinalnamex = battlegroundboxt2p5.x + 2
+p2spinalnamey = battlegroundboxt2p5.y + 30  
+p2spinalnameplate = this.physics.add.sprite(p2spinalnamex, p2spinalnamey, 'spinalname').setOrigin(0, 0);
+p2spinalhealthtextx = battlegroundboxt2p5.x + 35
+p2spinalhealthtexty = battlegroundboxt2p5.y + 3         
+p2spinalhealthtext = this.add.text(p2spinalhealthtextx, p2spinalhealthtexty, '', { font: '25px Arial', fill: '#00ff00' }).setScrollFactor(0);
+ }
+ }
+ }
+
+
+//P1cecilbuttons***********************************
+p1cecilswordbutton = this.add.sprite(p1partyactionbutton1x, p1partyactionbutton1y, 'cecilswordbox').setInteractive();
+p1cecilswordbutton.setOrigin(0, 0);
+            p1cecilswordbutton.on('pointerdown', function (pointer) {
+            if (playerabilityselected == false){
+            this.setTint(0xff0000);
+            setenemytint()
+            p1cecilattacksword = true
+            playerattacking = true
+            playerabilityselected = true
+            p1cecilswordtime = 8
+            p1cecilselectingtarget = true
+            p1cecilswordsoundplayed = false
+            }
+          });
+p1cecilswordbutton.visible = false
+
+p1cecilshieldbutton = this.add.sprite(p1partyactionbutton2x, p1partyactionbutton2y, 'cecilshieldbox').setInteractive();
+p1cecilshieldbutton.setOrigin(0, 0);
+            p1cecilshieldbutton.on('pointerdown', function (pointer) {
+            this.setTint(0xff0000);
+            
+          });
+p1cecilshieldbutton.visible = false
+
+p1cecilholybutton = this.add.sprite(p1partyactionbutton3x, p1partyactionbutton3y, 'cecilholybox').setInteractive();
+p1cecilholybutton.setOrigin(0, 0);
+            p1cecilholybutton.on('pointerdown', function (pointer) {
+            if (playerabilityselected == false){
+            this.setTint(0xff0000);
+            p1cecilcastholy = true
+            p1cecilholytime = 30
+            p1cecilholyaura = false
+            playerabilityselected = true
+            }
+          });
+p1cecilholybutton.visible = false
+
+p1cecilholyswordbutton = this.add.sprite(p1partyactionbutton4x, p1partyactionbutton4y, 'cecilholyswordbox').setInteractive();
+p1cecilholyswordbutton.setOrigin(0, 0);
+            p1cecilholyswordbutton.on('pointerdown', function (pointer) {
+            if (playerabilityselected == false){
+            this.setTint(0xff0000);
+            setenemytint()
+            p1cecilattackholysword = true
+            p1cecilholyswordtime = 8
+            p1cecilselectingtarget = true
+            playerabilityselected = true
+            p1cecilholyswordsoundplayed = false
+            }
+          });
+p1cecilholyswordbutton.visible = false
+
+p1ceciltargetbutton = this.add.sprite(p1partyactionbutton5x, p1partyactionbutton5y, 'ceciltargetbox').setInteractive();
+p1ceciltargetbutton.setOrigin(0, 0);
+            p1ceciltargetbutton.on('pointerdown', function (pointer) {
+           if (playerabilityselected == false){
+           this.setTint(0xff0000);
+           p1cecilattacktarget = true
+           setenemytint()
+           p1ceciltargettime = 8
+           p1cecilselectingtarget = true
+           playerabilityselected = true
+           p1ceciltargetsoundplayed = false
+           }
+          });
+p1ceciltargetbutton.visible = false
+//P1CECILBUTTONSEND*********************************
+
+//P2CECILBUTTONS***********************************
+p2cecilswordbutton = this.add.sprite(p2partyactionbutton1x, p2partyactionbutton1y, 'cecilswordbox').setInteractive();
+p2cecilswordbutton.setOrigin(0, 0);
+            p2cecilswordbutton.on('pointerdown', function (pointer) {
+            if (playerabilityselected == false){
+            this.setTint(0xff0000);
+            setenemytint()
+            p2cecilattacksword = true
+            playerattacking = true
+            playerabilityselected = true
+            p2cecilswordtime = 8
+            p2cecilselectingtarget = true
+            p2cecilswordsoundplayed = false
+            }
+          });
+p2cecilswordbutton.visible = false
+
+p2cecilshieldbutton = this.add.sprite(p2partyactionbutton2x, p2partyactionbutton2y, 'cecilshieldbox').setInteractive();
+p2cecilshieldbutton.setOrigin(0, 0);
+            p2cecilshieldbutton.on('pointerdown', function (pointer) {
+            this.setTint(0xff0000);
+            
+          });
+p2cecilshieldbutton.visible = false
+
+p2cecilholybutton = this.add.sprite(p2partyactionbutton3x, p2partyactionbutton3y, 'cecilholybox').setInteractive();
+p2cecilholybutton.setOrigin(0, 0);
+            p2cecilholybutton.on('pointerdown', function (pointer) {
+            if (playerabilityselected == false){
+            this.setTint(0xff0000);
+            p2cecilcastholy = true
+            p2cecilholytime = 30
+            p2cecilholyaura = false
+            playerabilityselected = true
+            }
+          });
+p2cecilholybutton.visible = false
+
+p2cecilholyswordbutton = this.add.sprite(p2partyactionbutton4x, p2partyactionbutton4y, 'cecilholyswordbox').setInteractive();
+p2cecilholyswordbutton.setOrigin(0, 0);
+            p2cecilholyswordbutton.on('pointerdown', function (pointer) {
+            if (playerabilityselected == false){
+            this.setTint(0xff0000);
+            setenemytint()
+            p2cecilattackholysword = true
+            p2cecilholyswordtime = 8
+            p2cecilselectingtarget = true
+            playerabilityselected = true
+            p2cecilholyswordsoundplayed = false
+            }
+          });
+p2cecilholyswordbutton.visible = false
+
+p2ceciltargetbutton = this.add.sprite(p2partyactionbutton5x, p2partyactionbutton5y, 'ceciltargetbox').setInteractive();
+p2ceciltargetbutton.setOrigin(0, 0);
+            p2ceciltargetbutton.on('pointerdown', function (pointer) {
+           if (playerabilityselected == false){
+           this.setTint(0xff0000);
+           p2cecilattacktarget = true
+           setenemytint()
+           p2ceciltargettime = 8
+           p2cecilselectingtarget = true
+           playerabilityselected = true
+           p2ceciltargetsoundplayed = false
+           }
+          });
+p2ceciltargetbutton.visible = false
+//P2CECILBUTTONSEND*********************************
+
+//P1KAINBUTTONS********************************************************
+//p1kainbuttons
+
+p1kainstrikebutton = this.add.sprite(p1partyactionbutton1x, p1partyactionbutton1y, 'kainstrikebox').setInteractive();
+p1kainstrikebutton.setOrigin(0, 0); 
+            p1kainstrikebutton.on('pointerdown', function (pointer) {
+            this.setTint(0xff0000);
+            if (playerabilityselected == false){
+            setenemytint()
+            p1kainattackstrike = true
+            p1kainstriketime = 8
+            p1kainselectingtarget = true
+            playerabilityselected = true
+            p1kainstrikesoundplayed = false
+            }
+          });
+p1kainstrikebutton.visible = false
+
+
+p1kainslashbutton = this.add.sprite(p1partyactionbutton2x, p1partyactionbutton2y, 'kainslashbox').setInteractive();
+p1kainslashbutton.setOrigin(0, 0); 
+            p1kainslashbutton.on('pointerdown', function (pointer) {
+            if (playerabilityselected == false) {
+            this.setTint(0xff0000);
+            setenemytint()
+            p1kainattackslash = true
+            p1kainslashtime = 8
+            p1kainselectingtarget = true
+            playerabilityselected = true
+            p1kainslashsoundplayed = false
+            }
+          });
+p1kainslashbutton.visible = false
+
+
+p1kainjumpbutton = this.add.sprite(p1partyactionbutton3x, p1partyactionbutton3y, 'kainjumpbox').setInteractive();
+p1kainjumpbutton.setOrigin(0, 0); 
+            p1kainjumpbutton.on('pointerdown', function (pointer) {
+            if (playerabilityselected == false){
+            this.setTint(0xff0000);
+            setenemytint()
+            p1kainattackjump = true
+            p1kainjumptime = 75
+            p1kainselectingtarget = true
+            playerabilityselected = true
+           }
+          });
+p1kainjumpbutton.visible = false
+
+p1kainpowerbutton = this.add.sprite(p1partyactionbutton4x, p1partyactionbutton4y, 'kainpowerbox').setInteractive();
+p1kainpowerbutton.setOrigin(0, 0); 
+            p1kainpowerbutton.on('pointerdown', function (pointer) {
+            if (playerabilityselected == false){
+            this.setTint(0xff0000);
+           p1kaincastpower = true
+           p1kainpowertime = 30
+           playerabilityselected = true
+          
+           }
+          });
+p1kainpowerbutton.visible = false
+
+//*******************P1KAINBUTTONSEND*********************************
+//P2KAINBUTTONS********************************************************
+//p2kainbuttons
+
+p2kainstrikebutton = this.add.sprite(p2partyactionbutton1x, p2partyactionbutton1y, 'kainstrikebox').setInteractive();
+p2kainstrikebutton.setOrigin(0, 0); 
+            p2kainstrikebutton.on('pointerdown', function (pointer) {
+            this.setTint(0xff0000);
+            if (playerabilityselected == false){
+            setenemytint()
+            p2kainattackstrike = true
+            p2kainstriketime = 8
+            p2kainselectingtarget = true
+            playerabilityselected = true
+            p2kainstrikesoundplayed = false
+            }
+          });
+p2kainstrikebutton.visible = false
+
+
+p2kainslashbutton = this.add.sprite(p2partyactionbutton2x, p2partyactionbutton2y, 'kainslashbox').setInteractive();
+p2kainslashbutton.setOrigin(0, 0); 
+            p2kainslashbutton.on('pointerdown', function (pointer) {
+            if (playerabilityselected == false) {
+            this.setTint(0xff0000);
+            setenemytint()
+            p2kainattackslash = true
+            p2kainslashtime = 8
+            p2kainselectingtarget = true
+            playerabilityselected = true
+            p2kainslashsoundplayed = false
+            }
+          });
+p2kainslashbutton.visible = false
+
+
+p2kainjumpbutton = this.add.sprite(p2partyactionbutton3x, p2partyactionbutton3y, 'kainjumpbox').setInteractive();
+p2kainjumpbutton.setOrigin(0, 0); 
+            p2kainjumpbutton.on('pointerdown', function (pointer) {
+            if (playerabilityselected == false){
+            this.setTint(0xff0000);
+            setenemytint()
+            p2kainattackjump = true
+            p2kainjumptime = 75
+            p2kainselectingtarget = true
+            playerabilityselected = true
+           }
+          });
+p2kainjumpbutton.visible = false
+
+p2kainpowerbutton = this.add.sprite(p2partyactionbutton4x, p2partyactionbutton4y, 'kainpowerbox').setInteractive();
+p2kainpowerbutton.setOrigin(0, 0); 
+            p2kainpowerbutton.on('pointerdown', function (pointer) {
+            if (playerabilityselected == false){
+            this.setTint(0xff0000);
+           p2kaincastpower = true
+           p2kainpowertime = 30
+           playerabilityselected = true
+          
+           }
+          });
+p2kainpowerbutton.visible = false
+//*******************P2KAINBUTTONSEND*********************************
+//P1KANGBUTTONSBEGIN
+//p1kangbuttons
+
+p1kangflykickbutton = this.add.sprite(p1partyactionbutton1x, p1partyactionbutton1y, 'kangflykickbox').setInteractive();
+p1kangflykickbutton.setOrigin(0, 0); 
+            p1kangflykickbutton.on('pointerdown', function (pointer) {
+            this.setTint(0xff0000);
+            if (playerabilityselected == false){
+            setenemytint()
+            p1kangattackflykick = true
+            p1kangflykicktime = 8
+            p1kangselectingtarget = true
+            playerabilityselected = true
+            p1kangflykicksoundplayed = false
+            }
+          });
+p1kangflykickbutton.visible = false
+
+
+p1kangfireballbutton = this.add.sprite(p1partyactionbutton2x, p1partyactionbutton2y, 'kangfireballbox').setInteractive();
+p1kangfireballbutton.setOrigin(0, 0); 
+            p1kangfireballbutton.on('pointerdown', function (pointer) {
+            if (playerabilityselected == false) {
+            this.setTint(0xff0000);
+            setenemytint()
+            p1kangattackfireball = true
+            p1kangfireballtime = 8
+            p1kangselectingtarget = true
+            playerabilityselected = true
+            p1kangfireballsoundplayed = false
+            }
+          });
+p1kangfireballbutton.visible = false
+
+
+p1kangbicyclebutton = this.add.sprite(p1partyactionbutton3x, p1partyactionbutton3y, 'kangbicyclebox').setInteractive();
+p1kangbicyclebutton.setOrigin(0, 0); 
+            p1kangbicyclebutton.on('pointerdown', function (pointer) {
+            if (playerabilityselected == false){
+            this.setTint(0xff0000);
+            setenemytint()
+            p1kangattackbicycle = true
+            p1kangbicycletime = 8
+            p1kangselectingtarget = true
+            playerabilityselected = true
+           }
+          });
+p1kangbicyclebutton.visible = false
+
+p1kangdragonbutton = this.add.sprite(p1partyactionbutton4x, p1partyactionbutton4y, 'kangdragonbox').setInteractive();
+p1kangdragonbutton.setOrigin(0, 0); 
+            p1kangdragonbutton.on('pointerdown', function (pointer) {
+            if (playerabilityselected == false){
+            this.setTint(0xff0000);
+            setenemytint()
+            p1kangattackdragon = true
+            p1kangdragontime = 135
+            p1kangselectingtarget = true
+            playerabilityselected = true
+          
+           }
+          });
+p1kangdragonbutton.visible = false
+
+p1kangprayerbutton = this.add.sprite(p1partyactionbutton5x, p1partyactionbutton5y, 'kangprayerbox').setInteractive();
+p1kangprayerbutton.setOrigin(0, 0); 
+            p1kangprayerbutton.on('pointerdown', function (pointer) {
+            if (playerabilityselected == false){
+            this.setTint(0xff0000);
+           p1kangattackprayer = true
+           p1kangprayertime = 100
+           playerabilityselected = true
+
+           
+          
+           }
+          });
+p1kangprayerbutton.visible = false
+//endkang1buttons
+
+//P2KANGBUTTONSBEGIN
+//p2kangbuttons
+
+p2kangflykickbutton = this.add.sprite(p2partyactionbutton1x, p2partyactionbutton1y, 'kangflykickbox').setInteractive();
+p2kangflykickbutton.setOrigin(0, 0); 
+            p2kangflykickbutton.on('pointerdown', function (pointer) {
+            this.setTint(0xff0000);
+            if (playerabilityselected == false){
+            setenemytint()
+            p2kangattackflykick = true
+            p2kangflykicktime = 8
+            p2kangselectingtarget = true
+            playerabilityselected = true
+            p2kangflykicksoundplayed = false
+            }
+          });
+p2kangflykickbutton.visible = false
+
+
+p2kangfireballbutton = this.add.sprite(p2partyactionbutton2x, p2partyactionbutton2y, 'kangfireballbox').setInteractive();
+p2kangfireballbutton.setOrigin(0, 0); 
+            p2kangfireballbutton.on('pointerdown', function (pointer) {
+            if (playerabilityselected == false) {
+            setenemytint()
+            p2kangattackfireball = true
+            p2kangfireballtime = 8
+            p2kangselectingtarget = true
+            playerabilityselected = true
+            p2kangfireballsoundplayed = false
+            }
+          });
+p2kangfireballbutton.visible = false
+
+
+p2kangbicyclebutton = this.add.sprite(p2partyactionbutton3x, p2partyactionbutton3y, 'kangbicyclebox').setInteractive();
+p2kangbicyclebutton.setOrigin(0, 0); 
+            p2kangbicyclebutton.on('pointerdown', function (pointer) {
+            if (playerabilityselected == false){
+            this.setTint(0xff0000);
+            setenemytint()
+            p2kangattackbicycle = true
+            p2kangbicycletime = 8
+            p2kangselectingtarget = true
+            playerabilityselected = true
+           }
+          });
+p2kangbicyclebutton.visible = false
+
+p2kangdragonbutton = this.add.sprite(p2partyactionbutton4x, p2partyactionbutton4y, 'kangdragonbox').setInteractive();
+p2kangdragonbutton.setOrigin(0, 0); 
+            p2kangdragonbutton.on('pointerdown', function (pointer) {
+            if (playerabilityselected == false){
+            this.setTint(0xff0000);
+            setenemytint()
+            p2kangattackdragon = true
+            p2kangdragontime = 135
+            p2kangselectingtarget = true
+            playerabilityselected = true
+          
+           }
+          });
+p2kangdragonbutton.visible = false
+
+p2kangprayerbutton = this.add.sprite(p2partyactionbutton5x, p2partyactionbutton5y, 'kangprayerbox').setInteractive();
+p2kangprayerbutton.setOrigin(0, 0); 
+            p2kangprayerbutton.on('pointerdown', function (pointer) {
+            if (playerabilityselected == false){
+            this.setTint(0xff0000);
+           p2kangattackprayer = true
+           p2kangprayertime =100
+           playerabilityselected = true
+           
+           }
+          });
+p2kangprayerbutton.visible = false
+//endkang2buttons
+
+//p1orchidbuttons
+p1orchidwheelbutton = this.add.sprite(p1partyactionbutton1x, p1partyactionbutton1y, 'orchidwheelbox').setInteractive();
+p1orchidwheelbutton.setOrigin(0, 0); 
+            p1orchidwheelbutton.on('pointerdown', function (pointer) {
+            this.setTint(0xff0000);
+            if (playerabilityselected == false){
+            setenemytint()
+            p1orchidattackwheel = true
+            p1orchidwheeltime = 16
+            p1orchidselectingtarget = true
+            playerabilityselected = true
+            p1orchidwheelsoundplayed = false
+            }
+          });
+p1orchidwheelbutton.visible = false
+
+
+p1orchidfirebabutton = this.add.sprite(p1partyactionbutton2x, p1partyactionbutton2y, 'orchidfirebabox').setInteractive();
+p1orchidfirebabutton.setOrigin(0, 0); 
+            p1orchidfirebabutton.on('pointerdown', function (pointer) {
+            if (playerabilityselected == false) {
+            this.setTint(0xff0000);
+            setenemytint()
+            p1orchidattackfireba = true
+            p1orchidfirebatime = 8
+            p1orchidselectingtarget = true
+            playerabilityselected = true
+            p1orchidfirebasoundplayed = false
+            }
+          });
+p1orchidfirebabutton.visible = false
+
+
+p1orchidcatbutton = this.add.sprite(p1partyactionbutton3x, p1partyactionbutton3y, 'orchidcatbox').setInteractive();
+p1orchidcatbutton.setOrigin(0, 0); 
+            p1orchidcatbutton.on('pointerdown', function (pointer) {
+            if (playerabilityselected == false){
+            this.setTint(0xff0000);
+            setenemytint()
+            p1orchidattackcat = true
+            p1orchidcattime = 8
+            p1orchidselectingtarget = true
+            playerabilityselected = true
+           }
+          });
+p1orchidcatbutton.visible = false
+
+p1orchidbatonbutton = this.add.sprite(p1partyactionbutton4x, p1partyactionbutton4y, 'orchidbatonbox').setInteractive();
+p1orchidbatonbutton.setOrigin(0, 0); 
+            p1orchidbatonbutton.on('pointerdown', function (pointer) {
+            if (playerabilityselected == false){
+            this.setTint(0xff0000);
+            setenemytint()
+            p1orchidattackbaton = true
+            p1orchidbatontime = 15
+            p1orchidselectingtarget = true
+            playerabilityselected = true
+          
+           }
+          });
+p1orchidbatonbutton.visible = false
+
+p1orchidfitbutton = this.add.sprite(p1partyactionbutton5x, p1partyactionbutton5y, 'orchidfitbox').setInteractive();
+p1orchidfitbutton.setOrigin(0, 0); 
+            p1orchidfitbutton.on('pointerdown', function (pointer) {
+            if (playerabilityselected == false){
+            this.setTint(0xff0000);
+           setenemytint()
+           p1orchidattackfit = true
+           p1orchidfittime = 15
+           p1orchidselectingtarget = true
+           playerabilityselected = true
+
+           
+          
+           }
+          });
+p1orchidfitbutton.visible = false
+//endorchid1buttons
+//p2orchidbuttons
+p2orchidwheelbutton = this.add.sprite(p2partyactionbutton1x, p2partyactionbutton1y, 'orchidwheelbox').setInteractive();
+p2orchidwheelbutton.setOrigin(0, 0); 
+            p2orchidwheelbutton.on('pointerdown', function (pointer) {
+            this.setTint(0xff0000);
+            if (playerabilityselected == false){
+            setenemytint()
+            p2orchidattackwheel = true
+            p2orchidwheeltime = 16
+            p2orchidselectingtarget = true
+            playerabilityselected = true
+            p2orchidwheelsoundplayed = false
+            }
+          });
+p2orchidwheelbutton.visible = false
+
+
+p2orchidfirebabutton = this.add.sprite(p2partyactionbutton2x, p2partyactionbutton2y, 'orchidfirebabox').setInteractive();
+p2orchidfirebabutton.setOrigin(0, 0); 
+            p2orchidfirebabutton.on('pointerdown', function (pointer) {
+            if (playerabilityselected == false) {
+            this.setTint(0xff0000);
+            setenemytint()
+            p2orchidattackfireba = true
+            p2orchidfirebatime = 8
+            p2orchidselectingtarget = true
+            playerabilityselected = true
+            p2orchidfirebasoundplayed = false
+            }
+          });
+p2orchidfirebabutton.visible = false
+
+
+p2orchidcatbutton = this.add.sprite(p2partyactionbutton3x, p2partyactionbutton3y, 'orchidcatbox').setInteractive();
+p2orchidcatbutton.setOrigin(0, 0); 
+            p2orchidcatbutton.on('pointerdown', function (pointer) {
+            if (playerabilityselected == false){
+            this.setTint(0xff0000);
+            setenemytint()
+            p2orchidattackcat = true
+            p2orchidcattime = 8
+            p2orchidselectingtarget = true
+            playerabilityselected = true
+           }
+          });
+p2orchidcatbutton.visible = false
+
+p2orchidbatonbutton = this.add.sprite(p2partyactionbutton4x, p2partyactionbutton4y, 'orchidbatonbox').setInteractive();
+p2orchidbatonbutton.setOrigin(0, 0); 
+            p2orchidbatonbutton.on('pointerdown', function (pointer) {
+            if (playerabilityselected == false){
+            this.setTint(0xff0000);
+            setenemytint()
+            p2orchidattackbaton = true
+            p2orchidbatontime = 15
+            p2orchidselectingtarget = true
+            playerabilityselected = true
+          
+           }
+          });
+p2orchidbatonbutton.visible = false
+
+p2orchidfitbutton = this.add.sprite(p2partyactionbutton5x, p2partyactionbutton5y, 'orchidfitbox').setInteractive();
+p2orchidfitbutton.setOrigin(0, 0); 
+            p2orchidfitbutton.on('pointerdown', function (pointer) {
+            if (playerabilityselected == false){
+            this.setTint(0xff0000);
+           setenemytint()
+           p2orchidattackfit = true
+           p2orchidfittime = 15
+           p2orchidselectingtarget = true
+           playerabilityselected = true
+
+           
+          
+           }
+          });
+p2orchidfitbutton.visible = false
+//endorchid2buttons
+
+
+//p1spinalbuttons
+p1spinalslicebutton = this.add.sprite(p1partyactionbutton1x, p1partyactionbutton1y, 'spinalslicebox').setInteractive();
+p1spinalslicebutton.setOrigin(0, 0); 
+            p1spinalslicebutton.on('pointerdown', function (pointer) {
+            this.setTint(0xff0000);
+            if (playerabilityselected == false){
+            setenemytint()
+            p1spinalattackslice = true
+            p1spinalslicetime = 16
+            p1spinalselectingtarget = true
+            playerabilityselected = true
+            p1spinalslicesoundplayed = false
+            }
+          });
+p1spinalslicebutton.visible = false
+
+
+p1spinalslashbutton = this.add.sprite(p1partyactionbutton2x, p1partyactionbutton2y, 'spinalslashbox').setInteractive();
+p1spinalslashbutton.setOrigin(0, 0); 
+            p1spinalslashbutton.on('pointerdown', function (pointer) {
+            if (playerabilityselected == false) {
+            this.setTint(0xff0000);
+            setenemytint()
+            p1spinalattackslash = true
+            p1spinalslashtime = 16
+            p1spinalselectingtarget = true
+            playerabilityselected = true
+            p1spinalslashsoundplayed = false
+            }
+          });
+p1spinalslashbutton.visible = false
+
+
+p1spinalbashbutton = this.add.sprite(p1partyactionbutton3x, p1partyactionbutton3y, 'spinalbashbox').setInteractive();
+p1spinalbashbutton.setOrigin(0, 0); 
+            p1spinalbashbutton.on('pointerdown', function (pointer) {
+            if (playerabilityselected == false){
+            this.setTint(0xff0000);
+            setenemytint()
+            p1spinalattackbash = true
+            p1spinalbashtime = 16
+            p1spinalselectingtarget = true
+            playerabilityselected = true
+           }
+          });
+p1spinalbashbutton.visible = false
+
+p1spinalspikebutton = this.add.sprite(p1partyactionbutton4x, p1partyactionbutton4y, 'spinalspikebox').setInteractive();
+p1spinalspikebutton.setOrigin(0, 0); 
+            p1spinalspikebutton.on('pointerdown', function (pointer) {
+            if (playerabilityselected == false){
+            this.setTint(0xff0000);
+            setenemytint()
+            p1spinalattackspike = true
+            p1spinalspiketime = 16
+            p1spinalselectingtarget = true
+            playerabilityselected = true
+          
+           }
+          });
+p1spinalspikebutton.visible = false
+
+p1spinalblockbutton = this.add.sprite(p1partyactionbutton5x, p1partyactionbutton5y, 'spinalblockbox').setInteractive();
+p1spinalblockbutton.setOrigin(0, 0); 
+            p1spinalblockbutton.on('pointerdown', function (pointer) {
+            if (playerabilityselected == false){
+            this.setTint(0xff0000);
+           setenemytint()
+           p1spinalattackblock = true
+           p1spinalblocktime = 15
+           p1spinalselectingtarget = true
+           playerabilityselected = true
+
+           
+          
+           }
+          });
+p1spinalblockbutton.visible = false
+//endspinal1buttons
+
+
+//ENDCREATE UI******************************************************
+},
+//ENDCREATE UI********************************************************
+
+
+//BEGINUPDATE UI*****************************************************8
+//uiupdate
+update: function (time, delta){
+hideplayerbuttons()
+    //status
+    if (player1cecil == true){
+    p1cecilhealthtext.setText([
+    p1cecilhealthrating
+    ]);
+    }
+
+    if (player2cecil == true){
+    p2cecilhealthtext.setText([
+    p2cecilhealthrating
+    ]);
+    }
+
+    if (player1kain == true){
+    p1kainhealthtext.setText([
+    p1kainhealthrating
+    ]);
+    }
+
+    if (player2kain == true){
+    p2kainhealthtext.setText([
+    p2kainhealthrating
+    ]);
+    }
+
+    if (player1kang == true){
+    p1kanghealthtext.setText([
+    p1kanghealthrating
+    ]);
+    }
+
+    if (player2kang == true){
+    p2kanghealthtext.setText([
+    p2kanghealthrating
+    ]);
+    }
+
+    if (player1orchid == true){
+    p1orchidhealthtext.setText([
+    p1orchidhealthrating
+    ]);
+    }
+
+    if (player2orchid == true){
+    p2orchidhealthtext.setText([
+    p2orchidhealthrating
+    ]);
+
+     if (player1spinal == true){
+    p1spinalhealthtext.setText([
+    p1spinalhealthrating
+    ]);
+    }
+    }
+
+
+//stattxt
+   statustxt.setText([
+       'world x: ' + this.input.mousePointer.worldX,
+       'world y: ' + this.input.mousePointer.worldY,
+       p1cecilx,
+       p1cecily,
+       p2cecilx,
+       p2cecily,
+      p2cecilselected,
+      p2cecilcastholy,
+      p2cecilselectingtarget,
+      p2ceciltargetselected,
+      p2cecilselectedtargetx,
+      p1kangdragontime,
+      p1kangtargetselected,
+      p2kangattackrating,
+      p1spinalslicetime
+      
+    
+    ]);
+}
+});
+//ENDUPDATE UI***********************************************
+
+//BEGIN FUNCTIONS********************************************
+
+//playerbattleattack
+function playerbattleattack(){
+ if (playerattacking == true){
+if (currentattacktargetname == 'p2cecil'){ 
+    currenttargetmaxhealthrating = p2cecilmaxhealthrating
+    currenttargethealthrating = p2cecilhealthrating
+    currenttargetattackrating = p2cecilattackrating
+    currenttargetdefenserating = p2cecildefenserating
+    currenttargetspeedrating = p2cecilspeedrating
+    currenttargetsupportrating = p2cecilsupportrating
+}
+if (currentattacktargetname == 'p1cecil'){
+    currenttargetmaxhealthrating = p1cecilmaxhealthrating
+    currenttargethealthrating = p1cecilhealthrating
+    currenttargetattackrating = p1cecilattackrating
+    currenttargetdefenserating = p1cecildefenserating
+    currenttargetspeedrating = p1cecilspeedrating
+    currenttargetsupportrating = p1cecilsupportrating
+}    
+
+if (currentattacktargetname == 'p2kain'){ 
+    currenttargetmaxhealthrating = p2kainmaxhealthrating
+    currenttargethealthrating = p2kainhealthrating
+    currenttargetattackrating = p2kainattackrating
+    currenttargetdefenserating = p2kaindefenserating
+    currenttargetspeedrating = p2kainspeedrating
+    currenttargetsupportrating = p2kainsupportrating
+}
+if (currentattacktargetname == 'p1kain'){
+    currenttargetmaxhealthrating = p1kainmaxhealthrating
+    currenttargethealthrating = p1kainhealthrating
+    currenttargetattackrating = p1kainattackrating
+    currenttargetdefenserating = p1kaindefenserating
+    currenttargetspeedrating = p1kainspeedrating
+    currenttargetsupportrating = p1kainsupportrating
+}    
+
+if (currentattacktargetname == 'p2kang'){ 
+    currenttargetmaxhealthrating = p2kangmaxhealthrating
+    currenttargethealthrating = p2kanghealthrating
+    currenttargetattackrating = p2kangattackrating
+    currenttargetdefenserating = p2kangdefenserating
+    currenttargetspeedrating = p2kangspeedrating
+    currenttargetsupportrating = p2kangsupportrating
+}
+if (currentattacktargetname == 'p1kang'){
+    currenttargetmaxhealthrating = p1kangmaxhealthrating
+    currenttargethealthrating = p1kanghealthrating
+    currenttargetattackrating = p1kangattackrating
+    currenttargetdefenserating = p1kangdefenserating
+    currenttargetspeedrating = p1kangspeedrating
+    currenttargetsupportrating = p1kangsupportrating
+}   
+
+if (currentattacktargetname == 'p2orchid'){ 
+    currenttargetmaxhealthrating = p2orchidmaxhealthrating
+    currenttargethealthrating = p2orchidhealthrating
+    currenttargetattackrating = p2orchidattackrating
+    currenttargetdefenserating = p2orchiddefenserating
+    currenttargetspeedrating = p2orchidspeedrating
+    currenttargetsupportrating = p2orchidsupportrating
+}
+if (currentattacktargetname == 'p1orchid'){
+    currenttargetmaxhealthrating = p1orchidmaxhealthrating
+    currenttargethealthrating = p1orchidhealthrating
+    currenttargetattackrating = p1orchidattackrating
+    currenttargetdefenserating = p1orchiddefenserating
+    currenttargetspeedrating = p1orchidspeedrating
+    currenttargetsupportrating = p1orchidsupportrating
+}   
+
+if (currentattacktargetname == 'p2spinal'){ 
+    currenttargetmaxhealthrating = p2spinalmaxhealthrating
+    currenttargethealthrating = p2spinalhealthrating
+    currenttargetattackrating = p2spinalattackrating
+    currenttargetdefenserating = p2spinaldefenserating
+    currenttargetspeedrating = p2spinalspeedrating
+    currenttargetsupportrating = p2spinalsupportrating
+}
+if (currentattacktargetname == 'p1spinal'){
+    currenttargetmaxhealthrating = p1spinalmaxhealthrating
+    currenttargethealthrating = p1spinalhealthrating
+    currenttargetattackrating = p1spinalattackrating
+    currenttargetdefenserating = p1spinaldefenserating
+    currenttargetspeedrating = p1spinalspeedrating
+    currenttargetsupportrating = p1spinalsupportrating
+}   
+
+if (p1cecilselected == true){
+    currentplayerhealth = p1cecilhealthrating
+    currentplayerattackrating = p1cecilattackrating
+    currentplayerdefenserating = p1cecildefenserating
+    currentplayermagicrating = p1cecilmagicrating
+    currentplayerspeedrating = p1cecilspeedrating
+    currentplayersupportrating = p1cecilsupportrating
+
+    if (p1cecilattacksword == true){
+        currenttargethealthrating -=   p1cecilattacksworddamage - currenttargetdefenserating 
+    }
+    if (p1cecilattacktarget == true){
+        currenttargethealthrating -=   p1cecilattacktargetdamage - currenttargetdefenserating 
+    }
+    if (p1cecilattackholysword == true){
+        currenttargethealthrating -=   p1cecilattackholysworddamage - currenttargetdefenserating 
+    }
+    if (currentattacktargetname == 'p2cecil'){
+     p2cecilhealthrating = currenttargethealthrating
+    }
+    if (currentattacktargetname == 'p2kain'){
+     p2kainhealthrating = currenttargethealthrating
+    }
+
+     if (currentattacktargetname == 'p2kang'){
+     p2kanghealthrating = currenttargethealthrating
+    }
+    if (currentattacktargetname == 'p2orchid'){
+     p2orchidhealthrating = currenttargethealthrating
+    }
+
+    if (currentattacktargetname == 'p2spinal'){
+     p2spinalhealthrating = currenttargethealthrating
+    }
+}
+
+if (p2cecilselected == true){
+    currentplayerhealth = p2cecilhealthrating
+    currentplayerattackrating = p2cecilattackrating
+    currentplayerdefenserating = p2cecildefenserating
+    currentplayermagicrating = p2cecilmagicrating
+    currentplayerspeedrating = p2cecilspeedrating
+    currentplayersupportrating = p2cecilsupportrating
+
+    if (p2cecilattacksword == true){
+        currenttargethealthrating -=   p2cecilattacksworddamage - currenttargetdefenserating 
+    }
+    if (p2cecilattacktarget == true){
+        currenttargethealthrating -=   p2cecilattacktargetdamage - currenttargetdefenserating 
+    }
+    if (p2cecilattackholysword == true){
+        currenttargethealthrating -=   p2cecilattackholysworddamage - currenttargetdefenserating 
+    }
+    if (currentattacktargetname == 'p1cecil'){
+     p1cecilhealthrating = currenttargethealthrating
+    }
+    if (currentattacktargetname == 'p1kain'){
+     p1kainhealthrating = currenttargethealthrating
+    }
+
+    if (currentattacktargetname == 'p1kang'){
+     p1kanghealthrating = currenttargethealthrating
+    }
+    if (currentattacktargetname == 'p1orchid'){
+     p1orchidhealthrating = currenttargethealthrating
+    }
+    if (currentattacktargetname == 'p1spinal'){
+     p1spinalhealthrating = currenttargethealthrating
+    }
+
+}
+ 
+    if (p1kainselected == true){
+    currentplayerhealth = p1kainhealthrating
+    currentplayerattackrating = p1kainattackrating
+    currentplayerdefenserating = p1kaindefenserating
+    currentplayermagicrating = p1kainmagicrating
+    currentplayerspeedrating = p1kainspeedrating
+    currentplayersupportrating = p1kainsupportrating
+
+    if (p1kainattackstrike == true){
+        currenttargethealthrating -=   p1kainattackstrikedamage - currenttargetdefenserating 
+    }
+    if (p1kainattackslash == true){
+        currenttargethealthrating -=   p1kainattackslashdamage - currenttargetdefenserating 
+    }
+    if (p1kainattackjump == true){
+        currenttargethealthrating -=   p1kainattackjumpdamage - currenttargetdefenserating 
+    }
+
+    if (currentattacktargetname == 'p2cecil'){
+     p2cecilhealthrating = currenttargethealthrating
+    }
+ 
+    if (currentattacktargetname == 'p2kain'){
+     p2kainhealthrating = currenttargethealthrating
+    }
+
+     if (currentattacktargetname == 'p2kang'){
+     p2kanghealthrating = currenttargethealthrating
+    }
+    
+     if (currentattacktargetname == 'p2orchid'){
+     p2orchidhealthrating = currenttargethealthrating
+    }
+
+    if (currentattacktargetname == 'p2spinal'){
+     p2spinalhealthrating = currenttargethealthrating
+    }
+
+    }
+ 
+if (p2kainselected == true){
+    currentplayerhealth = p2kainhealthrating
+    currentplayerattackrating = p2kainattackrating
+    currentplayerdefenserating = p2kaindefenserating
+    currentplayermagicrating = p2kainmagicrating
+    currentplayerspeedrating = p2kainspeedrating
+    currentplayersupportrating = p2kainsupportrating
+
+    if (p2kainattackstrike == true){
+        currenttargethealthrating -=   p2kainattackstrikedamage - currenttargetdefenserating 
+    }
+    if (p2kainattackslash == true){
+        currenttargethealthrating -=   p2kainattackslashdamage - currenttargetdefenserating 
+    }
+    if (p2kainattackjump == true){
+        currenttargethealthrating -=   p2kainattackjumpdamage - currenttargetdefenserating 
+    }
+
+    if (currentattacktargetname == 'p1cecil'){
+     p1cecilhealthrating = currenttargethealthrating
+    }
+ 
+    if (currentattacktargetname == 'p1kain'){
+     p1kainhealthrating = currenttargethealthrating
+    }
+    if (currentattacktargetname == 'p1kang'){
+     p1kanghealthrating = currenttargethealthrating
+    }
+    
+    if (currentattacktargetname == 'p1orchid'){
+     p1orchidhealthrating = currenttargethealthrating
+    }
+
+    if (currentattacktargetname == 'p1spinal'){
+     p1spinalhealthrating = currenttargethealthrating
+    }
+
+
+
+}
+
+    if (p1kangselected == true){
+    currentplayerhealth = p1kanghealthrating
+    currentplayerattackrating = p1kangattackrating
+    currentplayerdefenserating = p1kangdefenserating
+    currentplayermagicrating = p1kangmagicrating
+    currentplayerspeedrating = p1kangspeedrating
+    currentplayersupportrating = p1kangsupportrating
+
+    if (p1kangattackfireball == true){
+        currenttargethealthrating -=   p1kangattackfireballdamage - currenttargetdefenserating 
+    }
+    if (p1kangattackflykick == true){
+        currenttargethealthrating -=   p1kangattackflykickdamage - currenttargetdefenserating 
+    }
+    if (p1kangattackbicycle == true){
+        currenttargethealthrating -=   p1kangattackbicycledamage - currenttargetdefenserating 
+    }
+
+    if (p1kangattackdragon == true){
+        currenttargethealthrating -=   p1kangattackdragondamage - currenttargetdefenserating 
+    }
+
+
+    if (currentattacktargetname == 'p2cecil'){
+     p2cecilhealthrating = currenttargethealthrating
+    }
+ 
+    if (currentattacktargetname == 'p2kain'){
+     p2kainhealthrating = currenttargethealthrating
+    }
+
+    if (currentattacktargetname == 'p2kang'){
+     p2kanghealthrating = currenttargethealthrating
+    }
+
+
+}
+if (p2kangselected == true){
+    currentplayerhealth = p1kanghealthrating
+    currentplayerattackrating = p2kangattackrating
+    currentplayerdefenserating = p2kangdefenserating
+    currentplayermagicrating = p2kangmagicrating
+    currentplayerspeedrating = p2kangspeedrating
+    currentplayersupportrating = p2kangsupportrating
+
+    if (p2kangattackfireball == true){
+        currenttargethealthrating -=   p2kangattackfireballdamage - currenttargetdefenserating 
+    }
+    if (p2kangattackflykick == true){
+        currenttargethealthrating -=   p2kangattackflykickdamage - currenttargetdefenserating 
+    }
+    if (p2kangattackbicycle == true){
+        currenttargethealthrating -=   p2kangattackbicycledamage - currenttargetdefenserating 
+    }
+
+    if (p2kangattackdragon == true){
+        currenttargethealthrating -=   p2kangattackdragondamage - currenttargetdefenserating 
+    }
+
+
+    if (currentattacktargetname == 'p1cecil'){
+     p1cecilhealthrating = currenttargethealthrating
+    }
+ 
+    if (currentattacktargetname == 'p1kain'){
+     p1kainhealthrating = currenttargethealthrating
+    }
+
+    if (currentattacktargetname == 'p1kang'){
+     p1kanghealthrating = currenttargethealthrating
+    }
+
+    if (currentattacktargetname == 'p1orchid'){
+     p1orchidhealthrating = currenttargethealthrating
+    }
+
+    if (currentattacktargetname == 'p1spinal'){
+     p1spinalhealthrating = currenttargethealthrating
+    }
+}
+
+if (p1orchidselected == true){
+    currentplayerhealth = p1orchidhealthrating
+    currentplayerattackrating = p1orchidattackrating
+    currentplayerdefenserating = p1orchiddefenserating
+    currentplayermagicrating = p1orchidmagicrating
+    currentplayerspeedrating = p1orchidspeedrating
+    currentplayersupportrating = p1orchidsupportrating
+
+    if (p1orchidattackfireba == true){
+        currenttargethealthrating -=   p1orchidattackfirebadamage - currenttargetdefenserating 
+    }
+    if (p1orchidattackwheel == true){
+        currenttargethealthrating -=   p1orchidattackwheeldamage - currenttargetdefenserating 
+    }
+    if (p1orchidattackcat == true){
+        currenttargethealthrating -=   p1orchidattackcatdamage - currenttargetdefenserating 
+    }
+
+    if (p1orchidattackbaton == true){
+        currenttargethealthrating -=   p1orchidattackbatondamage - currenttargetdefenserating 
+    }
+
+
+    if (currentattacktargetname == 'p2cecil'){
+     p2cecilhealthrating = currenttargethealthrating
+    }
+ 
+    if (currentattacktargetname == 'p2kain'){
+     p2kainhealthrating = currenttargethealthrating
+    }
+
+    if (currentattacktargetname == 'p2kang'){
+     p2kanghealthrating = currenttargethealthrating
+    }
+
+    if (currentattacktargetname == 'p2orchid'){
+     p2orchidhealthrating = currenttargethealthrating
+    }
+
+   if (currentattacktargetname == 'p2spinal'){
+     p2spinalhealthrating = currenttargethealthrating
+    }
+
+}
+if (p2orchidselected == true){
+    currentplayerhealth = p1orchidhealthrating
+    currentplayerattackrating = p2orchidattackrating
+    currentplayerdefenserating = p2orchiddefenserating
+    currentplayermagicrating = p2orchidmagicrating
+    currentplayerspeedrating = p2orchidspeedrating
+    currentplayersupportrating = p2orchidsupportrating
+
+    if (p2orchidattackfireba == true){
+        currenttargethealthrating -=   p2orchidattackfirebadamage - currenttargetdefenserating 
+    }
+    if (p2orchidattackwheel == true){
+        currenttargethealthrating -=   p2orchidattackwheeldamage - currenttargetdefenserating 
+    }
+    if (p2orchidattackcat == true){
+        currenttargethealthrating -=   p2orchidattackcatdamage - currenttargetdefenserating 
+    }
+
+    if (p2orchidattackbaton == true){
+        currenttargethealthrating -=   p2orchidattackbatondamage - currenttargetdefenserating 
+    }
+
+
+    if (currentattacktargetname == 'p1cecil'){
+     p1cecilhealthrating = currenttargethealthrating
+    }
+ 
+    if (currentattacktargetname == 'p1kain'){
+     p1kainhealthrating = currenttargethealthrating
+    }
+
+    if (currentattacktargetname == 'p1kang'){
+     p1kanghealthrating = currenttargethealthrating
+    }
+
+     if (currentattacktargetname == 'p1orchid'){
+     p1orchidhealthrating = currenttargethealthrating
+    }
+
+    if (currentattacktargetname == 'p1spinal'){
+     p1spinalhealthrating = currenttargethealthrating
+    }
+
+
+
+}
+
+if (p1spinalselected == true){
+    currentplayerhealth = p1spinalhealthrating
+    currentplayerattackrating = p1spinalattackrating
+    currentplayerdefenserating = p1spinaldefenserating
+    currentplayermagicrating = p1spinalmagicrating
+    currentplayerspeedrating = p1spinalspeedrating
+    currentplayersupportrating = p1spinalsupportrating
+
+    if (p1spinalattackslice == true){
+        currenttargethealthrating -=   p1spinalattackslicedamage - currenttargetdefenserating 
+    }
+    if (p1spinalattackslash == true){
+        currenttargethealthrating -=   p1spinalattackslashdamage - currenttargetdefenserating 
+    }
+    if (p1spinalattackbash == true){
+        currenttargethealthrating -=   p1spinalattackbashdamage - currenttargetdefenserating 
+    }
+
+    if (p1spinalattackspike == true){
+        currenttargethealthrating -=   p1spinalattackspikedamage - currenttargetdefenserating 
+    }
+
+
+    if (currentattacktargetname == 'p2cecil'){
+     p2cecilhealthrating = currenttargethealthrating
+    }
+ 
+    if (currentattacktargetname == 'p2kain'){
+     p2kainhealthrating = currenttargethealthrating
+    }
+
+    if (currentattacktargetname == 'p2kang'){
+     p2kanghealthrating = currenttargethealthrating
+    }
+
+    if (currentattacktargetname == 'p2orchid'){
+     p2orchidhealthrating = currenttargethealthrating
+    }
+
+    if (currentattacktargetname == 'p2spinal'){
+     p2spinalhealthrating = currenttargethealthrating
+    }
+    }
+
+if (p2spinalselected == true){
+    currentplayerhealth = p1spinalhealthrating
+    currentplayerattackrating = p2spinalattackrating
+    currentplayerdefenserating = p2spinaldefenserating
+    currentplayermagicrating = p2spinalmagicrating
+    currentplayerspeedrating = p2spinalspeedrating
+    currentplayersupportrating = p2spinalsupportrating
+
+    if (p2spinalattackslice == true){
+        currenttargethealthrating -=   p2spinalattackslicedamage - currenttargetdefenserating 
+    }
+    if (p2spinalattackslash == true){
+        currenttargethealthrating -=   p2spinalattackslashdamage - currenttargetdefenserating 
+    }
+    if (p2spinalattackbash == true){
+        currenttargethealthrating -=   p2spinalattackbashdamage - currenttargetdefenserating 
+    }
+
+    if (p2spinalattackspike == true){
+        currenttargethealthrating -=   p2spinalattackspikedamage - currenttargetdefenserating 
+    }
+
+
+    if (currentattacktargetname == 'p1cecil'){
+     p1cecilhealthrating = currenttargethealthrating
+    }
+ 
+    if (currentattacktargetname == 'p1kain'){
+     p1kainhealthrating = currenttargethealthrating
+    }
+
+    if (currentattacktargetname == 'p1kang'){
+     p1kanghealthrating = currenttargethealthrating
+    }
+
+    if (currentattacktargetname == 'p1orchid'){
+     p1orchidhealthrating = currenttargethealthrating
+    }
+
+    if (currentattacktargetname == 'p1spinal'){
+     p1spinalhealthrating = currenttargethealthrating
+    }
+}
+}
+
+
+playerattacking = false
+}
+//endplayerattack
+
+
+//setenemypos
+function setenemyposition(){
+   if (p1cecilselectingtarget == true){
+   if (p1cecilattacksword == true){
+   p1cecilselectedtargetx = currentenemyposx
+   p1cecilselectedtargety = currentenemyposy
+   p1ceciltargetselected = true
+   p1cecilselectingtarget = false
+   p1ceciltargetsoundplayed = false
+}
+
+   if (p1cecilattacktarget == true){
+   p1cecilselectedtargetx = currentenemyposx
+   p1cecilselectedtargety = currentenemyposy
+   p1ceciltargetselected = true
+   p1cecilselectingtarget = false
+   p1ceciltargetsoundplayed = false
+}
+if (p1cecilattackholysword == true){
+    p1cecilselectedtargetx = currentenemyposx
+    p1cecilselectedtargety = currentenemyposy
+    p1ceciltargetselected = true
+    p1cecilselectingtarget = false
+    }
+}
+  if (p2cecilselectingtarget == true){
+   if (p2cecilattacksword == true){
+   p2cecilselectedtargetx = currentenemyposx
+   p2cecilselectedtargety = currentenemyposy
+   p2ceciltargetselected = true
+   p2cecilselectingtarget = false
+   p2ceciltargetsoundplayed = false
+}
+
+   if (p2cecilattacktarget == true){
+   p2cecilselectedtargetx = currentenemyposx
+   p2cecilselectedtargety = currentenemyposy
+   p2ceciltargetselected = true
+   p2cecilselectingtarget = false
+   p2ceciltargetsoundplayed = false
+}
+if (p2cecilattackholysword == true){
+    p2cecilselectedtargetx = currentenemyposx
+    p2cecilselectedtargety = currentenemyposy
+    p2ceciltargetselected = true
+    p2cecilselectingtarget = false
+    }
+}
+
+    if (p1kainselectingtarget == true){
+    if (p1kainattackstrike == true){
+    p1kainselectedtargetx = currentenemyposx
+    p1kainselectedtargety = currentenemyposy
+    p1kaintargetselected = true
+    p1kainselectingtarget = false
+    }
+
+    if (p1kainattackslash == true){
+    p1kainselectedtargetx = currentenemyposx
+    p1kainselectedtargety = currentenemyposy
+    p1kaintargetselected = true
+    p1kainselectingtarget = false
+    }
+
+    if (p1kainattackjump == true){
+    p1kainselectedtargetx = currentenemyposx
+    p1kainselectedtargety = currentenemyposy
+    p1kaintargetselected = true
+    p1kainselectingtarget = false
+                
+    game.sound.add( "kainjumpsound" ).play() 
+    p1kainjumpdownsoundplayed = false
+    }
+    }
+
+    if (p2kainselectingtarget == true){
+    if (p2kainattackstrike == true){
+    p2kainselectedtargetx = currentenemyposx
+    p2kainselectedtargety = currentenemyposy
+    p2kaintargetselected = true
+    p2kainselectingtarget = false
+    }
+
+    if (p2kainattackslash == true){
+    p2kainselectedtargetx = currentenemyposx
+    p2kainselectedtargety = currentenemyposy
+    p2kaintargetselected = true
+    p2kainselectingtarget = false
+    }
+
+    if (p2kainattackjump == true){
+    p2kainselectedtargetx = currentenemyposx
+    p2kainselectedtargety = currentenemyposy
+    p2kaintargetselected = true
+    p2kainselectingtarget = false
+                
+    game.sound.add( "kainjumpsound" ).play() 
+    p2kainjumpdownsoundplayed = false
+    }
+    }
+
+    if (p1kangselectingtarget == true){
+    if (p1kangattackfireball == true){
+    p1kangselectedtargetx = currentenemyposx
+    p1kangselectedtargety = currentenemyposy
+    p1kangtargetselected = true
+    p1kangselectingtarget = false
+    }
+
+    if (p1kangattackflykick == true){
+    p1kangselectedtargetx = currentenemyposx
+    p1kangselectedtargety = currentenemyposy
+    p1kangtargetselected = true
+    p1kangselectingtarget = false
+    }
+
+    if (p1kangattackbicycle == true){
+    p1kangselectedtargetx = currentenemyposx
+    p1kangselectedtargety = currentenemyposy
+    p1kangtargetselected = true
+    p1kangselectingtarget = false
+    }
+
+    if (p1kangattackdragon == true){
+    p1kangselectedtargetx = currentenemyposx
+    p1kangselectedtargety = currentenemyposy
+    p1kangtargetselected = true
+    p1kangselectingtarget = false
+    }
+    }
+
+    if (p2kangselectingtarget == true){
+    if (p2kangattackfireball == true){
+    p2kangselectedtargetx = currentenemyposx
+    p2kangselectedtargety = currentenemyposy
+    p2kangtargetselected = true
+    p2kangselectingtarget = false
+    }
+
+    if (p2kangattackflykick == true){
+    p2kangselectedtargetx = currentenemyposx
+    p2kangselectedtargety = currentenemyposy
+    p2kangtargetselected = true
+    p2kangselectingtarget = false
+    }
+
+    if (p2kangattackbicycle == true){
+    p2kangselectedtargetx = currentenemyposx
+    p2kangselectedtargety = currentenemyposy
+    p2kangtargetselected = true
+    p2kangselectingtarget = false
+    }
+
+    if (p2kangattackdragon == true){
+    p2kangselectedtargetx = currentenemyposx
+    p2kangselectedtargety = currentenemyposy
+    p2kangtargetselected = true
+    p2kangselectingtarget = false
+    }
+    }
+
+if (p1orchidselectingtarget == true){
+    if (p1orchidattackfireba == true){
+    p1orchidselectedtargetx = currentenemyposx
+    p1orchidselectedtargety = currentenemyposy
+    p1orchidtargetselected = true
+    p1orchidselectingtarget = false
+    }
+
+    if (p1orchidattackwheel == true){
+    p1orchidselectedtargetx = currentenemyposx
+    p1orchidselectedtargety = currentenemyposy
+    p1orchidtargetselected = true
+    p1orchidselectingtarget = false
+    }
+
+    if (p1orchidattackcat == true){
+    p1orchidselectedtargetx = currentenemyposx
+    p1orchidselectedtargety = currentenemyposy
+    p1orchidtargetselected = true
+    p1orchidselectingtarget = false
+    }
+
+    if (p1orchidattackbaton == true){
+    p1orchidselectedtargetx = currentenemyposx
+    p1orchidselectedtargety = currentenemyposy
+    p1orchidtargetselected = true
+    p1orchidselectingtarget = false
+    }
+
+    if (p1orchidattackfit == true){
+    p1orchidselectedtargetx = currentenemyposx
+    p1orchidselectedtargety = currentenemyposy
+    p1orchidtargetselected = true
+    p1orchidselectingtarget = false
+    }
+}
+
+if (p2orchidselectingtarget == true){
+    if (p2orchidattackfireba == true){
+    p2orchidselectedtargetx = currentenemyposx
+    p2orchidselectedtargety = currentenemyposy
+    p2orchidtargetselected = true
+    p2orchidselectingtarget = false
+    }
+
+    if (p2orchidattackwheel == true){
+    p2orchidselectedtargetx = currentenemyposx
+    p2orchidselectedtargety = currentenemyposy
+    p2orchidtargetselected = true
+    p2orchidselectingtarget = false
+    }
+
+    if (p2orchidattackcat == true){
+    p2orchidselectedtargetx = currentenemyposx
+    p2orchidselectedtargety = currentenemyposy
+    p2orchidtargetselected = true
+    p2orchidselectingtarget = false
+    }
+
+    if (p2orchidattackbaton == true){
+    p2orchidselectedtargetx = currentenemyposx
+    p2orchidselectedtargety = currentenemyposy
+    p2orchidtargetselected = true
+    p2orchidselectingtarget = false
+    }
+
+    if (p2orchidattackfit == true){
+    p2orchidselectedtargetx = currentenemyposx
+    p2orchidselectedtargety = currentenemyposy
+    p2orchidtargetselected = true
+    p2orchidselectingtarget = false
+    }
+}
+
+  if (p1spinalselectingtarget == true){
+    if (p1spinalattackslice == true){
+    p1spinalselectedtargetx = currentenemyposx
+    p1spinalselectedtargety = currentenemyposy
+    p1spinaltargetselected = true
+    p1spinalselectingtarget = false
+    }
+
+    if (p1spinalattackslash == true){
+    p1spinalselectedtargetx = currentenemyposx
+    p1spinalselectedtargety = currentenemyposy
+    p1spinaltargetselected = true
+    p1spinalselectingtarget = false
+    }
+
+    if (p1spinalattackbash == true){
+    p1spinalselectedtargetx = currentenemyposx
+    p1spinalselectedtargety = currentenemyposy
+    p1spinaltargetselected = true
+    p1spinalselectingtarget = false
+    }
+
+    if (p1spinalattackspike == true){
+    p1spinalselectedtargetx = currentenemyposx
+    p1spinalselectedtargety = currentenemyposy
+    p1spinaltargetselected = true
+    p1spinalselectingtarget = false
+    }
+
+    if (p1spinalattackblock == true){
+    p1spinalselectedtargetx = currentenemyposx
+    p1spinalselectedtargety = currentenemyposy
+    p1spinaltargetselected = true
+    p1spinalselectingtarget = false
+    }
+}
+
+if (p2spinalselectingtarget == true){
+    if (p2spinalattackslice == true){
+    p2spinalselectedtargetx = currentenemyposx
+    p2spinalselectedtargety = currentenemyposy
+    p2spinaltargetselected = true
+    p2spinalselectingtarget = false
+    }
+
+    if (p2spinalattackslash == true){
+    p2spinalselectedtargetx = currentenemyposx
+    p2spinalselectedtargety = currentenemyposy
+    p2spinaltargetselected = true
+    p2spinalselectingtarget = false
+    }
+
+    if (p2spinalattackbash == true){
+    p2spinalselectedtargetx = currentenemyposx
+    p2spinalselectedtargety = currentenemyposy
+    p2spinaltargetselected = true
+    p2spinalselectingtarget = false
+    }
+
+    if (p2spinalattackspike == true){
+    p2spinalselectedtargetx = currentenemyposx
+    p2spinalselectedtargety = currentenemyposy
+    p2spinaltargetselected = true
+    p2spinalselectingtarget = false
+    }
+
+    if (p2spinalattackblock == true){
+    p2spinalselectedtargetx = currentenemyposx
+    p2spinalselectedtargety = currentenemyposy
+    p2spinaltargetselected = true
+    p2spinalselectingtarget = false
+    }
+}
+
+}
+
+function hideplayerbuttons(){
+if(p1cecilselected == false){
+p1cecilswordbutton.visible = false
+p1cecilholybutton.visible = false
+p1cecilholyswordbutton.visible = false
+p1cecilshieldbutton.visible = false
+p1ceciltargetbutton.visible = false
+}
+if(p2cecilselected == false){
+p2cecilswordbutton.visible = false
+p2cecilholybutton.visible = false
+p2cecilholyswordbutton.visible = false
+p2cecilshieldbutton.visible = false
+p2ceciltargetbutton.visible = false
+}
+
+if(p1kainselected == false){
+p1kainjumpbutton.visible = false
+p1kainpowerbutton.visible = false
+p1kainslashbutton.visible = false
+p1kainstrikebutton.visible = false
+}
+if(p2kainselected == false){
+p2kainjumpbutton.visible = false
+p2kainpowerbutton.visible = false
+p2kainslashbutton.visible = false
+p2kainstrikebutton.visible = false
+}
+
+if(p1kangselected == false){
+p1kangfireballbutton.visible = false
+p1kangflykickbutton.visible = false
+p1kangbicyclebutton.visible = false
+p1kangdragonbutton.visible = false
+p1kangprayerbutton.visible = false
+}
+if(p2kangselected == false){
+p2kangfireballbutton.visible = false
+p2kangflykickbutton.visible = false
+p2kangbicyclebutton.visible = false
+p2kangdragonbutton.visible = false
+p2kangprayerbutton.visible = false
+}
+
+if(p1orchidselected == false){
+p1orchidfirebabutton.visible = false
+p1orchidwheelbutton.visible = false
+p1orchidcatbutton.visible = false
+p1orchidbatonbutton.visible = false
+p1orchidfitbutton.visible = false
+}
+
+if(p2orchidselected == false){
+p2orchidfirebabutton.visible = false
+p2orchidwheelbutton.visible = false
+p2orchidcatbutton.visible = false
+p2orchidbatonbutton.visible = false
+p2orchidfitbutton.visible = false
+}
+
+if(p1spinalselected == false){
+p1spinalslicebutton.visible = false
+p1spinalslashbutton.visible = false
+p1spinalbashbutton.visible = false
+p1spinalspikebutton.visible = false
+p1spinalblockbutton.visible = false
+}
+
+if(p2spinalselected == false){
+
+}
+
+
+}
+
+function setenemytint(){
+if (team1turn == true){
+p2cecil.setTint(0xff0000);
+p2kain.setTint(0xff0000);
+p2kang.setTint(0xff0000);
+p2orchid.setTint(0xff0000);
+
+}
+if (team2turn == true){
+p1cecil.setTint(0xff0000);
+p1kain.setTint(0xff0000);
+p1kang.setTint(0xff0000);
+p1orchid.setTint(0xff0000);
+p1spinal.setTint(0xff0000);
+}
+}
+
+
+
+
+//ENDFUNCTIONS ***********************************
+
+var config = {
+    type: Phaser.AUTO,
+    width: 1360,
+    height: 768,
+    backgroundColor: '#000000',
+    parent: 'phaser-example',
+     physics: {
+        default: 'arcade',
+        arcade: {
+            gravity: { y: 0 },
+            debug: false
+        }
+    },
+    
+    scene: [templebattleground,battlegroundui ]
+};
+
+ //BEGINVAR ***********************************
+//var
+
+
+var game = new Phaser.Game(config);
+var uix = 0
+var uiy = 601
+var areaname = ''
+var cursors;
+var matchbegin = false
+var team1turn = true
+var team2turn = false
+var team1player1x = 103
+var team1player1y = 429
+var team1player2x = 103
+var team1player2y = 323
+var team1player3x = 17
+var team1player3y = 465
+var team1player4x = 17
+var team1player4y = 373
+var team1player5x = 17
+var team1player5y = 281
+var team2player1x = 1197
+var team2player1y = 429
+var team2player2x = 1197
+var team2player2y = 323
+var team2player3x = 1283
+var team2player3y = 465
+var team2player4x = 1283
+var team2player4y = 373
+var team2player5x = 1283
+var team2player5y = 281
+
+var loadnumber1 = 1
+var loadcecil = true
+var loadkain = true
+var loadkang = true
+var loadorchid = true
+var loadspinal = true
+
+
+//p1cecilstats
+var p1cecilmaxhealthrating = 4000
+var p1cecilhealthrating = 4000
+var p1cecilattackrating = 200
+var p1cecildefenserating = 100
+var p1cecilmagicrating = 50
+var p1cecilspeedrating = 10
+var p1cecilsupportrating = 50
+var p1cecilselectedtargetx = 0
+var p1cecilselectedtargety = 0
+var p1cecilselectingtarget = false
+var p1ceciltargetselected = false
+var p1ceciltargetx = p1enemy1posx
+var p1ceciltargety = p1enemy1posy
+var p1cecilholyswordtime = 1
+var p1cecilattacksword = false
+var p1cecilattacksworddamage = p1cecilattackrating + 75
+var p1cecilattackholysword = false
+var p1cecilattackholysworddamage = p1cecilattackrating + p1cecilmagicrating 
+var p1cecilattacktarget = false
+var p1cecilattacktargetdamage = p1cecilattackrating * 1.5
+var p1cecilcastholy = false
+var p1cecilholyaura = false
+var p1cecilholyauratime = 500
+var p1cecilholyaurastatup = false
+var p1cecilselected = false
+var p1cecilactive = true
+var p1cecilhasenemythreat = false
+var p1cecilswordtime = 1
+var p1ceciltargettime = 1
+var p1cecilholytime = 5
+var p1ceciltargetsoundplayed = false
+var p1cecilholyswordsoundplayed = false
+var p1cecilswordsoundplayed = false
+
+//p2cecilstats
+var p2cecilmaxhealthrating = 4000
+var p2cecilhealthrating = 4000
+var p2cecilattackrating = 200
+var p2cecildefenserating = 100
+var p2cecilmagicrating = 50
+var p2cecilspeedrating = 10
+var p2cecilsupportrating = 50
+var p2cecilselectedtargetx = 0
+var p2cecilselectedtargety = 0
+var p2cecilselectingtarget = false
+var p2ceciltargetselected = false
+var p2ceciltargetx = p2enemy1posx
+var p2ceciltargety = p2enemy1posy
+var p2cecilholyswordtime = 1
+var p2cecilattacksword = false
+var p2cecilattacksworddamage = p2cecilattackrating + 75
+var p2cecilattackholysword = false
+var p2cecilattackholysworddamage = p2cecilattackrating + p2cecilmagicrating 
+var p2cecilattacktarget = false
+var p2cecilattacktargetdamage = p2cecilattackrating * 1.5
+var p2cecilcastholy = false
+var p2cecilholyaura = false
+var p2cecilholyauratime = 500
+var p2cecilholyaurastatup = false
+var p2cecilselected = false
+var p2cecilactive = true
+var p2cecilhasenemythreat = false
+var p2cecilswordtime = 1
+var p2ceciltargettime = 1
+var p2cecilholytime = 5
+var p2ceciltargetsoundplayed = false
+var p2cecilholyswordsoundplayed = false
+var p2cecilswordsoundplayed = false
+var playerabilityselected = false
+
+
+//p1kainstats
+var p1kainmaxhealthrating = 4000
+var p1kainhealthrating = 4000
+var p1kainattackrating = 300
+var p1kaindefenserating = 25
+var p1kainmagicrating = 25
+var p1kainspeedrating = 25
+var p1kainsupportrating = 0
+var p1kainselectedtargetx = 0
+var p1kainselectedtargety = 0
+var p1kainselected = true
+var p1kainselectingtarget = false
+var p1kaintargetselected = false
+var p1kainattackjump = false
+var p1kainattackjumpdamage = p1kainattackrating * 2
+var p1kainattackslash = false
+var p1kainattackslashdamage = p1kainattackrating
+var p1kainattackstrike = false
+var p1kainattackstrikedamage = p1kainattackrating * 1.5
+var p1kaincastpower = false
+var p1kainpoweraura = false
+var p1kainpowertime = 50
+var p1kainpowerauratime = 500
+var p1kainpoweraurastatup = false
+var p1kainactive = true
+var p1kainstriketime = 1
+var p1kainslashtime = 1
+var p1kainjumptime = 1
+var p1kainjumpdownsoundplayed = false
+var p1kainstrikesoundplayed = false
+var p1kainslashsoundplayed = false
+
+//p2kainstats
+var p2kainmaxhealthrating = 4000
+var p2kainhealthrating = 4000
+var p2kainattackrating = 300
+var p2kaindefenserating = 25
+var p2kainmagicrating = 25
+var p2kainspeedrating = 25
+var p2kainsupportrating = 0
+var p2kainselectedtargetx = 0
+var p2kainselectedtargety = 0
+var p2kainselected = true
+var p2kainselectingtarget = false
+var p2kaintargetselected = false
+var p2kainattackjump = false
+var p2kainattackjumpdamage = p2kainattackrating * 2
+var p2kainattackslash = false
+var p2kainattackslashdamage = p2kainattackrating
+var p2kainattackstrike = false
+var p2kainattackstrikedamage = p2kainattackrating * 1.5
+var p2kaincastpower = false
+var p2kainpoweraura = false
+var p2kainpowertime = 50
+var p2kainpowerauratime = 500
+var p2kainpoweraurastatup = false
+var p2kainactive = true
+var p2kainstriketime = 1
+var p2kainslashtime = 1
+var p2kainjumptime = 1
+var p2kainjumpdownsoundplayed = false
+var p2kainstrikesoundplayed = false
+var p2kainslashsoundplayed = false
+
+//p1kangstats
+var p1kangidle = true
+var p1kangmaxhealthrating = 4000
+var p1kanghealthrating = 4000
+var p1kangattackrating = 300
+var p1kangdefenserating = 75
+var p1kangmagicrating = 75
+var p1kangspeedrating = 15
+var p1kangsupportrating = 50
+var p1kangselectedtargetx = 0
+var p1kangselectedtargety = 0
+var p1kangselectingtarget = false
+var p1kangtargetselected = false
+var p1kangtargetx = p1enemy1posx
+var p1kangtargety = p1enemy1posy
+var p1kangattackflykick = false
+var p1kangattackfireball = false
+var p1kangattackbicycle = false
+var p1kangattackdragon = false
+var p1kangattackprayer = false
+var p1kangattackfireballdamage = p1kangattackrating + p1kangmagicrating 
+var p1kangflykick = false
+var p1kangattackflykickdamage = p1kangattackrating + 75
+var p1kangattackdragondamage = p1kangattackrating * 1.5
+var p1kangattackbicycle = false
+var p1kangattackbicycledamage = p1kangattackrating * 1.2
+var p1kangflykick = false
+var p1kangfireball = false
+var p1kangbicycle = false
+var p1kangdragon = false
+var p1kangprayer = false
+var p1kangselected = false
+var p1kangactive = true
+var p1kanghasenemythreat = false
+var p1kangflykicktime = 1
+var p1kangfireballtime = 1
+var p1kangbicycletime = 1
+var p1kangdragontime = 25
+var p1kangprayertime = 100
+var p1kangfireballsoundplayed = false
+var p1kangbicyclesoundplayed = false
+var p1kangflykicksoundplayed = false
+
+
+//p2kangstats
+var p2kangidle = true
+var p2kangmaxhealthrating = 4000
+var p2kanghealthrating = 4000
+var p2kangattackrating = 300
+var p2kangdefenserating = 75
+var p2kangmagicrating = 75
+var p2kangspeedrating = 15
+var p2kangsupportrating = 50
+var p2kangselectedtargetx = 0
+var p2kangselectedtargety = 0
+var p2kangselectingtarget = false
+var p2kangtargetselected = false
+var p2kangtargetx = p2enemy1posx
+var p2kangtargety = p2enemy1posy
+var p2kangattackflykick = false
+var p2kangattackfireball = false
+var p2kangattackbicycle = false
+var p2kangattackdragon = false
+var p2kangattackprayer = false
+var p2kangattackfireballdamage = p2kangattackrating + p2kangmagicrating 
+var p2kangflykick = false
+var p2kangattackflykickdamage = p2kangattackrating + 75
+var p2kangattackdragon = false
+var p2kangattackdragondamage = p2kangattackrating * 1.5
+var p2kangattackbicycle = false
+var p2kangattackbicycledamage = p2kangattackrating * 1.2
+var p2kangflykick = false
+var p2kangfireball = false
+var p2kangbicycle = false
+var p2kangdragon = false
+var p2kangprayer = false
+var p2kangselected = false
+var p2kangactive = true
+var p2kanghasenemythreat = false
+var p2kangflykicktime = 1
+var p2kangfireballtime = 1
+var p2kangbicycletime = 1
+var p2kangdragontime = 8
+var p2kangprayertime = 5
+var p2kangfireballsoundplayed = false
+var p2kangbicyclesoundplayed = false
+var p2kangflykicksoundplayed = false
+
+
+//p1orchidstats
+var p1orchididle = true
+var p1orchidmaxhealthrating = 5000
+var p1orchidhealthrating = 5000
+var p1orchidattackrating = 350
+var p1orchiddefenserating = 50
+var p1orchidmagicrating = 75
+var p1orchidspeedrating = 15
+var p1orchidsupportrating = 50
+var p1orchidselectedtargetx = 0
+var p1orchidselectedtargety = 0
+var p1orchidselectingtarget = false
+var p1orchidtargetselected = false
+var p1orchidtargetx = p1enemy1posx
+var p1orchidtargety = p1enemy1posy
+var p1orchidattackwheel = false
+var p1orchidattackfireba = false
+var p1orchidattackcat = false
+var p1orchidattackbaton = false
+var p1orchidattackfit = false
+var p1orchidattackfirebadamage = p1orchidattackrating + p1orchidmagicrating 
+var p1orchidwheel = false
+var p1orchidattackwheeldamage = p1orchidattackrating + 75
+var p1orchidattackbatondamage = p1orchidattackrating * 1.5
+var p1orchidattackcatdamage = p1orchidattackrating * 1.2
+var p1orchidwheel = false
+var p1orchidfireba = false
+var p1orchidcat = false
+var p1orchidbaton = false
+var p1orchidfit = false
+var p1orchidselected = false
+var p1orchidactive = true
+var p1orchidhasenemythreat = false
+var p1orchidwheeltime = 1
+var p1orchidfirebatime = 1
+var p1orchidcattime = 100
+var p1orchidbatontime = 25
+var p1orchidfittime = 100
+var p1orchidfirebasoundplayed = false
+var p1orchidfitsoundplayed = false
+var p1orchidcatsoundplayed = false
+var p1orchidwheelsoundplayed = false
+var p1orchidbatonsoundplayed = false
+
+//p2orchidstats
+var p2orchididle = true
+var p2orchidmaxhealthrating = 5000
+var p2orchidhealthrating = 5000
+var p2orchidattackrating = 350
+var p2orchiddefenserating = 50
+var p2orchidmagicrating = 75
+var p2orchidspeedrating = 15
+var p2orchidsupportrating = 50
+var p2orchidselectedtargetx = 0
+var p2orchidselectedtargety = 0
+var p2orchidselectingtarget = false
+var p2orchidtargetselected = false
+var p2orchidtargetx = p2enemy1posx
+var p2orchidtargety = p2enemy1posy
+var p2orchidattackwheel = false
+var p2orchidattackfireba = false
+var p2orchidattackcat = false
+var p2orchidattackbaton = false
+var p2orchidattackfit = false
+var p2orchidattackfirebadamage = p2orchidattackrating + p2orchidmagicrating 
+var p2orchidwheel = false
+var p2orchidattackwheeldamage = p2orchidattackrating + 75
+var p2orchidattackbatondamage = p2orchidattackrating * 1.5
+var p2orchidattackcatdamage = p2orchidattackrating * 1.2
+var p2orchidwheel = false
+var p2orchidfireba = false
+var p2orchidcat = false
+var p2orchidbaton = false
+var p2orchidfit = false
+var p2orchidselected = false
+var p2orchidactive = true
+var p2orchidhasenemythreat = false
+var p2orchidwheeltime = 1
+var p2orchidfirebatime = 1
+var p2orchidcattime = 100
+var p2orchidbatontime = 25
+var p2orchidfittime = 100
+var p2orchidfirebasoundplayed = false
+var p2orchidfitsoundplayed = false
+var p2orchidcatsoundplayed = false
+var p2orchidwheelsoundplayed = false
+var p2orchidbatonsoundplayed = false
+
+//p1spinalstats
+var p1spinalidle = true
+var p1spinalmaxhealthrating = 5000
+var p1spinalhealthrating = 5000
+var p1spinalattackrating = 350
+var p1spinaldefenserating = 50
+var p1spinalmagicrating = 75
+var p1spinalspeedrating = 15
+var p1spinalsupportrating = 50
+var p1spinalselectedtargetx = 0
+var p1spinalselectedtargety = 0
+var p1spinalselectingtarget = false
+var p1spinaltargetselected = false
+var p1spinaltargetx = p1enemy1posx
+var p1spinaltargety = p1enemy1posy
+var p1spinalattackslice = false
+var p1spinalattackslash = false
+var p1spinalattackbash = false
+var p1spinalattackspike = false
+var p1spinalattackblock = false
+var p1spinalattackslashdamage = p1spinalattackrating + p1spinalmagicrating 
+var p1spinalslice = false
+var p1spinalattackslicedamage = p1spinalattackrating + 75
+var p1spinalattackspikedamage = p1spinalattackrating * 1.5
+var p1spinalattackbashdamage = p1spinalattackrating * 1.2
+var p1spinalslice = false
+var p1spinalslash = false
+var p1spinalbash = false
+var p1spinalspike = false
+var p1spinalblock = false
+var p1spinalselected = false
+var p1spinalactive = true
+var p1spinalhasenemythreat = false
+var p1spinalslicetime = 1
+var p1spinalslashtime = 1
+var p1spinalbashtime = 100
+var p1spinalspiketime = 25
+var p1spinalblocktime = 100
+var p1spinalslashsoundplayed = false
+var p1spinalblocksoundplayed = false
+var p1spinalbashsoundplayed = false
+var p1spinalslicesoundplayed = false
+var p1spinalspikesoundplayed = false
+
+//p2spinalstats
+var p2spinalidle = true
+var p2spinalmaxhealthrating = 5000
+var p2spinalhealthrating = 5000
+var p2spinalattackrating = 350
+var p2spinaldefenserating = 50
+var p2spinalmagicrating = 75
+var p2spinalspeedrating = 15
+var p2spinalsupportrating = 50
+var p2spinalselectedtargetx = 0
+var p2spinalselectedtargety = 0
+var p2spinalselectingtarget = false
+var p2spinaltargetselected = false
+var p2spinaltargetx = p2enemy1posx
+var p2spinaltargety = p2enemy1posy
+var p2spinalattackslice = false
+var p2spinalattackslash = false
+var p2spinalattackbash = false
+var p2spinalattackspike = false
+var p2spinalattackblock = false
+var p2spinalattackslashdamage = p2spinalattackrating + p2spinalmagicrating 
+var p2spinalslice = false
+var p2spinalattackslicedamage = p2spinalattackrating + 75
+var p2spinalattackspikedamage = p2spinalattackrating * 1.5
+var p2spinalattackbashdamage = p2spinalattackrating * 1.2
+var p2spinalslice = false
+var p2spinalslash = false
+var p2spinalbash = false
+var p2spinalspike = false
+var p2spinalblock = false
+var p2spinalselected = false
+var p2spinalactive = true
+var p2spinalhasenemythreat = false
+var p2spinalslicetime = 1
+var p2spinalslashtime = 1
+var p2spinalbashtime = 100
+var p2spinalspiketime = 25
+var p2spinalblocktime = 100
+var p2spinalslashsoundplayed = false
+var p2spinalblocksoundplayed = false
+var p2spinalbashsoundplayed = false
+var p2spinalslicesoundplayed = false
+var p2spinalspikesoundplayed = false
+
+
+
+var p1cecilx = 0
+var p1cecily = 0
+var p1cecilnamex = 0
+var p1cecilnamey = 0
+var p2cecilnamex = 0
+var p2cecilnamey = 0
+var p2cecilx = 0
+var p2cecily = 0
+
+var p1kainx = 0
+var p1kainy = 0
+var p1kainnamex = 0
+var p1kainnamey = 0
+var p2kainnamex = 0
+var p2kainnamey = 0
+var p2kainx = 0
+var p2kainy = 0
+
+var p1enemy1posx = 0
+var p1enemy1posy = 0
+var p2enemy1posx = 0
+var p2enemy1posy = 0
+var currentenemyposx = 0
+var currentenemyposy = 0
+
+var p1cecilhealthtextx = 0
+var p1cecilhealthtexty = 0
+var player1loadcecil = true
+var player2loadcecil = true
+var player1cecil = true
+var player1kain = true
+var player1kang = true
+var player1orchid = true
+var player1spinal = true
+var player1p1name = 'CECIL'
+var player1p2name = 'KAIN'
+var player1p3name = 'KANG'
+var player1p4name = 'ORCHID'
+var player1p5name = 'SPINAL'
+
+var player2cecil = true
+var player2kain = true
+var player2kang = true
+var player2orchid = true
+var player2spinal = true
+var player2p1name = 'CECIL'
+var player2p2name = 'KAIN'
+var player2p3name = 'KANG'
+var player2p4name = 'ORCHID'
+var player2p5name = ''
+
+var p1partyactionbutton1x = 152
+var p1partyactionbutton1y = 558
+var p1partyactionbutton2x = 223
+var p1partyactionbutton2y = 558
+var p1partyactionbutton3x = 294
+var p1partyactionbutton3y = 558
+var p1partyactionbutton4x = 365
+var p1partyactionbutton4y = 558
+var p1partyactionbutton5x = 436
+var p1partyactionbutton5y = 558
+
+var p2partyactionbutton1x = 860
+var p2partyactionbutton1y = 558
+var p2partyactionbutton2x = 931
+var p2partyactionbutton2y = 558
+var p2partyactionbutton3x = 1002
+var p2partyactionbutton3y = 558
+var p2partyactionbutton4x = 1073
+var p2partyactionbutton4y = 558
+var p2partyactionbutton5x = 1144
+var p2partyactionbutton5y = 558
+
+var currentattacktargetname = ''
+var currenttargetmaxhealthrating = 0
+var currenttargethealthrating = 0 
+var currenttargetdefenserating = 0
+var currenttargetattackrating = 0
+var currenttargetmagicrating = 0
+var currenttargetspeedrating = 0
+var currenttargetsupportrating = 0
+
+var currentplayerhealthrating = 0
+var currentplayerdefenserating = 0
+var currentplayerattackrating = 0
+var currentplayermagicrating = 0
+var currentplayerspeedrating = 0
+var currentplayersupportrating = 0
+var playerattacking = false
+
+//ENDVAR ***************************8
+
+</script>
+</html>
