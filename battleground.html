@@ -51,10 +51,11 @@ this.load.spritesheet('cecil', 'assets/char/spritesheets/cecilsprite.png', { fra
 this.load.spritesheet('cecilcasting', 'assets/char/cecil/cecilcastoutline.png', { frameWidth: 95, frameHeight: 95 });
 this.load.spritesheet('cecilidle', 'assets/char/cecil/cecilidle.png', { frameWidth: 96, frameHeight: 95 });
 this.load.spritesheet('cecilidleselected', 'assets/char/cecil/cecilidleselected.png', { frameWidth: 96, frameHeight: 95 });
-this.load.spritesheet('cecilholysword', 'assets/char/cecil/holysword.png', { frameWidth: 200, frameHeight: 145 });
+this.load.spritesheet('cecilholysword', 'assets/char/cecil/cecilholysword.png', { frameWidth: 200, frameHeight: 145 });
 this.load.spritesheet('cecilsword', 'assets/char/cecil/cecilsword.png', { frameWidth: 150, frameHeight: 151 });
-this.load.spritesheet('ceciltarget', 'assets/char/cecil/target.png', { frameWidth: 250, frameHeight: 154 });
-this.load.spritesheet('cecilholy', 'assets/char/cecil/holy.png', { frameWidth: 250, frameHeight: 250 });
+this.load.spritesheet('ceciltarget', 'assets/char/cecil/ceciltarget.png', { frameWidth: 250, frameHeight: 154 });
+this.load.spritesheet('cecilholy', 'assets/char/cecil/cecilholy.png', { frameWidth: 250, frameHeight: 250 });
+this.load.spritesheet('cecilshield', 'assets/char/cecil/cecilshield.png', { frameWidth: 300, frameHeight: 300 });
 this.load.image('sword1', 'assets/weapons/sword1.png');
 this.load.image('cecilswordbox', 'assets/ui/cecil/cecilswordbox.png');
 this.load.image('cecilshieldbox', 'assets/ui/cecil/cecilshieldbox.png');
@@ -472,12 +473,100 @@ this.load.image('sindelscreambox', 'assets/ui/sindel/sindelscreambox.png');
 this.load.image('sindelflybreathbox', 'assets/ui/sindel/sindelflybreathbox.png');
 this.load.image('sindelhairwhipbox', 'assets/ui/sindel/sindelhairwhipbox.png');
 this.load.image('sindelpuntbox', 'assets/ui/sindel/sindelpuntbox.png');
+}
 
+//loadraiden
+if (loadraiden == true){
+this.load.spritesheet('raidenidle', 'assets/char/raiden/raidenidle.png', { frameWidth: 50, frameHeight: 110 });
+this.load.spritesheet('raidenwalk', 'assets/char/raiden/raidenwalk.png', { frameWidth: 45, frameHeight: 110 });
+this.load.spritesheet('raidenthunderbolt', 'assets/char/raiden/raidenthunderbolt.png', { frameWidth: 55, frameHeight: 103 });
+this.load.spritesheet('raidenthunderboltgr', 'assets/char/raiden/raidenthunderboltgr.png', { frameWidth: 45, frameHeight: 12 });
+this.load.spritesheet('raidenfly', 'assets/char/raiden/raidenfly.png', { frameWidth: 110, frameHeight: 100 });
+this.load.spritesheet('raidenstorm', 'assets/char/raiden/raidenstorm.png', { frameWidth: 50, frameHeight: 125 });
+this.load.spritesheet('raidenpowerstrike', 'assets/char/raiden/raidenpowerstrike.png', { frameWidth: 61, frameHeight: 116 });
+this.load.spritesheet('raidenpowerstrikegr', 'assets/char/raiden/raidenpowerstrikegr.png', { frameWidth: 160, frameHeight: 70 });
+this.load.spritesheet('raidenkick', 'assets/char/raiden/raidenkick.png', { frameWidth: 70, frameHeight: 100 });
+this.load.spritesheet('raidenstormcloudgr', 'assets/char/raiden/raidenstormcloud.png', { frameWidth: 360, frameHeight: 245 });
+this.load.spritesheet('raidenstormcloudboltsgr', 'assets/char/raiden/raidenstormcloudbolts.png', { frameWidth: 250, frameHeight: 250 });
+this.load.spritesheet('raidenstormstrikegr', 'assets/char/raiden/raidenstormstrike.png', { frameWidth: 192, frameHeight: 192 });
 
+this.load.image('raidenthunderboltbox', 'assets/ui/raiden/raidenthunderboltbox.png');
+this.load.image('raidenflybox', 'assets/ui/raiden/raidenflybox.png');
+this.load.image('raidenstormbox', 'assets/ui/raiden/raidenstormbox.png');
+this.load.image('raidenpowerstrikebox', 'assets/ui/raiden/raidenpowerstrikebox.png');
+this.load.image('raidenkickbox', 'assets/ui/raiden/raidenkickbox.png');
+}
+//endloadraiden
 
+//loadcyan
+if (loadcyan == true){
+this.load.spritesheet('cyan', 'assets/char/spritesheets/cyansprite.png', { frameWidth: 96, frameHeight: 95 });
+this.load.spritesheet('cyanswordslash', 'assets/char/cyan/cyanswordslash.png', { frameWidth: 206, frameHeight: 196 });
+this.load.spritesheet('cyanswordslasheffect', 'assets/char/cyan/cyanswordslasheffect.png', { frameWidth: 200, frameHeight: 168 });
+this.load.spritesheet('cyanswordswing', 'assets/char/cyan/cyanswordswing.png', { frameWidth: 200, frameHeight: 200 });
+this.load.spritesheet('cyanmagicsword', 'assets/char/cyan/cyanmagicsword.png', { frameWidth: 200, frameHeight: 144 });
+this.load.spritesheet('cyanmagicswordeffect', 'assets/char/cyan/cyanmagicswordeffect.png', { frameWidth: 200, frameHeight: 102 });
+this.load.spritesheet('cyancommand', 'assets/char/cyan/cyancommand.png', { frameWidth: 300, frameHeight: 300 });
+this.load.spritesheet('cyanbattleplan', 'assets/char/cyan/cyanbattleplan.png', { frameWidth: 300, frameHeight: 300 });
+
+this.load.image('cyanswordslashbox', 'assets/ui/cyan/cyanswordslashbox.png');
+this.load.image('cyanswordswingbox', 'assets/ui/cyan/cyanswordswingbox.png');
+this.load.image('cyanmagicswordbox', 'assets/ui/cyan/cyanmagicswordbox.png');
+this.load.image('cyancommandbox', 'assets/ui/cyan/cyancommandbox.png');
+this.load.image('cyanbattleplanbox', 'assets/ui/cyan/cyanbattleplanbox.png');
+}
+
+if (loadrosa == true){
+this.load.spritesheet('rosa', 'assets/char/rosa/rosasprite.png', { frameWidth: 95, frameHeight: 95 });
+this.load.spritesheet('rosacurespell', 'assets/char/rosa/rosacure.png', { frameWidth: 192, frameHeight: 192 });
+this.load.spritesheet('rosahealspell', 'assets/char/rosa/rosaheal.png', { frameWidth: 192, frameHeight: 192 });
+this.load.spritesheet('rosafastspell', 'assets/char/rosa/rosafast.png', { frameWidth: 192, frameHeight: 192 });
+this.load.spritesheet('rosashellspell', 'assets/char/rosa/rosashell.png', { frameWidth: 192, frameHeight: 192 });
+this.load.image('rosahealbox', 'assets/ui/rosa/rosahealbox.png');
+this.load.image('rosacurebox', 'assets/ui/rosa/rosacurebox.png');
+this.load.image('rosafastbox', 'assets/ui/rosa/rosafastbox.png');
+this.load.image('rosashellbox', 'assets/ui/rosa/rosashellbox.png');
+this.load.image('rosabowbox', 'assets/ui/rosa/rosabowbox.png');
+
+  this.load.audio('rosacuresound', [
+        'assets/sound/rosa-curesound.mp3'
+    ]);
+    this.load.audio('rosahealsound', [
+        'assets/sound/rosa-healsound.mp3'
+    ]);
+    this.load.audio('rosafastsound', [
+        'assets/sound/rosa-fastsound.mp3'
+    ]);
+    this.load.audio('rosashellsound', [
+        'assets/sound/rosa-shellsound.mp3'
+    ]);
 }
 
 
+if (loadmog == true) {
+this.load.spritesheet('mog', 'assets/char/mog/mogsprite.png', { frameWidth: 95, frameHeight: 95 });
+this.load.spritesheet('mogdreamspell', 'assets/char/mog/mogdream.png', { frameWidth: 200, frameHeight: 200 });
+this.load.spritesheet('mogdancespell', 'assets/char/mog/mogdance.png', { frameWidth: 500, frameHeight: 500 });
+this.load.spritesheet('mogpowerspell', 'assets/char/mog/mogpower.png', { frameWidth: 250, frameHeight: 250 });
+this.load.spritesheet('mogmoonspell', 'assets/char/mog/mogmoon.png', { frameWidth: 500, frameHeight: 500 });
+this.load.spritesheet('mogbullspell', 'assets/char/mog/mogbull.png', { frameWidth: 213, frameHeight: 175 });
+this.load.image('mogmoonbox', 'assets/ui/mog/mogmoonbox.png');
+this.load.image('mogpowerbox', 'assets/ui/mog/mogpowerbox.png');
+this.load.image('mogdreambox', 'assets/ui/mog/mogdreambox.png');
+this.load.image('mogdancebox', 'assets/ui/mog/mogdancebox.png');
+this.load.image('mogbullbox', 'assets/ui/mog/mogbullbox.png');
+
+    this.load.audio('mogpowersound', [
+        'assets/sound/mog-powersound.mp3'
+    ]);
+    this.load.audio('mogdancesound', [
+        'assets/sound/mog-dancesound.mp3'
+    ]);
+}
+
+
+
+////$///*////__________________________________________________________________________________________________________________________
 //*************endchar
 
 
@@ -510,7 +599,7 @@ this.load.image('spinalname', 'assets/ui/spinalnameplate.png');
 this.load.image('glaciusname', 'assets/ui/glaciusnameplate.png');
 this.load.image('kanoname', 'assets/ui/kanonameplate.png');
 this.load.image('sindelname', 'assets/ui/sindelnameplate.png');
-this.load.image('kabalname', 'assets/ui/kabalnameplate.png');
+this.load.image('raidenname', 'assets/ui/raidennameplate.png');
 this.load.image('jagoname', 'assets/ui/jagonameplate.png');
 this.load.image('cyraxname', 'assets/ui/cyraxnameplate.png');
 this.load.image('cecilname', 'assets/ui/cecilnameplate.png');
@@ -1018,6 +1107,7 @@ create: function ()
     p2sindel = this.add.sprite(p2sindelx, p2sindely, '').setInteractive();
     p2sindel.setOrigin(0, 0);
     p2sindel.setScale(1.4, 1.4);
+    p2sindel.setFlipX(true);
     p2sindel.on('pointerdown', function (pointer) {
     p2sindelbuttonclick()
     });
@@ -1026,6 +1116,118 @@ create: function ()
     }
 //loadsindel2end    
 //loadsindelend
+
+    //loadraiden     
+    if (loadraiden == true){
+    if (player1raiden == true){
+    setplayerposition()
+    p1raiden = this.add.sprite(p1raidenx, p1raideny, 'raiden').setInteractive();
+    p1raiden.setOrigin(0, 0);
+    p1raiden.setScale(1.4, 1.4);
+    p1raiden.on('pointerdown', function (pointer) {
+    p1raidenbuttonclick()
+    });
+    p1raidentimer = this.time.addEvent({ delay: 50, callback: p1raidenaction, callbackScope: this, loop: true,startAt: 1 });
+    }   
+//loadraiden1end
+    if (player2raiden == true){
+    setplayerposition()
+    p2raiden = this.add.sprite(p2raidenx, p2raideny, 'raiden').setInteractive();
+    p2raiden.setOrigin(0, 0);
+    p2raiden.setScale(1.4, 1.4);
+    p2raiden.setFlipX(true);
+    p2raiden.on('pointerdown', function (pointer) {
+    p2raidenbuttonclick()
+    });
+    p2raidentimer = this.time.addEvent({ delay: 50, callback: p2raidenaction, callbackScope: this, loop: true,startAt: 1 });
+    }
+    }
+//loadraiden2end    
+//loadraidenend
+
+//loadcyan     
+    if (loadcyan == true){
+    if (player1cyan == true){
+    setplayerposition()
+    p1cyan = this.add.sprite(p1cyanx, p1cyany, 'cyan').setInteractive();
+    p1cyan.setOrigin(0, 0);
+    p1cyan.setScale(1.0, 1.0);
+    p1cyan.setFlipX(true);
+    p1cyan.on('pointerdown', function (pointer) {
+    p1cyanbuttonclick()
+    });
+    p1cyantimer = this.time.addEvent({ delay: 50, callback: p1cyanaction, callbackScope: this, loop: true,startAt: 1 });
+    }   
+//loadcyan1end
+    if (player2cyan == true){
+    setplayerposition()
+    p2cyan = this.add.sprite(p2cyanx, p2cyany, 'cyan').setInteractive();
+    p2cyan.setOrigin(0, 0);
+    p2cyan.setScale(1.0, 1.0);
+    p2cyan.on('pointerdown', function (pointer) {
+    p2cyanbuttonclick()
+    });
+    p2cyantimer = this.time.addEvent({ delay: 50, callback: p2cyanaction, callbackScope: this, loop: true,startAt: 1 });
+    }
+    }
+//loadcyan2end    
+//loadcyanend
+
+//loadrosa     
+    if (loadrosa == true){
+    if (player1rosa == true){
+    setplayerposition()
+    p1rosa = this.add.sprite(p1rosax, p1rosay, 'rosa').setInteractive();
+    p1rosa.setOrigin(0, 0);
+    p1rosa.setScale(1.0, 1.0);
+    p1rosa.setFlipX(true);
+    p1rosa.on('pointerdown', function (pointer) {
+    p1rosabuttonclick()
+    });
+    p1rosatimer = this.time.addEvent({ delay: 50, callback: p1rosaaction, callbackScope: this, loop: true,startAt: 1 });
+    }   
+//loadrosa1end
+    if (player2rosa == true){
+    setplayerposition()
+    p2rosa = this.add.sprite(p2rosax, p2rosay, 'rosa').setInteractive();
+    p2rosa.setOrigin(0, 0);
+    p2rosa.setScale(1.0, 1.0);
+    p2rosa.on('pointerdown', function (pointer) {
+    p2rosabuttonclick()
+    });
+    p2rosatimer = this.time.addEvent({ delay: 50, callback: p2rosaaction, callbackScope: this, loop: true,startAt: 1 });
+    }
+    }
+//loadp2rosaend    
+//loadrosaend
+//loadmog     
+    if (loadmog == true){
+    if (player1mog == true){
+    setplayerposition()
+    p1mog = this.add.sprite(p1mogx, p1mogy, 'mog').setInteractive();
+    p1mog.setOrigin(0, 0);
+    p1mog.setScale(1.0, 1.0);
+    p1mog.setFlipX(true);
+    p1mog.on('pointerdown', function (pointer) {
+    p1mogbuttonclick()
+    });
+    p1mogtimer = this.time.addEvent({ delay: 50, callback: p1mogaction, callbackScope: this, loop: true,startAt: 1 });
+    }   
+//loadmog1end
+    if (player2mog == true){
+    setplayerposition()
+    p2mog = this.add.sprite(p2mogx, p2mogy, 'mog').setInteractive();
+    p2mog.setOrigin(0, 0);
+    p2mog.setScale(1.0, 1.0);
+    p2mog.on('pointerdown', function (pointer) {
+    p2mogbuttonclick()
+    });
+    p2mogtimer = this.time.addEvent({ delay: 50, callback: p2mogaction, callbackScope: this, loop: true,startAt: 1 });
+    }
+    }
+//loadp2mogend    
+//loadmogend
+
 
 //endloadchar
 ///$///*///***********************************************************************************************************************
@@ -1090,6 +1292,11 @@ p1ceciltarget.setFlipX(true);
 p1cecilholy = this.physics.add.sprite(0, 0 , 'ceciltarget').setOrigin(0, 0);
 p1cecilholy.visible = false
 p1cecilholy.setFlipX(true);
+p1cecilholy = this.physics.add.sprite(0, 0 , 'ceciltarget').setOrigin(0, 0);
+p1cecilholy.visible = false
+p1cecilshield = this.physics.add.sprite(0, 0 , 'cecilshield').setOrigin(0, 0); 
+p1cecilshield.visible = false
+
 }
 
 if (player2cecil == true){
@@ -1324,7 +1531,6 @@ p1sindelflybreathgr = this.physics.add.sprite(p1sindel.x, p1sindel.y , 'sindelfl
 p1sindelflybreathgr.visible = false
 p1sindelpuntballgr = this.physics.add.sprite(p1sindel.x, p1sindel.y , 'sindelpuntballgr').setOrigin(0, 0);
 p1sindelpuntballgr.visible = false
-
 }
 
 if (player2sindel == true){
@@ -1341,6 +1547,118 @@ p2sindelpuntballgr = this.physics.add.sprite(p2sindel.x, p2sindel.y , 'sindelpun
 p2sindelpuntballgr.visible = false
 p2sindelpuntballgr.setFlipX(true);
 }
+
+//raidenattacks
+if (player1raiden == true){
+p1raidenthunderboltgr = this.physics.add.sprite(p1raiden.x, p1raiden.y , 'raidenthunderboltgr').setOrigin(0, 0);
+p1raidenthunderboltgr.visible = false
+p1raidenstormcloudgr = this.physics.add.sprite(p1raiden.x, p1raiden.y , 'raidenstormcloudgr').setOrigin(0, 0);
+p1raidenstormcloudgr.visible = false
+p1raidenstormstrikegr = this.physics.add.sprite(p1raiden.x, p1raiden.y , 'raidenstormstrikegr').setOrigin(0, 0);
+p1raidenstormstrikegr.visible = false
+p1raidenpowerstrikegr = this.physics.add.sprite(0, 0 , 'raidenstorm').setOrigin(0, 0);
+p1raidenpowerstrikegr.visible = false
+p1raidenstormcloudboltsgr = this.physics.add.sprite(p1raiden.x, p1raiden.y , 'raidenstormcloudboltsgr').setOrigin(0, 0);
+p1raidenstormcloudboltsgr.visible = false
+}
+
+//raidenattacks
+if (player2raiden == true){
+p2raidenthunderboltgr = this.physics.add.sprite(p2raiden.x, p2raiden.y , 'raidenthunderboltgr').setOrigin(0, 0);
+p2raidenthunderboltgr.visible = false
+p2raidenthunderboltgr.setFlipX(true);
+p2raidenstormcloudgr = this.physics.add.sprite(p2raiden.x, p2raiden.y , 'raidenstormcloudgr').setOrigin(0, 0);
+p2raidenstormcloudgr.visible = false
+p2raidenthunderboltgr.setFlipX(true);
+p2raidenstormstrikegr = this.physics.add.sprite(p2raiden.x, p2raiden.y , 'raidenstormstrikegr').setOrigin(0, 0);
+p2raidenstormstrikegr.visible = false
+p2raidenthunderboltgr.setFlipX(true);
+p2raidenpowerstrikegr = this.physics.add.sprite(0, 0 , 'raidenstorm').setOrigin(0, 0);
+p2raidenpowerstrikegr.visible = false
+p2raidenthunderboltgr.setFlipX(true);
+p2raidenstormcloudboltsgr = this.physics.add.sprite(p2raiden.x, p2raiden.y , 'raidenstormcloudboltsgr').setOrigin(0, 0);
+p2raidenstormcloudboltsgr.visible = false
+}
+
+//cyanattacks
+if (player1cyan == true){
+p1cyanswordslash = this.physics.add.sprite(p1cyan.x, p1cyan.y , '').setOrigin(0, 0);
+p1cyanswordslash.visible = false
+p1cyanswordslasheffect = this.physics.add.sprite(p1cyan.x, p1cyan.y , '').setOrigin(0, 0);
+p1cyanswordslasheffect.visible = false
+p1cyanswordswing = this.physics.add.sprite(p1cyan.x, p1cyan.y , '').setOrigin(0, 0);
+p1cyanswordswing.visible = false
+p1cyanmagicsword = this.physics.add.sprite(0, 0 , '').setOrigin(0, 0);
+p1cyanmagicsword.visible = false
+p1cyanmagicswordeffect = this.physics.add.sprite(0, 0 , '').setOrigin(0, 0);
+p1cyanmagicswordeffect.visible = false
+p1cyancommand = this.physics.add.sprite(0, 0 , '').setOrigin(0, 0);
+p1cyancommand.visible = false
+p1cyanbattleplan = this.physics.add.sprite(0, 0 , '').setOrigin(0, 0);
+p1cyanbattleplan.visible = false
+}
+
+//cyanattacks
+if (player2cyan == true){
+p2cyanswordslash = this.physics.add.sprite(p2cyan.x, p2cyan.y , '').setOrigin(0, 0);
+p2cyanswordslash.visible = false
+p2cyanswordslash.setFlipX(true);
+p2cyanswordslasheffect = this.physics.add.sprite(p2cyan.x, p2cyan.y , '').setOrigin(0, 0);
+p2cyanswordslasheffect.visible = false
+p2cyanswordslasheffect.setFlipX(true);
+p2cyanswordswing = this.physics.add.sprite(p2cyan.x, p2cyan.y , '').setOrigin(0, 0);
+p2cyanswordswing.visible = false
+p2cyanswordswing.setFlipX(true);
+p2cyanmagicsword = this.physics.add.sprite(0, 0 , '').setOrigin(0, 0);
+p2cyanmagicsword.visible = false
+p2cyanmagicsword.setFlipX(true);
+p2cyanmagicswordeffect = this.physics.add.sprite(0, 0 , '').setOrigin(0, 0);
+p2cyanmagicswordeffect.visible = false
+p2cyanmagicsword.visible = false
+p2cyanmagicswordeffect.setFlipX(true);
+p2cyancommand = this.physics.add.sprite(0, 0 , '').setOrigin(0, 0);
+p2cyancommand.visible = false
+p2cyancommand.setFlipX(true);
+p2cyanbattleplan = this.physics.add.sprite(0, 0 , '').setOrigin(0, 0);
+p2cyanbattleplan.visible = false
+p2cyanbattleplan.setFlipX(true);
+}
+
+
+//rosaattacks
+if (player1rosa == true){
+p1rosacurespell = this.physics.add.sprite(p1rosa.x, p1rosa.y , '').setOrigin(0, 0);
+p1rosacurespell.visible = false
+p1rosahealspell = this.physics.add.sprite(p1rosa.x, p1rosa.y , '').setOrigin(0, 0);
+p1rosahealspell.visible = false
+p1rosafastspell = this.physics.add.sprite(0, 0 , '').setOrigin(0, 0);
+p1rosafastspell.visible = false
+p1rosashellspell = this.physics.add.sprite(0, 0 , '').setOrigin(0, 0);
+p1rosashellspell.visible = false
+p1rosabow = this.physics.add.sprite(0, 0 , '').setOrigin(0, 0);
+p1rosabow.visible = false
+}
+
+//rosaattacks
+if (player2rosa == true){
+p2rosacurespell = this.physics.add.sprite(p2rosa.x, p2rosa.y , '').setOrigin(0, 0);
+p2rosacurespell.visible = false
+p2rosacurespell.setFlipX(true);
+p2rosahealspell = this.physics.add.sprite(p2rosa.x, p2rosa.y , '').setOrigin(0, 0);
+p2rosahealspell.visible = false
+p2rosahealspell.setFlipX(true);
+p2rosafastspell = this.physics.add.sprite(0, 0 , '').setOrigin(0, 0);
+p2rosafastspell.visible = false
+p2rosafastspell.setFlipX(true);
+p2rosashellspell = this.physics.add.sprite(0, 0 , '').setOrigin(0, 0);
+p2rosashellspell.visible = false
+p2rosashellspell.setFlipX(true);
+p2rosabow = this.physics.add.sprite(0, 0 , '').setOrigin(0, 0);
+p2rosabow.visible = false
+p2rosabow.setFlipX(true);
+}
+
+
 
 
  //endloadplayerability
@@ -1439,6 +1757,38 @@ if (p1cecilcastholy == true){
       
     }
 
+}
+
+if (p1cecilattackshield == true){
+p1cecilidle = false
+p1cecilshieldtime -= 0.1;
+if (p1cecil.x <  600) {
+p1cecil.anims.play('cecilwalk', true);
+p1cecil.x += 20 
+}
+if (p1cecil.x >  601) {
+p1cecilshield.y = p1cecil.y - 200
+p1cecilshield.x = p1cecil.x - 100
+p1cecil.anims.play('cecilcasting', true);
+p1cecilshield.anims.play('cecilshield', true);
+p1cecilshield.visible = true
+}
+if (p1cecilshieldtime < 1 ){
+playerattacking = true
+playerbattleattack()
+p1cecilidle = true
+p1cecil.anims.play('cecilidle', true);
+playerabilityselected = false
+p1cecilselected = false
+p1cecilshield.visible = false
+player1selectabilitybox.visible = false
+p1cecil.x = p1cecilx
+p1cecil.y = p1cecily
+team2turn = true
+team1turn = false
+p1ceciltargetselected = false
+p1cecilattackshield = false
+}
 }
 
 //cecil1attacktarget******************
@@ -6642,26 +6992,26 @@ if (p1sindel.y >  p1sindely - 300) {
 p1sindel.anims.play('sindelflyup', true);
 p1sindel.y -= 5
 if (p1sindel.y < p1sindely - 299){
-sindelflyingtotarget = true
-sindelflyingup = false
+p1sindelflyingtotarget = true
+p1sindelflyingup = false
 }
 }
 }
 
-if (sindelflyingtotarget == true){
+if (p1sindelflyingtotarget == true){
 p1sindel.x += 25
 if (p1sindel.x <  p1sindeltargetx - 200) {
 p1sindel.anims.play('sindelflymove', true);
 }
 if (p1sindel.x >  p1sindeltargetx - 199) {
-sindelflybreathattack = true
+p1sindelflybreathattack = true
 p1sindelflybreathgr.x = p1sindel.x
 p1sindelflybreathgr.y = p1sindel.y
-sindelflyingtotarget = false
+p1sindelflyingtotarget = false
 }
 }
 
-if (sindelflybreathattack == true){
+if (p1sindelflybreathattack == true){
 p1sindelflybreathtime -= 0.3
 p1sindelflybreathgr.visible = true
 p1sindel.anims.play('sindelflybreath', true);
@@ -6685,7 +7035,7 @@ playerabilityselected = false
 p1sindelselected = false
 p1sindelflybreathgr.visible = false
 player1selectabilitybox.visible = false
-sindelflybreathattack = false
+p1sindelflybreathattack = false
 p1sindelflybreathgr.x = p1sindelx
 p1sindelflybreathgr.y = p1sindely
 p1sindel.x = p1sindelx
@@ -6731,6 +7081,1113 @@ p1sindelattackhairwhip = false
 }
 }
 }
+}
+
+//p2sindelaction
+function p2sindelaction(){
+    if (p2sindelidle == true){
+        p2sindel.anims.play('sindelidle',true);
+    }
+    
+if (p2sindelattackflamebreath == true){
+if (p2sindeltargetselected == true){
+p2sindelidle = false
+if (p2sindel.x > p2sindeltargetx) {
+p2sindelflamebreathgr.visible = true
+p2sindel.anims.play('sindelflamebreath', true);
+p2sindelflamebreathgr.anims.play('sindelflamebreathgr', true);
+p2sindelflamebreathgr.x -= 35
+if (p2sindelflamebreathgr.y > p2sindeltargety){
+    p2sindelflamebreathgr.y -= 7;
+}
+if (p2sindelflamebreathgr.y < p2sindeltargety){
+    p2sindelflamebreathgr.y += 7;
+}
+}
+
+if (p2sindelflamebreathgr.x < p2sindeltargetx + 45 ) {
+playerattacking = true
+playerbattleattack()
+p2sindelidle = true
+playerabilityselected = false
+p2sindelselected = false
+p2sindelflamebreathgr.visible = false
+p2sindelflamebreathgr.x = p2sindel.x
+p2sindelflamebreathgr.y = p2sindel.y 
+player2selectabilitybox.visible = false
+p2sindel.x = p2sindelx
+p2sindel.y = p2sindely
+team1turn = true
+team2turn = false
+p2sindeltargetselected = false
+p2sindelattackflamebreath = false
+}
+}
+}
+
+if (p2sindelattackscream == true){
+if (p2sindeltargetselected == true){
+p2sindelidle = false
+p2sindelscreamtime -= 0.1;
+if (p2sindel.x > p2sindeltargetx + 71) {
+p2sindel.anims.play('sindelrun', true);
+p2sindel.x -= 25 
+if (p2sindel.y > p2sindeltargety){
+    p2sindel.y -= 7;
+}
+if (p2sindel.y < p2sindeltargety){
+    p2sindel.y += 7;
+}
+}
+if (p2sindel.x < p2sindeltargetx + 71) {
+p2sindel.anims.play('sindelscream', true);
+p2sindelscreamgr.x = p2sindel.x - 25
+p2sindelscreamgr.y = p2sindel.y
+p2sindelscreamgr.visible = true
+p2sindelscreamgr.anims.play('sindelscreamgr', true);
+}
+
+if (p2sindelscreamtime < 1){
+playerattacking = true
+playerbattleattack()
+p2sindelidle = true
+playerabilityselected = false
+p2sindelselected = false
+player2selectabilitybox.visible = false
+p2sindel.x = p2sindelx
+p2sindel.y = p2sindely
+p2sindelscreamgr.visible = false
+p2sindelscreamgr.x = p2sindelx
+p2sindelscreamgr.y = p2sindely
+team1turn = true
+team2turn = false
+p2sindeltargetselected = false
+p2sindelattackscream = false
+}
+}
+}
+
+if (p2sindelattackflybreath == true){
+if (p2sindeltargetselected == true){
+p2sindelidle = false
+
+if (p2sindelflyingup == true){
+if (p2sindel.y >  p2sindely - 300) {
+p2sindel.anims.play('sindelflyup', true);
+p2sindel.y -= 5
+if (p2sindel.y < p2sindely - 299){
+p2sindelflyingtotarget = true
+p2sindelflyingup = false
+}
+}
+}
+
+if (p2sindelflyingtotarget == true){
+p2sindel.x -= 25
+if (p2sindel.x >  p2sindeltargetx + 200) {
+p2sindel.anims.play('sindelflymove', true);
+}
+if (p2sindel.x <  p2sindeltargetx + 199) {
+p2sindelflybreathattack = true
+p2sindelflybreathgr.x = p2sindel.x
+p2sindelflybreathgr.y = p2sindel.y
+p2sindelflyingtotarget = false
+}
+}
+
+if (p2sindelflybreathattack == true){
+p2sindelflybreathtime -= 0.3
+p2sindelflybreathgr.visible = true
+p2sindel.anims.play('sindelflybreath', true);
+p2sindelflybreathgr.anims.play('sindelflybreathgr', true);
+if (p2sindelflybreathgr.x > p2sindeltargetx + 25){
+    p2sindelflybreathgr.x -= 10;
+}
+if (p2sindelflybreathgr.y < p2sindeltargety + 25){
+    p2sindelflybreathgr.y += 25;
+}
+if (p2sindelflybreathgr.y > p2sindeltargety + 24){
+    p2sindelflybreathgr.visible = false
+}
+}
+
+if (p2sindelflybreathtime < 1 ){
+playerattacking = true
+playerbattleattack()
+p2sindelidle = true
+playerabilityselected = false
+p2sindelselected = false
+p2sindelflybreathgr.visible = false
+player2selectabilitybox.visible = false
+p2sindelflybreathattack = false
+p2sindelflybreathgr.x = p2sindelx
+p2sindelflybreathgr.y = p2sindely
+p2sindel.x = p2sindelx
+p2sindel.y = p2sindely
+team1turn = true
+team2turn = false
+p2sindeltargetselected = false
+p2sindelattackflybreath = false
+}
+}
+}
+
+if (p2sindelattackhairwhip == true){
+if (p2sindeltargetselected == true){
+p2sindelidle = false
+p2sindelhairwhiptime -= 0.1;
+if (p2sindel.x > p2sindeltargetx + 55) {
+p2sindel.anims.play('sindelrun', true);
+p2sindel.x -= 25 
+if (p2sindel.y > p2sindeltargety - 50){
+    p2sindel.y -= 6;
+}
+if (p2sindel.y < p2sindeltargety - 50){
+    p2sindel.y += 6;
+}
+}
+if (p2sindel.x < p2sindeltargetx + 56) {
+p2sindel.anims.play('sindelhairwhip', true);
+}
+if (p2sindelhairwhiptime < 1){
+playerattacking = true
+playerbattleattack()
+p2sindelidle = true
+playerabilityselected = false
+p2sindelselected = false
+player2selectabilitybox.visible = false
+p2sindel.x = p2sindelx
+p2sindel.y = p2sindely
+team1turn = true
+team2turn = false
+p2sindeltargetselected = false
+p2sindelattackhairwhip = false
+}
+}
+}
+}
+
+
+//raidenaction
+//p1raidenaction
+function p1raidenaction(){
+    if (p1raidenidle == true){
+p1raiden.anims.play('raidenidle', true);
+}
+if (p1raidenattackthunderbolt == true){
+if (p1raidentargetselected == true){
+p1raidenidle = false
+if (p1raiden.x < p1raidentargetx) {
+p1raidenthunderboltgr.visible = true
+p1raiden.anims.play('raidenthunderbolt', true);
+p1raidenthunderboltgr.anims.play('raidenthunderboltgr', true);
+p1raidenthunderboltgr.x += 35
+if (p1raidenthunderboltgr.y > p1raidentargety){
+    p1raidenthunderboltgr.y -= 7;
+}
+if (p1raidenthunderboltgr.y < p1raidentargety){
+    p1raidenthunderboltgr.y += 7;
+}
+}
+
+if (p1raidenthunderboltgr.x > p1raidentargetx -1 ) {
+playerattacking = true
+playerbattleattack()
+p1raidenidle = true
+playerabilityselected = false
+p1raidenselected = false
+p1raidenthunderboltgr.visible = false
+p1raidenthunderboltgr.x = p1raiden.x
+p1raidenthunderboltgr.y = p1raiden.y 
+player1selectabilitybox.visible = false
+p1raiden.x = p1raidenx
+p1raiden.y = p1raideny
+team2turn = true
+team1turn = false
+p1raidentargetselected = false
+p1raidenattackthunderbolt = false
+}
+}
+}
+
+if (p1raidenattackfly == true){
+if (p1raidentargetselected == true){
+p1raidenidle = false
+p1raidenflytime -= 0.6;
+if (p1raiden.x < p1raidentargetx) {
+p1raiden.anims.play('raidenfly', true);
+p1raiden.x += 45 
+if (p1raiden.y > p1raidentargety){
+    p1raiden.y -= 7;
+}
+if (p1raiden.y < p1raidentargety){
+    p1raiden.y += 7;
+}
+}
+if (p1raiden.x > p1raidentargetx ) {
+p1raiden.anims.play('raidenfly', true);
+p1raiden.x = p1raidentargetx
+p1raiden.setDepth(7);
+}
+if (p1raidenflytime < 1){
+playerattacking = true
+playerbattleattack()
+p1raidenidle = true
+playerabilityselected = false
+p1raidenselected = false
+player1selectabilitybox.visible = false
+p1raiden.x = p1raidenx
+p1raiden.y = p1raideny
+team2turn = true
+team1turn = false
+setdepth()
+p1raidentargetselected = false
+p1raidenattackfly = false
+}
+}
+}
+
+
+if (p1raidenattackstorm == true){
+if (p1raidentargetselected == true){
+p1raidenidle = false
+p1raidenstormtime -= 0.1;
+if (p1raiden.x <  600) {
+p1raiden.anims.play('raidenwalk', true);
+p1raiden.x += 25 
+}
+if (p1raiden.x >  601) {
+p1raidenstormcloudboltsgr.setDepth(6);
+p1raidenstormcloudgr.setDepth(6);
+p1raidenstormstrikegr.setDepth(6);
+p1raidenstormcloudgr.x = p1raidentargetx - 175
+p1raidenstormcloudgr.y = p1raidentargety - 300
+p1raidenstormcloudboltsgr.x = p1raidenstormcloudgr.x + 50
+p1raidenstormcloudboltsgr.y = p1raidenstormcloudgr.y + 150
+p1raidenstormstrikegr.x = p1raidentargetx - 90
+p1raidenstormstrikegr.y = p1raidentargety - 100
+p1raidenstormcloudgr.visible = true
+p1raidenstormstrikegr.visible = true
+p1raidenstormcloudboltsgr.visible = true
+p1raidenstormcloudgr.anims.play('raidenstormcloudgr', true);
+p1raidenstormstrikegr.anims.play('raidenstormstrikegr', true);
+p1raidenstormcloudboltsgr.play('raidenstormcloudboltsgr', true);
+p1raiden.anims.play('raidenstorm', true);
+}
+
+if (p1raidenstormtime < 1 ){
+playerattacking = true
+playerbattleattack()
+p1raidenidle = true
+playerabilityselected = false
+p1raidenselected = false
+player1selectabilitybox.visible = false
+p1raidenstormcloudgr.visible = false
+p1raidenstormstrikegr.visible = false
+p1raidenstormcloudboltsgr.visible = false
+p1raiden.x = p1raidenx
+p1raiden.y = p1raideny
+team2turn = true
+team1turn = false
+p1raidentargetselected = false
+p1raidenattackstorm = false
+}
+}
+}
+
+if (p1raidenattackpowerstrike == true){
+p1raidenidle = false
+p1raidenpowerstriketime -= 0.1;
+if (p1raiden.x <  600) {
+p1raiden.anims.play('raidenwalk', true);
+p1raiden.x += 25 
+}
+if (p1raiden.x >  601) {
+p1raidenpowerstrikegr.x = p1raiden.x - 30
+p1raidenpowerstrikegr.y = p1raiden.y - 50
+p1raidenpowerstrikegr.visible = true
+p1raidenpowerstrikegr.anims.play('raidenpowerstrikegr', true);
+p1raiden.anims.play('raidenpowerstrike', true);
+
+}
+if (p1raidenpowerstriketime < 1 ){
+playerattacking = true
+playerbattleattack()
+p1raidenidle = true
+playerabilityselected = false
+p1raidenselected = false
+player1selectabilitybox.visible = false
+p1raidenpowerstrikegr.visible = false
+p1raiden.x = p1raidenx
+p1raiden.y = p1raideny
+team2turn = true
+team1turn = false
+p1raidentargetselected = false
+p1raidenattackpowerstrike = false
+}
+}
+
+if (p1raidenattackkick == true){
+if (p1raidentargetselected == true){
+p1raidenidle = false
+p1raidenkicktime -= 0.1;
+if (p1raiden.x < p1raidentargetx - 80) {
+p1raiden.anims.play('raidenwalk', true);
+p1raiden.x += 25 
+if (p1raiden.y > p1raidentargety){
+    p1raiden.y -= 7;
+}
+if (p1raiden.y < p1raidentargety){
+    p1raiden.y += 7;
+}
+}
+if (p1raiden.x > p1raidentargetx - 81) {
+p1raiden.anims.play('raidenkick', true);
+}
+if (p1raidenkicktime < 1){
+playerattacking = true
+playerbattleattack()
+p1raidenidle = true
+playerabilityselected = false
+p1raidenselected = false
+player1selectabilitybox.visible = false
+p1raiden.x = p1raidenx
+p1raiden.y = p1raideny
+team2turn = true
+team1turn = false
+p1raidentargetselected = false
+p1raidenattackkick = false
+}
+}
+}
+}
+
+
+//p2raidenaction
+function p2raidenaction(){
+    if (p2raidenidle == true){
+p2raiden.anims.play('raidenidle', true);
+}
+if (p2raidenattackthunderbolt == true){
+if (p2raidentargetselected == true){
+p2raidenidle = false
+if (p2raiden.x > p2raidentargetx) {
+p2raidenthunderboltgr.visible = true
+p2raiden.anims.play('raidenthunderbolt', true);
+p2raidenthunderboltgr.anims.play('raidenthunderboltgr', true);
+p2raidenthunderboltgr.x -= 35
+if (p2raidenthunderboltgr.y > p2raidentargety){
+    p2raidenthunderboltgr.y -= 7;
+}
+if (p2raidenthunderboltgr.y < p2raidentargety){
+    p2raidenthunderboltgr.y += 7;
+}
+}
+
+if (p2raidenthunderboltgr.x < p2raidentargetx +20 ) {
+playerattacking = true
+playerbattleattack()
+p2raidenidle = true
+playerabilityselected = false
+p2raidenselected = false
+p2raidenthunderboltgr.visible = false
+p2raidenthunderboltgr.x = p2raiden.x
+p2raidenthunderboltgr.y = p2raiden.y 
+player2selectabilitybox.visible = false
+p2raiden.x = p2raidenx
+p2raiden.y = p2raideny
+team1turn = true
+team2turn = false
+p2raidentargetselected = false
+p2raidenattackthunderbolt = false
+}
+}
+}
+
+if (p2raidenattackfly == true){
+if (p2raidentargetselected == true){
+p2raidenidle = false
+p2raidenflytime -= 0.6;
+if (p2raiden.x > p2raidentargetx) {
+p2raiden.anims.play('raidenfly', true);
+p2raiden.x -= 45 
+if (p2raiden.y > p2raidentargety){
+    p2raiden.y -= 7;
+}
+if (p2raiden.y < p2raidentargety){
+    p2raiden.y += 7;
+}
+}
+if (p2raiden.x < p2raidentargetx + 25 ) {
+p2raiden.anims.play('raidenfly', true);
+p2raiden.x = p2raidentargetx
+p2raiden.setDepth(7);
+}
+if (p2raidenflytime < 1){
+playerattacking = true
+playerbattleattack()
+p2raidenidle = true
+playerabilityselected = false
+p2raidenselected = false
+player2selectabilitybox.visible = false
+p2raiden.x = p2raidenx
+p2raiden.y = p2raideny
+team1turn = true
+team2turn = false
+setdepth()
+p2raidentargetselected = false
+p2raidenattackfly = false
+}
+}
+}
+
+
+if (p2raidenattackstorm == true){
+if (p2raidentargetselected == true){
+p2raidenidle = false
+p2raidenstormtime -= 0.1;
+if (p2raiden.x >  600) {
+p2raiden.anims.play('raidenwalk', true);
+p2raiden.x -= 25 
+}
+if (p2raiden.x <  601) {
+p2raidenstormcloudboltsgr.setDepth(6);
+p2raidenstormcloudgr.setDepth(6);
+p2raidenstormstrikegr.setDepth(6);
+p2raidenstormcloudgr.x = p2raidentargetx - 175
+p2raidenstormcloudgr.y = p2raidentargety - 300
+p2raidenstormcloudboltsgr.x = p2raidenstormcloudgr.x + 50
+p2raidenstormcloudboltsgr.y = p2raidenstormcloudgr.y + 150
+p2raidenstormstrikegr.x = p2raidentargetx - 90
+p2raidenstormstrikegr.y = p2raidentargety - 100
+p2raidenstormcloudgr.visible = true
+p2raidenstormstrikegr.visible = true
+p2raidenstormcloudboltsgr.visible = true
+p2raidenstormcloudgr.anims.play('raidenstormcloudgr', true);
+p2raidenstormstrikegr.anims.play('raidenstormstrikegr', true);
+p2raidenstormcloudboltsgr.play('raidenstormcloudboltsgr', true);
+p2raiden.anims.play('raidenstorm', true);
+}
+
+if (p2raidenstormtime < 1 ){
+playerattacking = true
+playerbattleattack()
+p2raidenidle = true
+playerabilityselected = false
+p2raidenselected = false
+player2selectabilitybox.visible = false
+p2raidenstormcloudgr.visible = false
+p2raidenstormstrikegr.visible = false
+p2raidenstormcloudboltsgr.visible = false
+p2raiden.x = p2raidenx
+p2raiden.y = p2raideny
+team1turn = true
+team2turn = false
+p2raidentargetselected = false
+p2raidenattackstorm = false
+}
+}
+}
+
+if (p2raidenattackpowerstrike == true){
+p2raidenidle = false
+p2raidenpowerstriketime -= 0.1;
+if (p2raiden.x >  600) {
+p2raiden.anims.play('raidenwalk', true);
+p2raiden.x -= 25 
+}
+if (p2raiden.x <  601) {
+p2raidenpowerstrikegr.x = p2raiden.x - 30
+p2raidenpowerstrikegr.y = p2raiden.y - 50
+p2raidenpowerstrikegr.visible = true
+p2raidenpowerstrikegr.anims.play('raidenpowerstrikegr', true);
+p2raiden.anims.play('raidenpowerstrike', true);
+
+}
+if (p2raidenpowerstriketime < 1 ){
+playerattacking = true
+playerbattleattack()
+p2raidenidle = true
+playerabilityselected = false
+p2raidenselected = false
+player2selectabilitybox.visible = false
+p2raidenpowerstrikegr.visible = false
+p2raiden.x = p2raidenx
+p2raiden.y = p2raideny
+team1turn = true
+team2turn = false
+p2raidentargetselected = false
+p2raidenattackpowerstrike = false
+}
+}
+
+if (p2raidenattackkick == true){
+if (p2raidentargetselected == true){
+p2raidenidle = false
+p2raidenkicktime -= 0.1;
+if (p2raiden.x > p2raidentargetx + 80) {
+p2raiden.anims.play('raidenwalk', true);
+p2raiden.x -= 25 
+if (p2raiden.y > p2raidentargety){
+    p2raiden.y -= 7;
+}
+if (p2raiden.y < p2raidentargety){
+    p2raiden.y += 7;
+}
+}
+if (p2raiden.x < p2raidentargetx + 81) {
+p2raiden.anims.play('raidenkick', true);
+}
+if (p2raidenkicktime < 1){
+playerattacking = true
+playerbattleattack()
+p2raidenidle = true
+playerabilityselected = false
+p2raidenselected = false
+player2selectabilitybox.visible = false
+p2raiden.x = p2raidenx
+p2raiden.y = p2raideny
+team1turn = true
+team2turn = false
+p2raidentargetselected = false
+p2raidenattackkick = false
+}
+}
+}
+}
+
+function p1cyanaction(){
+    if (p1cyanidle == true){
+p1cyan.anims.play('cyanidle', true);
+}
+
+//cyanswordslash
+if (p1cyanattackswordslash == true){
+if (p1cyantargetselected == true){
+p1cyanswordslashtime -= 0.1;
+if (p1cyan.x < p1cyantargetx - 75){
+    p1cyan.anims.play('cyanwalk', true);
+    p1cyan.x += 25
+    if (p1cyan.y > p1cyantargety + 25){
+        p1cyan.y -= 5
+    }
+    if (p1cyan.y < p1cyantargety + 25){
+        p1cyan.y += 5
+    }
+}
+if (p1cyan.x > p1cyantargetx - 76){
+    p1cyanswordslash.x = p1cyan.x - 25
+    p1cyanswordslash.y = p1cyan.y - 75
+    p1cyanswordslasheffect.x = p1cyantargetx - 30
+    p1cyanswordslasheffect.y = p1cyantargety 
+    playerbattleattack()
+    p1cyan.anims.play('cyanattacksword', true);
+    p1cyanswordslash.anims.play('cyanswordslash', true);
+    p1cyanswordslash.visible = true
+    p1cyanswordslasheffect.anims.play('cyanswordslasheffect', true);
+    p1cyanswordslasheffect.visible = true
+    }
+
+if (p1cyanswordslashtime < 1){
+    p1cyanswordslash.visible = false
+    p1cyanswordslasheffect.visible = false
+    playerattacking = true
+    playerbattleattack()
+    p1cyan.x = p1cyanx
+    p1cyan.y = p1cyany
+    p1cyan.anims.play('cyanidle', true);
+    playerabilityselected = false
+    p1cyanselected = false
+    player1selectabilitybox.visible = false
+    team2turn = true
+    team1turn = false
+    p1cyantargetselected = false    
+    p1cyanattackswordslash = false
+    }
+}
+}
+
+
+if (p1cyanattackswordswing == true){
+if (p1cyantargetselected == true){
+p1cyanswordswingtime -= 0.1;
+if (p1cyan.x < p1cyantargetx - 75){
+    p1cyan.anims.play('cyanwalk', true);
+    p1cyan.x += 25
+    if (p1cyan.y > p1cyantargety + 25){
+        p1cyan.y -= 5
+    }
+    if (p1cyan.y < p1cyantargety + 25){
+        p1cyan.y += 5
+    }
+}
+if (p1cyan.x > p1cyantargetx - 76){
+    p1cyanswordswing.x = p1cyan.x - 50
+    p1cyanswordswing.y = p1cyan.y - 100
+    playerbattleattack()
+    p1cyan.anims.play('cyanattacksword', true);
+    p1cyanswordswing.anims.play('cyanswordswing', true);
+    p1cyanswordswing.visible = true
+   }
+
+if (p1cyanswordswingtime < 1){
+    p1cyanswordswing.visible = false
+    playerattacking = true
+    playerbattleattack()
+    p1cyan.x = p1cyanx
+    p1cyan.y = p1cyany
+    p1cyan.anims.play('cyanidle', true);
+    playerabilityselected = false
+    p1cyanselected = false
+    player1selectabilitybox.visible = false
+    team2turn = true
+    team1turn = false
+    p1cyantargetselected = false    
+    p1cyanattackswordswing = false
+    }
+}
+}
+
+if (p1cyanattackmagicsword == true){
+if (p1cyantargetselected == true){
+p1cyanmagicswordtime -= 0.1;
+if (p1cyan.x < p1cyantargetx - 75){
+    p1cyan.anims.play('cyanwalk', true);
+    p1cyan.x += 25
+    if (p1cyan.y > p1cyantargety + 25){
+        p1cyan.y -= 5
+    }
+    if (p1cyan.y < p1cyantargety + 25){
+        p1cyan.y += 5
+    }
+}
+if (p1cyan.x > p1cyantargetx - 76){
+    p1cyanmagicsword.x = p1cyan.x - 25
+    p1cyanmagicsword.y = p1cyan.y - 75
+    p1cyanmagicswordeffect.x = p1cyantargetx - 30
+    p1cyanmagicswordeffect.y = p1cyantargety 
+    playerbattleattack()
+    p1cyan.anims.play('cyanattacksword', true);
+    p1cyanmagicsword.anims.play('cyanmagicsword', true);
+    p1cyanmagicsword.visible = true
+    p1cyanmagicswordeffect.anims.play('cyanmagicswordeffect', true);
+    p1cyanmagicswordeffect.visible = true
+    }
+
+if (p1cyanmagicswordtime < 1){
+    p1cyanmagicsword.visible = false
+    p1cyanmagicswordeffect.visible = false
+    playerattacking = true
+    playerbattleattack()
+    p1cyan.x = p1cyanx
+    p1cyan.y = p1cyany
+    p1cyan.anims.play('cyanidle', true);
+    playerabilityselected = false
+    p1cyanselected = false
+    player1selectabilitybox.visible = false
+    team2turn = true
+    team1turn = false
+    p1cyantargetselected = false    
+    p1cyanattackmagicsword = false
+    }
+}
+}
+
+if (p1cyanattackcommand == true){
+p1cyanidle = false
+p1cyancommandtime -= 0.1;
+if (p1cyan.x <  600) {
+p1cyan.anims.play('cyanwalk', true);
+p1cyan.x += 25 
+}
+if (p1cyan.x >  601) {
+p1cyancommand.x = p1cyan.x - 80
+p1cyancommand.y = p1cyan.y - 140
+p1cyancommand.visible = true
+p1cyancommand.anims.play('cyancommand', true);
+p1cyan.anims.play('cyancast', true);
+
+}
+if (p1cyancommandtime < 1 ){
+playerattacking = true
+playerbattleattack()
+p1cyanidle = true
+playerabilityselected = false
+p1cyanselected = false
+player1selectabilitybox.visible = false
+p1cyancommand.visible = false
+p1cyan.x = p1cyanx
+p1cyan.y = p1cyany
+team2turn = true
+team1turn = false
+p1cyantargetselected = false
+p1cyanattackcommand = false
+}
+}
+
+if (p1cyanattackbattleplan == true){
+p1cyanidle = false
+p1cyanbattleplantime -= 0.1;
+if (p1cyan.x <  600) {
+p1cyan.anims.play('cyanwalk', true);
+p1cyan.x += 25 
+}
+if (p1cyan.x >  601) {
+p1cyanbattleplan.x = p1cyan.x - 80
+p1cyanbattleplan.y = p1cyan.y - 140
+p1cyanbattleplan.visible = true
+p1cyanbattleplan.anims.play('cyanbattleplan', true);
+p1cyan.anims.play('cyancast', true);
+
+}
+if (p1cyanbattleplantime < 1 ){
+playerattacking = true
+playerbattleattack()
+p1cyanidle = true
+playerabilityselected = false
+p1cyanselected = false
+player1selectabilitybox.visible = false
+p1cyanbattleplan.visible = false
+p1cyan.x = p1cyanx
+p1cyan.y = p1cyany
+team2turn = true
+team1turn = false
+p1cyantargetselected = false
+p1cyanattackbattleplan = false
+}
+}
+}
+//endp1cyanaction
+
+
+function p2cyanaction(){
+    if (p2cyanidle == true){
+p2cyan.anims.play('cyanidle', true);
+}
+
+//cyanswordslash
+if (p2cyanattackswordslash == true){
+if (p2cyantargetselected == true){
+p2cyanswordslashtime -= 0.1;
+if (p2cyan.x > p2cyantargetx + 75){
+    p2cyan.anims.play('cyanwalk', true);
+    p2cyan.x -= 25
+    if (p2cyan.y > p2cyantargety + 25){
+        p2cyan.y -= 5
+    }
+    if (p2cyan.y < p2cyantargety + 25){
+        p2cyan.y += 5
+    }
+}
+if (p2cyan.x < p2cyantargetx + 76){
+    p2cyanswordslash.x = p2cyan.x - 85
+    p2cyanswordslash.y = p2cyan.y - 75
+    p2cyanswordslasheffect.x = p2cyantargetx + 30
+    p2cyanswordslasheffect.y = p2cyantargety 
+    playerbattleattack()
+    p2cyan.anims.play('cyanattacksword', true);
+    p2cyanswordslash.anims.play('cyanswordslash', true);
+    p2cyanswordslash.visible = true
+    p2cyanswordslasheffect.anims.play('cyanswordslasheffect', true);
+    p2cyanswordslasheffect.visible = true
+    }
+
+if (p2cyanswordslashtime < 1){
+    p2cyanswordslash.visible = false
+    p2cyanswordslasheffect.visible = false
+    playerattacking = true
+    playerbattleattack()
+    p2cyan.x = p2cyanx
+    p2cyan.y = p2cyany
+    p2cyan.anims.play('cyanidle', true);
+    playerabilityselected = false
+    p2cyanselected = false
+    player2selectabilitybox.visible = false
+    team1turn = true
+    team2turn = false
+    p2cyantargetselected = false    
+    p2cyanattackswordslash = false
+    }
+}
+}
+
+
+if (p2cyanattackswordswing == true){
+if (p2cyantargetselected == true){
+p2cyanswordswingtime -= 0.1;
+if (p2cyan.x > p2cyantargetx + 75){
+    p2cyan.anims.play('cyanwalk', true);
+    p2cyan.x -= 25
+    if (p2cyan.y > p2cyantargety + 25){
+        p2cyan.y -= 5
+    }
+    if (p2cyan.y < p2cyantargety + 25){
+        p2cyan.y += 5
+    }
+}
+if (p2cyan.x < p2cyantargetx + 76){
+    p2cyanswordswing.x = p2cyan.x - 65
+    p2cyanswordswing.y = p2cyan.y - 100
+    playerbattleattack()
+    p2cyan.anims.play('cyanattacksword', true);
+    p2cyanswordswing.anims.play('cyanswordswing', true);
+    p2cyanswordswing.visible = true
+   }
+
+if (p2cyanswordswingtime < 1){
+    p2cyanswordswing.visible = false
+    playerattacking = true
+    playerbattleattack()
+    p2cyan.x = p2cyanx
+    p2cyan.y = p2cyany
+    p2cyan.anims.play('cyanidle', true);
+    playerabilityselected = false
+    p2cyanselected = false
+    player2selectabilitybox.visible = false
+    team1turn = true
+    team2turn = false
+    p2cyantargetselected = false    
+    p2cyanattackswordswing = false
+    }
+}
+}
+
+if (p2cyanattackmagicsword == true){
+if (p2cyantargetselected == true){
+p2cyanmagicswordtime -= 0.1;
+if (p2cyan.x > p2cyantargetx + 75){
+    p2cyan.anims.play('cyanwalk', true);
+    p2cyan.x -= 25
+    if (p2cyan.y > p2cyantargety + 25){
+        p2cyan.y -= 5
+    }
+    if (p2cyan.y < p2cyantargety + 25){
+        p2cyan.y += 5
+    }
+}
+if (p2cyan.x < p2cyantargetx + 76){
+    p2cyanmagicsword.x = p2cyan.x - 110
+    p2cyanmagicsword.y = p2cyan.y - 75
+    p2cyanmagicswordeffect.x = p2cyantargetx - 100
+    p2cyanmagicswordeffect.y = p2cyantargety 
+    playerbattleattack()
+    p2cyan.anims.play('cyanattacksword', true);
+    p2cyanmagicsword.anims.play('cyanmagicsword', true);
+    p2cyanmagicsword.visible = true
+    p2cyanmagicswordeffect.anims.play('cyanmagicswordeffect', true);
+    p2cyanmagicswordeffect.visible = true
+    }
+
+if (p2cyanmagicswordtime < 1){
+    p2cyanmagicsword.visible = false
+    p2cyanmagicswordeffect.visible = false
+    playerattacking = true
+    playerbattleattack()
+    p2cyan.x = p2cyanx
+    p2cyan.y = p2cyany
+    p2cyan.anims.play('cyanidle', true);
+    playerabilityselected = false
+    p2cyanselected = false
+    player2selectabilitybox.visible = false
+    team1turn = true
+    team2turn = false
+    p2cyantargetselected = false    
+    p2cyanattackmagicsword = false
+    }
+}
+}
+
+if (p2cyanattackcommand == true){
+p2cyanidle = false
+p2cyancommandtime -= 0.1;
+if (p2cyan.x >  600) {
+p2cyan.anims.play('cyanwalk', true);
+p2cyan.x -= 25 
+}
+if (p2cyan.x <  601) {
+p2cyancommand.x = p2cyan.x - 80
+p2cyancommand.y = p2cyan.y - 140
+p2cyancommand.visible = true
+p2cyancommand.anims.play('cyancommand', true);
+p2cyan.anims.play('cyancast', true);
+
+}
+if (p2cyancommandtime < 1 ){
+playerattacking = true
+playerbattleattack()
+p2cyanidle = true
+playerabilityselected = false
+p2cyanselected = false
+player2selectabilitybox.visible = false
+p2cyancommand.visible = false
+p2cyan.x = p2cyanx
+p2cyan.y = p2cyany
+team1turn = true
+team2turn = false
+p2cyantargetselected = false
+p2cyanattackcommand = false
+}
+}
+
+if (p2cyanattackbattleplan == true){
+p2cyanidle = false
+p2cyanbattleplantime -= 0.1;
+if (p2cyan.x >  600) {
+p2cyan.anims.play('cyanwalk', true);
+p2cyan.x -= 25 
+}
+if (p2cyan.x <  601) {
+p2cyanbattleplan.x = p2cyan.x - 80
+p2cyanbattleplan.y = p2cyan.y - 140
+p2cyanbattleplan.visible = true
+p2cyanbattleplan.anims.play('cyanbattleplan', true);
+p2cyan.anims.play('cyancast', true);
+
+}
+if (p2cyanbattleplantime < 1 ){
+playerattacking = true
+playerbattleattack()
+p2cyanidle = true
+playerabilityselected = false
+p2cyanselected = false
+player2selectabilitybox.visible = false
+p2cyanbattleplan.visible = false
+p2cyan.x = p2cyanx
+p2cyan.y = p2cyany
+team1turn = true
+team2turn = false
+p2cyantargetselected = false
+p2cyanattackbattleplan = false
+}
+}
+}
+//endp2cyanaction
+
+//p1rosaaction
+//rosaaction
+function p1rosaaction(){
+    if (p1rosaidle == true){
+        p1rosa.anims.play('rosaidle', true);
+    }
+    if (p1rosasupportcure == true){
+        if (p1rosatargetselected == true){
+        p1rosaidle = false
+        p1rosacuretime -= 0.2;
+        p1rosa.anims.play('rosacasting', true);
+        p1rosacurespell.visible = true
+        p1rosacurespell.anims.play('rosacurespell', true);
+        p1rosacurespell.x = p1rosatargetx - 20
+        p1rosacurespell.y = p1rosatargety - 10
+
+    if (p1rosacuretime < 1){
+       playerattacking = true
+       playerbattleattack()
+       p1rosaidle = true
+       playerabilityselected = false
+       p1rosaselected = false
+       player1selectabilitybox.visible = false
+       p1rosacurespell.visible = false
+       p1rosa.x = p1rosax
+       p1rosa.y = p1rosay
+       team2turn = true
+       team1turn = false
+       p1rosahealingtarget = false
+       p1rosatargetselected = false
+       team2noplayerselected = true
+       p1rosasupportcure = false
+    }
+    }
+    }
+    
+
+ if (p1rosasupportheal == true){
+        if (p1rosatargetselected == true){
+        p1rosaidle = false
+        p1rosahealtime -= 0.2;
+        p1rosa.anims.play('rosacasting', true);
+        p1rosahealspell.visible = true
+        p1rosahealspell.anims.play('rosahealspell', true);
+        p1rosahealspell.x = p1rosatargetx - 20
+        p1rosahealspell.y = p1rosatargety - 10
+
+    if (p1rosahealtime < 1){
+       playerattacking = true
+       playerbattleattack()
+       p1rosaidle = true
+       playerabilityselected = false
+       p1rosaselected = false
+       player1selectabilitybox.visible = false
+       p1rosahealspell.visible = false
+       p1rosa.x = p1rosax
+       p1rosa.y = p1rosay
+       team2turn = true
+       team1turn = false
+       p1rosahealingtarget = false
+       p1rosatargetselected = false
+       team2noplayerselected = true
+       p1rosasupportheal = false
+    }
+    }
+    }
+ if (p1rosasupportfast == true){
+        if (p1rosatargetselected == true){
+        p1rosaidle = false
+        p1rosafasttime -= 0.2;
+        p1rosa.anims.play('rosacasting', true);
+        p1rosafastspell.visible = true
+        p1rosafastspell.anims.play('rosafastspell', true);
+        p1rosafastspell.x = p1rosatargetx - 20
+        p1rosafastspell.y = p1rosatargety - 10
+
+    if (p1rosafasttime < 1){
+       playerattacking = true
+       playerbattleattack()
+       p1rosaidle = true
+       playerabilityselected = false
+       p1rosaselected = false
+       player1selectabilitybox.visible = false
+       p1rosafastspell.visible = false
+       p1rosa.x = p1rosax
+       p1rosa.y = p1rosay
+       team2turn = true
+       team1turn = false
+       p1rosafasttarget = false
+       p1rosatargetselected = false
+       team2noplayerselected = true
+       p1rosasupportfast = false
+    }
+    }
+    }
+
+     if (p1rosasupportshell == true){
+        if (p1rosatargetselected == true){
+        p1rosaidle = false
+        p1rosashelltime -= 0.2;
+        p1rosa.anims.play('rosacasting', true);
+        p1rosashellspell.visible = true
+        p1rosashellspell.anims.play('rosashellspell', true);
+        p1rosashellspell.x = p1rosatargetx - 20
+        p1rosashellspell.y = p1rosatargety - 10
+
+    if (p1rosashelltime < 1){
+       playerattacking = true
+       playerbattleattack()
+       p1rosaidle = true
+       playerabilityselected = false
+       p1rosaselected = false
+       player1selectabilitybox.visible = false
+       p1rosashellspell.visible = false
+       p1rosa.x = p1rosax
+       p1rosa.y = p1rosay
+       team2turn = true
+       team1turn = false
+       p1rosashelltarget = false
+       p1rosatargetselected = false
+       team2noplayerselected = true
+       p1rosasupportshell = false
+    }
+    }
+    }
 
 
 
@@ -6814,8 +8271,9 @@ p1sindelattackhairwhip = false
 
     this.anims.create({
         key: 'cecilshield',
-        frames: this.anims.generateFrameNumbers('cecil', { start: 12, end: 12 }),
-        frameRate: 1,
+        frames: this.anims.generateFrameNumbers('cecilshield', { start: 0, end: 15 }),
+        frameRate: 25,
+        yoyo: true,
         repeat: 0
     });
 
@@ -7926,16 +9384,312 @@ this.anims.create({
         yoyo: true,
         repeat: -1
     });
-
-
-
-
 //endsindelanims
 
+//raidenanim
+  this.anims.create({
+        key: 'raidenwalk',
+        frames: this.anims.generateFrameNumbers('raidenwalk', { start: 0, end: 1 }),
+        frameRate: 10,
+        repeat: -1
+    });
+  
+    this.anims.create({
+        key: 'raidenidle',
+        frames: this.anims.generateFrameNumbers('raidenidle', { start: 0, end: 2 }),
+        frameRate: 5,
+        yoyo: true,
+        repeat: -1
+    });
+
+   this.anims.create({
+        key: 'raidenfly',
+        frames: this.anims.generateFrameNumbers('raidenfly', { start: 2, end: 2 }),
+        frameRate: 10,
+        repeat: -1
+    });
+
+   this.anims.create({
+        key: 'raidenthunderbolt',
+        frames: this.anims.generateFrameNumbers('raidenthunderbolt', { start: 0, end: 1 }),
+        frameRate: 5,
+        yoyo: true,
+        repeat: -1
+    });
+
+  this.anims.create({
+        key: 'raidenthunderboltgr',
+        frames: this.anims.generateFrameNumbers('raidenthunderboltgr', { start: 0, end: 3 }),
+        frameRate: 5,
+        yoyo: true,
+        repeat: -1
+    });
+
+   this.anims.create({
+        key: 'raidenkick',
+        frames: this.anims.generateFrameNumbers('raidenkick', { start: 0, end: 6 }),
+        frameRate: 5,
+        yoyo: true,
+        repeat: -1
+    });
+
+   this.anims.create({
+        key: 'raidenpowerstrike',
+        frames: this.anims.generateFrameNumbers('raidenpowerstrike', { start: 0, end: 0 }),
+        frameRate: 5,
+        yoyo: true,
+        repeat: -1
+    });
+
+   this.anims.create({
+        key: 'raidenpowerstrikegr',
+        frames: this.anims.generateFrameNumbers('raidenpowerstrikegr', { start: 0, end: 5 }),
+        frameRate: 5,
+        yoyo: true,
+        repeat: -1
+    });
+
+     this.anims.create({
+        key: 'raidenstormstrikegr',
+        frames: this.anims.generateFrameNumbers('raidenstormstrikegr', { start: 0, end: 18 }),
+        frameRate: 25,
+        repeat: -1
+    });
+
+    this.anims.create({
+        key: 'raidenstormcloudgr',
+        frames: this.anims.generateFrameNumbers('raidenstormcloudgr', { start: 0, end: 8 }),
+        frameRate: 25,
+        yoyo: true,
+        repeat: -1
+    });
+
+    this.anims.create({
+        key: 'raidenstormcloudboltsgr',
+        frames: this.anims.generateFrameNumbers('raidenstormcloudboltsgr', { start: 0, end: 33 }),
+        frameRate: 25,
+        repeat: -1
+    });
+
+
+    this.anims.create({
+        key: 'raidenstorm',
+        frames: this.anims.generateFrameNumbers('raidenstorm', { start: 0, end: 1 }),
+        frameRate: 5,
+        yoyo: true,
+        repeat: -1
+    });
+    //endraidenanims
+
+//cyananim*********************
+    this.anims.create({
+        key: 'cyandead',
+        frames: this.anims.generateFrameNumbers('cyan', { start: 5, end: 5 }),
+        frameRate: 1,
+        repeat: 0
+    });  
+    this.anims.create({
+        key: 'cyanwalk',
+        frames: this.anims.generateFrameNumbers('cyan', { start: 0, end: 1 }),
+        frameRate: 5,
+        repeat: -1
+    });
+
+    this.anims.create({
+        key: 'cyanhurt',
+        frames: this.anims.generateFrameNumbers('cyan', { start: 4, end: 4 }),
+        frameRate: 5,
+        repeat: -1
+    });
+
+    this.anims.create({
+        key: 'cyanidle',
+        frames: this.anims.generateFrameNumbers('cyan', { start: 0, end: 0 }),
+        frameRate: 2,
+        yoyo: true,
+        repeat: -1
+    });
+
+    this.anims.create({
+        key: 'cyancast',
+        frames: this.anims.generateFrameNumbers('cyan', { start: 2, end: 2 }),
+        frameRate: 2,
+        yoyo: true,
+        repeat: -1
+    });
+
+     this.anims.create({
+        key: 'cyanattacksword',
+        frames: this.anims.generateFrameNumbers('cyan', { start: 10, end: 12 }),
+        frameRate: 5,
+        repeat: 0
+    });
+
+
+   this.anims.create({
+        key: 'cyanswordslash',
+        frames: this.anims.generateFrameNumbers('cyanswordslash', { start: 0, end: 7 }),
+        frameRate: 15,
+        repeat: 0
+    });
+  this.anims.create({
+        key: 'cyanswordslasheffect',
+        frames: this.anims.generateFrameNumbers('cyanswordslasheffect', { start: 0, end: 2 }),
+        frameRate: 15,
+        repeat: 0
+    });
+
+   this.anims.create({
+        key: 'cyanswordswing',
+        frames: this.anims.generateFrameNumbers('cyanswordswing', { start: 0, end: 40 }),
+        frameRate: 15,
+        repeat: 0
+    });
+
+    this.anims.create({
+        key: 'cyanmagicsword',
+        frames: this.anims.generateFrameNumbers('cyanmagicsword', { start: 0, end: 9 }),
+        frameRate: 15,
+        repeat: 0
+    });
+
+   this.anims.create({
+        key: 'cyanmagicswordeffect',
+        frames: this.anims.generateFrameNumbers('cyanmagicswordeffect', { start: 0, end: 13 }),
+        frameRate: 15,
+        repeat: 0
+    });
+
+
+    this.anims.create({
+        key: 'cyancommand',
+        frames: this.anims.generateFrameNumbers('cyancommand', { start: 0, end: 5 }),
+        frameRate: 15,
+        repeat: 0
+    });
+
+    this.anims.create({
+        key: 'cyanbattleplan',
+        frames: this.anims.generateFrameNumbers('cyanbattleplan', { start: 0, end: 50 }),
+        frameRate: 15,
+        repeat: 0
+    });
+   //endcyananims
+
+   //rosa
+   this.anims.create({
+        key: 'rosadead',
+        frames: this.anims.generateFrameNumbers('rosa', { start: 5, end: 5 }),
+        frameRate: 1,
+        repeat: 0
+    });
+    this.anims.create({
+        key: 'rosawalk',
+        frames: this.anims.generateFrameNumbers('rosa', { start: 0, end: 1 }),
+        frameRate: 10,
+        repeat: -1
+    });
+     this.anims.create({
+        key: 'rosaidle',
+        frames: this.anims.generateFrameNumbers('rosa', { start: 0, end: 0 }),
+        frameRate: 1,
+        repeat: -1
+    });
+       this.anims.create({
+        key: 'rosacasting',
+        frames: this.anims.generateFrameNumbers('rosa', { start: 6, end: 7 }),
+        frameRate: 1,
+        repeat: -1
+    });
+    
+      this.anims.create({
+        key: 'rosacurespell',
+        frames: this.anims.generateFrameNumbers('rosacurespell', { start: 0, end: 20 }),
+        frameRate: 10,
+        hideOnComplete: true
+    });
+     this.anims.create({
+        key: 'rosahealspell',
+        frames: this.anims.generateFrameNumbers('rosahealspell', { start: 0, end: 20 }),
+        frameRate: 10,
+        hideOnComplete: true
+ 
+    });
+     this.anims.create({
+        key: 'rosafastspell',
+        frames: this.anims.generateFrameNumbers('rosafastspell', { start: 0, end: 6 }),
+        frameRate: 10,
+        hideOnComplete: true
+    });
+    this.anims.create({
+        key: 'rosashellspell',
+        frames: this.anims.generateFrameNumbers('rosashellspell', { start: 0, end: 29 }),
+        frameRate: 20,
+        yoyo: true,
+        repeat: -1
+    });
     
 
+      this.anims.create({
+        key: 'mogdead',
+        frames: this.anims.generateFrameNumbers('mog', { start: 5, end: 5 }),
+        frameRate: 1,
+        repeat: 0
+    });
+    this.anims.create({
+        key: 'mogwalk',
+        frames: this.anims.generateFrameNumbers('mog', { start: 0, end: 1 }),
+        frameRate: 10,
+        repeat: -1
+    });
+     this.anims.create({
+        key: 'mogidle',
+        frames: this.anims.generateFrameNumbers('mog', { start: 0, end: 0 }),
+        frameRate: 1,
+        repeat: -1
+    });
+ this.anims.create({
+        key: 'mogcasting',
+        frames: this.anims.generateFrameNumbers('mog', { start: 6, end: 7 }),
+        frameRate: 1,
+        repeat: -1
+    });
 
-   
+    this.anims.create({
+        key: 'mogdreamspell',
+        frames: this.anims.generateFrameNumbers('mogdreamspell', { start: 0, end: 19 }),
+        frameRate: 20,
+        yoyo: true,
+        repeat: -1
+    });
+       this.anims.create({
+        key: 'mogmoonspell',
+        frames: this.anims.generateFrameNumbers('mogmoonspell', { start: 0, end: 14 }),
+        frameRate: 10,
+        yoyo: true,
+        repeat: -1
+    });
+           this.anims.create({
+        key: 'mogpowerspell',
+        frames: this.anims.generateFrameNumbers('mogpowerspell', { start: 0, end: 14 }),
+        frameRate: 10,
+        yoyo: true,
+        repeat: -1
+    });
+       this.anims.create({
+        key: 'mogdancespell',
+        frames: this.anims.generateFrameNumbers('mogdancespell', { start: 0, end: 14 }),
+        frameRate: 10,
+        yoyo: true,
+        repeat: -1
+    });
+       this.anims.create({
+        key: 'mogbullspell',
+        frames: this.anims.generateFrameNumbers('mogbullspell', { start: 0, end: 6 }),
+        frameRate: 10,
+        yoyo: true,
+        repeat: -1
+    });
 
 
 
@@ -10466,6 +12220,397 @@ p2sindelhealthtext = this.add.text(p2sindelhealthtextx, p2sindelhealthtexty, '',
  }
  }
  //endloadsindel***********************************
+
+ //loadraiden**************************************
+if (loadraiden == true){
+  if (player1p1name == 'RAIDEN') {
+p1raidennamex = battlegroundboxt1p1.x + 2
+p1raidennamey = battlegroundboxt1p1.y + 30
+p1raidennameplate = this.physics.add.sprite(p1raidennamex, p1raidennamey, 'raidenname').setInteractive();
+p1raidennameplate.setOrigin(0, 0);
+p1raidennameplate.on('pointerdown', function (pointer) {
+    p1raidenbuttonclick()
+    });
+p1raidenhealthtextx = battlegroundboxt1p1.x + 35
+p1raidenhealthtexty = battlegroundboxt1p1.y + 3         
+p1raidenhealthtext = this.add.text(p1raidenhealthtextx, p1raidenhealthtexty, '', { font: '25px Arial', fill: '#00ff00' }).setScrollFactor(0);
+
+ }
+  if (player1p2name == 'RAIDEN') {
+p1raidennamex = battlegroundboxt1p2.x + 2
+p1raidennamey = battlegroundboxt1p2.y + 30         
+p1raidennameplate = this.physics.add.sprite(p1raidennamex, p1raidennamey, 'raidenname').setInteractive();
+p1raidennameplate.setOrigin(0, 0);
+p1raidennameplate.on('pointerdown', function (pointer) {
+    p1raidenbuttonclick()
+    });
+p1raidenhealthtextx = battlegroundboxt1p2.x + 35
+p1raidenhealthtexty = battlegroundboxt1p2.y + 3         
+p1raidenhealthtext = this.add.text(p1raidenhealthtextx, p1raidenhealthtexty, '', { font: '25px Arial', fill: '#00ff00' }).setScrollFactor(0);
+ }
+   if (player1p3name == 'RAIDEN') {
+p1raidennamex = battlegroundboxt1p3.x + 2
+p1raidennamey = battlegroundboxt1p3.y + 30         
+p1raidennameplate = this.physics.add.sprite(p1raidennamex, p1raidennamey, 'raidenname').setInteractive();
+p1raidennameplate.setOrigin(0, 0);
+p1raidennameplate.on('pointerdown', function (pointer) {
+    p1raidenbuttonclick()
+    });
+p1raidenhealthtextx = battlegroundboxt1p3.x + 35
+p1raidenhealthtexty = battlegroundboxt1p3.y + 3         
+p1raidenhealthtext = this.add.text(p1raidenhealthtextx, p1raidenhealthtexty, '', { font: '25px Arial', fill: '#00ff00' }).setScrollFactor(0);
+ }
+   if (player1p4name == 'RAIDEN') {
+p1raidennamex = battlegroundboxt1p4.x + 2
+p1raidennamey = battlegroundboxt1p4.y + 30         
+p1raidennameplate = this.physics.add.sprite(p1raidennamex, p1raidennamey, 'raidenname').setInteractive();
+p1raidennameplate.setOrigin(0, 0);
+p1raidennameplate.on('pointerdown', function (pointer) {
+    p1raidenbuttonclick()
+    });
+p1raidenhealthtextx = battlegroundboxt1p4.x + 35
+p1raidenhealthtexty = battlegroundboxt1p4.y + 3         
+p1raidenhealthtext = this.add.text(p1raidenhealthtextx, p1raidenhealthtexty, '', { font: '25px Arial', fill: '#00ff00' }).setScrollFactor(0);
+ }
+   if (player1p5name == 'RAIDEN') {
+p1raidennamex = battlegroundboxt1p5.x + 2
+p1raidennamey = battlegroundboxt1p5.y + 30         
+p1raidennameplate = this.physics.add.sprite(p1raidennamex, p1raidennamey, 'raidenname').setInteractive();
+p1raidennameplate.setOrigin(0, 0);
+p1raidennameplate.on('pointerdown', function (pointer) {
+    p1raidenbuttonclick()
+    });
+p1raidenhealthtextx = battlegroundboxt1p5.x + 35
+p1raidenhealthtexty = battlegroundboxt1p5.y + 3         
+p1raidenhealthtext = this.add.text(p1raidenhealthtextx, p1raidenhealthtexty, '', { font: '25px Arial', fill: '#00ff00' }).setScrollFactor(0);
+ }
+//        
+if (player2p1name == 'RAIDEN') {     
+p2raidennamex = battlegroundboxt2p1.x + 2
+p2raidennamey = battlegroundboxt2p1.y + 30  
+p2raidennameplate = this.physics.add.sprite(p2raidennamex, p2raidennamey, 'raidenname').setInteractive();
+p2raidennameplate.setOrigin(0, 0);
+p2raidennameplate.on('pointerdown', function (pointer) {
+    p2raidenbuttonclick()
+    });
+p2raidenhealthtextx = battlegroundboxt2p1.x + 35
+p2raidenhealthtexty = battlegroundboxt2p1.y + 3         
+p2raidenhealthtext = this.add.text(p2raidenhealthtextx, p2raidenhealthtexty, '', { font: '25px Arial', fill: '#00ff00' }).setScrollFactor(0);
+ }
+if (player2p2name == 'RAIDEN') {     
+p2raidennamex = battlegroundboxt2p2.x + 2
+p2raidennamey = battlegroundboxt2p2.y + 30  
+p2raidennameplate = this.physics.add.sprite(p2raidennamex, p2raidennamey, 'raidenname').setInteractive();
+p2raidennameplate.setOrigin(0, 0);
+p2raidennameplate.on('pointerdown', function (pointer) {
+    p2raidenbuttonclick()
+    });
+p2raidenhealthtextx = battlegroundboxt2p2.x + 35
+p2raidenhealthtexty = battlegroundboxt2p2.y + 3         
+p2raidenhealthtext = this.add.text(p2raidenhealthtextx, p2raidenhealthtexty, '', { font: '25px Arial', fill: '#00ff00' }).setScrollFactor(0);
+ }
+
+if (player2p3name == 'RAIDEN') {     
+p2raidennamex = battlegroundboxt2p3.x + 2
+p2raidennamey = battlegroundboxt2p3.y + 30  
+p2raidennameplate = this.physics.add.sprite(p2raidennamex, p2raidennamey, 'raidenname').setInteractive();
+p2raidennameplate.setOrigin(0, 0);
+p2raidennameplate.on('pointerdown', function (pointer) {
+    p2raidenbuttonclick()
+    });
+p2raidenhealthtextx = battlegroundboxt2p3.x + 35
+p2raidenhealthtexty = battlegroundboxt2p3.y + 3         
+p2raidenhealthtext = this.add.text(p2raidenhealthtextx, p2raidenhealthtexty, '', { font: '25px Arial', fill: '#00ff00' }).setScrollFactor(0);
+ }
+
+if (player2p4name == 'RAIDEN') {     
+p2raidennamex = battlegroundboxt2p4.x + 2
+p2raidennamey = battlegroundboxt2p4.y + 30  
+p2raidennameplate = this.physics.add.sprite(p2raidennamex, p2raidennamey, 'raidenname').setInteractive();
+p2raidennameplate.setOrigin(0, 0);
+p2raidennameplate.on('pointerdown', function (pointer) {
+    p2raidenbuttonclick()
+    });
+p2raidenhealthtextx = battlegroundboxt2p4.x + 35
+p2raidenhealthtexty = battlegroundboxt2p4.y + 3         
+p2raidenhealthtext = this.add.text(p2raidenhealthtextx, p2raidenhealthtexty, '', { font: '25px Arial', fill: '#00ff00' }).setScrollFactor(0);
+ }
+
+if (player2p5name == 'RAIDEN') {     
+p2raidennamex = battlegroundboxt2p5.x + 2
+p2raidennamey = battlegroundboxt2p5.y + 30  
+p2raidennameplate = this.physics.add.sprite(p2raidennamex, p2raidennamey, 'raidenname').setInteractive();
+p2raidennameplate.setOrigin(0, 0);
+p2raidennameplate.on('pointerdown', function (pointer) {
+    p2raidenbuttonclick()
+    });
+p2raidenhealthtextx = battlegroundboxt2p5.x + 35
+p2raidenhealthtexty = battlegroundboxt2p5.y + 3         
+p2raidenhealthtext = this.add.text(p2raidenhealthtextx, p2raidenhealthtexty, '', { font: '25px Arial', fill: '#00ff00' }).setScrollFactor(0);
+ }
+ }
+ //endloadraiden***********************************
+
+  //loadcyan**************************************
+if (loadcyan == true){
+if (player1p1name == 'CYAN') {
+p1cyannamex = battlegroundboxt1p1.x + 2
+p1cyannamey = battlegroundboxt1p1.y + 30
+p1cyannameplate = this.physics.add.sprite(p1cyannamex, p1cyannamey, 'cyanname').setInteractive();
+p1cyannameplate.setOrigin(0, 0);
+p1cyannameplate.on('pointerdown', function (pointer) {
+    p1cyanbuttonclick()
+    });
+p1cyanhealthtextx = battlegroundboxt1p1.x + 35
+p1cyanhealthtexty = battlegroundboxt1p1.y + 3         
+p1cyanhealthtext = this.add.text(p1cyanhealthtextx, p1cyanhealthtexty, '', { font: '25px Arial', fill: '#00ff00' }).setScrollFactor(0);
+
+ }
+  if (player1p2name == 'CYAN') {
+p1cyannamex = battlegroundboxt1p2.x + 2
+p1cyannamey = battlegroundboxt1p2.y + 30         
+p1cyannameplate = this.physics.add.sprite(p1cyannamex, p1cyannamey, 'cyanname').setInteractive();
+p1cyannameplate.setOrigin(0, 0);
+p1cyannameplate.on('pointerdown', function (pointer) {
+    p1cyanbuttonclick()
+    });
+p1cyanhealthtextx = battlegroundboxt1p2.x + 35
+p1cyanhealthtexty = battlegroundboxt1p2.y + 3         
+p1cyanhealthtext = this.add.text(p1cyanhealthtextx, p1cyanhealthtexty, '', { font: '25px Arial', fill: '#00ff00' }).setScrollFactor(0);
+ }
+   if (player1p3name == 'CYAN') {
+p1cyannamex = battlegroundboxt1p3.x + 2
+p1cyannamey = battlegroundboxt1p3.y + 30         
+p1cyannameplate = this.physics.add.sprite(p1cyannamex, p1cyannamey, 'cyanname').setInteractive();
+p1cyannameplate.setOrigin(0, 0);
+p1cyannameplate.on('pointerdown', function (pointer) {
+    p1cyanbuttonclick()
+    });
+p1cyanhealthtextx = battlegroundboxt1p3.x + 35
+p1cyanhealthtexty = battlegroundboxt1p3.y + 3         
+p1cyanhealthtext = this.add.text(p1cyanhealthtextx, p1cyanhealthtexty, '', { font: '25px Arial', fill: '#00ff00' }).setScrollFactor(0);
+ }
+   if (player1p4name == 'CYAN') {
+p1cyannamex = battlegroundboxt1p4.x + 2
+p1cyannamey = battlegroundboxt1p4.y + 30         
+p1cyannameplate = this.physics.add.sprite(p1cyannamex, p1cyannamey, 'cyanname').setInteractive();
+p1cyannameplate.setOrigin(0, 0);
+p1cyannameplate.on('pointerdown', function (pointer) {
+    p1cyanbuttonclick()
+    });
+p1cyanhealthtextx = battlegroundboxt1p4.x + 35
+p1cyanhealthtexty = battlegroundboxt1p4.y + 3         
+p1cyanhealthtext = this.add.text(p1cyanhealthtextx, p1cyanhealthtexty, '', { font: '25px Arial', fill: '#00ff00' }).setScrollFactor(0);
+ }
+   if (player1p5name == 'CYAN') {
+p1cyannamex = battlegroundboxt1p5.x + 2
+p1cyannamey = battlegroundboxt1p5.y + 30         
+p1cyannameplate = this.physics.add.sprite(p1cyannamex, p1cyannamey, 'cyanname').setInteractive();
+p1cyannameplate.setOrigin(0, 0);
+p1cyannameplate.on('pointerdown', function (pointer) {
+    p1cyanbuttonclick()
+    });
+p1cyanhealthtextx = battlegroundboxt1p5.x + 35
+p1cyanhealthtexty = battlegroundboxt1p5.y + 3         
+p1cyanhealthtext = this.add.text(p1cyanhealthtextx, p1cyanhealthtexty, '', { font: '25px Arial', fill: '#00ff00' }).setScrollFactor(0);
+ }
+//        
+if (player2p1name == 'CYAN') {     
+p2cyannamex = battlegroundboxt2p1.x + 2
+p2cyannamey = battlegroundboxt2p1.y + 30  
+p2cyannameplate = this.physics.add.sprite(p2cyannamex, p2cyannamey, 'cyanname').setInteractive();
+p2cyannameplate.setOrigin(0, 0);
+p2cyannameplate.on('pointerdown', function (pointer) {
+    p2cyanbuttonclick()
+    });
+p2cyanhealthtextx = battlegroundboxt2p1.x + 35
+p2cyanhealthtexty = battlegroundboxt2p1.y + 3         
+p2cyanhealthtext = this.add.text(p2cyanhealthtextx, p2cyanhealthtexty, '', { font: '25px Arial', fill: '#00ff00' }).setScrollFactor(0);
+ }
+if (player2p2name == 'CYAN') {     
+p2cyannamex = battlegroundboxt2p2.x + 2
+p2cyannamey = battlegroundboxt2p2.y + 30  
+p2cyannameplate = this.physics.add.sprite(p2cyannamex, p2cyannamey, 'cyanname').setInteractive();
+p2cyannameplate.setOrigin(0, 0);
+p2cyannameplate.on('pointerdown', function (pointer) {
+    p2cyanbuttonclick()
+    });
+p2cyanhealthtextx = battlegroundboxt2p2.x + 35
+p2cyanhealthtexty = battlegroundboxt2p2.y + 3         
+p2cyanhealthtext = this.add.text(p2cyanhealthtextx, p2cyanhealthtexty, '', { font: '25px Arial', fill: '#00ff00' }).setScrollFactor(0);
+ }
+
+if (player2p3name == 'CYAN') {     
+p2cyannamex = battlegroundboxt2p3.x + 2
+p2cyannamey = battlegroundboxt2p3.y + 30  
+p2cyannameplate = this.physics.add.sprite(p2cyannamex, p2cyannamey, 'cyanname').setInteractive();
+p2cyannameplate.setOrigin(0, 0);
+p2cyannameplate.on('pointerdown', function (pointer) {
+    p2cyanbuttonclick()
+    });
+p2cyanhealthtextx = battlegroundboxt2p3.x + 35
+p2cyanhealthtexty = battlegroundboxt2p3.y + 3         
+p2cyanhealthtext = this.add.text(p2cyanhealthtextx, p2cyanhealthtexty, '', { font: '25px Arial', fill: '#00ff00' }).setScrollFactor(0);
+ }
+
+if (player2p4name == 'CYAN') {     
+p2cyannamex = battlegroundboxt2p4.x + 2
+p2cyannamey = battlegroundboxt2p4.y + 30  
+p2cyannameplate = this.physics.add.sprite(p2cyannamex, p2cyannamey, 'cyanname').setInteractive();
+p2cyannameplate.setOrigin(0, 0);
+p2cyannameplate.on('pointerdown', function (pointer) {
+    p2cyanbuttonclick()
+    });
+p2cyanhealthtextx = battlegroundboxt2p4.x + 35
+p2cyanhealthtexty = battlegroundboxt2p4.y + 3         
+p2cyanhealthtext = this.add.text(p2cyanhealthtextx, p2cyanhealthtexty, '', { font: '25px Arial', fill: '#00ff00' }).setScrollFactor(0);
+ }
+
+if (player2p5name == 'CYAN') {     
+p2cyannamex = battlegroundboxt2p5.x + 2
+p2cyannamey = battlegroundboxt2p5.y + 30  
+p2cyannameplate = this.physics.add.sprite(p2cyannamex, p2cyannamey, 'cyanname').setInteractive();
+p2cyannameplate.setOrigin(0, 0);
+p2cyannameplate.on('pointerdown', function (pointer) {
+    p2cyanbuttonclick()
+    });
+p2cyanhealthtextx = battlegroundboxt2p5.x + 35
+p2cyanhealthtexty = battlegroundboxt2p5.y + 3         
+p2cyanhealthtext = this.add.text(p2cyanhealthtextx, p2cyanhealthtexty, '', { font: '25px Arial', fill: '#00ff00' }).setScrollFactor(0);
+ }
+ }
+ //endloadcyan***********************************
+
+
+ //loadrosa**************************************
+if (loadrosa == true){
+if (player1p1name == 'ROSA') {
+p1rosanamex = battlegroundboxt1p1.x + 2
+p1rosanamey = battlegroundboxt1p1.y + 30
+p1rosanameplate = this.physics.add.sprite(p1rosanamex, p1rosanamey, 'rosaname').setInteractive();
+p1rosanameplate.setOrigin(0, 0);
+p1rosanameplate.on('pointerdown', function (pointer) {
+    p1rosabuttonclick()
+    });
+p1rosahealthtextx = battlegroundboxt1p1.x + 35
+p1rosahealthtexty = battlegroundboxt1p1.y + 3         
+p1rosahealthtext = this.add.text(p1rosahealthtextx, p1rosahealthtexty, '', { font: '25px Arial', fill: '#00ff00' }).setScrollFactor(0);
+
+ }
+  if (player1p2name == 'ROSA') {
+p1rosanamex = battlegroundboxt1p2.x + 2
+p1rosanamey = battlegroundboxt1p2.y + 30         
+p1rosanameplate = this.physics.add.sprite(p1rosanamex, p1rosanamey, 'rosaname').setInteractive();
+p1rosanameplate.setOrigin(0, 0);
+p1rosanameplate.on('pointerdown', function (pointer) {
+    p1rosabuttonclick()
+    });
+p1rosahealthtextx = battlegroundboxt1p2.x + 35
+p1rosahealthtexty = battlegroundboxt1p2.y + 3         
+p1rosahealthtext = this.add.text(p1rosahealthtextx, p1rosahealthtexty, '', { font: '25px Arial', fill: '#00ff00' }).setScrollFactor(0);
+ }
+   if (player1p3name == 'ROSA') {
+p1rosanamex = battlegroundboxt1p3.x + 2
+p1rosanamey = battlegroundboxt1p3.y + 30         
+p1rosanameplate = this.physics.add.sprite(p1rosanamex, p1rosanamey, 'rosaname').setInteractive();
+p1rosanameplate.setOrigin(0, 0);
+p1rosanameplate.on('pointerdown', function (pointer) {
+    p1rosabuttonclick()
+    });
+p1rosahealthtextx = battlegroundboxt1p3.x + 35
+p1rosahealthtexty = battlegroundboxt1p3.y + 3         
+p1rosahealthtext = this.add.text(p1rosahealthtextx, p1rosahealthtexty, '', { font: '25px Arial', fill: '#00ff00' }).setScrollFactor(0);
+ }
+   if (player1p4name == 'ROSA') {
+p1rosanamex = battlegroundboxt1p4.x + 2
+p1rosanamey = battlegroundboxt1p4.y + 30         
+p1rosanameplate = this.physics.add.sprite(p1rosanamex, p1rosanamey, 'rosaname').setInteractive();
+p1rosanameplate.setOrigin(0, 0);
+p1rosanameplate.on('pointerdown', function (pointer) {
+    p1rosabuttonclick()
+    });
+p1rosahealthtextx = battlegroundboxt1p4.x + 35
+p1rosahealthtexty = battlegroundboxt1p4.y + 3         
+p1rosahealthtext = this.add.text(p1rosahealthtextx, p1rosahealthtexty, '', { font: '25px Arial', fill: '#00ff00' }).setScrollFactor(0);
+ }
+   if (player1p5name == 'ROSA') {
+p1rosanamex = battlegroundboxt1p5.x + 2
+p1rosanamey = battlegroundboxt1p5.y + 30         
+p1rosanameplate = this.physics.add.sprite(p1rosanamex, p1rosanamey, 'rosaname').setInteractive();
+p1rosanameplate.setOrigin(0, 0);
+p1rosanameplate.on('pointerdown', function (pointer) {
+    p1rosabuttonclick()
+    });
+p1rosahealthtextx = battlegroundboxt1p5.x + 35
+p1rosahealthtexty = battlegroundboxt1p5.y + 3         
+p1rosahealthtext = this.add.text(p1rosahealthtextx, p1rosahealthtexty, '', { font: '25px Arial', fill: '#00ff00' }).setScrollFactor(0);
+ }
+//        
+if (player2p1name == 'ROSA') {     
+p2rosanamex = battlegroundboxt2p1.x + 2
+p2rosanamey = battlegroundboxt2p1.y + 30  
+p2rosanameplate = this.physics.add.sprite(p2rosanamex, p2rosanamey, 'rosaname').setInteractive();
+p2rosanameplate.setOrigin(0, 0);
+p2rosanameplate.on('pointerdown', function (pointer) {
+    p2rosabuttonclick()
+    });
+p2rosahealthtextx = battlegroundboxt2p1.x + 35
+p2rosahealthtexty = battlegroundboxt2p1.y + 3         
+p2rosahealthtext = this.add.text(p2rosahealthtextx, p2rosahealthtexty, '', { font: '25px Arial', fill: '#00ff00' }).setScrollFactor(0);
+ }
+if (player2p2name == 'ROSA') {     
+p2rosanamex = battlegroundboxt2p2.x + 2
+p2rosanamey = battlegroundboxt2p2.y + 30  
+p2rosanameplate = this.physics.add.sprite(p2rosanamex, p2rosanamey, 'rosaname').setInteractive();
+p2rosanameplate.setOrigin(0, 0);
+p2rosanameplate.on('pointerdown', function (pointer) {
+    p2rosabuttonclick()
+    });
+p2rosahealthtextx = battlegroundboxt2p2.x + 35
+p2rosahealthtexty = battlegroundboxt2p2.y + 3         
+p2rosahealthtext = this.add.text(p2rosahealthtextx, p2rosahealthtexty, '', { font: '25px Arial', fill: '#00ff00' }).setScrollFactor(0);
+ }
+
+if (player2p3name == 'ROSA') {     
+p2rosanamex = battlegroundboxt2p3.x + 2
+p2rosanamey = battlegroundboxt2p3.y + 30  
+p2rosanameplate = this.physics.add.sprite(p2rosanamex, p2rosanamey, 'rosaname').setInteractive();
+p2rosanameplate.setOrigin(0, 0);
+p2rosanameplate.on('pointerdown', function (pointer) {
+    p2rosabuttonclick()
+    });
+p2rosahealthtextx = battlegroundboxt2p3.x + 35
+p2rosahealthtexty = battlegroundboxt2p3.y + 3         
+p2rosahealthtext = this.add.text(p2rosahealthtextx, p2rosahealthtexty, '', { font: '25px Arial', fill: '#00ff00' }).setScrollFactor(0);
+ }
+
+if (player2p4name == 'ROSA') {     
+p2rosanamex = battlegroundboxt2p4.x + 2
+p2rosanamey = battlegroundboxt2p4.y + 30  
+p2rosanameplate = this.physics.add.sprite(p2rosanamex, p2rosanamey, 'rosaname').setInteractive();
+p2rosanameplate.setOrigin(0, 0);
+p2rosanameplate.on('pointerdown', function (pointer) {
+    p2rosabuttonclick()
+    });
+p2rosahealthtextx = battlegroundboxt2p4.x + 35
+p2rosahealthtexty = battlegroundboxt2p4.y + 3         
+p2rosahealthtext = this.add.text(p2rosahealthtextx, p2rosahealthtexty, '', { font: '25px Arial', fill: '#00ff00' }).setScrollFactor(0);
+ }
+
+if (player2p5name == 'ROSA') {     
+p2rosanamex = battlegroundboxt2p5.x + 2
+p2rosanamey = battlegroundboxt2p5.y + 30  
+p2rosanameplate = this.physics.add.sprite(p2rosanamex, p2rosanamey, 'rosaname').setInteractive();
+p2rosanameplate.setOrigin(0, 0);
+p2rosanameplate.on('pointerdown', function (pointer) {
+    p2rosabuttonclick()
+    });
+p2rosahealthtextx = battlegroundboxt2p5.x + 35
+p2rosahealthtexty = battlegroundboxt2p5.y + 3         
+p2rosahealthtext = this.add.text(p2rosahealthtextx, p2rosahealthtexty, '', { font: '25px Arial', fill: '#00ff00' }).setScrollFactor(0);
+ }
+ }
+ //endloadrosa***********************************
 ///$///*///
 
 
@@ -10481,7 +12626,7 @@ p1cecilswordbutton.visible = false
 p1cecilshieldbutton = this.add.sprite(p1partyactionbutton2x, p1partyactionbutton2y, 'cecilshieldbox').setInteractive();
 p1cecilshieldbutton.setOrigin(0, 0);
             p1cecilshieldbutton.on('pointerdown', function (pointer) {
-            
+            p1cecilshieldkey()
           });
 p1cecilshieldbutton.visible = false
 
@@ -11798,6 +13943,228 @@ p2sindelpuntbutton.setOrigin(0, 0);
 p2sindelpuntbutton.visible = false
 //P1SINDELBUTTONSEND*********************************
 
+//P1raidenbuttons***********************************
+p1raidenthunderboltbutton = this.add.sprite(p1partyactionbutton1x, p1partyactionbutton1y, 'raidenthunderboltbox').setInteractive();
+p1raidenthunderboltbutton.setOrigin(0, 0);
+            p1raidenthunderboltbutton.on('pointerdown', function (pointer) {
+            p1raidenthunderboltkey()
+          });
+p1raidenthunderboltbutton.visible = false
+
+p1raidenflybutton = this.add.sprite(p1partyactionbutton2x, p1partyactionbutton2y, 'raidenflybox').setInteractive();
+p1raidenflybutton.setOrigin(0, 0);
+            p1raidenflybutton.on('pointerdown', function (pointer) {
+            p1raidenflykey()
+          });
+p1raidenflybutton.visible = false
+
+p1raidenstormbutton = this.add.sprite(p1partyactionbutton3x, p1partyactionbutton3y, 'raidenstormbox').setInteractive();
+p1raidenstormbutton.setOrigin(0, 0);
+            p1raidenstormbutton.on('pointerdown', function (pointer) {
+            p1raidenstormkey()
+          });
+p1raidenstormbutton.visible = false
+
+p1raidenpowerstrikebutton = this.add.sprite(p1partyactionbutton4x, p1partyactionbutton4y, 'raidenpowerstrikebox').setInteractive();
+p1raidenpowerstrikebutton.setOrigin(0, 0);
+            p1raidenpowerstrikebutton.on('pointerdown', function (pointer) {
+            p1raidenpowerstrikekey()
+          });
+p1raidenpowerstrikebutton.visible = false
+
+p1raidenkickbutton = this.add.sprite(p1partyactionbutton5x, p1partyactionbutton5y, 'raidenkickbox').setInteractive();
+p1raidenkickbutton.setOrigin(0, 0);
+            p1raidenkickbutton.on('pointerdown', function (pointer) {
+            p1raidenkickkey()
+          });
+p1raidenkickbutton.visible = false
+//P1RAIDENBUTTONSEND*********************************
+
+//P1raidenbuttons***********************************
+p2raidenthunderboltbutton = this.add.sprite(p2partyactionbutton1x, p2partyactionbutton1y, 'raidenthunderboltbox').setInteractive();
+p2raidenthunderboltbutton.setOrigin(0, 0);
+            p2raidenthunderboltbutton.on('pointerdown', function (pointer) {
+            p2raidenthunderboltkey()
+          });
+p2raidenthunderboltbutton.visible = false
+
+p2raidenflybutton = this.add.sprite(p2partyactionbutton2x, p2partyactionbutton2y, 'raidenflybox').setInteractive();
+p2raidenflybutton.setOrigin(0, 0);
+            p2raidenflybutton.on('pointerdown', function (pointer) {
+            p2raidenflykey()
+          });
+p2raidenflybutton.visible = false
+
+p2raidenstormbutton = this.add.sprite(p2partyactionbutton3x, p2partyactionbutton3y, 'raidenstormbox').setInteractive();
+p2raidenstormbutton.setOrigin(0, 0);
+            p2raidenstormbutton.on('pointerdown', function (pointer) {
+            p2raidenstormkey()
+          });
+p2raidenstormbutton.visible = false
+
+p2raidenpowerstrikebutton = this.add.sprite(p2partyactionbutton4x, p2partyactionbutton4y, 'raidenpowerstrikebox').setInteractive();
+p2raidenpowerstrikebutton.setOrigin(0, 0);
+            p2raidenpowerstrikebutton.on('pointerdown', function (pointer) {
+            p2raidenpowerstrikekey()
+          });
+p2raidenpowerstrikebutton.visible = false
+
+p2raidenkickbutton = this.add.sprite(p2partyactionbutton5x, p2partyactionbutton5y, 'raidenkickbox').setInteractive();
+p2raidenkickbutton.setOrigin(0, 0);
+            p2raidenkickbutton.on('pointerdown', function (pointer) {
+            p2raidenkickkey()
+          });
+p2raidenkickbutton.visible = false
+//P1RAIDENBUTTONSEND*********************************
+
+//P1cyanbuttons***********************************
+p1cyanswordslashbutton = this.add.sprite(p1partyactionbutton1x, p1partyactionbutton1y, 'cyanswordslashbox').setInteractive();
+p1cyanswordslashbutton.setOrigin(0, 0);
+            p1cyanswordslashbutton.on('pointerdown', function (pointer) {
+            p1cyanswordslashkey()
+          });
+p1cyanswordslashbutton.visible = false
+
+p1cyanswordswingbutton = this.add.sprite(p1partyactionbutton2x, p1partyactionbutton2y, 'cyanswordswingbox').setInteractive();
+p1cyanswordswingbutton.setOrigin(0, 0);
+            p1cyanswordswingbutton.on('pointerdown', function (pointer) {
+            p1cyanswordswingkey()
+          });
+p1cyanswordswingbutton.visible = false
+
+p1cyanmagicswordbutton = this.add.sprite(p1partyactionbutton3x, p1partyactionbutton3y, 'cyanmagicswordbox').setInteractive();
+p1cyanmagicswordbutton.setOrigin(0, 0);
+            p1cyanmagicswordbutton.on('pointerdown', function (pointer) {
+            p1cyanmagicswordkey()
+          });
+p1cyanmagicswordbutton.visible = false
+
+p1cyancommandbutton = this.add.sprite(p1partyactionbutton4x, p1partyactionbutton4y, 'cyancommandbox').setInteractive();
+p1cyancommandbutton.setOrigin(0, 0);
+            p1cyancommandbutton.on('pointerdown', function (pointer) {
+            p1cyancommandkey()
+          });
+p1cyancommandbutton.visible = false
+
+p1cyanbattleplanbutton = this.add.sprite(p1partyactionbutton5x, p1partyactionbutton5y, 'cyanbattleplanbox').setInteractive();
+p1cyanbattleplanbutton.setOrigin(0, 0);
+            p1cyanbattleplanbutton.on('pointerdown', function (pointer) {
+            p1cyanbattleplankey()
+          });
+p1cyanbattleplanbutton.visible = false
+//P1CYANBUTTONSEND*********************************
+
+//P1cyanbuttons***********************************
+p2cyanswordslashbutton = this.add.sprite(p2partyactionbutton1x, p2partyactionbutton1y, 'cyanswordslashbox').setInteractive();
+p2cyanswordslashbutton.setOrigin(0, 0);
+            p2cyanswordslashbutton.on('pointerdown', function (pointer) {
+            p2cyanswordslashkey()
+          });
+p2cyanswordslashbutton.visible = false
+
+p2cyanswordswingbutton = this.add.sprite(p2partyactionbutton2x, p2partyactionbutton2y, 'cyanswordswingbox').setInteractive();
+p2cyanswordswingbutton.setOrigin(0, 0);
+            p2cyanswordswingbutton.on('pointerdown', function (pointer) {
+            p2cyanswordswingkey()
+          });
+p2cyanswordswingbutton.visible = false
+
+p2cyanmagicswordbutton = this.add.sprite(p2partyactionbutton3x, p2partyactionbutton3y, 'cyanmagicswordbox').setInteractive();
+p2cyanmagicswordbutton.setOrigin(0, 0);
+            p2cyanmagicswordbutton.on('pointerdown', function (pointer) {
+            p2cyanmagicswordkey()
+          });
+p2cyanmagicswordbutton.visible = false
+
+p2cyancommandbutton = this.add.sprite(p2partyactionbutton4x, p2partyactionbutton4y, 'cyancommandbox').setInteractive();
+p2cyancommandbutton.setOrigin(0, 0);
+            p2cyancommandbutton.on('pointerdown', function (pointer) {
+            p2cyancommandkey()
+          });
+p2cyancommandbutton.visible = false
+
+p2cyanbattleplanbutton = this.add.sprite(p2partyactionbutton5x, p2partyactionbutton5y, 'cyanbattleplanbox').setInteractive();
+p2cyanbattleplanbutton.setOrigin(0, 0);
+            p2cyanbattleplanbutton.on('pointerdown', function (pointer) {
+            p2cyanbattleplankey()
+          });
+p2cyanbattleplanbutton.visible = false
+//P1CYANBUTTONSEND*********************************
+
+
+//P1rosabuttons***********************************
+p1rosacurebutton = this.add.sprite(p1partyactionbutton1x, p1partyactionbutton1y, 'rosacurebox').setInteractive();
+p1rosacurebutton.setOrigin(0, 0);
+            p1rosacurebutton.on('pointerdown', function (pointer) {
+            p1rosacurekey()
+          });
+p1rosacurebutton.visible = false
+
+p1rosahealbutton = this.add.sprite(p1partyactionbutton2x, p1partyactionbutton2y, 'rosahealbox').setInteractive();
+p1rosahealbutton.setOrigin(0, 0);
+            p1rosahealbutton.on('pointerdown', function (pointer) {
+            p1rosahealkey()
+          });
+p1rosahealbutton.visible = false
+
+p1rosafastbutton = this.add.sprite(p1partyactionbutton3x, p1partyactionbutton3y, 'rosafastbox').setInteractive();
+p1rosafastbutton.setOrigin(0, 0);
+            p1rosafastbutton.on('pointerdown', function (pointer) {
+            p1rosafastkey()
+          });
+p1rosafastbutton.visible = false
+
+p1rosashellbutton = this.add.sprite(p1partyactionbutton4x, p1partyactionbutton4y, 'rosashellbox').setInteractive();
+p1rosashellbutton.setOrigin(0, 0);
+            p1rosashellbutton.on('pointerdown', function (pointer) {
+            p1rosashellkey()
+          });
+p1rosashellbutton.visible = false
+
+p1rosabowbutton = this.add.sprite(p1partyactionbutton5x, p1partyactionbutton5y, 'rosabowbox').setInteractive();
+p1rosabowbutton.setOrigin(0, 0);
+            p1rosabowbutton.on('pointerdown', function (pointer) {
+            p1rosabowkey()
+          });
+p1rosabowbutton.visible = false
+//P1CYANBUTTONSEND*********************************
+
+//P1rosabuttons***********************************
+p2rosacurebutton = this.add.sprite(p2partyactionbutton1x, p2partyactionbutton1y, 'rosacurebox').setInteractive();
+p2rosacurebutton.setOrigin(0, 0);
+            p2rosacurebutton.on('pointerdown', function (pointer) {
+            p2rosacurekey()
+          });
+p2rosacurebutton.visible = false
+
+p2rosahealbutton = this.add.sprite(p2partyactionbutton2x, p2partyactionbutton2y, 'rosahealbox').setInteractive();
+p2rosahealbutton.setOrigin(0, 0);
+            p2rosahealbutton.on('pointerdown', function (pointer) {
+            p2rosahealkey()
+          });
+p2rosahealbutton.visible = false
+
+p2rosafastbutton = this.add.sprite(p2partyactionbutton3x, p2partyactionbutton3y, 'rosafastbox').setInteractive();
+p2rosafastbutton.setOrigin(0, 0);
+            p2rosafastbutton.on('pointerdown', function (pointer) {
+            p2rosafastkey()
+          });
+p2rosafastbutton.visible = false
+
+p2rosashellbutton = this.add.sprite(p2partyactionbutton4x, p2partyactionbutton4y, 'rosashellbox').setInteractive();
+p2rosashellbutton.setOrigin(0, 0);
+            p2rosashellbutton.on('pointerdown', function (pointer) {
+            p2rosashellkey()
+          });
+p2rosashellbutton.visible = false
+
+p2rosabowbutton = this.add.sprite(p2partyactionbutton5x, p2partyactionbutton5y, 'rosabowbox').setInteractive();
+p2rosabowbutton.setOrigin(0, 0);
+            p2rosabowbutton.on('pointerdown', function (pointer) {
+            p2rosabowkey()
+          });
+p2rosabowbutton.visible = false
+//P1ROSABUTTONSEND*********************************
 //ENDBUTTONS**********************************************************
 //ENDCREATE UI///>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
@@ -11824,7 +14191,10 @@ chooseaitarget = Math.floor(Math.random() * 6);
 
 statustxt.setText([
         team1health,
-        team2health
+        team2health,
+        team1turn,
+        team2turn,
+        p1cecilattackshield
          
     ]);
 
@@ -11983,7 +14353,6 @@ statustxt.setText([
     ]);
     }
 
-    //healthstatus
  if (player1sektor == true){
     p1sektorhealthtext.setText([
     p1sektorhealthrating
@@ -12019,6 +14388,43 @@ statustxt.setText([
     p2sindelhealthrating
     ]);
     }
+
+     if (player1raiden == true){
+    p1raidenhealthtext.setText([
+    p1raidenhealthrating
+    ]);
+    }
+
+    if (player2raiden == true){
+    p2raidenhealthtext.setText([
+    p2raidenhealthrating
+    ]);
+    }
+
+     if (player1cyan == true){
+    p1cyanhealthtext.setText([
+    p1cyanhealthrating
+    ]);
+    }
+
+    if (player2cyan == true){
+    p2cyanhealthtext.setText([
+    p2cyanhealthrating
+    ]);
+    }
+
+     if (player1rosa == true){
+    p1rosahealthtext.setText([
+    p1rosahealthrating
+    ]);
+    }
+
+    if (player2rosa == true){
+    p2rosahealthtext.setText([
+    p2rosahealthrating
+    ]);
+    }
+
 
 if (aiteam == true){
 aipicktarget()
@@ -12267,9 +14673,8 @@ if (team1noplayerselected == false){
     blueteamselectplayerbox.visible = false
 }
 
-
 if (team2turn == true){
-    if (team2noplayerselected == true){
+if (team2noplayerselected == true){
     redteamselectplayerbox.visible = true
 }
 }
@@ -12999,27 +15404,163 @@ if (player1sindel == true){
     p1sindely = team1player5y - 55
     }
 }
-
+//
     if (player2sindel == true){
     if (player2p1name == 'SINDEL') {     
-    p2sindelx = team2player1x - 25
-    p2sindely = team2player1y - 35
+    p2sindelx = team2player1x 
+    p2sindely = team2player1y - 55
     }
     if (player2p2name == 'SINDEL') {     
-    p2sindelx = team2player2x - 25
-    p2sindely = team2player2y - 35
+    p2sindelx = team2player2x 
+    p2sindely = team2player2y - 55
     }
     if (player2p3name == 'SINDEL') {     
-    p2sindelx = team2player3x - 25
-    p2sindely = team2player3y - 35
+    p2sindelx = team2player3x 
+    p2sindely = team2player3y - 55
     }
     if (player2p4name == 'SINDEL') {     
-    p2sindelx = team2player4x - 25
-    p2sindely = team2player4y - 35
+    p2sindelx = team2player4x 
+    p2sindely = team2player4y - 55
     }
     if (player2p5name == 'SINDEL') {     
-    p2sindelx = team2player5x - 25
-    p2sindely = team2player5y - 35
+    p2sindelx = team2player5x 
+    p2sindely = team2player5y - 55
+    }
+}
+
+if (player1raiden == true){
+    if (player1p1name == 'RAIDEN') {      
+    p1raidenx = team1player1x - 20
+    p1raideny = team1player1y - 80
+    }
+    if (player1p2name == 'RAIDEN') {      
+    p1raidenx = team1player2x - 20
+    p1raideny = team1player2y - 80
+    }
+     if (player1p3name == 'RAIDEN') {      
+    p1raidenx = team1player3x - 20
+    p1raideny = team1player3y - 80
+    }
+    if (player1p4name == 'RAIDEN') {      
+    p1raidenx = team1player4x - 20
+    p1raideny = team1player4y - 80
+    }
+     if (player1p5name == 'RAIDEN') {      
+    p1raidenx = team1player5x - 20
+    p1raideny = team1player5y - 80
+    }
+}
+
+    if (player2raiden == true){
+    if (player2p1name == 'RAIDEN') {     
+    p2raidenx = team2player1x 
+    p2raideny = team2player1y -80
+    }
+    if (player2p2name == 'RAIDEN') {     
+    p2raidenx = team2player2x 
+    p2raideny = team2player2y -80
+    }
+    if (player2p3name == 'RAIDEN') {     
+    p2raidenx = team2player3x 
+    p2raideny = team2player3y -80
+    }
+    if (player2p4name == 'RAIDEN') {     
+    p2raidenx = team2player4x 
+    p2raideny = team2player4y -80
+    }
+    if (player2p5name == 'RAIDEN') {     
+    p2raidenx = team2player5x 
+    p2raideny = team2player5y -80
+    }
+}
+
+if (player1cyan == true){
+    if (player1p1name == 'CYAN') {      
+    p1cyanx = team1player1x - 20
+    p1cyany = team1player1y - 35
+    }
+    if (player1p2name == 'CYAN') {      
+    p1cyanx = team1player2x - 20
+    p1cyany = team1player2y - 35
+    }
+     if (player1p3name == 'CYAN') {      
+    p1cyanx = team1player3x - 20
+    p1cyany = team1player3y - 35
+    }
+    if (player1p4name == 'CYAN') {      
+    p1cyanx = team1player4x - 20
+    p1cyany = team1player4y - 35
+    }
+     if (player1p5name == 'CYAN') {      
+    p1cyanx = team1player5x - 20
+    p1cyany = team1player5y - 35
+    }
+}
+    if (player2cyan == true){
+    if (player2p1name == 'CYAN') {     
+    p2cyanx = team2player1x - 25
+    p2cyany = team2player1y - 35
+    }
+    if (player2p2name == 'CYAN') {     
+    p2cyanx = team2player2x - 25
+    p2cyany = team2player2y - 35
+    }
+    if (player2p3name == 'CYAN') {     
+    p2cyanx = team2player3x - 25
+    p2cyany = team2player3y - 35
+    }
+    if (player2p4name == 'CYAN') {     
+    p2cyanx = team2player4x - 25
+    p2cyany = team2player4y - 35
+    }
+    if (player2p5name == 'CYAN') {     
+    p2cyanx = team2player5x - 25
+    p2cyany = team2player5y - 35
+    }
+}
+
+if (player1rosa == true){
+    if (player1p1name == 'ROSA') {      
+    p1rosax = team1player1x - 20
+    p1rosay = team1player1y - 35
+    }
+    if (player1p2name == 'ROSA') {      
+    p1rosax = team1player2x - 20
+    p1rosay = team1player2y - 35
+    }
+     if (player1p3name == 'ROSA') {      
+    p1rosax = team1player3x - 20
+    p1rosay = team1player3y - 35
+    }
+    if (player1p4name == 'ROSA') {      
+    p1rosax = team1player4x - 20
+    p1rosay = team1player4y - 35
+    }
+     if (player1p5name == 'ROSA') {      
+    p1rosax = team1player5x - 20
+    p1rosay = team1player5y - 35
+    }
+}
+    if (player2rosa == true){
+    if (player2p1name == 'ROSA') {     
+    p2rosax = team2player1x - 25
+    p2rosay = team2player1y - 35
+    }
+    if (player2p2name == 'ROSA') {     
+    p2rosax = team2player2x - 25
+    p2rosay = team2player2y - 35
+    }
+    if (player2p3name == 'ROSA') {     
+    p2rosax = team2player3x - 25
+    p2rosay = team2player3y - 35
+    }
+    if (player2p4name == 'ROSA') {     
+    p2rosax = team2player4x - 25
+    p2rosay = team2player4y - 35
+    }
+    if (player2p5name == 'ROSA') {     
+    p2rosax = team2player5x - 25
+    p2rosay = team2player5y - 35
     }
 }
 //
@@ -13322,6 +15863,57 @@ if (currentattacktargetname == 'p1sindel'){
     currenttargetdefenserating = p1sindeldefenserating
     currenttargetspeedrating = p1sindelspeedrating
     currenttargetsupportrating = p1sindelsupportrating
+}
+
+if (currentattacktargetname == 'p2raiden'){ 
+    currenttargetmaxhealthrating = p2raidenmaxhealthrating
+    currenttargethealthrating = p2raidenhealthrating
+    currenttargetattackrating = p2raidenattackrating
+    currenttargetdefenserating = p2raidendefenserating
+    currenttargetspeedrating = p2raidenspeedrating
+    currenttargetsupportrating = p2raidensupportrating
+}
+if (currentattacktargetname == 'p1raiden'){
+    currenttargetmaxhealthrating = p1raidenmaxhealthrating
+    currenttargethealthrating = p1raidenhealthrating
+    currenttargetattackrating = p1raidenattackrating
+    currenttargetdefenserating = p1raidendefenserating
+    currenttargetspeedrating = p1raidenspeedrating
+    currenttargetsupportrating = p1raidensupportrating
+}
+
+if (currentattacktargetname == 'p2cyan'){ 
+    currenttargetmaxhealthrating = p2cyanmaxhealthrating
+    currenttargethealthrating = p2cyanhealthrating
+    currenttargetattackrating = p2cyanattackrating
+    currenttargetdefenserating = p2cyandefenserating
+    currenttargetspeedrating = p2cyanspeedrating
+    currenttargetsupportrating = p2cyansupportrating
+}
+if (currentattacktargetname == 'p1cyan'){
+    currenttargetmaxhealthrating = p1cyanmaxhealthrating
+    currenttargethealthrating = p1cyanhealthrating
+    currenttargetattackrating = p1cyanattackrating
+    currenttargetdefenserating = p1cyandefenserating
+    currenttargetspeedrating = p1cyanspeedrating
+    currenttargetsupportrating = p1cyansupportrating
+}
+
+if (currentattacktargetname == 'p2rosa'){ 
+    currenttargetmaxhealthrating = p2rosamaxhealthrating
+    currenttargethealthrating = p2rosahealthrating
+    currenttargetattackrating = p2rosaattackrating
+    currenttargetdefenserating = p2rosadefenserating
+    currenttargetspeedrating = p2rosaspeedrating
+    currenttargetsupportrating = p2rosasupportrating
+}
+if (currentattacktargetname == 'p1rosa'){
+    currenttargetmaxhealthrating = p1rosamaxhealthrating
+    currenttargethealthrating = p1rosahealthrating
+    currenttargetattackrating = p1rosaattackrating
+    currenttargetdefenserating = p1rosadefenserating
+    currenttargetspeedrating = p1rosaspeedrating
+    currenttargetsupportrating = p1rosasupportrating
 }
 
 //
@@ -14105,7 +16697,7 @@ if (p2cyraxselected == true){
         currenttargethealthrating -=   p1sindelattackhairwhipdamage - currenttargetdefenserating 
     }
     if (p1sindelattackpunt == true){
-        currenttargethealthrating -=   p1sindelpuntdamage - currenttargetdefenserating 
+        currenttargethealthrating -=   p1sindelattackpuntdamage - currenttargetdefenserating 
     }
     currentattacktarget()
 }
@@ -14131,7 +16723,152 @@ if (p2sindelselected == true){
         currenttargethealthrating -=   p2sindelattackhairwhipdamage - currenttargetdefenserating 
     }
     if (p2sindelattackpunt == true){
-        currenttargethealthrating -=   p2sindelpuntdamage - currenttargetdefenserating 
+        currenttargethealthrating -=   p2sindelattackpuntdamage - currenttargetdefenserating 
+    }
+   currentattacktarget()
+}
+//
+  if (p1raidenselected == true){
+    currentplayerhealth = p1raidenhealthrating
+    currentplayerattackrating = p1raidenattackrating
+    currentplayerdefenserating = p1raidendefenserating
+    currentplayermagicrating = p1raidenmagicrating
+    currentplayerspeedrating = p1raidenspeedrating
+    currentplayersupportrating = p1raidensupportrating
+
+    if (p1raidenattackthunderbolt == true){
+        currenttargethealthrating -=   p1raidenattackthunderboltdamage - currenttargetdefenserating 
+    }
+    if (p1raidenattackfly == true){
+        currenttargethealthrating -=   p1raidenattackflydamage - currenttargetdefenserating 
+    }
+    if (p1raidenattackstorm == true){
+        currenttargethealthrating -=   p1raidenattackstormdamage - currenttargetdefenserating 
+    }
+    if (p1raidenattackpowerstrike == true){
+        currenttargethealthrating -=   p1raidenattackpowerstrikedamage - currenttargetdefenserating 
+    }
+    if (p1raidenattackkick == true){
+        currenttargethealthrating -=   p1raidenattackkickdamage - currenttargetdefenserating 
+    }
+    currentattacktarget()
+}
+//
+if (p2raidenselected == true){
+    currentplayerhealth = p2raidenhealthrating
+    currentplayerattackrating = p2raidenattackrating
+    currentplayerdefenserating = p2raidendefenserating
+    currentplayermagicrating = p2raidenmagicrating
+    currentplayerspeedrating = p2raidenspeedrating
+    currentplayersupportrating = p2raidensupportrating
+
+    if (p2raidenattackthunderbolt == true){
+        currenttargethealthrating -=   p2raidenattackthunderboltdamage - currenttargetdefenserating 
+    }
+    if (p2raidenattackfly == true){
+        currenttargethealthrating -=   p2raidenattackflydamage - currenttargetdefenserating 
+    }
+    if (p2raidenattackstorm == true){
+        currenttargethealthrating -=   p2raidenattackstormdamage - currenttargetdefenserating 
+    }
+    if (p2raidenattackpowerstrike == true){
+        currenttargethealthrating -=   p2raidenattackpowerstrikedamage - currenttargetdefenserating 
+    }
+    if (p2raidenattackkick == true){
+        currenttargethealthrating -=   p2raidenattackkickdamage - currenttargetdefenserating 
+    }
+   currentattacktarget()
+}
+
+if (p1cyanselected == true){
+    currentplayerhealth = p1cyanhealthrating
+    currentplayerattackrating = p1cyanattackrating
+    currentplayerdefenserating = p1cyandefenserating
+    currentplayermagicrating = p1cyanmagicrating
+    currentplayerspeedrating = p1cyanspeedrating
+    currentplayersupportrating = p1cyansupportrating
+
+    if (p1cyanattackswordslash == true){
+        currenttargethealthrating -=   p1cyanattackswordslashdamage - currenttargetdefenserating 
+    }
+    if (p1cyanattackswordswing == true){
+        currenttargethealthrating -=   p1cyanattackswordswingdamage - currenttargetdefenserating 
+    }
+    if (p1cyanattackmagicsword == true){
+        currenttargethealthrating -=   p1cyanattackmagicsworddamage - currenttargetdefenserating 
+    }
+    
+    currentattacktarget()
+}
+//
+if (p2cyanselected == true){
+    currentplayerhealth = p2cyanhealthrating
+    currentplayerattackrating = p2cyanattackrating
+    currentplayerdefenserating = p2cyandefenserating
+    currentplayermagicrating = p2cyanmagicrating
+    currentplayerspeedrating = p2cyanspeedrating
+    currentplayersupportrating = p2cyansupportrating
+
+    if (p2cyanattackswordslash == true){
+        currenttargethealthrating -=   p2cyanattackswordslashdamage - currenttargetdefenserating 
+    }
+    if (p2cyanattackswordswing == true){
+        currenttargethealthrating -=   p2cyanattackswordswingdamage - currenttargetdefenserating 
+    }
+    if (p2cyanattackmagicsword == true){
+        currenttargethealthrating -=   p2cyanattackmagicsworddamage - currenttargetdefenserating 
+    }
+    
+   currentattacktarget()
+}
+if (p1rosaselected == true){
+    currentplayerhealth = p1rosahealthrating
+    currentplayerattackrating = p1rosaattackrating
+    currentplayerdefenserating = p1rosadefenserating
+    currentplayermagicrating = p1rosamagicrating
+    currentplayerspeedrating = p1rosaspeedrating
+    currentplayersupportrating = p1rosasupportrating
+
+    if (p1rosasupportcure == true){
+        currenttargethealthrating +=   p1rosasupportcurehealing + currentplayersupportrating 
+    }
+    if (p1rosasupportheal == true){
+        currenttargethealthrating +=   p1rosasupporthealhealing + currentplayersupportrating 
+    }
+    if (p1rosasupportfast == true){
+        currenttargetspeedrating +=   p1rosasupportfasthealing
+    }
+    if (p1rosasupportshell == true){
+        currenttargetdefenserating +=   p1rosasupportshellhealing
+    }
+    if (p1rosaattackbow == true){
+        currenttargethealthrating -=   p1rosaattackbowdamage - currentplayerattackrating 
+    }
+    currentattacktarget()
+}
+//
+if (p2rosaselected == true){
+    currentplayerhealth = p2rosahealthrating
+    currentplayerattackrating = p2rosaattackrating
+    currentplayerdefenserating = p2rosadefenserating
+    currentplayermagicrating = p2rosamagicrating
+    currentplayerspeedrating = p2rosaspeedrating
+    currentplayersupportrating = p2rosasupportrating
+
+    if (p2rosasupportcure == true){
+        currenttargethealthrating +=   p2rosasupportcurehealing + currentplayersupportrating 
+    }
+    if (p2rosasupportheal == true){
+        currenttargethealthrating +=   p2rosasupporthealhealing + currentplayersupportrating 
+    }
+    if (p2rosasupportfast == true){
+        currenttargetspeedrating +=   p2rosasupportfasthealing
+    }
+    if (p2rosasupportshell == true){
+        currenttargetdefenserating +=   p2rosasupportshellhealing
+    }
+    if (p2rosaattackbow == true){
+        currenttargethealthrating -=   p2rosaattackbowdamage - currentplayerattackrating 
     }
    currentattacktarget()
 }
@@ -15278,6 +18015,228 @@ if (p1kunglaoselectingtarget == true){
     }
  }
 
+  if (p1raidenselectingtarget == true){
+    if (p1raidenattackthunderbolt == true){
+    p1raidenselectedtargetx = currentenemyposx
+    p1raidenselectedtargety = currentenemyposy
+    p1raidentargetselected = true
+    p1raidenselectingtarget = false
+    }
+
+    if (p1raidenattackfly == true){
+    p1raidenselectedtargetx = currentenemyposx
+    p1raidenselectedtargety = currentenemyposy
+    p1raidentargetselected = true
+    p1raidenselectingtarget = false
+    }
+
+    if (p1raidenattackstorm == true){
+    p1raidenselectedtargetx = currentenemyposx
+    p1raidenselectedtargety = currentenemyposy
+    p1raidentargetselected = true
+    p1raidenselectingtarget = false
+    }
+
+    if (p1raidenattackpowerstrike == true){
+    p1raidenselectedtargetx = currentenemyposx
+    p1raidenselectedtargety = currentenemyposy
+    p1raidentargetselected = true
+    p1raidenselectingtarget = false
+    }
+
+    if (p1raidenattackkick == true){
+    p1raidenselectedtargetx = currentenemyposx
+    p1raidenselectedtargety = currentenemyposy
+    p1raidentargetselected = true
+    p1raidenselectingtarget = false
+    }
+
+}
+    if (p2raidenselectingtarget == true){
+    if (p2raidenattackthunderbolt == true){
+    p2raidenselectedtargetx = currentenemyposx
+    p2raidenselectedtargety = currentenemyposy
+    p2raidentargetselected = true
+    p2raidenselectingtarget = false
+    }
+
+    if (p2raidenattackfly == true){
+    p2raidenselectedtargetx = currentenemyposx
+    p2raidenselectedtargety = currentenemyposy
+    p2raidentargetselected = true
+    p2raidenselectingtarget = false
+    }
+
+    if (p2raidenattackpowerstrike == true){
+    p2raidenselectedtargetx = currentenemyposx
+    p2raidenselectedtargety = currentenemyposy
+    p2raidentargetselected = true
+    p2raidenselectingtarget = false
+    }
+
+   if (p2raidenattackstorm == true){
+    p2raidenselectedtargetx = currentenemyposx
+    p2raidenselectedtargety = currentenemyposy
+    p2raidentargetselected = true
+    p2raidenselectingtarget = false
+    }
+
+    if (p2raidenattackkick == true){
+    p2raidenselectedtargetx = currentenemyposx
+    p2raidenselectedtargety = currentenemyposy
+    p2raidentargetselected = true
+    p2raidenselectingtarget = false
+    }
+ }
+
+ //    
+    if (p1cyanselectingtarget == true){
+    if (p1cyanattackswordslash == true){
+    p1cyanselectedtargetx = currentenemyposx
+    p1cyanselectedtargety = currentenemyposy
+    p1cyantargetselected = true
+    p1cyanselectingtarget = false
+    }
+
+    if (p1cyanattackswordswing == true){
+    p1cyanselectedtargetx = currentenemyposx
+    p1cyanselectedtargety = currentenemyposy
+    p1cyantargetselected = true
+    p1cyanselectingtarget = false
+    }
+
+    if (p1cyanattackmagicsword == true){
+    p1cyanselectedtargetx = currentenemyposx
+    p1cyanselectedtargety = currentenemyposy
+    p1cyantargetselected = true
+    p1cyanselectingtarget = false
+    }
+
+    if (p1cyanattackcommand == true){
+    p1cyanselectedtargetx = currentenemyposx
+    p1cyanselectedtargety = currentenemyposy
+    p1cyantargetselected = true
+    p1cyanselectingtarget = false
+    }
+
+    if (p1cyanattackbattleplan == true){
+    p1cyanselectedtargetx = currentenemyposx
+    p1cyanselectedtargety = currentenemyposy
+    p1cyantargetselected = true
+    p1cyanselectingtarget = false
+    }
+
+}
+    if (p2cyanselectingtarget == true){
+    if (p2cyanattackswordslash == true){
+    p2cyanselectedtargetx = currentenemyposx
+    p2cyanselectedtargety = currentenemyposy
+    p2cyantargetselected = true
+    p2cyanselectingtarget = false
+    }
+
+    if (p2cyanattackswordswing == true){
+    p2cyanselectedtargetx = currentenemyposx
+    p2cyanselectedtargety = currentenemyposy
+    p2cyantargetselected = true
+    p2cyanselectingtarget = false
+    }
+
+    if (p2cyanattackmagicsword == true){
+    p2cyanselectedtargetx = currentenemyposx
+    p2cyanselectedtargety = currentenemyposy
+    p2cyantargetselected = true
+    p2cyanselectingtarget = false
+    }
+
+   if (p2cyanattackcommand == true){
+    p2cyanselectedtargetx = currentenemyposx
+    p2cyanselectedtargety = currentenemyposy
+    p2cyantargetselected = true
+    p2cyanselectingtarget = false
+    }
+
+    if (p2cyanattackbattleplan == true){
+    p2cyanselectedtargetx = currentenemyposx
+    p2cyanselectedtargety = currentenemyposy
+    p2cyantargetselected = true
+    p2cyanselectingtarget = false
+    }
+}
+
+if (p1rosaselectingtarget == true){
+    if (p1rosasupportcure == true){
+    p1rosaselectedtargetx = currentenemyposx
+    p1rosaselectedtargety = currentenemyposy
+    p1rosatargetselected = true
+    p1rosaselectingtarget = false
+    }
+
+    if (p1rosasupportheal == true){
+    p1rosaselectedtargetx = currentenemyposx
+    p1rosaselectedtargety = currentenemyposy
+    p1rosatargetselected = true
+    p1rosaselectingtarget = false
+    }
+
+    if (p1rosasupportfast == true){
+    p1rosaselectedtargetx = currentenemyposx
+    p1rosaselectedtargety = currentenemyposy
+    p1rosatargetselected = true
+    p1rosaselectingtarget = false
+    }
+
+    if (p1rosasupportshell == true){
+    p1rosaselectedtargetx = currentenemyposx
+    p1rosaselectedtargety = currentenemyposy
+    p1rosatargetselected = true
+    p1rosaselectingtarget = false
+    }
+
+    if (p1rosaattackbow == true){
+    p1rosaselectedtargetx = currentenemyposx
+    p1rosaselectedtargety = currentenemyposy
+    p1rosatargetselected = true
+    p1rosaselectingtarget = false
+    }
+
+}
+    if (p2rosaselectingtarget == true){
+    if (p2rosasupportcure == true){
+    p2rosaselectedtargetx = currentenemyposx
+    p2rosaselectedtargety = currentenemyposy
+    p2rosatargetselected = true
+    p2rosaselectingtarget = false
+    }
+
+    if (p2rosasupportheal == true){
+    p2rosaselectedtargetx = currentenemyposx
+    p2rosaselectedtargety = currentenemyposy
+    p2rosatargetselected = true
+    p2rosaselectingtarget = false
+    }
+
+    if (p2rosasupportshell == true){
+    p2rosaselectedtargetx = currentenemyposx
+    p2rosaselectedtargety = currentenemyposy
+    p2rosatargetselected = true
+    p2rosaselectingtarget = false
+    }
+
+   if (p2rosasupportfast == true){
+    p2rosaselectedtargetx = currentenemyposx
+    p2rosaselectedtargety = currentenemyposy
+    p2rosatargetselected = true
+    p2rosaselectingtarget = false
+    }
+
+    if (p2rosaattackbow == true){
+    p2rosaselectedtargetx = currentenemyposx
+    p2rosaselectedtargety = currentenemyposy
+    p2rosatargetselected = true
+    p2rosaselectingtarget = false
+    }
+ }
 //
 }
 
@@ -15617,8 +18576,68 @@ p2sindelpuntbutton.visible = false
 }
 }
 //
+if (player1raiden == true){
+if(p1raidenselected == false){
+p1raidenthunderboltbutton.visible = false
+p1raidenflybutton.visible = false
+p1raidenstormbutton.visible = false
+p1raidenpowerstrikebutton.visible = false
+p1raidenkickbutton.visible = false
+}
 }
 
+if (player2raiden == true){
+if(p2raidenselected == false){
+p2raidenthunderboltbutton.visible = false
+p2raidenflybutton.visible = false
+p2raidenstormbutton.visible = false
+p2raidenpowerstrikebutton.visible = false
+p2raidenkickbutton.visible = false
+}
+}
+//
+if (player1cyan == true){
+if(p1cyanselected == false){
+p1cyanswordslashbutton.visible = false
+p1cyanswordswingbutton.visible = false
+p1cyanmagicswordbutton.visible = false
+p1cyancommandbutton.visible = false
+p1cyanbattleplanbutton.visible = false
+}
+}
+
+if (player2cyan == true){
+if(p2cyanselected == false){
+p2cyanswordslashbutton.visible = false
+p2cyanswordswingbutton.visible = false
+p2cyanmagicswordbutton.visible = false
+p2cyancommandbutton.visible = false
+p2cyanbattleplanbutton.visible = false
+}
+}
+
+if (player1rosa == true){
+if(p1rosaselected == false){
+p1rosacurebutton.visible = false
+p1rosahealbutton.visible = false
+p1rosafastbutton.visible = false
+p1rosashellbutton.visible = false
+p1rosabowbutton.visible = false
+}
+}
+
+if (player2rosa == true){
+if(p2rosaselected == false){
+p2rosacurebutton.visible = false
+p2rosahealbutton.visible = false
+p2rosafastbutton.visible = false
+p2rosashellbutton.visible = false
+p2rosabowbutton.visible = false
+}
+}
+//
+}
+//setenemytint
 function setenemytint(){
 if (team1turn == true){
 if(player2cecil == true){
@@ -15697,6 +18716,21 @@ p2sindel.setTint(0xff0000);
 team2noplayerselected = true
 }
 
+if(player2raiden == true){
+p2raiden.setTint(0xff0000);
+team2noplayerselected = true
+}
+
+if(player2cyan == true){
+p2cyan.setTint(0xff0000);
+team2noplayerselected = true
+}
+
+if(player2rosa == true){
+p2rosa.setTint(0xff0000);
+team2noplayerselected = true
+}
+
 }
 
 if (team2turn == true){
@@ -15771,10 +18805,213 @@ if(player1sindel == true){
 p1sindel.setTint(0xff0000);
 team1noplayerselected = true
 }
+
+if(player1raiden == true){
+p1raiden.setTint(0xff0000);
+team1noplayerselected = true
+}
+
+if(player1cyan == true){
+p1cyan.setTint(0xff0000);
+team1noplayerselected = true
+}
+
+if(player1rosa == true){
+p1rosa.setTint(0xff0000);
+team1noplayerselected = true
+}
+//
+}
+}
+//endsetenemytint
+//setsupporttint
+function setsupporttint(){
+if (team2turn == true){
+if(player2cecil == true){
+p2cecil.setTint(0x00ff00);
+
+}
+if(player2kain == true){
+p2kain.setTint(0x00ff00);
+
+}
+if(player2kang == true){
+p2kang.setTint(0x00ff00);
+
+}
+if (player2orchid == true){
+p2orchid.setTint(0x00ff00);
+
+}
+if (player2spinal == true){
+p2spinal.setTint(0x00ff00);
+
+}
+
+if (player2terra == true){
+p2terra.setTint(0x00ff00);
+
+}
+
+if (player2kano == true){
+p2kano.setTint(0x00ff00);
+
+}
+
+if (player2jago == true){
+p2jago.setTint(0x00ff00);
+
+}
+
+if (player2combo == true){
+p2combo.setTint(0x00ff00);
+
+}
+
+if (player2sonja == true){
+p2sonja.setTint(0x00ff00);
+
+}
+
+if (player2kunglao == true){
+p2kunglao.setTint(0x00ff00);
+
+}
+
+if (player2glacius == true){
+p2glacius.setTint(0x00ff00);
+
+}
+
+if (player2golbez == true){
+p2golbez.setTint(0x00ff00);
+
+}
+
+if(player2sektor == true){
+p2sektor.setTint(0x00ff00);
+
+}
+
+if(player2cyrax == true){
+p2cyrax.setTint(0x00ff00);
+
+}
+
+if(player2sindel == true){
+p2sindel.setTint(0x00ff00);
+
+}
+
+if(player2raiden == true){
+p2raiden.setTint(0x00ff00);
+
+}
+
+if(player2cyan == true){
+p2cyan.setTint(0x00ff00);
+
+}
+
+if(player2rosa == true){
+p2rosa.setTint(0x00ff00);
+
+}
+
+}
+
+if (team1turn == true){
+if(player1cecil == true){
+p1cecil.setTint(0x00ff00);
+
+}
+if(player1kain == true){
+p1kain.setTint(0x00ff00);
+
+}
+if(player1kang == true){
+p1kang.setTint(0x00ff00);
+
+}
+if (player1orchid == true){
+p1orchid.setTint(0x00ff00);
+
+}
+if (player1spinal == true){
+p1spinal.setTint(0x00ff00);
+
+}
+if (player1terra == true){
+p1terra.setTint(0x00ff00);
+
+}
+if (player1kano == true){
+p1kano.setTint(0x00ff00);
+
+}
+
+if (player1jago == true){
+p1jago.setTint(0x00ff00);
+
+}
+
+if (player1combo == true){
+p1combo.setTint(0x00ff00);
+
+}
+
+if (player1sonja == true){
+p1sonja.setTint(0x00ff00);
+
+}
+
+if (player1kunglao == true){
+p1kunglao.setTint(0x00ff00);
+
+}
+
+if (player1glacius == true){
+p1glacius.setTint(0x00ff00);
+
+}
+
+if (player1golbez == true){
+p1golbez.setTint(0x00ff00);
+
+}
+
+if(player1sektor == true){
+p1sektor.setTint(0x00ff00);
+
+}
+if(player1cyrax == true){
+p1cyrax.setTint(0x00ff00);
+
+}
+if(player1sindel == true){
+p1sindel.setTint(0x00ff00);
+
+}
+
+if(player1raiden == true){
+p1raiden.setTint(0x00ff00);
+
+}
+
+if(player1cyan == true){
+p1cyan.setTint(0x00ff00);
+
+}
+
+if(player1rosa == true){
+p1rosa.setTint(0x00ff00);
+
+}
 //
 }
 }
 
+//removetint
 function removetint(){
 if(player1cecil == true){
 p1cecil.clearTint();
@@ -15915,7 +19152,32 @@ p1sindelhairwhipbutton.clearTint();
 p1sindelpuntbutton.clearTint();  
 }
 
+if (player1raiden == true){
+p1raiden.clearTint();
+p1raidenthunderboltbutton.clearTint();
+p1raidenflybutton.clearTint();
+p1raidenstormbutton.clearTint();
+p1raidenpowerstrikebutton.clearTint();
+p1raidenkickbutton.clearTint();
+}
 
+if (player1cyan == true){
+p1cyan.clearTint();
+p1cyanswordslashbutton.clearTint();
+p1cyanswordswingbutton.clearTint();
+p1cyanmagicswordbutton.clearTint();
+p1cyancommandbutton.clearTint();
+p1cyanbattleplanbutton.clearTint();
+}
+
+if (player1rosa == true){
+p1rosa.clearTint();
+p1rosacurebutton.clearTint();
+p1rosahealbutton.clearTint();
+p1rosafastbutton.clearTint();
+p1rosashellbutton.clearTint();
+p1rosabowbutton.clearTint();
+}
 
 if(player2cecil == true){
 p2cecil.clearTint();
@@ -16038,7 +19300,34 @@ p2sindelhairwhipbutton.clearTint();
 p2sindelpuntbutton.clearTint();  
 }
 
+if (player2raiden == true){
+p2raiden.clearTint();
+p2raidenthunderboltbutton.clearTint();
+p2raidenflybutton.clearTint();
+p2raidenstormbutton.clearTint();
+p2raidenpowerstrikebutton.clearTint();
+p2raidenkickbutton.clearTint();
+}
 
+if (player2cyan == true){
+p2cyan.clearTint();
+p2cyanswordslashbutton.clearTint();
+p2cyanswordswingbutton.clearTint();
+p2cyanmagicswordbutton.clearTint();
+p2cyancommandbutton.clearTint();
+p2cyanbattleplanbutton.clearTint();
+}
+
+if (player2rosa == true){
+p2rosa.clearTint();
+p2rosacurebutton.clearTint();
+p2rosahealbutton.clearTint();
+p2rosafastbutton.clearTint();
+p2rosashellbutton.clearTint();
+p2rosabowbutton.clearTint();
+}
+
+//
 }
 
 
@@ -16645,7 +19934,36 @@ if (p1sindelselected == true){
     p1sindelpuntbutton.visible = true
 }
 
+if (p1raidenselected == true){
+player1selectabilitybox.visible = true
+p1raidenthunderboltbutton.visible = true
+p1raidenflybutton.visible = true
+p1raidenstormbutton.visible = true
+p1raidenpowerstrikebutton.visible = true
+p1raidenkickbutton.visible = true
 }
+
+if (p1cyanselected == true){
+player1selectabilitybox.visible = true
+p1cyanswordslashbutton.visible = true
+p1cyanswordswingbutton.visible = true
+p1cyanmagicswordbutton.visible = true
+p1cyancommandbutton.visible = true
+p1cyanbattleplanbutton.visible = true
+}
+
+if (p1rosaselected == true){
+player1selectabilitybox.visible = true
+p1rosacurebutton.visible = true
+p1rosahealbutton.visible = true
+p1rosafastbutton.visible = true
+p1rosashellbutton.visible = true
+p1rosabowbutton.visible = true
+}
+
+//
+}
+//
 
 if (team2turn == true){
 if (p2cecilselected == true){
@@ -16782,7 +20100,7 @@ if (p2cyraxselected == true){
 }
 
 if (p2sindelselected == true){
-    player1selectabilitybox.visible = true
+    player2selectabilitybox.visible = true
     p2sindelflamebreathbutton.visible = true
     p2sindelscreambutton.visible = true 
     p2sindelflybreathbutton.visible = true
@@ -16790,8 +20108,36 @@ if (p2sindelselected == true){
     p2sindelpuntbutton.visible = true
 }
 
+if (p2raidenselected == true){
+player2selectabilitybox.visible = true
+p2raidenthunderboltbutton.visible = true
+p2raidenflybutton.visible = true
+p2raidenstormbutton.visible = true
+p2raidenpowerstrikebutton.visible = true
+p2raidenkickbutton.visible = true
+}
+
+if (p2cyanselected == true){
+player2selectabilitybox.visible = true
+p2cyanswordslashbutton.visible = true
+p2cyanswordswingbutton.visible = true
+p2cyanmagicswordbutton.visible = true
+p2cyancommandbutton.visible = true
+p2cyanbattleplanbutton.visible = true
+}
+
+if (p2rosaselected == true){
+player1selectabilitybox.visible = true
+p2rosacurebutton.visible = true
+p2rosahealbutton.visible = true
+p2rosafastbutton.visible = true
+p2rosashellbutton.visible = true
+p2rosabowbutton.visible = true
+}
+
 //*//
 }
+//
 }
 
 function p1cecilswordkey(){
@@ -16808,7 +20154,11 @@ p1cecilswordsoundplayed = false
 }
 
 function p1cecilshieldkey(){
-
+p1cecilattackshield = true
+playerattacking = true
+playerabilityselected = true
+p1cecilshieldtime = 12
+p1cecilshieldsoundplayed = false
 }
 
 function p1cecilholykey(){
@@ -18411,12 +21761,13 @@ playerabilityselected = true
 }
 function p2sindelflybreathkey(){
 if (playerabilityselected == false){
-p2sindelabilitysound2button.setTint(0xff0000);
+p2sindelflybreathbutton.setTint(0xff0000);
 setenemytint()
 p2sindelattackflybreath = true
 p2sindelflybreathtime = 8
 p2sindelselectingtarget = true
-p2sindelaflybreathsoundplayed = false
+p2sindelflyingup = true
+p2sindelflybreathsoundplayed = false
 playerabilityselected = true
 }
 }
@@ -18440,6 +21791,347 @@ p2sindelattackpunt = true
 p2sindelpunttime = 8
 p2sindelselectingtarget = true
 p2sindelpuntsoundplayed = false
+playerabilityselected = true
+}
+}
+
+function p1raidenthunderboltkey(){
+if (playerabilityselected == false){
+p1raidenthunderboltbutton.setTint(0xff0000);
+setenemytint()
+p1raidenattackthunderbolt = true
+p1raidenabilitytime1 = 8
+p1raidenselectingtarget = true
+p1raidenthunderboltsoundplayed = false
+playerabilityselected = true
+}
+}
+
+function p1raidenflykey(){
+if (playerabilityselected == false){
+p1raidenflybutton.setTint(0xff0000);
+setenemytint()
+p1raidenattackfly = true
+p1raidenflytime = 16
+p1raidenselectingtarget = true
+p1raidenflysoundplayed = false
+playerabilityselected = true
+}
+}
+function p1raidenstormkey(){
+if (playerabilityselected == false){
+p1raidenstormbutton.setTint(0xff0000);
+setenemytint()
+p1raidenattackstorm = true
+p1raidenstormtime = 10
+p1raidenselectingtarget = true
+p1raidenastormsoundplayed = false
+playerabilityselected = true
+}
+}
+
+function p1raidenpowerstrikekey(){
+if (playerabilityselected == false){
+p1raidenpowerstrikebutton.setTint(0xff0000);
+p1raidenattackpowerstrike = true
+p1raidenpowerstriketime = 8
+p1raidenpowerstrikesoundplayed = false
+playerabilityselected = true
+}
+}
+
+function p1raidenkickkey(){
+if (playerabilityselected == false){
+p1raidenkickbutton.setTint(0xff0000);
+setenemytint()
+p1raidenattackkick = true
+p1raidenkicktime = 8
+p1raidenselectingtarget = true
+p1raidenkicksoundplayed = false
+playerabilityselected = true
+}
+}
+
+function p2raidenthunderboltkey(){
+if (playerabilityselected == false){
+p2raidenthunderboltbutton.setTint(0xff0000);
+setenemytint()
+p2raidenattackthunderbolt = true
+p2raidenabilitytime1 = 8
+p2raidenselectingtarget = true
+p2raidenthunderboltsoundplayed = false
+playerabilityselected = true
+}
+}
+
+function p2raidenflykey(){
+if (playerabilityselected == false){
+p2raidenflybutton.setTint(0xff0000);
+setenemytint()
+p2raidenattackfly = true
+p2raidenflytime = 16
+p2raidenselectingtarget = true
+p2raidenflysoundplayed = false
+playerabilityselected = true
+}
+}
+function p2raidenstormkey(){
+if (playerabilityselected == false){
+p2raidenstormbutton.setTint(0xff0000);
+setenemytint()
+p2raidenattackstorm = true
+p2raidenstormtime = 16
+p2raidenselectingtarget = true
+p2raidenastormsoundplayed = false
+playerabilityselected = true
+}
+}
+function p2raidenpowerstrikekey(){
+if (playerabilityselected == false){
+p2raidenkickbutton.setTint(0xff0000);
+p2raidenattackpowerstrike = true
+p2raidenpowerstriketime = 8
+p2raidenpowerstrikesoundplayed = false
+playerabilityselected = true
+}
+}
+
+function p2raidenkickkey(){
+if (playerabilityselected == false){
+p2raidenkickbutton.setTint(0xff0000);
+setenemytint()
+p2raidenattackkick = true
+p2raidenkicktime = 8
+p2raidenselectingtarget = true
+p2raidenkicksoundplayed = false
+playerabilityselected = true
+}
+}
+
+function p1cyanswordslashkey(){
+if (playerabilityselected == false){
+p1cyanswordslashbutton.setTint(0xff0000);
+setenemytint()
+p1cyanattackswordslash = true
+p1cyanswordslashtime = 8
+p1cyanselectingtarget = true
+p1cyanswordslashsoundplayed = false
+playerabilityselected = true
+}
+}
+
+function p1cyanswordswingkey(){
+if (playerabilityselected == false){
+p1cyanswordswingbutton.setTint(0xff0000);
+setenemytint()
+p1cyanattackswordswing = true
+p1cyanswordswingtime = 16
+p1cyanselectingtarget = true
+p1cyanswordswingsoundplayed = false
+playerabilityselected = true
+}
+}
+function p1cyanmagicswordkey(){
+if (playerabilityselected == false){
+p1cyanmagicswordbutton.setTint(0xff0000);
+setenemytint()
+p1cyanattackmagicsword = true
+p1cyanmagicswordtime = 10
+p1cyanselectingtarget = true
+p1cyanamagicswordsoundplayed = false
+playerabilityselected = true
+}
+}
+
+function p1cyancommandkey(){
+if (playerabilityselected == false){
+p1cyancommandbutton.setTint(0xff0000);
+p1cyanattackcommand = true
+p1cyancommandtime = 8
+resettarget()
+p1cyancommandsoundplayed = false
+playerabilityselected = true
+}
+}
+
+function p1cyanbattleplankey(){
+if (playerabilityselected == false){
+p1cyanbattleplanbutton.setTint(0xff0000);
+p1cyanattackbattleplan = true
+p1cyanbattleplantime = 8
+resettarget()
+p1cyanbattleplansoundplayed = false
+playerabilityselected = true
+}
+}
+
+function p2cyanswordslashkey(){
+if (playerabilityselected == false){
+p2cyanswordslashbutton.setTint(0xff0000);
+setenemytint()
+p2cyanattackswordslash = true
+p2cyanswordslashtime = 8
+p2cyanselectingtarget = true
+p2cyanswordslashsoundplayed = false
+playerabilityselected = true
+}
+}
+
+function p2cyanswordswingkey(){
+if (playerabilityselected == false){
+p2cyanswordswingbutton.setTint(0xff0000);
+setenemytint()
+p2cyanattackswordswing = true
+p2cyanswordswingtime = 16
+p2cyanselectingtarget = true
+p2cyanswordswingsoundplayed = false
+playerabilityselected = true
+}
+}
+function p2cyanmagicswordkey(){
+if (playerabilityselected == false){
+p2cyanmagicswordbutton.setTint(0xff0000);
+setenemytint()
+p2cyanattackmagicsword = true
+p2cyanmagicswordtime = 16
+p2cyanselectingtarget = true
+p2cyanamagicswordsoundplayed = false
+playerabilityselected = true
+}
+}
+function p2cyancommandkey(){
+if (playerabilityselected == false){
+p2cyanbattleplanbutton.setTint(0xff0000);
+p2cyanattackcommand = true
+p2cyancommandtime = 8
+p2cyancommandsoundplayed = false
+playerabilityselected = true
+}
+}
+
+function p2cyanbattleplankey(){
+if (playerabilityselected == false){
+p2cyanbattleplanbutton.setTint(0xff0000);
+p2cyanattackbattleplan = true
+p2cyanbattleplantime = 8
+p2cyanbattleplansoundplayed = false
+playerabilityselected = true
+}
+}
+
+
+function p1rosacurekey(){
+if (playerabilityselected == false){
+p1rosacurebutton.setTint(0xff0000);
+setsupporttint()
+p1rosaselectingtarget = true
+p1rosasupportcure = true
+p1rosahealingtarget = true
+p1rosacuretime = 8
+p1rosacuresoundplayed = false
+playerabilityselected = true
+}
+}
+
+function p1rosahealkey(){
+if (playerabilityselected == false){
+p1rosahealbutton.setTint(0xff0000);
+setsupporttint()
+p1rosasupportheal = true
+p1rosahealingtarget = true
+p1rosahealtime = 10
+p1rosaselectingtarget = true
+p1rosahealsoundplayed = false
+playerabilityselected = true
+}
+}
+function p1rosafastkey(){
+if (playerabilityselected == false){
+p1rosafastbutton.setTint(0xff0000);
+setsupporttint()
+p1rosasupportfast = true
+p1rosafasttime = 10
+p1rosahealingtarget = true
+p1rosaselectingtarget = true
+p1rosaafastsoundplayed = false
+playerabilityselected = true
+}
+}
+
+function p1rosashellkey(){
+if (playerabilityselected == false){
+p1rosashellbutton.setTint(0xff0000);
+setsupporttint()
+p1rosasupportshell = true
+p1rosashelltime = 8
+p1rosahealingtarget = true
+p1rosaselectingtarget = true
+p1rosashellsoundplayed = false
+playerabilityselected = true
+}
+}
+
+function p1rosabowkey(){
+if (playerabilityselected == false){
+p1rosabowbutton.setTint(0xff0000);
+p1rosaattackbow = true
+p1rosabowtime = 8
+resettarget()
+p1rosabowsoundplayed = false
+playerabilityselected = true
+}
+}
+
+function p2rosacurekey(){
+if (playerabilityselected == false){
+p2rosacurebutton.setTint(0xff0000);
+setenemytint()
+p2rosasupportcure = true
+p2rosacuretime = 8
+p2rosaselectingtarget = true
+p2rosacuresoundplayed = false
+playerabilityselected = true
+}
+}
+
+function p2rosahealkey(){
+if (playerabilityselected == false){
+p2rosahealbutton.setTint(0xff0000);
+setenemytint()
+p2rosasupportheal = true
+p2rosahealtime = 16
+p2rosaselectingtarget = true
+p2rosahealsoundplayed = false
+playerabilityselected = true
+}
+}
+function p2rosafastkey(){
+if (playerabilityselected == false){
+p2rosafastbutton.setTint(0xff0000);
+setenemytint()
+p2rosasupportfast = true
+p2rosafasttime = 16
+p2rosaselectingtarget = true
+p2rosaafastsoundplayed = false
+playerabilityselected = true
+}
+}
+function p2rosashellkey(){
+if (playerabilityselected == false){
+p2rosabowbutton.setTint(0xff0000);
+p2rosasupportshell = true
+p2rosashelltime = 8
+p2rosashellsoundplayed = false
+playerabilityselected = true
+}
+}
+
+function p2rosabowkey(){
+if (playerabilityselected == false){
+p2rosabowbutton.setTint(0xff0000);
+p2rosaattackbow = true
+p2rosabowtime = 8
+p2rosabowsoundplayed = false
 playerabilityselected = true
 }
 }
@@ -18499,7 +22191,18 @@ function currentattacktarget(){
     if (currentattacktargetname == 'p1sindel'){
      p1sindelhealthrating = currenttargethealthrating
     }
+    if (currentattacktargetname == 'p1raiden'){
+     p1raidenhealthrating = currenttargethealthrating
+    }
+    if (currentattacktargetname == 'p1cyan'){
+     p1cyanhealthrating = currenttargethealthrating
+    }
+    if (currentattacktargetname == 'p1rosa'){
+     p1rosahealthrating = currenttargethealthrating
+    }
 
+
+//
     if (currentattacktargetname == 'p2cecil'){
      p2cecilhealthrating = currenttargethealthrating
     }
@@ -18552,7 +22255,16 @@ function currentattacktarget(){
     if (currentattacktargetname == 'p2sindel'){
      p2sindelhealthrating = currenttargethealthrating
     }
-    
+    if (currentattacktargetname == 'p2raiden'){
+     p2raidenhealthrating = currenttargethealthrating
+    }
+    if (currentattacktargetname == 'p2cyan'){
+     p2cyanhealthrating = currenttargethealthrating
+    }
+    if (currentattacktargetname == 'p2rosa'){
+     p2rosahealthrating = currenttargethealthrating
+    }
+
 }
 
 function gamewin(){
@@ -18796,6 +22508,7 @@ currentattacktargetname = 'p2sonja'
 currentenemyposx = p2sonjax
 currentenemyposy = p2sonjay
 }
+
 }
 if (team2turn == true){
 if (player1sonja == true){
@@ -18910,8 +22623,389 @@ currentenemyposy = p1sindely
 }
 }
 
-//
+if (raidenistarget == true){
+if (team1turn == true){
+if (player2raiden == true){
+currentattacktargetname = 'p2raiden'
+currentenemyposx = p2raidenx
+currentenemyposy = p2raideny
 }
+}
+if (team2turn == true){
+if (player1raiden == true){
+currentattacktargetname = 'p1raiden'
+currentenemyposx = p1raidenx
+currentenemyposy = p1raideny
+}
+}
+}
+
+if (cyanistarget == true){
+if (team1turn == true){
+if (player2cyan == true){
+currentattacktargetname = 'p2cyan'
+currentenemyposx = p2cyanx
+currentenemyposy = p2cyany
+}
+}
+if (team2turn == true){
+if (player1cyan == true){
+currentattacktargetname = 'p1cyan'
+currentenemyposx = p1cyanx
+currentenemyposy = p1cyany
+}
+}
+}
+
+if (rosaistarget == true){
+if (team1turn == true){
+if (player2rosa == true){
+currentattacktargetname = 'p2rosa'
+currentenemyposx = p2rosax
+currentenemyposy = p2rosay
+}
+}
+if (team2turn == true){
+if (player1rosa == true){
+currentattacktargetname = 'p1rosa'
+currentenemyposx = p1rosax
+currentenemyposy = p1rosay
+}
+}
+}
+}
+
+function setsupporttarget(){
+//ceciltarget
+if (cecilistarget == true){
+if (team2turn == true){
+if (player2cecil == true){
+currentattacktargetname = 'p2cecil'
+currentenemyposx = p2cecilx
+currentenemyposy = p2cecily
+}
+}
+if (team1turn == true){
+if (player1cecil == true){
+currentattacktargetname = 'p1cecil'
+currentenemyposx = p1cecilx
+currentenemyposy = p1cecily
+}
+}
+}
+
+//kaintarget
+if (kainistarget == true){
+if (team2turn == true){
+if (player2kain == true){
+currentattacktargetname = 'p2kain'
+currentenemyposx = p2kainx
+currentenemyposy = p2kainy
+}
+}
+if (team1turn == true){
+if (player1kain == true){
+currentattacktargetname = 'p1kain'
+currentenemyposx = p1kainx
+currentenemyposy = p1kainy
+}
+}
+}
+//kangtarget
+if (kangistarget == true){
+if (team2turn == true){
+if (player2kang == true){
+currentattacktargetname = 'p2kang'
+currentenemyposx = p2kangx
+currentenemyposy = p2kangy
+}
+}
+if (team1turn == true){
+if (player1kang == true){
+currentattacktargetname = 'p1kang'
+currentenemyposx = p1kangx
+currentenemyposy = p1kangy
+}
+}
+}
+//orchidtarget
+if (orchidistarget == true){
+if (team2turn == true){
+if (player2orchid == true){
+currentattacktargetname = 'p2orchid'
+currentenemyposx = p2orchidx
+currentenemyposy = p2orchidy
+}
+}
+if (team1turn == true){
+if (player1orchid == true){
+currentattacktargetname = 'p1orchid'
+currentenemyposx = p1orchidx
+currentenemyposy = p1orchidy
+}
+}
+}
+//spinaltarget
+if (spinalistarget == true){
+if (team2turn == true){
+if (player2spinal == true){
+currentattacktargetname = 'p2spinal'
+currentenemyposx = p2spinalx
+currentenemyposy = p2spinaly
+}
+}
+if (team1turn == true){
+if (player1spinal == true){
+currentattacktargetname = 'p1spinal'
+currentenemyposx = p1spinalx
+currentenemyposy = p1spinaly
+}
+}
+}
+//terratarget
+if (terraistarget == true){
+if (team2turn == true){
+if (player2terra == true){
+currentattacktargetname = 'p2terra'
+currentenemyposx = p2terrax
+currentenemyposy = p2terray
+}
+}
+if (team1turn == true){
+if (player1terra == true){
+currentattacktargetname = 'p1terra'
+currentenemyposx = p1terrax
+currentenemyposy = p1terray
+}
+}
+}
+//kanotarget
+if (kanoistarget == true){
+if (team2turn == true){
+if (player2kano == true){
+currentattacktargetname = 'p2kano'
+currentenemyposx = p2kanox
+currentenemyposy = p2kanoy
+}
+}
+if (team1turn == true){
+if (player1kano == true){
+currentattacktargetname = 'p1kano'
+currentenemyposx = p1kanox
+currentenemyposy = p1kanoy
+}
+}
+}
+//jagotarget
+if (jagoistarget == true){
+if (team2turn == true){
+if (player2jago == true){
+currentattacktargetname = 'p2jago'
+currentenemyposx = p2jagox
+currentenemyposy = p2jagoy
+}
+}
+if (team1turn == true){
+if (player1jago == true){
+currentattacktargetname = 'p1jago'
+currentenemyposx = p1jagox
+currentenemyposy = p1jagoy
+}
+}
+}
+//combotarget
+if (comboistarget == true){
+if (team2turn == true){
+if (player2combo == true){
+currentattacktargetname = 'p2combo'
+currentenemyposx = p2combox
+currentenemyposy = p2comboy
+}
+}
+if (team1turn == true){
+if (player1combo == true){
+currentattacktargetname = 'p1combo'
+currentenemyposx = p1combox
+currentenemyposy = p1comboy
+}
+}
+}
+//sonjatarget
+if (sonjaistarget == true){
+if (team2turn == true){
+if (player2sonja == true){
+currentattacktargetname = 'p2sonja'
+currentenemyposx = p2sonjax
+currentenemyposy = p2sonjay
+}
+
+}
+if (team1turn == true){
+if (player1sonja == true){
+currentattacktargetname = 'p1sonja'
+currentenemyposx = p1sonjax
+currentenemyposy = p1sonjay
+}
+}
+}
+//kunglaotarget
+if (kunglaoistarget == true){
+if (team2turn == true){
+if (player2kunglao == true){
+currentattacktargetname = 'p2kunglao'
+currentenemyposx = p2kunglaox
+currentenemyposy = p2kunglaoy
+}
+}
+if (team1turn == true){
+if (player1kunglao == true){
+currentattacktargetname = 'p1kunglao'
+currentenemyposx = p1kunglaox
+currentenemyposy = p1kunglaoy
+}
+}
+}
+
+//glaciustarget
+if (glaciusistarget == true){
+if (team2turn == true){
+if (player2glacius == true){
+currentattacktargetname = 'p2glacius'
+currentenemyposx = p2glaciusx
+currentenemyposy = p2glaciusy
+}
+}
+if (team1turn == true){
+if (player1glacius == true){
+currentattacktargetname = 'p1glacius'
+currentenemyposx = p1glaciusx
+currentenemyposy = p1glaciusy
+}
+}
+}
+
+//golbeztarget
+if (golbezistarget == true){
+if (team2turn == true){
+if (player2golbez == true){
+currentattacktargetname = 'p2golbez'
+currentenemyposx = p2golbezx
+currentenemyposy = p2golbezy
+}
+}
+if (team1turn == true){
+if (player1golbez == true){
+currentattacktargetname = 'p1golbez'
+currentenemyposx = p1golbezx
+currentenemyposy = p1golbezy
+}
+}
+}
+
+if (sektoristarget == true){
+if (team2turn == true){
+if (player2sektor == true){
+currentattacktargetname = 'p2sektor'
+currentenemyposx = p2sektorx
+currentenemyposy = p2sektory
+}
+}
+if (team1turn == true){
+if (player1sektor == true){
+currentattacktargetname = 'p1sektor'
+currentenemyposx = p1sektorx
+currentenemyposy = p1sektory
+}
+}
+}
+//
+if (cyraxistarget == true){
+if (team2turn == true){
+if (player2cyrax == true){
+currentattacktargetname = 'p2cyrax'
+currentenemyposx = p2cyraxx
+currentenemyposy = p2cyraxy
+}
+}
+if (team1turn == true){
+if (player1cyrax == true){
+currentattacktargetname = 'p1cyrax'
+currentenemyposx = p1cyraxx
+currentenemyposy = p1cyraxy
+}
+}
+}
+//
+if (sindelistarget == true){
+if (team2turn == true){
+if (player2sindel == true){
+currentattacktargetname = 'p2sindel'
+currentenemyposx = p2sindelx
+currentenemyposy = p2sindely
+}
+}
+if (team1turn == true){
+if (player1sindel == true){
+currentattacktargetname = 'p1sindel'
+currentenemyposx = p1sindelx
+currentenemyposy = p1sindely
+}
+}
+}
+
+if (raidenistarget == true){
+if (team2turn == true){
+if (player2raiden == true){
+currentattacktargetname = 'p2raiden'
+currentenemyposx = p2raidenx
+currentenemyposy = p2raideny
+}
+}
+if (team1turn == true){
+if (player1raiden == true){
+currentattacktargetname = 'p1raiden'
+currentenemyposx = p1raidenx
+currentenemyposy = p1raideny
+}
+}
+}
+
+if (cyanistarget == true){
+if (team2turn == true){
+if (player2cyan == true){
+currentattacktargetname = 'p2cyan'
+currentenemyposx = p2cyanx
+currentenemyposy = p2cyany
+}
+}
+if (team1turn == true){
+if (player1cyan == true){
+currentattacktargetname = 'p1cyan'
+currentenemyposx = p1cyanx
+currentenemyposy = p1cyany
+}
+}
+}
+
+if (rosaistarget == true){
+if (team2turn == true){
+if (player2rosa == true){
+currentattacktargetname = 'p2rosa'
+currentenemyposx = p2rosax
+currentenemyposy = p2rosay
+}
+}
+if (team1turn == true){
+if (player1rosa == true){
+currentattacktargetname = 'p1rosa'
+currentenemyposx = p1rosax
+currentenemyposy = p1rosay
+}
+}
+}
+}
+
+
 //playertargetselected
 function playertargetselected(){
 if (p1cecilselectingtarget == true){
@@ -19014,8 +23108,25 @@ p1sindeltargetselected = true
 if (p2sindelselectingtarget == true){
 p2sindeltargetselected = true
 }
+if (p1raidenselectingtarget == true){
+p1raidentargetselected = true
 }
-
+if (p2raidenselectingtarget == true){
+p2raidentargetselected = true
+}
+if (p1cyanselectingtarget == true){
+p1cyantargetselected = true
+}
+if (p2cyanselectingtarget == true){
+p2cyantargetselected = true
+}
+if (p1rosaselectingtarget == true){
+p1rosatargetselected = true
+}
+if (p2rosaselectingtarget == true){
+p2rosatargetselected = true
+}
+}
 //updatetargets
 function updatetargets(){
 if (loadcecil == true){
@@ -19121,6 +23232,27 @@ p1sindeltargetx = p1sindelselectedtargetx
 p1sindeltargety = p1sindelselectedtargety
 p2sindeltargetx = p2sindelselectedtargetx
 p2sindeltargety = p2sindelselectedtargety
+}
+
+if (loadraiden == true){
+p1raidentargetx = p1raidenselectedtargetx
+p1raidentargety = p1raidenselectedtargety
+p2raidentargetx = p2raidenselectedtargetx
+p2raidentargety = p2raidenselectedtargety
+}
+
+if (loadcyan == true){
+p1cyantargetx = p1cyanselectedtargetx
+p1cyantargety = p1cyanselectedtargety
+p2cyantargetx = p2cyanselectedtargetx
+p2cyantargety = p2cyanselectedtargety
+}
+
+if (loadrosa == true){
+p1rosatargetx = p1rosaselectedtargetx
+p1rosatargety = p1rosaselectedtargety
+p2rosatargetx = p2rosaselectedtargetx
+p2rosatargety = p2rosaselectedtargety
 }
 //
 }
@@ -19488,6 +23620,98 @@ function setdepth(){
     }
     if (player2p5name == 'SINDEL') {      
     p2sindel.setDepth(1);
+    }
+
+    if (player1p1name == 'RAIDEN') {      
+    p1raiden.setDepth(5);
+    }
+    if (player1p2name == 'RAIDEN') {      
+    p1raiden.setDepth(4);
+    }
+     if (player1p3name == 'RAIDEN') {      
+    p1raiden.setDepth(3);
+    }
+    if (player1p4name == 'RAIDEN') {      
+    p1raiden.setDepth(2);
+    }
+    if (player1p5name == 'RAIDEN') {      
+    p1raiden.setDepth(1);
+    }
+    if (player2p1name == 'RAIDEN') {      
+    p2raiden.setDepth(5);
+    }
+    if (player2p2name == 'RAIDEN') {      
+    p2raiden.setDepth(4);
+    }
+     if (player2p3name == 'RAIDEN') {      
+    p2raiden.setDepth(3);
+    }
+    if (player2p4name == 'RAIDEN') {      
+    p2raiden.setDepth(2);
+    }
+    if (player2p5name == 'RAIDEN') {      
+    p2raiden.setDepth(1);
+    }
+
+    if (player1p1name == 'CYAN') {      
+    p1cyan.setDepth(5);
+    }
+    if (player1p2name == 'CYAN') {      
+    p1cyan.setDepth(4);
+    }
+     if (player1p3name == 'CYAN') {      
+    p1cyan.setDepth(3);
+    }
+    if (player1p4name == 'CYAN') {      
+    p1cyan.setDepth(2);
+    }
+    if (player1p5name == 'CYAN') {      
+    p1cyan.setDepth(1);
+    }
+    if (player2p1name == 'CYAN') {      
+    p2cyan.setDepth(5);
+    }
+    if (player2p2name == 'CYAN') {      
+    p2cyan.setDepth(4);
+    }
+     if (player2p3name == 'CYAN') {      
+    p2cyan.setDepth(3);
+    }
+    if (player2p4name == 'CYAN') {      
+    p2cyan.setDepth(2);
+    }
+    if (player2p5name == 'CYAN') {      
+    p2cyan.setDepth(1);
+    }
+    if (player1p1name == 'ROSA') {      
+    p1rosa.setDepth(5);
+    }
+    if (player1p2name == 'ROSA') {      
+    p1rosa.setDepth(4);
+    }
+     if (player1p3name == 'ROSA') {      
+    p1rosa.setDepth(3);
+    }
+    if (player1p4name == 'ROSA') {      
+    p1rosa.setDepth(2);
+    }
+    if (player1p5name == 'ROSA') {      
+    p1rosa.setDepth(1);
+    }
+    if (player2p1name == 'ROSA') {      
+    p2rosa.setDepth(5);
+    }
+    if (player2p2name == 'ROSA') {      
+    p2rosa.setDepth(4);
+    }
+     if (player2p3name == 'ROSA') {      
+    p2rosa.setDepth(3);
+    }
+    if (player2p4name == 'ROSA') {      
+    p2rosa.setDepth(2);
+    }
+    if (player2p5name == 'ROSA') {      
+    p2rosa.setDepth(1);
     }
     //*//
 }
@@ -20071,6 +24295,113 @@ if (player2p5name == 'SINDEL') {
 player2p5health = p2sindelhealthrating
 }
 }
+
+if (player1raiden == true){
+if (player1p1name == 'RAIDEN') {
+player1p1health = p1raidenhealthrating
+}
+if (player1p2name == 'RAIDEN') {
+player1p2health = p1raidenhealthrating
+}
+if (player1p3name == 'RAIDEN') {
+player1p3health = p1raidenhealthrating
+}
+if (player1p4name == 'RAIDEN') {
+player1p4health = p1raidenhealthrating
+}
+if (player1p5name == 'RAIDEN') {
+player1p5health = p1raidenhealthrating
+}
+}
+
+if (player2raiden == true){
+if (player2p1name == 'RAIDEN') {
+player2p1health = p2raidenhealthrating
+}
+if (player2p2name == 'RAIDEN') {
+player2p2health = p2raidenhealthrating
+}
+if (player2p3name == 'RAIDEN') {
+player2p3health = p2raidenhealthrating
+}
+if (player2p4name == 'RAIDEN') {
+player2p4health = p2raidenhealthrating
+}
+if (player2p5name == 'RAIDEN') {
+player2p5health = p2raidenhealthrating
+}
+}
+
+if (player1cyan == true){
+if (player1p1name == 'CYAN') {
+player1p1health = p1cyanhealthrating
+}
+if (player1p2name == 'CYAN') {
+player1p2health = p1cyanhealthrating
+}
+if (player1p3name == 'CYAN') {
+player1p3health = p1cyanhealthrating
+}
+if (player1p4name == 'CYAN') {
+player1p4health = p1cyanhealthrating
+}
+if (player1p5name == 'CYAN') {
+player1p5health = p1cyanhealthrating
+}
+}
+
+if (player2cyan == true){
+if (player2p1name == 'CYAN') {
+player2p1health = p2cyanhealthrating
+}
+if (player2p2name == 'CYAN') {
+player2p2health = p2cyanhealthrating
+}
+if (player2p3name == 'CYAN') {
+player2p3health = p2cyanhealthrating
+}
+if (player2p4name == 'CYAN') {
+player2p4health = p2cyanhealthrating
+}
+if (player2p5name == 'CYAN') {
+player2p5health = p2cyanhealthrating
+}
+}
+if (player1rosa == true){
+if (player1p1name == 'ROSA') {
+player1p1health = p1rosahealthrating
+}
+if (player1p2name == 'ROSA') {
+player1p2health = p1rosahealthrating
+}
+if (player1p3name == 'ROSA') {
+player1p3health = p1rosahealthrating
+}
+if (player1p4name == 'ROSA') {
+player1p4health = p1rosahealthrating
+}
+if (player1p5name == 'ROSA') {
+player1p5health = p1rosahealthrating
+}
+}
+
+if (player2rosa == true){
+if (player2p1name == 'ROSA') {
+player2p1health = p2rosahealthrating
+}
+if (player2p2name == 'ROSA') {
+player2p2health = p2rosahealthrating
+}
+if (player2p3name == 'ROSA') {
+player2p3health = p2rosahealthrating
+}
+if (player2p4name == 'ROSA') {
+player2p4health = p2rosahealthrating
+}
+if (player2p5name == 'ROSA') {
+player2p5health = p2rosahealthrating
+}
+}
 //
 }
 //******************************************
@@ -20079,11 +24410,21 @@ player2p5health = p2sindelhealthrating
 function p1cecilbuttonclick(){
 
     if (team1turn == true){
+    if (p1rosahealingtarget == true){
+    cecilistarget = true
+    setsupporttarget()
+    playertargetselected()
+    setenemyposition()
+    removetint()
+    }
+
+    else {
     team1noplayerselected = false
     p1cecilselected = true
     playerbuttons()
     }
-    
+    }
+        
     if (team2turn == true){
     cecilistarget = true
     settarget()
@@ -20091,6 +24432,8 @@ function p1cecilbuttonclick(){
     setenemyposition()
     removetint()
     }
+    
+ 
 }
 
 function p2cecilbuttonclick(){
@@ -20111,10 +24454,20 @@ function p2cecilbuttonclick(){
 //sindelbuttonclick
 function p1sindelbuttonclick(){
 
-    if (team1turn == true){
+  if (team1turn == true){
+    if (p1rosahealingtarget == true){
+    sindelistarget = true
+    setsupporttarget()
+    playertargetselected()
+    setenemyposition()
+    removetint()
+    }
+
+    else {
     team1noplayerselected = false
     p1sindelselected = true
     playerbuttons()
+    }
     }
     
     if (team2turn == true){
@@ -20144,10 +24497,20 @@ function p2sindelbuttonclick(){
 //sektorbuttonclick
 function p1sektorbuttonclick(){
 
-    if (team1turn == true){
+  if (team1turn == true){
+    if (p1rosahealingtarget == true){
+    sektoristarget = true
+    setsupporttarget()
+    playertargetselected()
+    setenemyposition()
+    removetint()
+    }
+
+    else {
     team1noplayerselected = false
     p1sektorselected = true
     playerbuttons()
+    }
     }
     
     if (team2turn == true){
@@ -20178,9 +24541,19 @@ function p2sektorbuttonclick(){
 function p1cyraxbuttonclick(){
 
     if (team1turn == true){
+    if (p1rosahealingtarget == true){
+    cyraxistarget = true
+    setsupporttarget()
+    playertargetselected()
+    setenemyposition()
+    removetint()
+    }
+
+    else {
     team1noplayerselected = false
     p1cyraxselected = true
     playerbuttons()
+    }
     }
     
     if (team2turn == true){
@@ -20211,10 +24584,20 @@ function p2cyraxbuttonclick(){
 //golbezbuttonclick
 function p1golbezbuttonclick(){
 
-    if (team1turn == true){
+   if (team1turn == true){
+    if (p1rosahealingtarget == true){
+    golbezistarget = true
+    setsupporttarget()
+    playertargetselected()
+    setenemyposition()
+    removetint()
+    }
+
+    else {
     team1noplayerselected = false
     p1golbezselected = true
     playerbuttons()
+    }
     }
     
     if (team2turn == true){
@@ -20245,9 +24628,19 @@ function p2golbezbuttonclick(){
 function p1glaciusbuttonclick(){
 
     if (team1turn == true){
+    if (p1rosahealingtarget == true){
+    glaciusistarget = true
+    setsupporttarget()
+    playertargetselected()
+    setenemyposition()
+    removetint()
+    }
+
+    else {
     team1noplayerselected = false
     p1glaciusselected = true
     playerbuttons()
+    }
     }
     
     if (team2turn == true){
@@ -20278,9 +24671,19 @@ function p2glaciusbuttonclick(){
 function p1kainbuttonclick(){
 
     if (team1turn == true){
+    if (p1rosahealingtarget == true){
+    kainistarget = true
+    setsupporttarget()
+    playertargetselected()
+    setenemyposition()
+    removetint()
+    }
+
+    else {
     team1noplayerselected = false
     p1kainselected = true
     playerbuttons()
+    }
     }
     
     if (team2turn == true){
@@ -20311,11 +24714,20 @@ function p2kainbuttonclick(){
 function p1terrabuttonclick(){
 
     if (team1turn == true){
+    if (p1rosahealingtarget == true){
+    terraistarget = true
+    setsupporttarget()
+    playertargetselected()
+    setenemyposition()
+    removetint()
+    }
+
+    else {
     team1noplayerselected = false
     p1terraselected = true
     playerbuttons()
     }
-    
+    }
     if (team2turn == true){
     terraistarget = true
     settarget()
@@ -20344,9 +24756,19 @@ function p2terrabuttonclick(){
 function p1spinalbuttonclick(){
 
     if (team1turn == true){
+    if (p1rosahealingtarget == true){
+    spinalistarget = true
+    setsupporttarget()
+    playertargetselected()
+    setenemyposition()
+    removetint()
+    }
+
+    else {
     team1noplayerselected = false
     p1spinalselected = true
     playerbuttons()
+    }
     }
     
     if (team2turn == true){
@@ -20373,46 +24795,24 @@ function p2spinalbuttonclick(){
     removetint()
     }
 }
-//rosabuttonclick
-function p1rosabuttonclick(){
 
-    if (team1turn == true){
-    team1noplayerselected = false
-    p1rosaselected = true
-    playerbuttons()
-    }
-    
-    if (team2turn == true){
-    rosaistarget = true
-    settarget()
-    playertargetselected()
-    setenemyposition()
-    removetint()
-    }
-}
-
-function p2rosabuttonclick(){
-  if (team2turn == true){
-    team2noplayerselected = false
-    p2rosaselected = true
-    playerbuttons()
-    }
-    
-    if (team1turn == true){
-    rosaistarget = true
-    settarget()
-    playertargetselected()
-    setenemyposition()
-    removetint()
-    }
-}
 //orchidbuttonclick
 function p1orchidbuttonclick(){
 
     if (team1turn == true){
+    if (p1rosahealingtarget == true){
+    orchidistarget = true
+    setsupporttarget()
+    playertargetselected()
+    setenemyposition()
+    removetint()
+    }
+
+    else {
     team1noplayerselected = false
     p1orchidselected = true
     playerbuttons()
+    }
     }
     
     if (team2turn == true){
@@ -20476,9 +24876,19 @@ function p2mogbuttonclick(){
 function p1kunglaobuttonclick(){
 
     if (team1turn == true){
+    if (p1rosahealingtarget == true){
+    kunglaoistarget = true
+    setsupporttarget()
+    playertargetselected()
+    setenemyposition()
+    removetint()
+    }
+
+    else {
     team1noplayerselected = false
     p1kunglaoselected = true
     playerbuttons()
+    }
     }
     
     if (team2turn == true){
@@ -20509,11 +24919,22 @@ function p2kunglaobuttonclick(){
 function p1kanobuttonclick(){
 
     if (team1turn == true){
+    if (p1rosahealingtarget == true){
+    kanoistarget = true
+    setsupporttarget()
+    playertargetselected()
+    setenemyposition()
+    removetint()
+    }
+
+    else {
     team1noplayerselected = false
     p1kanoselected = true
     playerbuttons()
     }
-    
+    }
+
+
     if (team2turn == true){
     kanoistarget = true
     settarget()
@@ -20542,9 +24963,19 @@ function p2kanobuttonclick(){
 function p1kangbuttonclick(){
 
     if (team1turn == true){
+    if (p1rosahealingtarget == true){
+    kangistarget = true
+    setsupporttarget()
+    playertargetselected()
+    setenemyposition()
+    removetint()
+    }
+
+    else {
     team1noplayerselected = false
     p1kangselected = true
     playerbuttons()
+    }
     }
     
     if (team2turn == true){
@@ -20575,9 +25006,19 @@ function p2kangbuttonclick(){
 function p1jagobuttonclick(){
 
     if (team1turn == true){
+    if (p1rosahealingtarget == true){
+    jagoistarget = true
+    setsupporttarget()
+    playertargetselected()
+    setenemyposition()
+    removetint()
+    }
+
+    else {
     team1noplayerselected = false
     p1jagoselected = true
     playerbuttons()
+    }
     }
     
     if (team2turn == true){
@@ -20608,9 +25049,19 @@ function p2jagobuttonclick(){
 function p1combobuttonclick(){
 
     if (team1turn == true){
+    if (p1rosahealingtarget == true){
+    comboistarget = true
+    setsupporttarget()
+    playertargetselected()
+    setenemyposition()
+    removetint()
+    }
+
+    else {
     team1noplayerselected = false
     p1comboselected = true
     playerbuttons()
+    }
     }
     
     if (team2turn == true){
@@ -20642,10 +25093,21 @@ function p2combobuttonclick(){
 function p1sonjabuttonclick(){
 
     if (team1turn == true){
+    if (p1rosahealingtarget == true){
+    sonjaistarget = true
+    setsupporttarget()
+    playertargetselected()
+    setenemyposition()
+    removetint()
+    }
+
+    else {
     team1noplayerselected = false
     p1sonjaselected = true
     playerbuttons()
     }
+    }
+    
     
     if (team2turn == true){
     sonjaistarget = true
@@ -20654,6 +25116,9 @@ function p1sonjabuttonclick(){
     setenemyposition()
     removetint()
     }
+
+    
+
 }
 
 function p2sonjabuttonclick(){
@@ -20671,6 +25136,137 @@ function p2sonjabuttonclick(){
     removetint()
     }
 }
+
+
+//raidenbuttonclick
+function p1raidenbuttonclick(){
+    if (team1turn == true){
+    if (p1rosahealingtarget == true){
+    raidenistarget = true
+    setsupporttarget()
+    playertargetselected()
+    setenemyposition()
+    removetint()
+    }
+
+    else {
+    team1noplayerselected = false
+    p1raidenselected = true
+    playerbuttons()
+    }
+    }
+    
+    if (team2turn == true){
+    raidenistarget = true
+    settarget()
+    playertargetselected()
+    setenemyposition()
+    removetint()
+    }
+}
+
+function p2raidenbuttonclick(){
+  if (team2turn == true){
+    team2noplayerselected = false
+    p2raidenselected = true
+    playerbuttons()
+    }
+    
+    if (team1turn == true){
+    raidenistarget = true
+    settarget()
+    playertargetselected()
+    setenemyposition()
+    removetint()
+    }
+}
+
+//cyanbuttonclick
+function p1cyanbuttonclick(){
+    if (team1turn == true){
+    if (p1rosahealingtarget == true){
+    cyanistarget = true
+    setsupporttarget()
+    playertargetselected()
+    setenemyposition()
+    removetint()
+    }
+
+    else {
+    team1noplayerselected = false
+    p1cyanselected = true
+    playerbuttons()
+    }
+    }
+    if (team2turn == true){
+    cyanistarget = true
+    settarget()
+    playertargetselected()
+    setenemyposition()
+    removetint()
+    }
+}
+
+function p2cyanbuttonclick(){
+  if (team2turn == true){
+    team2noplayerselected = false
+    p2cyanselected = true
+    playerbuttons()
+    }
+    
+    if (team1turn == true){
+    cyanistarget = true
+    settarget()
+    playertargetselected()
+    setenemyposition()
+    removetint()
+    }
+}
+
+//rosabuttonclick
+function p1rosabuttonclick(){
+    if (team1turn == true){
+    if (p1rosahealingtarget == true){
+    rosaistarget = true
+    setsupporttarget()
+    playertargetselected()
+    setenemyposition()
+    removetint()
+    }
+
+    else {
+    team1noplayerselected = false
+    p1rosaselected = true
+    playerbuttons()
+    }
+    }
+    
+    if (team2turn == true){
+    rosaistarget = true
+    settarget()
+    playertargetselected()
+    setenemyposition()
+    removetint()
+    }
+}
+
+function p2rosabuttonclick(){
+  if (team2turn == true){
+    team2noplayerselected = false
+    p2rosaselected = true
+    playerbuttons()
+    }
+    
+    if (team1turn == true){
+    rosaistarget = true
+    settarget()
+    playertargetselected()
+    setenemyposition()
+    removetint()
+    }
+}
+
+
 //endbuttonclicks
 //********************************************
 
@@ -20724,8 +25320,19 @@ function resettarget(){
     if (sindelistarget == true){
         sindelistarget = false
     }
+    if (raidenistarget == true){
+        raidenistarget = false
+    }
+    if (cyanistarget == true){
+        cyanistarget = false
+    }
+
+     if (rosaistarget == true){
+        rosaistarget = false
+    }
 
 }
+//
 //ENDFUNCTIONS ***********************************
 
 var config = {
@@ -20817,7 +25424,7 @@ var team2player5x = 1283
 var team2player5y = 281
 
 //loadvar
-var loadcecil = false
+var loadcecil = true
 var loadkain = false
 var loadkang = false
 var loadorchid = false
@@ -20828,11 +25435,15 @@ var loadjago = false
 var loadcombo = true
 var loadsonja = true
 var loadkunglao = false
-var loadglacius = true
-var loadgolbez = true
+var loadglacius = false
+var loadgolbez = false
 var loadsektor = true
-var loadcyrax = true
+var loadcyrax = false
 var loadsindel = true
+var loadraiden = true
+var loadcyan = true
+var loadrosa = true
+var loadmog = false
 
 //target
 var cecilistarget = false
@@ -20851,9 +25462,14 @@ var golbezistarget = false
 var sektoristarget = false
 var cyraxistarget = false
 var sindelistarget = false
+var raidenistarget = false
+var cyanistarget = false
+var rosaistarget = false
+var mogistarget = false
 
+//loadoutvar
 //p1
-var player1cecil = false
+var player1cecil = true
 var player1kain = false
 var player1kang = false
 var player1orchid = false
@@ -20865,16 +25481,20 @@ var player1combo = false
 var player1sonja = true
 var player1kunglao = false
 var player1glacius = false
-var player1golbez = true
+var player1golbez = false
 var player1sektor = true
-var player1cyrax = true
-var player1sindel = true
+var player1cyrax = false
+var player1sindel = false
+var player1raiden = true
+var player1cyan = false
+var player1rosa = true
+var player1mog = false
 
 //p1name
 var player1p1name = 'SONJA'
-var player1p2name = 'SINDEL'
-var player1p3name = 'CYRAX'
-var player1p4name = 'GOLBEZ'
+var player1p2name = 'CECIL'
+var player1p3name = 'ROSA'
+var player1p4name = 'RAIDEN'
 var player1p5name = 'SEKTOR'
 
 //p2
@@ -20889,17 +25509,21 @@ var player2jago = false
 var player2combo = false
 var player2sonja = true
 var player2kunglao = false
-var player2glacius = true
-var player2golbez = true
+var player2glacius = false
+var player2golbez = false
 var player2sektor = true
-var player2cyrax = true
-var player2sindel = false
+var player2cyrax = false
+var player2sindel = true
+var player2raiden = true
+var player2cyan = true
+var player2rosa = false
+var player2mog = false
 
 //p2name
 var player2p1name = 'SONJA'
-var player2p2name = 'GLACIUS'
-var player2p3name = 'CYRAX'
-var player2p4name = 'GOLBEZ'
+var player2p2name = 'SINDEL'
+var player2p3name = 'CYAN'
+var player2p4name = 'RAIDEN'
 var player2p5name = 'SEKTOR'
 
 
@@ -20928,6 +25552,7 @@ var p1cecilattacktarget = false
 var p1cecilattacktargetdamage = p1cecilattackrating * 1.5
 var p1cecilcastholy = false
 var p1cecilholyaura = false
+var p1cecilattackshield = false
 var p1cecilholyauratime = 500
 var p1cecilholyaurastatup = false
 var p1cecilselected = false
@@ -22204,9 +26829,9 @@ var p1sindelattackflybreathdamage = p1sindelattackrating + p1sindelmagicrating
 var p1sindelattackhairwhipdamage = p1sindelattackrating * 1.5
 var p1sindelattackpuntdamage = p1sindelattackrating * 1.5
 var p1sindelflamebreathtime = 500
-var sindelflyingtotarget = false
-var sindelflyingup = false
-var sindelflybreathattack = false
+var p1sindelflyingtotarget = false
+var p1sindelflyingup = false
+var p1sindelflybreathattack = false
 var p1sindelflybreathtime = 500
 var p1sindelhairwhiptime = 500
 var p1sindelpunttime = 500
@@ -22218,8 +26843,6 @@ var p1sindelscreamsoundplayed = false
 var p1sindelflybreathsoundplayed = false
 var p1sindelhairwhipsoundplayed = false
 var p1sindelpuntsoundplayed = false
-
-
 
 //p2sindelstats
 var p2sindeldead = false
@@ -22241,15 +26864,18 @@ var p2sindelattackflamebreath = false
 var p2sindelflamebreathup = false
 var p2sindelattackscream = false
 var p2sindelattackflybreath = false
+var p2sindelflybreathexplodetime = 5
 var p2sindelattackhairwhip = false
 var p2sindelattackpunt = false
 var p2sindelattackflamebreathdamage = p2sindelattackrating + 75
-var p2sindelattackscreamdamage = p2sindelattackrating + 75
-var p2sindelattackflybreath = false
+var p2sindelattackscreamdamage = p2sindelattackrating + p2sindelmagicrating 
 var p2sindelattackflybreathdamage = p2sindelattackrating + p2sindelmagicrating 
 var p2sindelattackhairwhipdamage = p2sindelattackrating * 1.5
 var p2sindelattackpuntdamage = p2sindelattackrating * 1.5
 var p2sindelflamebreathtime = 500
+var p2sindelflyingtotarget = false
+var p2sindelflyingup = false
+var p2sindelflybreathattack = false
 var p2sindelflybreathtime = 500
 var p2sindelhairwhiptime = 500
 var p2sindelpunttime = 500
@@ -22262,6 +26888,264 @@ var p2sindelflybreathsoundplayed = false
 var p2sindelhairwhipsoundplayed = false
 var p2sindelpuntsoundplayed = false
 
+
+
+
+
+//p1raidenstats
+var p1raidendead = false
+var p1raidenidle = true
+var p1raidenmaxhealthrating = 4000
+var p1raidenhealthrating = 4000
+var p1raidenattackrating = 200
+var p1raidendefenserating = 100
+var p1raidenmagicrating = 50
+var p1raidenspeedrating = 10
+var p1raidensupportrating = 50
+var p1raidenselectedtargetx = 0
+var p1raidenselectedtargety = 0
+var p1raidenselectingtarget = false
+var p1raidentargetselected = false
+var p1raidentargetx = p1enemy1posx
+var p1raidentargety = p1enemy1posy
+var p1raidenattackthunderbolt = false
+var p1raidenthunderboltup = false
+var p1raidenattackfly = false
+var p1raidenattackstorm = false
+var p1raidenstormexplodetime = 5
+var p1raidenattackpowerstrike = false
+var p1raidenattackkick = false
+var p1raidenattackthunderboltdamage = p1raidenattackrating + 75
+var p1raidenattackflydamage = p1raidenattackrating + p1raidenmagicrating 
+var p1raidenattackstormdamage = p1raidenattackrating + p1raidenmagicrating 
+var p1raidenattackpowerstrikedamage = p1raidenattackrating * 1.5
+var p1raidenattackkickdamage = p1raidenattackrating * 1.5
+var p1raidenthunderbolttime = 500
+var p1raidenstormtime = 500
+var p1raidenpowerstriketime = 500
+var p1raidenkicktime = 500
+var p1raidenflytime = 500
+var p1raidenselected = false
+var p1raidenhasenemythreat = false
+var p1raidenthunderboltsoundplayed = false
+var p1raidenflysoundplayed = false
+var p1raidenstormsoundplayed = false
+var p1raidenpowerstrikesoundplayed = false
+var p1raidenkicksoundplayed = false
+
+
+
+//p2raidenstats
+var p2raidendead = false
+var p2raidenidle = true
+var p2raidenmaxhealthrating = 4000
+var p2raidenhealthrating = 4000
+var p2raidenattackrating = 200
+var p2raidendefenserating = 100
+var p2raidenmagicrating = 50
+var p2raidenspeedrating = 10
+var p2raidensupportrating = 50
+var p2raidenselectedtargetx = 0
+var p2raidenselectedtargety = 0
+var p2raidenselectingtarget = false
+var p2raidentargetselected = false
+var p2raidentargetx = p2enemy1posx
+var p2raidentargety = p2enemy1posy
+var p2raidenattackthunderbolt = false
+var p2raidenthunderboltup = false
+var p2raidenattackfly = false
+var p2raidenattackstorm = false
+var p2raidenattackpowerstrike = false
+var p2raidenattackkick = false
+var p2raidenattackthunderboltdamage = p2raidenattackrating + 75
+var p2raidenattackflydamage = p2raidenattackrating + 75
+var p2raidenattackstorm = false
+var p2raidenattackstormdamage = p2raidenattackrating + p2raidenmagicrating 
+var p2raidenattackpowerstrikedamage = p2raidenattackrating * 1.5
+var p2raidenattackkickdamage = p2raidenattackrating * 1.5
+var p2raidenthunderbolttime = 500
+var p2raidenstormtime = 500
+var p2raidenpowerstriketime = 500
+var p2raidenkicktime = 500
+var p2raidenflytime = 500
+var p2raidenselected = false
+var p2raidenhasenemythreat = false
+var p2raidenthunderboltsoundplayed = false
+var p2raidenflysoundplayed = false
+var p2raidenstormsoundplayed = false
+var p2raidenpowerstrikesoundplayed = false
+var p2raidenkicksoundplayed = false
+
+
+//p1cyanstats
+var p1cyandead = false
+var p1cyanidle = true
+var p1cyanmaxhealthrating = 4000
+var p1cyanhealthrating = 4000
+var p1cyanattackrating = 200
+var p1cyandefenserating = 100
+var p1cyanmagicrating = 50
+var p1cyanspeedrating = 10
+var p1cyansupportrating = 50
+var p1cyanselectedtargetx = 0
+var p1cyanselectedtargety = 0
+var p1cyanselectingtarget = false
+var p1cyantargetselected = false
+var p1cyantargetx = p1enemy1posx
+var p1cyantargety = p1enemy1posy
+var p1cyanattackswordslash = false
+var p1cyanswordslashup = false
+var p1cyanattackswordswing = false
+var p1cyanattackmagicsword = false
+var p1cyanmagicswordexplodetime = 5
+var p1cyanattackcommand = false
+var p1cyanattackbattleplan = false
+var p1cyanattackswordslashdamage = p1cyanattackrating + 75
+var p1cyanattackswordswingdamage = p1cyanattackrating + p1cyanmagicrating 
+var p1cyanattackmagicsworddamage = p1cyanattackrating + p1cyanmagicrating 
+var p1cyanattackcommanddamage = p1cyanattackrating * 1.5
+var p1cyanattackbattleplandamage = p1cyanattackrating * 1.5
+var p1cyanswordslashtime = 500
+var p1cyanmagicswordtime = 500
+var p1cyancommandtime = 500
+var p1cyanbattleplantime = 500
+var p1cyanswordswingtime = 500
+var p1cyanselected = false
+var p1cyanhasenemythreat = false
+var p1cyanswordslashsoundplayed = false
+var p1cyanswordswingsoundplayed = false
+var p1cyanmagicswordsoundplayed = false
+var p1cyancommandsoundplayed = false
+var p1cyanbattleplansoundplayed = false
+
+
+
+//p2cyanstats
+var p2cyandead = false
+var p2cyanidle = true
+var p2cyanmaxhealthrating = 4000
+var p2cyanhealthrating = 4000
+var p2cyanattackrating = 200
+var p2cyandefenserating = 100
+var p2cyanmagicrating = 50
+var p2cyanspeedrating = 10
+var p2cyansupportrating = 50
+var p2cyanselectedtargetx = 0
+var p2cyanselectedtargety = 0
+var p2cyanselectingtarget = false
+var p2cyantargetselected = false
+var p2cyantargetx = p2enemy1posx
+var p2cyantargety = p2enemy1posy
+var p2cyanattackswordslash = false
+var p2cyanswordslashup = false
+var p2cyanattackswordswing = false
+var p2cyanattackmagicsword = false
+var p2cyanattackcommand = false
+var p2cyanattackbattleplan = false
+var p2cyanattackswordslashdamage = p2cyanattackrating + 75
+var p2cyanattackswordswingdamage = p2cyanattackrating + 75
+var p2cyanattackmagicsword = false
+var p2cyanattackmagicsworddamage = p2cyanattackrating + p2cyanmagicrating 
+var p2cyanattackcommanddamage = p2cyanattackrating * 1.5
+var p2cyanattackbattleplandamage = p2cyanattackrating * 1.5
+var p2cyanswordslashtime = 500
+var p2cyanmagicswordtime = 500
+var p2cyancommandtime = 500
+var p2cyanbattleplantime = 500
+var p2cyanswordswingtime = 500
+var p2cyanselected = false
+var p2cyanhasenemythreat = false
+var p2cyanswordslashsoundplayed = false
+var p2cyanswordswingsoundplayed = false
+var p2cyanmagicswordsoundplayed = false
+var p2cyancommandsoundplayed = false
+var p2cyanbattleplansoundplayed = false
+
+//p1rosastats
+var p1rosadead = false
+var p1rosaidle = true
+var p1rosamaxhealthrating = 3000
+var p1rosahealthrating = 3000
+var p1rosaattackrating = 25
+var p1rosadefenserating = 25
+var p1rosamagicrating = 250
+var p1rosaspeedrating = 10
+var p1rosasupportrating = 500
+var p1rosaselectedtargetx = 0
+var p1rosaselectedtargety = 0
+var p1rosaselectingtarget = false
+var p1rosatargetselected = false
+var p1rosatargetx = p1enemy1posx
+var p1rosatargety = p1enemy1posy
+var p1rosahealingtarget = false
+var p1rosasupportcure = false
+var p1rosasupportheal = false
+var p1rosasupportfast = false
+var p1rosasupportshell = false
+var p1rosaattackbow = false
+var p1rosasupportcurehealing = p1rosasupportrating + p1rosamagicrating 
+var p1rosasupporthealhealing = p1rosasupportrating + p1rosamagicrating 
+var p1rosasupportfasthealing = 25
+var p1rosasupportshellhealing = 50
+var p1rosaattackbowdamage = p1rosaattackrating * 1.5
+var p1rosacuretime = 16
+var rosahealingtarget = false
+var rosahealingup = false
+var rosafastsupport = false
+var p1rosafasttime = 16
+var p1rosashelltime = 16
+var p1rosabowtime = 16
+var p1rosahealtime = 16
+var p1rosaselected = false
+var p1rosahasenemythreat = false
+var p1rosacuresoundplayed = false
+var p1rosahealsoundplayed = false
+var p1rosafastsoundplayed = false
+var p1rosashellsoundplayed = false
+var p1rosabowsoundplayed = false
+
+//p2rosastats
+var p2rosadead = false
+var p2rosaidle = true
+var p2rosamaxhealthrating = 3000
+var p2rosahealthrating = 3000
+var p2rosaattackrating = 25
+var p2rosadefenserating = 25
+var p2rosamagicrating = 250
+var p2rosaspeedrating = 10
+var p2rosasupportrating = 500
+var p2rosaselectedtargetx = 0
+var p2rosaselectedtargety = 0
+var p2rosaselectingtarget = false
+var p2rosatargetselected = false
+var p2rosatargetx = p2enemy1posx
+var p2rosatargety = p2enemy1posy
+var p2rosahealingtarget = false
+var p2rosasupportcure = false
+var p2rosasupportheal = false
+var p2rosasupportfast = false
+var p2rosasupportshell = false
+var p2rosaattackbow = false
+var p2rosasupportcurehealing = p2rosasupportrating + p2rosamagicrating 
+var p2rosasupporthealhealing = p2rosasupportrating + p2rosamagicrating 
+var p2rosasupportfasthealing = 25
+var p2rosasupportshellhealing = 50
+var p2rosaattackbowdamage = p2rosaattackrating * 1.5
+var p2rosacuretime = 16
+var rosahealingtarget = false
+var rosahealingup = false
+var rosafastsupport = false
+var p2rosafasttime = 16
+var p2rosashelltime = 16
+var p2rosabowtime = 16
+var p2rosahealtime = 16
+var p2rosaselected = false
+var p2rosahasenemythreat = false
+var p2rosacuresoundplayed = false
+var p2rosahealsoundplayed = false
+var p2rosafastsoundplayed = false
+var p2rosashellsoundplayed = false
+var p2rosabowsoundplayed = false
 
 var p1cecilx = 0
 var p1cecily = 0
